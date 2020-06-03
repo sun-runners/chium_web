@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import starGrade from './utility/starGrade'
+import starGrade from './utility/star-grade'
 export default {
   components: {
     starGrade
