@@ -2,8 +2,8 @@
   <div>
       <p class="q-pt-md text-h4">인기 업체</p>
       <div  v-for="(company, index) in companies" :key="index">
-          <div class="row">
-              <div class="col-3 q-px-sm q-pb-lg">
+          <div class="row q-py-md">
+              <div class="col-3 q-px-sm q-pb-md">
                   <img
                   src="https://cdn.quasar.dev/img/mountains.jpg"
                   style="width: 100%; height: 100%"
@@ -24,7 +24,7 @@
                 <p class="text-center">{{ company.star }}</p>
               </div>
           </div>
-          <hr class="text-grey-13">
+          <q-separator inset />
       </div>
   </div>
 </template>
