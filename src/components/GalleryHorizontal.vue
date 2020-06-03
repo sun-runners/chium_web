@@ -4,17 +4,17 @@
             <div class="item" v-for="(item, index) in items" :key="index">
                 <q-img class="image" src="https://picsum.photos/360/360"/>
                 <p class=" q-pt-md">{{ item.title }}</p>
-                <starGrade :star="item.star"></starGrade>
+                <StarGrade :star="item.star"></StarGrade>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import starGrade from './utility/star-grade'
+import StarGrade from './utility/StarGrade'
 export default {
   components: {
-    starGrade
+    StarGrade
   },
   data () {
     return {

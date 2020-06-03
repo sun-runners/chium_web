@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import gelleryHorizontal from '../components/gallery-horizontal'
+import GalleryHorizontal from '../components/GalleryHorizontal'
 export default {
   name: 'Home',
   components: {
-    'gallery-horizontal': gelleryHorizontal
+    'gallery-horizontal': GalleryHorizontal
   }
 }
 </script>
