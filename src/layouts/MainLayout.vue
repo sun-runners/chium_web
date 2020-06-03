@@ -46,18 +46,15 @@
               </div>
             </q-carousel-slide>
           </q-carousel>
-        <gelleryHorizontal></gelleryHorizontal>
+          <router-view></router-view>
         </q-page>
       </q-page-container>
     </q-layout>
 </template>
 
 <script>
-import gelleryHorizontal from '../components/galleryHorizontal'
+
 export default {
-  components: {
-    gelleryHorizontal
-  },
   data () {
     return {
       window_height: window.innerHeight,
