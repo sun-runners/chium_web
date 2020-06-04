@@ -1,6 +1,6 @@
 <template>
-  <div class="row  q-pb-md">
-    <div class="q-pa-md">
+  <div class="row items-center q-pb-md">
+    <div class="col-11 q-pa-md ">
       <q-rating
         v-model="star"
         size="2em"
@@ -8,7 +8,9 @@
         color="secondary"
       />
     </div>
-    <p class="q-px-sm text-weight-bold">{{star}}.0</p>
+    <div class="col row items-center">
+      <p class="q-pt-md text-weight-bold">{{star}}.0</p>
+    </div>
   </div>
 </template>
 
