@@ -1,6 +1,6 @@
 <template>
   <div class="row items-center q-pb-md">
-    <div class="col-11 q-pa-md ">
+    <div class="col-11 q-py-md ">
       <q-rating
         v-model="star"
         size="2em"

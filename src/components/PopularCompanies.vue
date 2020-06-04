@@ -32,31 +32,31 @@ export default {
           image: '',
           title: 'M_PLUS',
           desc: '충청북도 청주시 흥덕구 옥산면 옥산신...',
-          star: 4.9
+          star: '4.9'
         },
         {
           image: '',
           title: '바나나리스토어',
           desc: '경기도 과천시 과천동 576-21',
-          star: 4.8
+          star: '4.8'
         },
         {
           image: '',
           title: '파란환경철거 동탄점',
           desc: '경기도 과천시 과천동 576-21',
-          star: 4.5
+          star: '4.5'
         },
         {
           image: '',
           title: '바나나리스토어',
           desc: '경기도 과천시 과천동 576-21',
-          star: 5.0
+          star: '5.0'
         },
         {
           image: '',
           title: '바나나리스토어',
           desc: '경기도 과천시 과천동 576-21',
-          star: 5.0
+          star: '5.0'
         }
       ]
     }
