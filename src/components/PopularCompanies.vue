@@ -2,29 +2,23 @@
   <div>
       <p class="q-pt-md text-h4">인기 업체</p>
       <div  v-for="(company, index) in companies" :key="index">
-          <div class="row q-py-md">
-              <div class="col-3 q-px-sm q-pb-md">
-                  <img
-                  src="https://cdn.quasar.dev/img/mountains.jpg"
-                  style="width: 100%; height: 100%"
-                  >
-              </div>
-              <div class="col-8 q-pl-md">
-                <div class="col content-center justify-center">
-                  <p padding class="text-h5">
-                      {{ company.title }}
-                  </p>
-                  <p>
-                    {{ company.desc }}
-                  </p>
-                </div>
-              </div>
-              <div class="col-1">
-                <p class="text-center"><span class="fa fa-star text-light-blue" style="font-size:20px"></span></p>
-                <p class="text-center">{{ company.star }}</p>
-              </div>
-          </div>
-          <q-separator inset />
+        <q-list>
+          <q-item>
+            <q-item-section thumbnail>
+              <img src="https://cdn.quasar.dev/img/mountains.jpg">
+            </q-item-section>
+            <q-item-section class="q-py-lg">
+              <q-item-label>{{ company.title }}</q-item-label>
+              <q-item-label caption lines="2">{{ company.desc }}</q-item-label>
+            </q-item-section>
+
+            <q-item-section side center>
+              <q-icon name="star" color="blue" />
+              <q-item-label bold>{{ company.star }}</q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
+        <q-separator inset />
       </div>
   </div>
 </template>
@@ -56,13 +50,13 @@ export default {
           image: '',
           title: '바나나리스토어',
           desc: '경기도 과천시 과천동 576-21',
-          star: 5
+          star: 5.0
         },
         {
           image: '',
           title: '바나나리스토어',
           desc: '경기도 과천시 과천동 576-21',
-          star: 5
+          star: 5.0
         }
       ]
     }
