@@ -93,7 +93,7 @@ module.exports = function (/* ctx */) {
       all: true,
 
       components: [
-        'QIcon'
+        '*'
       ],
       directives: [],
 

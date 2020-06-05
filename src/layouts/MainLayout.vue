@@ -21,32 +21,14 @@
       </q-footer>
       <q-page-container>
         <q-page style="padding-top: 60px" class="q-pa-md">
-          <q-carousel
-            transition-prev="scale"
-            transition-next="scale"
-            swipeable
-            animated
-            control-color="white"
-            navigation
-            padding
-            arrows
-            height="400px"
-            class="bg-secondary text-accent shadow-1 rounded-borders"
+          <q-scroll-area
+            :thumb-style="thumbStyle"
+            :content-style="contentStyle"
+            :content-active-style="contentActiveStyle"
+            :style="{'height': window_height+'px'}"
           >
-            <q-carousel-slide name="style" class="column no-wrap flex-center">
-              <q-icon name="style" size="56px" />
-              <div class="q-mt-md text-center text-accent">
-                Adawadad
-              </div>
-            </q-carousel-slide>
-            <q-carousel-slide name="tv" class="column no-wrap flex-center">
-              <q-icon name="live_tv" size="56px" />
-              <div class="q-mt-md text-center text-accent">
-                Aasdadad
-              </div>
-            </q-carousel-slide>
-          </q-carousel>
-          <router-view></router-view>
+            <router-view></router-view>
+          </q-scroll-area>
         </q-page>
       </q-page-container>
     </q-layout>
@@ -58,7 +40,22 @@ export default {
   data () {
     return {
       window_height: window.innerHeight,
-      widnow_width: window.innerWidth
+      widnow_width: window.innerWidth,
+      contentStyle: {
+        backgroundColor: 'rgba(0,0,0,0.02)',
+        color: '#555'
+      },
+      contentActiveStyle: {
+        backgroundColor: '#eee',
+        color: 'black'
+      },
+      thumbStyle: {
+        right: '2px',
+        borderRadius: '5px',
+        backgroundColor: '#027be3',
+        width: '5px',
+        opacity: 0.75
+      }
     }
   },
   created () {
