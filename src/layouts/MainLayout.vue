@@ -3,15 +3,15 @@
       <q-header class="bg-white text-primary">
         <q-toolbar class="justify-center">
           <q-toolbar-title class="text-center text-accent">
-            <div v-if="currentRoute === 'home'">
-              괘랑4길 16-38 {{ currentRoute }}
-              <q-btn icon="arrow_drop_down_circle" dense color="secondary" rounded flat></q-btn>
+            <div>
+              괘랑4길 16-38
+              <q-btn v-if="currentRoute === 'home'" icon="arrow_drop_down_circle" dense color="secondary" rounded flat></q-btn>
             </div>
           </q-toolbar-title>
         </q-toolbar>
       </q-header>
       <q-footer>
-        <q-toolbar class="justify-center">
+        <q-toolbar class="justify-center bg-white">
            <q-tabs active-color="secondary">
               <q-route-tab name="tab1" to="home" style="color: #999999" label="홈" icon="home"></q-route-tab>
               <q-route-tab name="tab2" to="home" style="color: #999999" label="예약" icon="calendar_today"></q-route-tab>
@@ -24,7 +24,7 @@
       <q-page-container class="doc-container">
         <div class="row justify-center">
           <div class="col" :style="{'width': widnow_width+'px', 'max-width': '1000px'}">
-            <q-page style="padding-top: 60px" class="q-pa-md">
+            <q-page style="padding-top: 60px" class="no-padding">
               <router-view></router-view>
             </q-page>
           </div>
@@ -83,5 +83,4 @@ export default {
 </script>
 
 <style lang="stylus">
-
 </style>
