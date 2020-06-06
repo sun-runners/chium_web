@@ -1,35 +1,63 @@
 <template>
     <q-layout view="lHr lpR fFf" class="">
-      <q-header class="bg-white text-primary">
-        <q-toolbar class="justify-center">
-          <q-toolbar-title class="text-center text-accent">
-            <div>
-              괘랑4길 16-38
-              <q-btn v-if="currentRoute === 'home'" icon="arrow_drop_down_circle" dense color="secondary" rounded flat></q-btn>
+        <q-header class="bg-white text-primary">
+          <q-toolbar class="justify-center">
+            <q-toolbar-title class="text-center text-accent">
+              <div class="q-pb-md">
+                괘랑4길 16-38
+                <q-btn v-if="currentRoute === 'home'" icon="arrow_drop_down_circle" dense color="secondary" rounded flat></q-btn>
+                <div class="row justify-center" v-if="currentRoute === 'search'">
+                  <div class="col" :style="widthMax">
+                    <q-input filled placeholder="철거업체 통합검색">
+                      <template v-slot:prepend>
+                        <q-icon name="search"  />
+                      </template>
+                      <template v-slot:append>
+                        <q-icon name="close" @click="text = ''" class="cursor-pointer" />
+                      </template>
+                    </q-input>
+                    <q-tabs
+                        inline-label
+                        dense
+                        align="justify"
+                        class="q-mt-sm"
+                    >
+                        <q-tab class="text-secondary q-pa-sm" name="mails" label="업체명" />
+                        <q-tab class="text-secondary q-pa-sm" name="alarms" label="장소" />
+                    </q-tabs>
+                  </div>
+                </div>
+              </div>
+            </q-toolbar-title>
+          </q-toolbar>
+        </q-header>
+        <q-footer>
+          <q-toolbar class="justify-center bg-white">
+            <q-tabs active-color="secondary">
+                <q-route-tab name="tab1" to="home" style="color: #999999" label="홈" icon="home"></q-route-tab>
+                <q-route-tab name="tab2" to="home" style="color: #999999" label="예약" icon="calendar_today"></q-route-tab>
+                <q-route-tab name="tab3" to="search" style="color: #999999" label="검색" icon="search"></q-route-tab>
+                <q-route-tab name="tab4" to="home" style="color: #999999" label="업체" icon="store"></q-route-tab>
+                <q-route-tab name="tab5" to="home" style="color: #999999" label="마이" icon="person"></q-route-tab>
+              </q-tabs>
+          </q-toolbar>
+        </q-footer>
+        <q-page-container class="doc-container">
+          <transition-group
+            appear
+            enter-active-class="animated fadeIn"
+            leave-active-class="animated fadeOut"
+          >
+            <div class="row justify-center" key="div-container">
+              <div class="col" :style="widthMax">
+                <q-page style="padding-top: 60px" class="no-padding">
+                  <router-view></router-view>
+                </q-page>
+              </div>
             </div>
-          </q-toolbar-title>
-        </q-toolbar>
-      </q-header>
-      <q-footer>
-        <q-toolbar class="justify-center bg-white">
-           <q-tabs active-color="secondary">
-              <q-route-tab name="tab1" to="home" style="color: #999999" label="홈" icon="home"></q-route-tab>
-              <q-route-tab name="tab2" to="home" style="color: #999999" label="예약" icon="calendar_today"></q-route-tab>
-              <q-route-tab name="tab3" to="search" style="color: #999999" label="검색" icon="search"></q-route-tab>
-              <q-route-tab name="tab4" to="home" style="color: #999999" label="업체" icon="store"></q-route-tab>
-              <q-route-tab name="tab5" to="home" style="color: #999999" label="마이" icon="person"></q-route-tab>
-            </q-tabs>
-        </q-toolbar>
-      </q-footer>
-      <q-page-container class="doc-container">
-        <div class="row justify-center">
-          <div class="col" :style="{'width': widnow_width+'px', 'max-width': '1000px'}">
-            <q-page style="padding-top: 60px" class="no-padding">
-              <router-view></router-view>
-            </q-page>
-          </div>
-        </div>
-      </q-page-container>
+          </transition-group>
+        </q-page-container>
+
     </q-layout>
 </template>
 
@@ -77,6 +105,9 @@ export default {
       const route = get(this, '$route', '')
       const { name } = route
       return name
+    },
+    widthMax () {
+      return { width: this.widnow_width + 'px', 'max-width': '1000px' }
     }
   }
 }
