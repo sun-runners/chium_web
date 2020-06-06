@@ -1,40 +1,41 @@
 <template>
-    <q-layout view="lHr lpR fFf" class="fixed-center" container :style="{'height': window_height+'px', 'width': widnow_width+'px', 'max-width': '1000px'}">
+    <q-layout view="lHr lpR fFf" class="">
       <q-header class="bg-white text-primary">
         <q-toolbar class="justify-center">
           <q-toolbar-title class="text-center text-accent">
-            괘랑4길 16-38
-            <q-btn icon="arrow_drop_down_circle" dense color="secondary" rounded flat></q-btn>
+            <div v-if="currentRoute === 'home'">
+              괘랑4길 16-38 {{ currentRoute }}
+              <q-btn icon="arrow_drop_down_circle" dense color="secondary" rounded flat></q-btn>
+            </div>
           </q-toolbar-title>
         </q-toolbar>
       </q-header>
       <q-footer>
         <q-toolbar class="justify-center">
            <q-tabs active-color="secondary">
-              <q-tab name="tab1" style="color: #999999" label="홈" icon="home"></q-tab>
-              <q-tab name="tab2" style="color: #999999" label="예약" icon="calendar_today"></q-tab>
-              <q-tab name="tab3" style="color: #999999" label="검색" icon="search"></q-tab>
-              <q-tab name="tab4" style="color: #999999" label="업체" icon="store"></q-tab>
-              <q-tab name="tab5" style="color: #999999" label="마이" icon="person"></q-tab>
+              <q-route-tab name="tab1" to="home" style="color: #999999" label="홈" icon="home"></q-route-tab>
+              <q-route-tab name="tab2" to="home" style="color: #999999" label="예약" icon="calendar_today"></q-route-tab>
+              <q-route-tab name="tab3" to="search" style="color: #999999" label="검색" icon="search"></q-route-tab>
+              <q-route-tab name="tab4" to="home" style="color: #999999" label="업체" icon="store"></q-route-tab>
+              <q-route-tab name="tab5" to="home" style="color: #999999" label="마이" icon="person"></q-route-tab>
             </q-tabs>
         </q-toolbar>
       </q-footer>
-      <q-page-container>
-        <q-page style="padding-top: 60px" class="q-pa-md">
-          <q-scroll-area
-            :thumb-style="thumbStyle"
-            :content-style="contentStyle"
-            :content-active-style="contentActiveStyle"
-            :style="{'height': window_height+'px'}"
-          >
-            <router-view></router-view>
-          </q-scroll-area>
-        </q-page>
+      <q-page-container class="doc-container">
+        <div class="row justify-center">
+          <div class="col" :style="{'width': widnow_width+'px', 'max-width': '1000px'}">
+            <q-page style="padding-top: 60px" class="q-pa-md">
+              <router-view></router-view>
+            </q-page>
+          </div>
+        </div>
       </q-page-container>
     </q-layout>
 </template>
 
 <script>
+
+import { get } from 'lodash'
 
 export default {
   data () {
@@ -59,6 +60,7 @@ export default {
     }
   },
   created () {
+    console.log(this)
     window.addEventListener('resize', this.handleHeight)
   },
   destroyed () {
@@ -68,6 +70,13 @@ export default {
     handleHeight () {
       this.window_height = window.innerHeight
       this.widnow_width = window.innerWidth
+    }
+  },
+  computed: {
+    currentRoute () {
+      const route = get(this, '$route', '')
+      const { name } = route
+      return name
     }
   }
 }
