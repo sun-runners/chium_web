@@ -7,7 +7,7 @@
         navigation
         infinite
         >
-        <q-carousel-slide :name="1" img-src="http://localhost:8080/statics/images/Bannertops.jpg" />
+        <q-carousel-slide :name="1" img-src="https://picsum.photos/360/360" />
         </q-carousel>
         <div>
             <div class="row">
