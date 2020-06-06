@@ -14,7 +14,7 @@
                 <div class="col">
                     <div class="row">
                         <div class="col">
-                            <h5 class="q-mt-md q-mb-xs q-ml-md text-black">우리 동네 업체</h5>
+                            <h6 class="q-mt-md q-mb-xs q-ml-md text-black">우리 동네 업체</h6>
                         </div>
                         <div class="col flex justify-end">
                             <q-btn outline class="q-mt-md q-mb-xs q-ml-md q-mr-lg text-black">더보기</q-btn>
