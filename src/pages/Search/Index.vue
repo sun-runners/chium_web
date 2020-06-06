@@ -1,5 +1,8 @@
 <template>
   <div class="">
+    <div>
+        <q-input outlined placeholder="철거업체 통합검색" />
+    </div>
     <q-tabs
         narrow-indicator
         dense
