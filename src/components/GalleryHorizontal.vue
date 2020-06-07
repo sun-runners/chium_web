@@ -2,7 +2,7 @@
     <div class="gallery-container">
         <div class="item" v-for="(item, index) in items" :key="index">
             <q-img class="image" src="https://picsum.photos/360/360"/>
-            <p class=" q-pt-md">{{ item.title }}</p>
+            <p class="q-pt-md text-dark text-bold">{{ item.title }}</p>
             <StarGrade :star="item.star"></StarGrade>
         </div>
     </div>

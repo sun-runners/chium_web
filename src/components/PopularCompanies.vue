@@ -4,17 +4,17 @@
       <div  v-for="(company, index) in companies" :key="index">
         <q-list>
           <q-item>
-            <q-item-section thumbnail>
-              <img src="https://cdn.quasar.dev/img/mountains.jpg">
+            <q-item-section avatar>
+              <img src="https://cdn.quasar.dev/img/mountains.jpg"  width="70px" height="70px">
             </q-item-section>
             <q-item-section class="q-py-lg">
-              <q-item-label>{{ company.title }}</q-item-label>
-              <q-item-label caption lines="2">{{ company.desc }}</q-item-label>
+              <q-item-label class="text-weight-bolder">{{ company.title }}</q-item-label>
+              <q-item-label caption class="text-bold" lines="2">{{ company.desc }}</q-item-label>
             </q-item-section>
 
             <q-item-section side center>
               <q-icon name="star" color="blue" />
-              <q-item-label bold>{{ company.star }}</q-item-label>
+              <q-item-label class="text-dark text-bold">{{ company.star }}</q-item-label>
             </q-item-section>
           </q-item>
         </q-list>

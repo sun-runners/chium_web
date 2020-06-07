@@ -1,15 +1,8 @@
 <template>
-  <div class="row items-center q-pb-md">
-    <div class="col-11 q-py-md ">
-      <q-rating
-        v-model="star"
-        size="2em"
-        :max="5"
-        color="secondary"
-      />
-    </div>
-    <div class="col row items-center">
-      <p class="q-pt-md text-weight-bold">{{star}}.0</p>
+  <div class="row items-center">
+    <div class="row items-center">
+      <q-icon class="q-pb-md" size="22px" name="star" color="secondary" v-for="n in star" :key="n" />
+      <p class="q-ml-sm text-weight-bold">{{star}}.0</p>
     </div>
   </div>
 </template>
