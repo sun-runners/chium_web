@@ -1,6 +1,6 @@
 <template>
   <div>
-      <p class="q-pt-md text-h4">인기 업체</p>
+      <p class="q-pt-md text-h4 text-weight-bolder">인기 업체</p>
       <div  v-for="(company, index) in companies" :key="index">
         <q-list>
           <q-item>
