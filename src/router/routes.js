@@ -6,7 +6,8 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/Home/Index'), name: 'home' },
       { path: 'home', component: () => import('pages/Home/Index'), name: 'home' },
-      { path: 'search', component: () => import('pages/Search/Index'), name: 'search' }
+      { path: 'search', component: () => import('pages/Search/Index'), name: 'search' },
+      { path: 'mypage', component: () => import('pages/MyPage/Index'), name: 'myPage' }
     ]
   }
 ]

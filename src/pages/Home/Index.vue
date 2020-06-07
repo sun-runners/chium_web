@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-            <gallery-horizontal></gallery-horizontal>
+            <gallery-sliding-horizontal></gallery-sliding-horizontal>
             </div>
             <popular-companies></popular-companies>
             <div class="column">
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import GalleryHorizontal from 'src/components/GalleryHorizontal'
+import GallerySlidingHorizontal from 'src/components/GallerySlidingHorizontal'
 import PopularCompanies from 'src/components/PopularCompanies'
 import HomeNotice from 'src/components/HomeNotice'
 import TermsOfServiceVue from 'src/components/TermsOfService.vue'
@@ -55,7 +55,7 @@ export default {
     }
   },
   components: {
-    'gallery-horizontal': GalleryHorizontal,
+    'gallery-sliding-horizontal': GallerySlidingHorizontal,
     'popular-companies': PopularCompanies,
     'home-notice': HomeNotice,
     'terms-of-service': TermsOfServiceVue
