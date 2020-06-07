@@ -24,17 +24,18 @@
             <gallery-horizontal></gallery-horizontal>
             </div>
             <popular-companies></popular-companies>
-            <div class="q-pt-md">
-            <q-banner class="bg-secondary text-white">
-                <div class="row items-center">
-                <div class="col-7">
-                    <p class="text-h5">우수 후기 고객 50명 선착순 마일리지 50,000P 지급</p>
+            <div class="column">
+                <div class="q-pt-md">
+                    <q-banner class="bg-secondary text-white">
+                        <div class="row no-wrap items-center justify-around">
+                            <p class="text-h5">우수 후기 고객 50명 선착순 마일리지 50,000P 지급</p>
+                            <h4 class="text-center">Image</h4>
+                        </div>
+                    </q-banner>
                 </div>
-                <div class="col-5">
-                    <h4 class="text-center">Image</h4>
+                <div class="bg-grey-2 q-py-lg">
+                    <home-notice></home-notice>
                 </div>
-                </div>
-            </q-banner>
             </div>
         </div>
     </div>
@@ -43,6 +44,7 @@
 <script>
 import GalleryHorizontal from 'src/components/GalleryHorizontal'
 import PopularCompanies from 'src/components/PopularCompanies'
+import HomeNotice from 'src/components/HomeNotice'
 export default {
   name: 'Home',
   data () {
@@ -52,7 +54,8 @@ export default {
   },
   components: {
     'gallery-horizontal': GalleryHorizontal,
-    'popular-companies': PopularCompanies
+    'popular-companies': PopularCompanies,
+    'home-notice': HomeNotice
   }
 }
 </script>
