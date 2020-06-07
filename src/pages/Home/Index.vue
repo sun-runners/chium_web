@@ -33,8 +33,9 @@
                         </div>
                     </q-banner>
                 </div>
-                <div class="bg-grey-2 q-py-lg">
+                <div class="bg-grey-3 q-py-lg">
                     <home-notice></home-notice>
+                    <terms-of-service></terms-of-service>
                 </div>
             </div>
         </div>
@@ -45,6 +46,7 @@
 import GalleryHorizontal from 'src/components/GalleryHorizontal'
 import PopularCompanies from 'src/components/PopularCompanies'
 import HomeNotice from 'src/components/HomeNotice'
+import TermsOfServiceVue from 'src/components/TermsOfService.vue'
 export default {
   name: 'Home',
   data () {
@@ -55,7 +57,8 @@ export default {
   components: {
     'gallery-horizontal': GalleryHorizontal,
     'popular-companies': PopularCompanies,
-    'home-notice': HomeNotice
+    'home-notice': HomeNotice,
+    'terms-of-service': TermsOfServiceVue
   }
 }
 </script>
