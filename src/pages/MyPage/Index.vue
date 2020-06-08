@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-primary" style="min-height:100vh;">
+    <div class="bg-grey-3" style="min-height:100vh;">
         <div class="bg-white">
             <h5 class="text-bold text-center">마이페이지</h5>
             <div class="q-pa-lg column">
@@ -43,8 +43,19 @@
             </div>
             <q-separator inset size="3px" />
             <div class="q-pt-lg q-mt-lg">
+                <p style="font-size: 18px; line-height: 27px;" class="text-bold">최근 본 업체</p>
                 <gallery-sliding-horizontal></gallery-sliding-horizontal>
             </div>
+        </div>
+        <div class="bg-white q-mt-md q-py-none q-px-lg">
+            <q-list separator inset size="3px">
+                <q-item style="height: 60px;" v-for="(item, index) in items" :key="index" clickable v-ripple>
+                    <q-item-section style="line-height: 23px; font-size: 15px;">{{ item }}</q-item-section>
+                    <span class="material-icons" style="font-size: 26px;">
+                        keyboard_arrow_right
+                    </span>
+                </q-item>
+            </q-list>
         </div>
     </div>
 </template>
@@ -55,6 +66,18 @@ export default {
   name: 'MyPage',
   components: {
     'gallery-sliding-horizontal': GallerySlidingHorizontal
+  },
+  data () {
+    return {
+      items: [
+        '개인정보',
+        '단골업체',
+        '철거내역',
+        '문의내역',
+        '공지사항',
+        '로그아웃'
+      ]
+    }
   }
 }
 </script>
