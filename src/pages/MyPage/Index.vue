@@ -7,14 +7,14 @@
                 <p class="text-secondary q-ma-none" style="font-size: 30px;">5,000P</p>
             </div>
             <div class="q-px-lg">
-                <hr style="color: #42404024;">
+                <q-separator color="grey-4" size="1px" />
             </div>
             <div class="row items-center justify-evenly">
                 <q-item-section class="column items-center q-pa-lg">
                     <p class="text-bold text-dark q-ma-none" style="font-size: 24px;">1</p>
                     <p style="font-size: 13px;">리뷰</p>
                 </q-item-section>
-                <q-separator color="grey-4" vertical inset  size="3px" />
+                <q-separator color="grey-4" vertical inset  size="1px" />
                 <q-item-section class="column items-center q-pa-lg">
                     <p class="text-bold text-dark q-ma-none" style="font-size: 24px;">2</p>
                     <p style="font-size: 13px;">상담</p>
@@ -31,7 +31,7 @@
                     <q-btn color="white" text-color="black" label="수정" />
                 </div>
             </div>
-            <q-separator inset size="2px"  />
+            <q-separator size="1px"  />
             <div class="row items-center justify-between">
                 <div class="col-8 text-bold q-pa-lg">
                     <p class="text-grey">연락처</p>
@@ -41,7 +41,7 @@
                     <q-btn color="white" bold text-color="black"  label="수정"/>
                 </div>
             </div>
-            <q-separator inset size="3px" />
+            <q-separator size="1px" />
             <div class="q-pt-lg q-mt-lg">
                 <p style="font-size: 18px; line-height: 27px;" class="text-bold">최근 본 업체</p>
                 <gallery-sliding-horizontal></gallery-sliding-horizontal>
