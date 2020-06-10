@@ -2,24 +2,25 @@
     <div class="q-pb-md">
         괘랑4길 16-38
         <q-btn v-if="currentRoute === 'home'" icon="arrow_drop_down_circle" dense color="secondary" rounded flat></q-btn>
-        <div class="row justify-center" v-if="currentRoute === 'search'">
+        <div class="row justify-center" v-if="routeFilter">
             <div class="col" :style="widthMax">
-                <q-input filled borderless placeholder="철거업체 통합검색">
-                    <template v-slot:prepend>
-                        <q-icon name="search"  />
-                    </template>
-                    <template v-slot:append>
-                        <q-icon name="close" @click="text = ''" class="cursor-pointer" />
-                    </template>
-                </q-input>
+                <div v-if="currentRoute === 'search'">
+                  <q-input filled borderless placeholder="철거업체 통합검색">
+                      <template v-slot:prepend>
+                          <q-icon name="search"  />
+                      </template>
+                      <template v-slot:append>
+                          <q-icon name="close" @click="text = ''" class="cursor-pointer" />
+                      </template>
+                  </q-input>
+                </div>
                 <q-tabs
                     inline-label
                     dense
                     align="justify"
                     class="q-mt-sm"
                 >
-                    <q-tab class="text-secondary q-pa-sm" name="mails" label="업체명" />
-                    <q-tab class="text-secondary q-pa-sm" name="alarms" label="장소" />
+                    <q-tab class="text-secondary q-pa-sm"  v-for="tab in tabs" :key="tab.name" v-bind="tab" />
                 </q-tabs>
             </div>
         </div>
@@ -27,11 +28,31 @@
 </template>
 
 <script>
+import { get, includes } from 'lodash'
+
 export default {
   name: 'Navigation',
   props: ['currentRoute', 'widthMax'],
-  data () {
-    return {
+  methods: {
+  },
+  computed: {
+    tabs () {
+      const tabArrays = {
+        search: [
+          { name: 'company_name', label: '업체명' },
+          { name: 'place', label: '장소' }
+        ],
+        store: [
+          { name: 'company_introduction', label: '업체소개' },
+          { name: 'job_introduction', label: '작업소개' },
+          { name: 'late', label: '후기(633)' },
+          { name: 'contact', label: '문의하기' }
+        ]
+      }
+      return get(tabArrays, this.currentRoute)
+    },
+    routeFilter () {
+      return includes(['search', 'store'], this.currentRoute)
     }
   }
 }
