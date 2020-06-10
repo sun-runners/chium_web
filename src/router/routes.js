@@ -7,7 +7,8 @@ const routes = [
       { path: '', component: () => import('pages/Home/Index'), name: 'home' },
       { path: 'home', component: () => import('pages/Home/Index'), name: 'home' },
       { path: 'search', component: () => import('pages/Search/Index'), name: 'search' },
-      { path: 'mypage', component: () => import('pages/MyPage/Index'), name: 'myPage' }
+      { path: 'my_page', component: () => import('pages/MyPage/Index'), name: 'my_page' },
+      { path: 'store', component: () => import('pages/Store/Index'), name: 'store' }
     ]
   }
 ]
