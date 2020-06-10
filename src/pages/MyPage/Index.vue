@@ -28,7 +28,7 @@
                     <p style="font-size: 16px; line-height: 24px;">경기도 화성시 정남면 괘랑4길 16-38</p>
                 </div>
                 <div class="q-pa-lg text-bold">
-                    <q-btn color="white" text-color="black" label="수정" />
+                    <q-btn color="white" text-color="black" outline label="수정" />
                 </div>
             </div>
             <q-separator size="1px"  />
@@ -38,7 +38,7 @@
                     <p style="font-size: 16px; line-height: 24px;">010-2398-0374</p>
                 </div>
                 <div class="q-pa-lg text-bold">
-                    <q-btn color="white" bold text-color="black"  label="수정"/>
+                    <q-btn color="white" bold text-color="black"  outline label="수정"/>
                 </div>
             </div>
             <q-separator size="1px" />
