@@ -1,82 +1,100 @@
 <template>
-    <div class="bg-grey-3" style="min-height:100vh;">
-        <div class="bg-white">
-            <h5 class="text-bold text-center">마이페이지</h5>
-            <div class="q-pa-lg column">
-                <p class="text-bold q-ma-none" style="font-size: 22px;">박가인 님</p>
-                <p class="text-secondary q-ma-none" style="font-size: 30px;">5,000P</p>
-            </div>
-            <div class="q-px-lg">
-                <q-separator color="grey-4" size="1px" />
-            </div>
-            <div class="row items-center justify-evenly">
-                <q-item-section class="column items-center q-pa-lg">
-                    <p class="text-bold text-dark q-ma-none" style="font-size: 24px;">1</p>
-                    <p style="font-size: 13px;">리뷰</p>
-                </q-item-section>
-                <q-separator color="grey-4" vertical inset  size="1px" />
-                <q-item-section class="column items-center q-pa-lg">
-                    <p class="text-bold text-dark q-ma-none" style="font-size: 24px;">2</p>
-                    <p style="font-size: 13px;">상담</p>
-                </q-item-section>
-            </div>
+    <div class="row">
+      <div class="col-12 flex  content-center">
+          <img
+            src="https://placeimg.com/811/411/nature"
+            :ratio="16/9"
+            class="self-center"
+          />
         </div>
-        <div class="bg-white q-mt-md q-py-none q-px-lg">
-            <div class="row items-center justify-between">
-                <div class="col-8 text-bold q-pa-lg">
-                    <p class="text-grey">내 위치</p>
-                    <p style="font-size: 16px; line-height: 24px;">경기도 화성시 정남면 괘랑4길 16-38</p>
-                </div>
-                <div class="q-pa-lg text-bold">
-                    <q-btn color="white" text-color="black" label="수정" />
-                </div>
+      <div class="col-12">
+        <q-card flat class="bg-white my-card">
+          <q-card-section>
+            <div class="text-h6 bold">어게인업</div>
+            <div class="text-subtitle2 text-grey">서울특별시 광진구 천호대로 24-5</div>
+            <div>
+              <q-rating
+                size="2em"
+                :max="5"
+                color="blue"
+              />
+              <span class="text-subtitle2"> 4.9</span>
             </div>
-            <q-separator size="1px"  />
-            <div class="row items-center justify-between">
-                <div class="col-8 text-bold q-pa-lg">
-                    <p class="text-grey">연락처</p>
-                    <p style="font-size: 16px; line-height: 24px;">010-2398-0374</p>
-                </div>
-                <div class="q-pa-lg text-bold">
-                    <q-btn color="white" bold text-color="black"  label="수정"/>
-                </div>
+            <div class="row q-mt-sm">
+              <div class="col">
+                <q-btn>주거공간</q-btn>
+              </div>
+              <div class="col">
+                <q-btn>주거공간</q-btn>
+              </div>
+              <div class="col">
+                <q-btn>주거공간</q-btn>
+              </div>
+              <div class="col">
+                <q-btn>주거공간</q-btn>
+              </div>
             </div>
-            <q-separator size="1px" />
-            <div class="q-pt-lg q-mt-lg">
-                <p style="font-size: 18px; line-height: 27px;" class="text-bold">최근 본 업체</p>
-                <gallery-sliding-horizontal></gallery-sliding-horizontal>
-            </div>
-        </div>
-        <div class="bg-white q-mt-md q-py-none q-px-lg">
-            <q-list separator inset size="3px">
-                <q-item style="height: 60px;" v-for="(item, index) in items" :key="index" clickable v-ripple>
-                    <q-item-section style="line-height: 23px; font-size: 15px;">{{ item }}</q-item-section>
-                    <span class="material-icons" style="font-size: 26px;">
-                        keyboard_arrow_right
-                    </span>
-                </q-item>
-            </q-list>
-        </div>
+          </q-card-section>
+
+          <q-separator inset />
+
+          <q-card-section>
+              <div class="column">
+                <div class="col">
+                  <div class="row">
+                    <div class="col-3 text-grey">매칭 수</div>
+                    <div class="col-8 text-bold text-blue">12,050</div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="row">
+                    <div class="col-3 text-grey">매칭 수</div>
+                    <div class="col-8 text-bold text-black">12,050</div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="row">
+                    <div class="col-3 text-grey">경력</div>
+                    <div class="col-8 text-bold text-black">11년</div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="row">
+                    <div class="col-3 text-grey">작업지역</div>
+                    <div class="col-8 text-bold text-black">서울시 전 지역</div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="row">
+                    <div class="col-3 text-grey">전화상담</div>
+                    <div class="col-8 text-bold text-black">02-4525-4890</div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="row">
+                    <div class="col-3 text-grey">영업시간</div>
+                    <div class="col-8 text-bold text-black">10:00 - 21:00 매주 월요일 휴무</div>
+                  </div>
+                </div>
+              </div>
+          </q-card-section>
+        </q-card>
+      </div>
     </div>
 </template>
 
 <script>
-import GallerySlidingHorizontal from 'src/components/GallerySlidingHorizontal'
 export default {
   name: 'Store',
   components: {
-    'gallery-sliding-horizontal': GallerySlidingHorizontal
   },
   data () {
     return {
-      items: [
-        '개인정보',
-        '단골업체',
-        '철거내역',
-        '문의내역',
-        '공지사항',
-        '로그아웃'
-      ]
     }
   }
 }
