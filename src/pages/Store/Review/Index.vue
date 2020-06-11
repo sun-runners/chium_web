@@ -57,6 +57,42 @@
               <q-btn outline color="white" class="full-width" text-color="black" label="포토후기만 모아보기 (116)" />
             </div>
           </div>
+          <q-card flat>
+            <q-tabs
+              v-model="tab"
+              dense
+              class="primary"
+              active-color="secondary"
+              indicator-color="secondary"
+              align="justify"
+              narrow-indicator
+            >
+              <q-tab name="all" label="전체" />
+              <q-tab name="commercial_space" label="상업공간" />
+              <q-tab name="office_space" label="사무공간" />
+              <q-tab name="residential_space" label="주거공간" />
+              <q-tab name="facility_waste" label="시설물/폐기물" />
+            </q-tabs>
+
+            <q-separator size="20px"/>
+
+            <q-tab-panels v-model="tab" animated>
+              <q-tab-panel name="all">
+                <div class="text-h6">전체</div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </q-tab-panel>
+
+              <q-tab-panel name="commercial_space">
+                <div class="text-h6">상업공간</div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </q-tab-panel>
+
+              <q-tab-panel name="office_space">
+                <div class="text-h6">사무공간</div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              </q-tab-panel>
+            </q-tab-panels>
+          </q-card>
         </div>
     </div>
 </template>
@@ -71,6 +107,7 @@ export default {
   data () {
     return {
       reviewRate: 4,
+      tab: 'all',
       sliders: [
         {
           label: '상업 공간', value: '3.9'
