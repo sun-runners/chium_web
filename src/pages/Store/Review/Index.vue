@@ -28,6 +28,36 @@
                 </div>
             </div>
         </div>
+        <div class="bg-white q-mt-md">
+          <div class="row justify-center">
+            <div class="col q-pa-md row ">
+              <q-btn-dropdown outline class="full-width" color="primary" text-color="dark" label="별점순">
+                <q-list>
+                  <q-item clickable v-close-popup @click="onItemClick">
+                    <q-item-section>
+                      <q-item-label>별점순</q-item-label>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item clickable v-close-popup @click="onItemClick">
+                    <q-item-section>
+                      <q-item-label>별점순</q-item-label>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item clickable v-close-popup @click="onItemClick">
+                    <q-item-section>
+                      <q-item-label>별점순</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </q-btn-dropdown>
+            </div>
+            <div class="col-8 q-pa-md row justify-center">
+              <q-btn outline color="white" class="full-width" text-color="black" label="포토후기만 모아보기 (116)" />
+            </div>
+          </div>
+        </div>
     </div>
 </template>
 
