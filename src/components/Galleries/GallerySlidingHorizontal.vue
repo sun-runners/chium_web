@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import StarGrade from './utility/StarGrade'
+import StarGrade from 'src/components/Utility/StarGrade'
 export default {
   components: {
     StarGrade
