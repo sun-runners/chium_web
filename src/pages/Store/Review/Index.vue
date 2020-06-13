@@ -78,7 +78,8 @@
 
             <q-tab-panels v-model="tab" animated>
               <q-tab-panel name="all">
-                <review-lists></review-lists>
+                <!-- This show All posts of review -->
+                <review-lists :posts="review.all"></review-lists>
               </q-tab-panel>
 
               <q-tab-panel name="commercial_space">
@@ -122,7 +123,41 @@ export default {
         {
           label: '시설물 / 폐기물', value: '4.9'
         }
-      ]
+      ],
+      review: {
+        all: [
+          {
+            name: '박가인',
+            score: 4,
+            details: ['주거공간', '오피스텔', '12평', '서울시 종로구'],
+            gallery: [
+              'https://placeimg.com/80/80/architecture',
+              'https://placeimg.com/80/80/architecture',
+              'https://placeimg.com/80/80/architecture',
+              'https://placeimg.com/80/80/architecture',
+              'https://placeimg.com/80/80/architecture'
+            ],
+            message: '안전하게 철거해주셔서 감사했습니다. 작업해주신 분들도 너무 친절하고 좋아요 ^ ^'
+          },
+          {
+            name: '박가인',
+            score: 5,
+            details: ['상업공간', '카페/식당', '20평', '서울시 종로구'],
+            gallery: [
+              'https://placeimg.com/80/80/architecture',
+              'https://placeimg.com/80/80/architecture'
+            ],
+            message: '가게를 처음하는거라 어떻게 해야할지 막막했어요 ㅠㅠ 인테리어부터 싹뜯어내고 다시해야할거 같아서 철거업체에 의뢰를 하여 진행했습니다. 너무나 안전하게 시공날짜에 맞춰서 신속하게 진행해줘서 감사했어요 ㅎㅎ 덕분에 가게 인테리어도 기분좋게 끝냈습니다.'
+          },
+          {
+            name: '박가인',
+            score: 3,
+            details: ['상업공간', '상가/매장', '15평', '서울 송파구'],
+            gallery: [],
+            message: '감사합니다 ^^ 덕분에 리모델링도 잘끝났어요~'
+          }
+        ]
+      }
     }
   }
 }
