@@ -57,7 +57,7 @@
               <q-btn outline color="white" class="full-width" text-color="black" label="포토후기만 모아보기 (116)" />
             </div>
           </div>
-          <q-card flat>
+          <q-card class="q-pt-md" flat>
             <q-tabs
               v-model="tab"
               dense
@@ -74,12 +74,11 @@
               <q-tab name="facility_waste" label="시설물/폐기물" />
             </q-tabs>
 
-            <q-separator size="20px"/>
+            <q-separator color="grey-3" size="20px"/>
 
             <q-tab-panels v-model="tab" animated>
               <q-tab-panel name="all">
-                <div class="text-h6">전체</div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                <review-lists></review-lists>
               </q-tab-panel>
 
               <q-tab-panel name="commercial_space">
@@ -98,11 +97,13 @@
 </template>
 
 <script>
-import SlideGrade from 'src/components/utility/SlideGrade'
+import SlideGrade from 'src/components/Utility/SlideGrade'
+import ReviewLists from 'src/components/StoreReview/ReviewLists'
 export default {
   name: 'StoreReview',
   components: {
-    'slide-grade': SlideGrade
+    'slide-grade': SlideGrade,
+    'review-lists': ReviewLists
   },
   data () {
     return {
