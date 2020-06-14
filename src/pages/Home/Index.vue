@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import GallerySlidingHorizontal from 'src/components/GallerySlidingHorizontal'
+import GallerySlidingHorizontal from 'src/components/Galleries/GallerySlidingHorizontal'
 import PopularCompanies from 'src/components/PopularCompanies'
 import HomeNotice from 'src/components/HomeNotice'
 import TermsOfServiceVue from 'src/components/TermsOfService.vue'

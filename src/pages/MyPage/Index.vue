@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import GallerySlidingHorizontal from 'src/components/GallerySlidingHorizontal'
+import GallerySlidingHorizontal from 'src/components/Galleries/GallerySlidingHorizontal'
 export default {
   name: 'MyPage',
   components: {
