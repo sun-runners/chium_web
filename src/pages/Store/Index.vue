@@ -1,94 +1,35 @@
-<template>
-    <div class="row">
-      <div class="col-12 flex  content-center">
-          <img
-            src="https://placeimg.com/811/411/nature"
-            :ratio="16/9"
-            class="self-center"
-          />
-        </div>
-      <div class="col-12">
-        <q-card flat class="bg-white my-card">
-          <q-card-section>
-            <div class="text-h6 bold">어게인업</div>
-            <div class="text-subtitle2 text-grey">서울특별시 광진구 천호대로 24-5</div>
-            <div>
-              <q-rating
-                size="2em"
-                :max="5"
-                color="blue"
-              />
-              <span class="text-subtitle2"> 4.9</span>
-            </div>
-            <div class="row q-mt-sm">
-              <div class="col">
-                <q-btn>주거공간</q-btn>
-              </div>
-              <div class="col">
-                <q-btn>주거공간</q-btn>
-              </div>
-              <div class="col">
-                <q-btn>주거공간</q-btn>
-              </div>
-              <div class="col">
-                <q-btn>주거공간</q-btn>
-              </div>
-            </div>
-          </q-card-section>
+<template lang="pug">
+  div(class="row")
+    div(class="col-12 flex justify-center bg-white")
+      img(:src="'https://placeimg.com/'+$q.screen.width+'/'+$q.screen.width+'/nature'" style="height: auto; max-width: 100%")
+    
+    div(class="col-12")
+      q-card(flat class="bg-grey-3 my-card")
+        
+        include blocks/details/store-detail
 
-          <q-separator inset />
+        q-separator(inset)
 
-          <q-card-section>
-              <div class="column">
-                <div class="col">
-                  <div class="row">
-                    <div class="col-3 text-grey">매칭 수</div>
-                    <div class="col-8 text-bold text-blue">12,050</div>
-                  </div>
-                </div>
+        include blocks/details/store-information
 
-                <div class="col">
-                  <div class="row">
-                    <div class="col-3 text-grey">매칭 수</div>
-                    <div class="col-8 text-bold text-black">12,050</div>
-                  </div>
-                </div>
+        q-card-section(class="bg-white q-mt-md")
+          div(class="column flex justify-center items-center")
+            include blocks/company-introduction
+          div(class="column flex content-center" v-for="list in 3" :key="list")
+            include blocks/company-post-images
 
-                <div class="col">
-                  <div class="row">
-                    <div class="col-3 text-grey">경력</div>
-                    <div class="col-8 text-bold text-black">11년</div>
-                  </div>
-                </div>
+          h6(class="text-center") WORK PHOTO
+          div(class="column example-container")
+            div(class="flex-break hidden")
+            div(class="flex-break")
+            div( v-for="list in 5" :key="list" class="example-cell")
+              img(:src="'https://placeimg.com/'+random(100,400)+'/'+random(300,380)+'/nature'" style="height: auto; max-width: 100%")
 
-                <div class="col">
-                  <div class="row">
-                    <div class="col-3 text-grey">작업지역</div>
-                    <div class="col-8 text-bold text-black">서울시 전 지역</div>
-                  </div>
-                </div>
-
-                <div class="col">
-                  <div class="row">
-                    <div class="col-3 text-grey">전화상담</div>
-                    <div class="col-8 text-bold text-black">02-4525-4890</div>
-                  </div>
-                </div>
-
-                <div class="col">
-                  <div class="row">
-                    <div class="col-3 text-grey">영업시간</div>
-                    <div class="col-8 text-bold text-black">10:00 - 21:00 매주 월요일 휴무</div>
-                  </div>
-                </div>
-              </div>
-          </q-card-section>
-        </q-card>
-      </div>
-    </div>
 </template>
 
 <script>
+import { random } from 'lodash';
+
 export default {
   name: 'Store',
   components: {
@@ -96,10 +37,49 @@ export default {
   data () {
     return {
     }
+  },
+  methods: {
+    random
+  },
+  computed: {
+    btnSize () {
+      let width_size = this.$q.screen.width;
+      return (width_size <= 375 ? "xs" : (width_size <= 414 ? "sm" : "md"))
+    },
+    btnDense () {
+      switch (this.btnSize) {
+        case "xs": return true; break;
+        case "sm": return true; break;
+        default: return false
+      }
+    },
+    randomWidthHeight () {
+      let n = random(50, this.$q.screen.width );
+      return { width: n, height: random(this.$q.screen.width, this.$q.screen.width - 100) }
+    }
   }
 }
 </script>
 
-<style>
+<style lang="stylus">
+.btn-work-group
+  background-color: #EFF1F1
 
+.flex-break
+  flex: 1 0 100% !important
+  width: 0 !important
+$x = 4
+for $i in (1)..($x - 1)
+  .example-container > div:nth-child($xn + $i)
+    order: $i
+.example-container > div:nth-child($xn)
+  order: $x
+.example-container
+  height: 700px
+  .example-cell
+    width: 25%
+    padding: 1px
+    > div
+      padding: 4px 8px
+      box-shadow: inset 0 0 0 2px $grey-6
 </style>
