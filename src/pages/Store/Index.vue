@@ -17,13 +17,7 @@
             include blocks/company-introduction
           div(class="column flex content-center" v-for="list in 3" :key="list")
             include blocks/company-post-images
-
-          h6(class="text-center") WORK PHOTO
-          div(class="column example-container")
-            div(class="flex-break hidden")
-            div(class="flex-break")
-            div( v-for="list in 5" :key="list" class="example-cell")
-              img(:src="'https://placeimg.com/'+random(100,400)+'/'+random(300,380)+'/nature'" style="height: auto; max-width: 100%")
+          include blocks/work-photo.pug
 
 </template>
 
