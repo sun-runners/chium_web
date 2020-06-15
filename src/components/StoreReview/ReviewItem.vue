@@ -1,5 +1,5 @@
 <template>
-    <q-card flat class="my-card">
+    <q-card flat class="my-card q-py-md">
         <q-card-section>
         <div class="text-h6">{{ post.name }}</div>
         <star-grade :star="post.score" :size="25"></star-grade>
@@ -13,14 +13,15 @@
         </q-card-section>
 
         <q-card-section v-if="post.gallery.length">
-        <div class="q-pa-md">
+        <div class="">
             <gallery-static-horizontal :gallery="post.gallery"></gallery-static-horizontal>
         </div>
         </q-card-section>
 
-        <q-card-section class="message">
+        <q-card-section class="message q-px-xl q-mb-xl">
             {{ post.message }}
         </q-card-section>
+        <q-separator inset size="2px" />
     </q-card>
 </template>
 
