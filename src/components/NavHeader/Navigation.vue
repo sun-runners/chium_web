@@ -53,12 +53,18 @@ export default {
           { name: 'job_introduction', label: '작업소개' },
           { name: 'late', label: '후기(633)' },
           { name: 'contact', label: '문의하기' }
+        ],
+        store_work: [
+          { name: 'company_introduction', label: '업체소개' },
+          { name: 'job_introduction', label: '작업소개' },
+          { name: 'late', label: '후기(633)' },
+          { name: 'contact', label: '문의하기' }
         ]
       }
       return get(tabArrays, this.currentRoute)
     },
     routeFilter () {
-      return includes(['search', 'store', 'store_review'], this.currentRoute)
+      return includes(['search', 'store', 'store_review', 'store_work'], this.currentRoute)
     }
   }
 }
