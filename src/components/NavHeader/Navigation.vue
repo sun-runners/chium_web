@@ -1,7 +1,9 @@
 <template>
     <div class="q-pb-md">
-        괘랑4길 16-38
-        <q-btn v-if="currentRoute === 'home'" icon="arrow_drop_down_circle" dense color="secondary" rounded flat></q-btn>
+        <div v-if="currentRoute === 'home'" >
+          괘랑4길 16-38
+          <q-btn icon="arrow_drop_down_circle" dense color="secondary" rounded flat></q-btn>
+        </div>
         <div class="row justify-center" v-if="routeFilter">
             <div class="col" :style="widthMax">
                 <div v-if="currentRoute === 'search'">
@@ -39,8 +41,14 @@ export default {
     tabs () {
       const tabArrays = {
         search: [
-          { name: 'company_name', label: '업체명' },
-          { name: 'place', label: '장소' }
+          { name: 'company_name', label: '전국' },
+          { name: 'place', label: '서울시' },
+          { name: 'place', label: '경기도' },
+          { name: 'place', label: '인천' },
+          { name: 'place', label: '대구' },
+          { name: 'place', label: '경남/경북' },
+          { name: 'place', label: '전라/충청' },
+
         ],
         store: [
           { name: 'company_introduction', label: '업체소개' },
