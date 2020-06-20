@@ -23,10 +23,12 @@
 
 <script>
 import { random } from 'lodash';
+import WorkLists from 'src/components/StoreWork/WorkLists'
 
 export default {
   name: 'Store',
   components: {
+    'work-lists': WorkLists
   },
   data () {
     return {
@@ -42,7 +44,7 @@ export default {
     },
     btnDense () {
       switch (this.btnSize) {
-        case "xs": return true; break;
+        case "xs": return false; break;
         case "sm": return true; break;
         default: return false
       }
@@ -56,8 +58,14 @@ export default {
 </script>
 
 <style lang="stylus">
+.share-btn
+  width: 48px
+  height: 48px
+  border: 1px solid #D2D2D2
 .btn-work-group
   background-color: #EFF1F1
+  box-shadow: none
+  
 
 .flex-break
   flex: 1 0 100% !important
