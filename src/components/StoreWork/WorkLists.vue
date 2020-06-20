@@ -1,9 +1,8 @@
-<template>
-  <div>
-    <div v-for="(post, index) in posts" :key="index">
-      <work-item :post="post"></work-item>
-    </div>
-  </div>
+<template lang="pug">
+  div
+    div(v-for='(post, index) in posts', :key='index')
+      include blocks/work-item
+
 </template>
 
 <script>
