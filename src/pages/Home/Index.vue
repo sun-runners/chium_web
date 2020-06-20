@@ -1,45 +1,27 @@
-<template>
-    <div>
-        <q-carousel
-        animated
-        v-model="slide"
-        arrows
-        navigation
-        infinite
-        >
-        <q-carousel-slide :name="1" img-src="https://picsum.photos/360/360" />
-        </q-carousel>
-        <div>
-            <div class="row">
-                <div class="col">
-                    <div class="row">
-                        <div class="col">
-                            <h6 class="q-mt-md q-mb-xs q-ml-md text-black">우리 동네 업체</h6>
-                        </div>
-                        <div class="col flex justify-end">
-                            <q-btn outline class="q-mt-md q-mb-xs q-ml-md q-mr-lg text-black">더보기</q-btn>
-                        </div>
-                    </div>
-                </div>
-            <gallery-sliding-horizontal></gallery-sliding-horizontal>
-            </div>
-            <popular-companies></popular-companies>
-            <div class="column">
-                <div class="q-pt-md">
-                    <q-banner class="bg-secondary text-white">
-                        <div class="row no-wrap items-center justify-around">
-                            <p class="text-h5">우수 후기 고객 50명 선착순 마일리지 50,000P 지급</p>
-                            <h4 class="text-center">Image</h4>
-                        </div>
-                    </q-banner>
-                </div>
-                <div class="bg-grey-3 q-py-lg">
-                    <home-notice></home-notice>
-                    <terms-of-service></terms-of-service>
-                </div>
-            </div>
-        </div>
-    </div>
+<template lang="pug">
+   div
+    q-carousel(animated='', v-model='slide', arrows='', navigation='', infinite='')
+      q-carousel-slide(:name='1', img-src='https://picsum.photos/360/360')
+    div
+      div(class='row')
+        div(class='col')
+          div(class='row')
+            div(class='col')
+              h6(class='q-mt-md q-mb-xs q-ml-md text-black') &#xC6B0;&#xB9AC; &#xB3D9;&#xB124; &#xC5C5;&#xCCB4;
+            div(class='col flex justify-end')
+              q-btn(outline='', class='q-mt-md q-mb-xs q-ml-md q-mr-lg text-black') &#xB354;&#xBCF4;&#xAE30;
+        gallery-sliding-horizontal
+      popular-companies
+      div(class='column')
+        div(class='q-pt-md')
+          q-banner(class='bg-secondary text-white')
+            div(class='row no-wrap items-center justify-around')
+              p(class='text-h5') &#xC6B0;&#xC218; &#xD6C4;&#xAE30; &#xACE0;&#xAC1D; 50&#xBA85; &#xC120;&#xCC29;&#xC21C; &#xB9C8;&#xC77C;&#xB9AC;&#xC9C0; 50,000P &#xC9C0;&#xAE09;
+              h4(class='text-center') Image
+        div(class='bg-grey-3 q-py-lg')
+          home-notice
+          terms-of-service
+
 </template>
 
 <script>
