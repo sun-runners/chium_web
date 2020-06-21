@@ -16,7 +16,7 @@
         div(class='q-pt-md')
           q-banner(class='bg-secondary text-white')
             div(class='row no-wrap items-center justify-around')
-              p(class='text-h5') &#xC6B0;&#xC218; &#xD6C4;&#xAE30; &#xACE0;&#xAC1D; 50&#xBA85; &#xC120;&#xCC29;&#xC21C; &#xB9C8;&#xC77C;&#xB9AC;&#xC9C0; 50,000P &#xC9C0;&#xAE09;
+              p(class='banner-text') 우수 후기 고객 50명 선착순 마일리지 50,000P 지급
               h4(class='text-center') Image
         div(class='bg-grey-3 q-py-lg')
           home-notice
@@ -45,6 +45,15 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="stylus" scoped>
+.banner-text
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 27px;
+  align-items: center;
+  letter-spacing: -1.35px;
+@media (min-width: 600px)
+  .banner-text
+    font-size: 20px;
 </style>
