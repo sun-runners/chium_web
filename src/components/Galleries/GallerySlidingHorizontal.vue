@@ -54,7 +54,7 @@ export default {
     display: flex
     overflow-x: auto
 .item
-    padding 4px
+    padding 0 4px
     width: 300px
     height: 100%
 .image
