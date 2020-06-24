@@ -14,10 +14,9 @@
       popular-companies
       div(class='column')
         div(class='q-pt-md')
-          q-banner(class='bg-secondary text-white')
-            div(class='row no-wrap items-center justify-around')
-              p(class='banner-text') 우수 후기 고객 50명 선착순 마일리지 50,000P 지급
-              h4(class='text-center') Image
+          q-banner(class='banner bg-secondary q-pa-none text-white')
+            q-img(:src="require('src/assets/banner_bottom.png')" style="max-width: 100%; height: 100%;")
+
         div(class='bg-grey-3 q-py-lg')
           home-notice
           terms-of-service
@@ -46,14 +45,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.banner-text
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 27px;
-  align-items: center;
-  letter-spacing: -1.35px;
+.banner
+  height: 100px;
 @media (min-width: 600px)
-  .banner-text
-    font-size: 20px;
+  .banner
+    height: 250px;
 </style>
