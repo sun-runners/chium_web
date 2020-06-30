@@ -57,7 +57,7 @@
               <q-btn outline color="white" class="full-width" text-color="black" label="포토후기만 모아보기 (116)" />
             </div>
           </div>
-          <q-card class="q-pt-md" flat>
+          <q-card class="q-pt-md q-p" flat>
             <q-tabs
               v-model="tab"
               dense
@@ -76,8 +76,8 @@
 
             <q-separator color="grey-3" size="20px"/>
 
-            <q-tab-panels v-model="tab" animated>
-              <q-tab-panel name="all">
+            <q-tab-panels v-model="tab" class="q-pa-none q-ma-none" animated>
+              <q-tab-panel name="all" class="q-pa-none">
                 <!-- This show All posts of review -->
                 <review-lists :posts="review.all"></review-lists>
               </q-tab-panel>
