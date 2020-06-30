@@ -47,8 +47,7 @@ export default {
           { name: 'place', label: '인천' },
           { name: 'place', label: '대구' },
           { name: 'place', label: '경남/경북' },
-          { name: 'place', label: '전라/충청' },
-
+          { name: 'place', label: '전라/충청' }
         ],
         store: [
           { name: 'company_introduction', label: '업체소개' },
@@ -67,12 +66,18 @@ export default {
           { name: 'job_introduction', label: '작업소개' },
           { name: 'late', label: '후기(633)' },
           { name: 'contact', label: '문의하기' }
+        ],
+        store_inquiry: [
+          { name: 'company_introduction', label: '업체소개' },
+          { name: 'job_introduction', label: '작업소개' },
+          { name: 'late', label: '후기(633)' },
+          { name: 'contact', label: '문의하기' }
         ]
       }
       return get(tabArrays, this.currentRoute)
     },
     routeFilter () {
-      return includes(['search', 'store', 'store_review', 'store_work'], this.currentRoute)
+      return includes(['search', 'store', 'store_review', 'store_work', 'store_inquiry'], this.currentRoute)
     }
   }
 }
