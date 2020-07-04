@@ -1,5 +1,5 @@
 <template>
-    <div class="q-pb-md">
+    <div>
         <div v-if="currentRoute === 'home'" >
           괘랑4길 16-38
           <q-btn icon="arrow_drop_down_circle" dense color="secondary" rounded flat></q-btn>
