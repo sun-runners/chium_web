@@ -1,7 +1,7 @@
 <template>
   <div class="row overflow-auto q-pt-sm">
     <div class="gallery-container">
-      <div class="item" v-for="(item, index) in items" :key="index">
+      <div class="item" v-for="(item, index) in items" :key="index" @click="goStoreDetail">
           <q-img class="image" src="https://picsum.photos/360/360"/>
           <p class="q-pt-md q-ma-none q-pa-none text-dark text-bold">{{ item.title }}</p>
           <StarGrade :star="item.star"></StarGrade>
@@ -44,6 +44,11 @@ export default {
           star: 5
         }
       ]
+    }
+  },
+  methods: {
+    goStoreDetail () {
+      this.$router.push({ name: 'store' })
     }
   }
 }
