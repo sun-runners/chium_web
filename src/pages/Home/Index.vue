@@ -1,7 +1,7 @@
 <template lang="pug">
    div
     q-carousel(animated='', v-model='slide', arrows='', navigation='', infinite='')
-      q-carousel-slide(:name='1', img-src='https://picsum.photos/360/360')
+      q-carousel-slide(:name='1', :img-src="require('src/assets/banner_top.png')")
     div
       div(class='row')
         div(class='col')
