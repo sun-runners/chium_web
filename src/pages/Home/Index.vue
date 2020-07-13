@@ -45,6 +45,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+div
+  font-family: Noto Sans CJK KR
+
 .banner
   height: 100px;
 @media (min-width: 600px)

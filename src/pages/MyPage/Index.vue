@@ -2,7 +2,7 @@
     <div class="bg-grey-3" style="min-height:100vh;">
         <div class="bg-white">
             <div class="name-point q-px-sm q-py-md column">
-                <p class="name text-bold q-ma-none">박가인 님</p>
+                <p class="name q-ma-none">박가인 님</p>
                 <p class="point text-secondary q-ma-none">5,000P</p>
             </div>
             <div class="q-px-lg">
@@ -10,39 +10,39 @@
             </div>
             <div class="row items-center justify-evenly">
                 <q-item-section class="review column items-center q-pa-lg">
-                    <p class="text-bold text-dark q-ma-none" style="font-size: 24px;">1</p>
+                    <p class=" text-dark q-ma-none" style="font-size: 24px;">1</p>
                     <p class="text" style="font-size: 13px;">리뷰</p>
                 </q-item-section>
                 <q-separator color="grey-4" vertical inset  size="1px" />
                 <q-item-section class="consult column items-center q-pa-lg">
-                    <p class="text-bold text-dark q-ma-none" style="font-size: 24px;">2</p>
+                    <p class=" text-dark q-ma-none" style="font-size: 24px;">2</p>
                     <p class="text" style="font-size: 13px;">상담</p>
                 </q-item-section>
             </div>
         </div>
         <div class="bg-white q-mt-md q-pa-none">
             <div class="row items-center justify-between">
-                <div class="col-8 text-bold q-pa-lg">
+                <div class="col-8 q-pa-lg">
                     <p class="text-grey q-ma-none">내 위치</p>
                     <p class="q-ma-none q-pt-sm" style="font-size: 16px; line-height: 24px;">경기도 화성시 정남면 괘랑4길 16-38</p>
                 </div>
-                <div class="q-pa-lg text-bold">
+                <div class="q-pa-lg ">
                     <q-btn color="white" text-color="black" outline label="수정" />
                 </div>
             </div>
-            <q-separator size="1px"  />
+            <q-separator size="1px"/>
             <div class="row items-center justify-between">
-                <div class="col-8 text-bold q-pa-lg">
+                <div class="col-8 q-pa-lg">
                     <p class="q-ma-none text-grey">연락처</p>
                     <p class="q-ma-none q-pt-sm" style="font-size: 16px; line-height: 24px;">010-2398-0374</p>
                 </div>
-                <div class="q-pa-lg text-bold">
+                <div class="q-pa-lg ">
                     <q-btn color="white" bold text-color="black"  outline label="수정"/>
                 </div>
             </div>
             <q-separator size="1px" />
             <div class="q-pa-none q-pt-md q-mt-lg">
-                <p style="font-size: 18px; line-height: 27px;" class="text-bold q-pl-sm">최근 본 업체</p>
+                <p style="font-size: 18px; line-height: 27px;" class=" q-pl-sm">최근 본 업체</p>
                 <gallery-sliding-horizontal></gallery-sliding-horizontal>
             </div>
         </div>
@@ -82,22 +82,17 @@ export default {
 </script>
 
 <style scoped>
-.header p{
+p{
     font-family: Noto Sans CJK KR;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 44px;
 }
 
 .name-point .name{
-    font-family: Noto Sans CJK KR;
     font-weight: 500;
     font-size: 22px;
     line-height: 33px;
 }
 
 .name-point .point{
-    font-family: Noto Sans CJK KR;
     font-weight: bold;
     font-size: 30px;
     line-height: 45px;
