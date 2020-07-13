@@ -1,11 +1,6 @@
 <template>
     <div class="bg-grey-3" style="min-height:100vh;">
         <div class="bg-white">
-            <div
-            class="header text-bold text-center row items-center justify-center"
-            style="height: 44px;">
-                <p>마이페이지</p>
-            </div>
             <div class="name-point q-px-sm q-py-md column">
                 <p class="name text-bold q-ma-none">박가인 님</p>
                 <p class="point text-secondary q-ma-none">5,000P</p>
