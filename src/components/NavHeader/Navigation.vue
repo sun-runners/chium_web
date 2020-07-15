@@ -7,6 +7,9 @@
         <div v-if="currentRoute === 'my_page'" style="height: 44px;" >
           <p class="q-py-sm text-dark" style="font-family: Noto Sans CJK KR">마이페이지</p>
         </div>
+        <div v-if="currentRoute === 'reservation'" style="height: 44px;" >
+          <p class="q-py-sm text-dark" style="font-family: Noto Sans CJK KR">작업예약</p>
+        </div>
         <div class="row justify-center" v-if="routeFilter">
             <div class="col" :style="widthMax">
                 <div v-if="currentRoute === 'search'">
