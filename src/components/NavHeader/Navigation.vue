@@ -7,7 +7,7 @@
         <div class="row justify-center" v-if="routeFilter">
             <div class="col" :style="widthMax">
                 <div v-if="currentRoute === 'search'">
-                  <q-input filled borderless placeholder="철거업체 통합검색">
+                  <q-input filled borderless placeholder="철거업체 통합검색" class="full-width">
                       <template v-slot:prepend>
                           <q-icon name="search"  />
                       </template>
