@@ -1,7 +1,7 @@
 <template>
     <q-layout view="lHr lpR fFf" class="">
         <q-header class="bg-white text-primary">
-          <q-toolbar class="justify-center">
+          <q-toolbar class="justify-center no-padding">
             <q-toolbar-title class="text-center text-accent">
               <navigation :currentRoute="currentRoute" :widthMax="widthMax"></navigation>
             </q-toolbar-title>
