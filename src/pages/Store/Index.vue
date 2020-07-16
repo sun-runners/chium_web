@@ -1,11 +1,11 @@
 <template lang="pug">
   div(class="row")
-    div(class="col-12 flex justify-center bg-white")
+    div(class="col-12 q-pt-xs flex justify-center bg-white")
       img(:src="'https://placeimg.com/'+$q.screen.width+'/'+$q.screen.width+'/nature'" style="height: auto; max-width: 100%")
-    
+
     div(class="col-12")
       q-card(flat class="bg-grey-3 my-card")
-        
+
         include blocks/details/store-detail
 
         q-separator(inset)
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { random } from 'lodash';
+import { random } from 'lodash'
 import WorkLists from 'src/components/StoreWork/WorkLists'
 
 export default {
@@ -39,18 +39,18 @@ export default {
   },
   computed: {
     btnSize () {
-      let width_size = this.$q.screen.width;
-      return (width_size <= 375 ? "xs" : (width_size <= 414 ? "sm" : "md"))
+      const width_size = this.$q.screen.width
+      return (width_size <= 375 ? 'xs' : (width_size <= 414 ? 'sm' : 'md'))
     },
     btnDense () {
       switch (this.btnSize) {
-        case "xs": return false; break;
-        case "sm": return true; break;
+        case 'xs': return false; break
+        case 'sm': return true; break
         default: return false
       }
     },
     randomWidthHeight () {
-      let n = random(50, this.$q.screen.width );
+      const n = random(50, this.$q.screen.width)
       return { width: n, height: random(this.$q.screen.width, this.$q.screen.width - 100) }
     }
   }
@@ -65,7 +65,6 @@ export default {
 .btn-work-group
   background-color: #EFF1F1
   box-shadow: none
-  
 
 .flex-break
   flex: 1 0 100% !important

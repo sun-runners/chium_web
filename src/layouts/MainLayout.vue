@@ -11,7 +11,7 @@
           <q-toolbar class="justify-center bg-white">
             <q-tabs active-color="secondary">
                 <q-route-tab name="tab1" to="/home" style="color: #999999" label="홈" icon="home"></q-route-tab>
-                <q-route-tab name="tab2" to="/home" style="color: #999999" label="예약" icon="calendar_today"></q-route-tab>
+                <q-route-tab name="tab2" to="/reservation" style="color: #999999" label="예약" icon="calendar_today"></q-route-tab>
                 <q-route-tab name="tab3" to="/search" style="color: #999999" label="검색" icon="find_in_page"></q-route-tab>
                 <!-- <q-route-tab name="tab4" to="/store" style="color: #999999" label="업체" icon="store"></q-route-tab> -->
                 <q-route-tab name="tab5" to="/my_page" style="color: #999999" label="마이" icon="person"></q-route-tab>

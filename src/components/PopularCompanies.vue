@@ -1,6 +1,6 @@
 <template>
   <div>
-      <p class="q-pt-md text-h4 text-weight-bolder">인기 업체</p>
+      <p class="q-pt-md q-mb-none q-px-md text-h4" style="font-size: 18px;">인기 업체</p>
       <div  v-for="(company, index) in companies" :key="index">
         <q-list>
           <q-item>
@@ -8,8 +8,8 @@
               <img src="https://cdn.quasar.dev/img/mountains.jpg"  width="70px" height="70px">
             </q-item-section>
             <q-item-section class="q-py-lg">
-              <q-item-label class="text-weight-bolder">{{ company.title }}</q-item-label>
-              <q-item-label caption class="text-bold" lines="2">{{ company.desc }}</q-item-label>
+              <q-item-label>{{ company.title }}</q-item-label>
+              <q-item-label caption style="color:#888888;" lines="2">{{ company.desc }}</q-item-label>
             </q-item-section>
 
             <q-item-section side center>

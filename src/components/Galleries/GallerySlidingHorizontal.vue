@@ -1,9 +1,9 @@
 <template>
   <div class="row overflow-auto q-pt-sm">
     <div class="gallery-container">
-      <div class="item" v-for="(item, index) in items" :key="index">
+      <div class="item" v-for="(item, index) in items" :key="index" @click="goStoreDetail">
           <q-img class="image" src="https://picsum.photos/360/360"/>
-          <p class="q-pt-md q-ma-none q-pa-none text-dark text-bold">{{ item.title }}</p>
+          <p class="q-pt-md q-ma-none q-pa-none text-dark">{{ item.title }}</p>
           <StarGrade :star="item.star"></StarGrade>
       </div>
     </div>
@@ -45,11 +45,19 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    goStoreDetail () {
+      this.$router.push({ name: 'store' })
+    }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
+p {
+  font-family: Noto Sans CJK KR
+}
 .gallery-container
     display: flex
     overflow-x: auto
