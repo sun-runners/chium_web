@@ -36,7 +36,15 @@
           </div>
         </q-card-section>
         <q-separator inset />
-        <q-card-section>content</q-card-section>
+        <q-card-section class="row">
+          <div class="col-3">
+            <q-img src="https://placeimg.com/500/300/nature" width="70px" height="93px" />
+          </div>
+          <div class="col">
+            <div class="name" style="font-size: 14px;">전국불도저</div>
+            <div class="address ellipsis" style="font-size: 14px;">경기도 화성시 괘랑4길 16-38번지 솔가타...</div>
+          </div>
+        </q-card-section>
       </q-card>
     </div>
   </div>
@@ -54,4 +62,7 @@ export default {
 </script>
 
 <style scoped>
+div {
+  color: #151515;
+}
 </style>
