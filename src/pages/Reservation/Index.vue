@@ -37,12 +37,19 @@
         </q-card-section>
         <q-separator inset />
         <q-card-section class="row">
-          <div class="col-3">
+          <div class="q-mr-sm">
             <q-img src="https://placeimg.com/500/300/nature" width="70px" height="93px" />
           </div>
           <div class="col">
             <div class="name" style="font-size: 14px;">전국불도저</div>
             <div class="address ellipsis" style="font-size: 14px;">경기도 화성시 괘랑4길 16-38번지 솔가타...</div>
+            <div class="option row" style="color: #888888;">
+              <q-btn flat padding="5px" size="14px" label="주거공간" />
+              <q-separator vertical inset />
+              <q-btn flat padding="5px" size="14px" label="40평" />
+              <q-separator vertical inset />
+              <q-btn flat padding="5px" size="14px" label="부분철거" />
+            </div>
           </div>
         </q-card-section>
       </q-card>
