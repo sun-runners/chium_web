@@ -52,6 +52,15 @@
             </div>
           </div>
         </q-card-section>
+        <q-card-section class="q-pt-none">
+          <q-btn
+            :rounded="false"
+            class="full-width"
+            style="color: #151515; border: 1px solid #E4E4E4"
+            label="취소하기"
+            unelevated
+          />
+        </q-card-section>
       </q-card>
     </div>
   </div>
