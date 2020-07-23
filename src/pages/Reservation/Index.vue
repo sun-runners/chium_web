@@ -1,5 +1,5 @@
 <template>
-  <div style="background: #F2F2F2; height: 100vh;" class="q-pa-md">
+  <div style="background: #F2F2F2; min-height: 100vh;" class="q-pa-md">
     <div class="search-bar-container row">
       <q-input
         v-model="search"
@@ -52,7 +52,7 @@
           </div>
         </q-card-section>
         <q-card-section class="q-pt-none">
-          <div>
+          <div v-if="item.status == '견적신청'">
             <q-btn
               :rounded="false"
               class="full-width"
@@ -60,6 +60,39 @@
               label="취소하기"
               unelevated
             />
+          </div>
+          <div class="row q-col-gutter-x-xs" v-if="item.status == '견적상담'">
+            <div class="col-4">
+              <q-btn
+                :rounded="false"
+                class="full-width work"
+                padding="10px"
+                color="secondary"
+                style="color: #151515; border: 1px solid #E4E4E4"
+                label="작업진행"
+                unelevated
+              />
+            </div>
+            <div class="col-4">
+              <q-btn
+                :rounded="false"
+                class="full-width cancel"
+                padding="10px"
+                style="color: #151515; border: 1px solid #E4E4E4"
+                label="취소하기"
+                unelevated
+              />
+            </div>
+            <div class="col-4">
+              <q-btn
+                :rounded="false"
+                class="full-width call"
+                padding="10px"
+                style="color: #151515; border: 1px solid #E4E4E4"
+                label="전화하기"
+                unelevated
+              />
+            </div>
           </div>
         </q-card-section>
       </q-card>
