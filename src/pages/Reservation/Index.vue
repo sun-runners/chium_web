@@ -17,11 +17,11 @@
       </q-input>
     </div>
     <div class="reservations-container">
-      <q-card class="my-card" flat>
+      <q-card class="my-card q-my-sm" flat v-for="(item, index) in items" :key="index">
         <q-card-section class="row justify-between">
           <div class="row">
-            <div class="text-dark q-mr-md" style="font-size: 16px;">견적신청</div>
-            <div class="text-grey row items-center" style="font-size: 12px;">2020.07.01</div>
+            <div class="text-dark q-mr-md" style="font-size: 16px;">{{ item.status }}</div>
+            <div class="text-grey row items-center" style="font-size: 12px;">{{ item.date }}</div>
           </div>
           <div>
             <q-btn
@@ -41,25 +41,26 @@
             <q-img src="https://placeimg.com/500/300/nature" width="70px" height="93px" />
           </div>
           <div class="col">
-            <div class="name" style="font-size: 14px;">전국불도저</div>
-            <div class="address ellipsis" style="font-size: 14px;">경기도 화성시 괘랑4길 16-38번지 솔가타...</div>
-            <div class="option row" style="color: #888888;">
-              <q-btn flat padding="5px" size="14px" label="주거공간" />
-              <q-separator vertical inset />
-              <q-btn flat padding="5px" size="14px" label="40평" />
-              <q-separator vertical inset />
-              <q-btn flat padding="5px" size="14px" label="부분철거" />
+            <div class="name" style="font-size: 14px;">{{ item.name }}</div>
+            <div class="address ellipsis" style="font-size: 14px;">{{ item.address }}</div>
+            <div class="option row">
+              <div flat class="row" v-for="(option, index) in item.options" :key="index">
+                <q-btn flat style="color: #888888;" padding="5px" size="14px" :label="option" />
+                <q-separator vertical inset />
+              </div>
             </div>
           </div>
         </q-card-section>
         <q-card-section class="q-pt-none">
-          <q-btn
-            :rounded="false"
-            class="full-width"
-            style="color: #151515; border: 1px solid #E4E4E4"
-            label="취소하기"
-            unelevated
-          />
+          <div>
+            <q-btn
+              :rounded="false"
+              class="full-width"
+              style="color: #151515; border: 1px solid #E4E4E4"
+              label="취소하기"
+              unelevated
+            />
+          </div>
         </q-card-section>
       </q-card>
     </div>
@@ -78,7 +79,7 @@ export default {
           date: "2020.07.01",
           name: "전국불도저",
           address: "경기도 화성시 괘랑4길 16-38번지 솔가타...",
-          option: ["주거공간", "30평", "전체철거"],
+          options: ["주거공간", "30평", "전체철거"],
           consts: "",
         },
         {
@@ -86,7 +87,7 @@ export default {
           date: "2020.06.29",
           name: "원철거",
           address: "경기도 군포시 금정동 903-6 선일빌라 101호",
-          option: ["주거공간", "40평", "부분철거"],
+          options: ["주거공간", "40평", "부분철거"],
           consts: "1,008,000",
         },
         {
@@ -94,7 +95,7 @@ export default {
           date: "2020.06.29",
           name: "원철거",
           address: "경기도 화성시 괘랑4길 16-38번지 솔가...",
-          option: ["주거공간", "30평", "전체철거"],
+          options: ["주거공간", "30평", "전체철거"],
           consts: "3,324,000",
         },
         {
@@ -102,7 +103,7 @@ export default {
           date: "2020.06.29",
           name: "원철거",
           address: "경기도 군포시 금정동 903-6 선일빌라 101호",
-          option: ["주거공간", "40평", "부분철거"],
+          options: ["주거공간", "40평", "부분철거"],
           consts: "1,008,000",
         },
       ],
