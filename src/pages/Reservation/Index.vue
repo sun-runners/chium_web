@@ -94,6 +94,34 @@
               />
             </div>
           </div>
+          <div class="row q-col-gutter-x-xs" v-if="item.status == '철거완료'">
+            <div class="col-6">
+              <q-btn
+                :rounded="false"
+                class="full-width cancel"
+                padding="10px"
+                style="color: #151515; border: 1px solid #E4E4E4"
+                label="취소하기"
+                unelevated
+              />
+            </div>
+            <div class="col-6">
+              <q-btn
+                :rounded="false"
+                class="full-width call"
+                padding="10px"
+                style="color: #151515; border: 1px solid #E4E4E4"
+                label="전화하기"
+                unelevated
+              />
+            </div>
+          </div>
+        </q-card-section>
+        <q-card-section class="costs-container row justify-between" v-if="item.costs">
+          <div>총 견적비용</div>
+          <div style="color: #FF4848;">
+            <span style="font-size:20px;">{{ item.costs}}</span> 원
+          </div>
         </q-card-section>
       </q-card>
     </div>
@@ -113,7 +141,7 @@ export default {
           name: "전국불도저",
           address: "경기도 화성시 괘랑4길 16-38번지 솔가타...",
           options: ["주거공간", "30평", "전체철거"],
-          consts: "",
+          costs: "",
         },
         {
           status: "견적상담",
@@ -121,7 +149,7 @@ export default {
           name: "원철거",
           address: "경기도 군포시 금정동 903-6 선일빌라 101호",
           options: ["주거공간", "40평", "부분철거"],
-          consts: "1,008,000",
+          costs: "1,008,000",
         },
         {
           status: "철거완료",
@@ -129,7 +157,7 @@ export default {
           name: "원철거",
           address: "경기도 화성시 괘랑4길 16-38번지 솔가...",
           options: ["주거공간", "30평", "전체철거"],
-          consts: "3,324,000",
+          costs: "3,324,000",
         },
         {
           status: "철거완료",
@@ -137,7 +165,7 @@ export default {
           name: "원철거",
           address: "경기도 군포시 금정동 903-6 선일빌라 101호",
           options: ["주거공간", "40평", "부분철거"],
-          consts: "1,008,000",
+          costs: "1,008,000",
         },
       ],
     };
