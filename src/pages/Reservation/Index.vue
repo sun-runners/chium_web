@@ -117,6 +117,7 @@
             </div>
           </div>
         </q-card-section>
+        <q-separator inset />
         <q-card-section class="costs-container row justify-between" v-if="item.costs">
           <div>총 견적비용</div>
           <div style="color: #FF4848;">
