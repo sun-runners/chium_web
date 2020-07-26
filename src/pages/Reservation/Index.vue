@@ -1,22 +1,32 @@
 <template>
-  <div style="background: #F2F2F2; min-height: 100vh;" class="q-pa-md">
-    <div class="search-bar-container row">
-      <q-input
-        v-model="search"
-        debounce="1000"
-        filled
-        placeholder="작업주소/업체명으로 검색"
-        color="secondary"
-        hint
-        class="col-12"
-        bg-color="white"
-      >
-        <template v-slot:prepend>
-          <q-icon name="search" />
-        </template>
-      </q-input>
+  <div style="background: #F2F2F2; min-height: 100vh;">
+    <div class="top-tab-container row">
+      <q-card class="my-card q-pa-sm full-width" flat>
+        <q-separator inset />
+        <div class="row justify-around">
+          <q-card-section>
+            <div class="full-width text-center text-secondary" style="font-size:12px">전체</div>
+            <div class="full-width text-center text-secondary" style="font-size: 24px">7</div>
+          </q-card-section>
+          <q-separator vertical inset />
+          <q-card-section>
+            <div class="full-width text-center" style="font-size:12px">견적신청</div>
+            <div class="full-width text-center" style="font-size: 24px">2</div>
+          </q-card-section>
+          <q-separator vertical inset />
+          <q-card-section>
+            <div class="full-width text-center" style="font-size:12px">철거예정</div>
+            <div class="full-width text-center" style="font-size: 24px">1</div>
+          </q-card-section>
+          <q-separator vertical inset />
+          <q-card-section>
+            <div class="full-width text-center" style="font-size:12px">철거완료</div>
+            <div class="full-width text-center" style="font-size: 24px">4</div>
+          </q-card-section>
+        </div>
+      </q-card>
     </div>
-    <div class="reservations-container">
+    <div class="reservations-container q-pa-md">
       <q-card class="my-card q-my-sm" flat v-for="(item, index) in items" :key="index">
         <q-card-section class="row justify-between">
           <div class="row">
