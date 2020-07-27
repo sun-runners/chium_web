@@ -7,6 +7,7 @@ const routes = [
       { path: '', component: () => import('pages/Home/Index'), name: 'home' },
       { path: 'home', component: () => import('pages/Home/Index'), name: 'home' },
       { path: 'reservation', component: () => import('pages/Reservation/Index'), name: 'reservation' },
+      { path: 'reservation/detail', component: () => import('pages/Reservation/Detail/Index'), name: 'reservation_detail' },
       { path: 'search', component: () => import('pages/Search/Index'), name: 'search' },
       { path: 'my_page', component: () => import('pages/MyPage/Index'), name: 'my_page' },
       { path: 'store', component: () => import('pages/Store/Index'), name: 'store' },
