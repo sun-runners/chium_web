@@ -59,6 +59,7 @@ export default {
     display: flex
     overflow-x: auto
 .item
+    cursor pointer
     padding 0 4px
     width: 300px
     height: 100%
