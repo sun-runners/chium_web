@@ -81,7 +81,7 @@
     </div>
     <q-card flat class="my-card notosanskr-medium q-mb-md" id="requesterInfoCard">
       <q-card-section class="row items-center q-px-md">
-        <q-icon name="o_account_circle" class="text-grey-13 q-pr-sm" style="font-size: 34px;" />
+        <q-icon name="o_account_circle" class="text-grey-13 q-pr-sm" style="font-size: 24px;" />
         <div>의뢰자 정보</div>
       </q-card-section>
 
@@ -101,7 +101,7 @@
 
     <q-card flat class="my-card notosanskr-medium q-mb-md" id="demolitionSiteCard">
       <q-card-section class="row items-center q-px-md">
-        <q-icon name="o_place" class="text-grey-13 q-pr-sm" style="font-size: 34px;" />
+        <q-icon name="o_place" class="text-grey-13 q-pr-sm" style="font-size: 24px;" />
         <div>철거장소</div>
       </q-card-section>
 
@@ -119,6 +119,27 @@
         <div>
           <div class="text-grey-13 q-mb-xs" style="color:#888888;">평수</div>
           <p style="color: #151515;">30-40평</p>
+        </div>
+      </q-card-section>
+    </q-card>
+
+    <q-card flat class="my-card notosanskr-medium q-mb-md" id="workContentsCard">
+      <q-card-section class="row items-center q-px-md">
+        <q-icon name="o_check_box" class="text-grey-13 q-pr-sm" style="font-size: 24px;" />
+        <div>작업내용</div>
+      </q-card-section>
+
+      <q-separator />
+
+      <q-card-section class="column q-pb-none" style="font-size: 13px;">
+        <div style="margin-bottom: 15px;">
+          <div class="text-grey-13" style="color:#888888; margin-bottom: 5px;">유형</div>
+          <q-btn unelevated rounded class="demolition-btn" stack="padding: 3px 10px" label="전체철거" />
+        </div>
+
+        <div>
+          <div class="text-grey-13 q-mb-xs" style="color:#888888;">희망작업일</div>
+          <p style="color: #151515;">1개월이내</p>
         </div>
       </q-card-section>
     </q-card>
@@ -143,4 +164,8 @@ export default {
 </script>
 
 <style>
+.demolition-btn {
+  background: #d4f2ff;
+  color: #18a0fb;
+}
 </style>
