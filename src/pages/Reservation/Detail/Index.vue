@@ -134,7 +134,13 @@
       <q-card-section class="column q-pb-none" style="font-size: 13px;">
         <div style="margin-bottom: 15px;">
           <div class="text-grey-13" style="color:#888888; margin-bottom: 5px;">유형</div>
-          <q-btn unelevated rounded class="demolition-btn" stack="padding: 3px 10px" label="전체철거" />
+          <q-btn
+            unelevated
+            rounded
+            class="demolition-btn"
+            style="font-size: 12px;padding: 2px 10px"
+            label="전체철거"
+          />
         </div>
 
         <div>
