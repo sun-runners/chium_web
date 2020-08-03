@@ -4,11 +4,14 @@
           괘랑4길 16-38
           <q-btn icon="arrow_drop_down_circle" dense color="secondary" rounded flat></q-btn>
         </div>
-        <div v-if="currentRoute === 'my_page'" style="height: 44px;" >
-          <p class="q-py-sm text-dark" style="font-family: Noto Sans CJK KR">마이페이지</p>
+        <div v-if="currentRoute === 'my_page'" style="height: 44px; font-size: 16px;" >
+          <p class="q-py-sm text-dark notosanskr-medium">마이페이지</p>
         </div>
-        <div v-if="currentRoute === 'reservation'" style="height: 44px;" >
-          <p class="q-py-sm text-dark" style="font-family: Noto Sans CJK KR">작업예약</p>
+        <div v-if="currentRoute === 'reservation'" style="height: 44px; font-size: 16px;" >
+          <p class="q-py-sm text-dark notosanskr-medium">작업예약</p>
+        </div>
+        <div v-if="currentRoute === 'reservation_detail'" style="height: 44px; font-size: 16px;" >
+          <p class="q-py-sm text-dark notosanskr-medium">예약상세보기</p>
         </div>
         <div class="row justify-center" v-if="routeFilter">
             <div class="col" :style="widthMax">
