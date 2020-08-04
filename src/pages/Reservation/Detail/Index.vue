@@ -79,6 +79,7 @@
         />
       </div>
     </div>
+    <!-- ------------------------ -Request Info ---------------------- -->
     <q-card flat class="my-card notosanskr-medium q-mb-md" id="requesterInfoCard">
       <q-card-section class="row items-center q-px-md">
         <q-icon name="o_account_circle" class="text-grey-13 q-pr-sm" style="font-size: 24px;" />
@@ -98,7 +99,7 @@
         </div>
       </q-card-section>
     </q-card>
-
+    <!-- ------------------------ -Demolition Site Info ---------------------- -->
     <q-card flat class="my-card notosanskr-medium q-mb-md" id="demolitionSiteCard">
       <q-card-section class="row items-center q-px-md">
         <q-icon name="o_place" class="text-grey-13 q-pr-sm" style="font-size: 24px;" />
@@ -122,7 +123,7 @@
         </div>
       </q-card-section>
     </q-card>
-
+    <!-- ------------------------ -Work Content Info ---------------------- -->
     <q-card flat class="my-card notosanskr-medium q-mb-md" id="workContentsCard">
       <q-card-section class="row items-center q-px-md">
         <q-icon name="o_check_box" class="text-grey-13 q-pr-sm" style="font-size: 24px;" />
@@ -146,6 +147,30 @@
         <div>
           <div class="text-grey-13 q-mb-xs" style="color:#888888;">희망작업일</div>
           <p style="color: #151515;">1개월이내</p>
+        </div>
+      </q-card-section>
+    </q-card>
+    <!-- ------------------------ -Company Information ---------------------- -->
+    <q-card flat class="my-card notosanskr-medium q-mb-md" id="companyInformationCard">
+      <q-card-section class="row items-center q-px-md">
+        <q-icon name="o_local_shipping" class="text-grey-13 q-pr-sm" style="font-size: 24px;" />
+        <div>업체정보</div>
+      </q-card-section>
+
+      <q-separator />
+
+      <q-card-section class="column q-pb-none" style="font-size: 13px;">
+        <div class="q-mb-sm">
+          <div class="text-grey-13 q-mb-xs" style="color:#888888;">업체명</div>
+          <p style="color: #151515;">전국불도저</p>
+        </div>
+        <div>
+          <div class="text-grey-13 q-mb-xs" style="color:#888888;">경력</div>
+          <p style="color: #151515;">11년</p>
+        </div>
+        <div>
+          <div class="text-grey-13 q-mb-xs" style="color:#888888;">매칭수</div>
+          <p style="color: #151515;">21,245</p>
         </div>
       </q-card-section>
     </q-card>
