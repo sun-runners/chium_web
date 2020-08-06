@@ -19,13 +19,21 @@
       </div>
     </q-card-section>
     <q-separator inset />
-    <q-card-section class="row" @click="goToDetails()">
-      <div class="q-mr-sm">
+    <q-card-section class="row">
+      <div class="q-mr-sm" @click="goToDetails()" style="cursor:pointer">
         <q-img src="https://placeimg.com/500/300/nature" width="70px" height="93px" />
       </div>
       <div class="col">
-        <div class="name" style="font-size: 14px;">{{ item.name }}</div>
-        <div class="address ellipsis" style="font-size: 14px;">{{ item.address }}</div>
+        <div
+          class="name"
+          style="font-size: 14px; cursor:pointer;"
+          @click="goToDetails()"
+        >{{ item.name }}</div>
+        <div
+          class="address ellipsis"
+          style="font-size: 14px; cursor:pointer;"
+          @click="goToDetails()"
+        >{{ item.address }}</div>
         <div class="option row">
           <div flat class="row" v-for="(option, index) in item.options" :key="index">
             <q-btn flat style="color: #888888;" padding="5px" size="14px" :label="option" />
