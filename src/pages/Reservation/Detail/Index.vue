@@ -5,18 +5,6 @@
         <div class="row">
           <div class="text-dark q-mr-md" style="font-size: 16px;">{{ item.status }}</div>
         </div>
-        <div>
-          <q-btn
-            color="secondary"
-            padding="0px"
-            class="q-ma-none q-pa-none"
-            flat
-            size="12px"
-            label="상세보기"
-            :to="{name:'reservation_detail', params: { item:item }}"
-          />
-          <q-icon name="keyboard_arrow_right" class="text-secondary" style="font-size: 18px;" />
-        </div>
       </q-card-section>
       <q-separator inset />
       <q-card-section class="row">
