@@ -19,7 +19,7 @@
       </div>
     </q-card-section>
     <q-separator inset />
-    <q-card-section class="row">
+    <q-card-section class="row" @click="goToDetails()">
       <div class="q-mr-sm">
         <q-img src="https://placeimg.com/500/300/nature" width="70px" height="93px" />
       </div>
@@ -114,6 +114,14 @@
 export default {
   props: {
     item: Object,
+  },
+  methods: {
+    goToDetails() {
+      this.$router.push({
+        name: "reservation_detail",
+        params: { item: this.item },
+      });
+    },
   },
 };
 </script>
