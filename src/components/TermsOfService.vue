@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-pa-md notosanskr-regular">
     <p class="q-my-sm" style="font-size: 12px; line-height: 18px;">(유) REMOVE</p>
     <div class="row items-center">
       <div class="row items-center q-mt-md" v-for="(item, index) in items" :key="index">

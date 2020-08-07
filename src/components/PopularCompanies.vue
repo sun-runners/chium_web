@@ -8,8 +8,8 @@
               <img src="https://cdn.quasar.dev/img/mountains.jpg"  width="70px" height="70px">
             </q-item-section>
             <q-item-section class="q-py-lg">
-              <q-item-label>{{ company.title }}</q-item-label>
-              <q-item-label caption style="color:#888888;" lines="2">{{ company.desc }}</q-item-label>
+              <q-item-label class="notosanskr-medium">{{ company.title }}</q-item-label>
+              <q-item-label caption style="color:#888888;" lines="2" class="notosanskr-medium">{{ company.desc }}</q-item-label>
             </q-item-section>
 
             <q-item-section side center>

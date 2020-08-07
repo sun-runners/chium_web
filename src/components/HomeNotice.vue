@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="notosanskr-medium">
       <q-card  flat bordered class="my-card no-border-radius" style="border-bottom:0">
       <q-card-section horizontal>
           <q-card-section class="text-dark">
@@ -42,7 +42,4 @@ export default {
 </script>
 
 <style scoped>
-div {
-   font-family: Noto Sans CJK KR;
-}
 </style>
