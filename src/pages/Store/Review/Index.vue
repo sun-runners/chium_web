@@ -159,7 +159,12 @@ export default {
         ]
       }
     }
-  }
+  },
+  methods: {
+    onItemClick() {
+      console.log("dropdown Item clicked");
+    },
+  },
 }
 </script>
 
