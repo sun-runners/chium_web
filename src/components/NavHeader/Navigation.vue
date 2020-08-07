@@ -31,7 +31,14 @@
                     align="justify"
                     class="q-mt-sm"
                 >
-                    <q-tab class="text-secondary q-pa-sm"  v-for="tab in tabs" :key="tab.name" v-bind="tab" />
+                    <q-route-tab 
+                    class="text-secondary q-pa-sm"  
+                    v-for="tab in tabs" 
+                    :key="tab.name" 
+                    :name="tab.name" 
+                    v-bind="tab" 
+                    :to="{name: tab.routeName}"
+                    />
                 </q-tabs>
             </div>
         </div>
@@ -44,6 +51,11 @@ import { get, includes } from 'lodash'
 export default {
   name: 'Navigation',
   props: ['currentRoute', 'widthMax'],
+  data(){
+    return {
+      storeTab: 'mails'
+    }
+  },
   methods: {
   },
   computed: {
@@ -59,34 +71,37 @@ export default {
           { name: 'place', label: '전라/충청' }
         ],
         store: [
-          { name: 'company_introduction', label: '업체소개' },
-          { name: 'job_introduction', label: '작업소개' },
-          { name: 'late', label: '후기(633)' },
-          { name: 'contact', label: '문의하기' }
-        ],
-        store_review: [
-          { name: 'company_introduction', label: '업체소개' },
-          { name: 'job_introduction', label: '작업소개' },
-          { name: 'late', label: '후기(633)' },
-          { name: 'contact', label: '문의하기' }
+          { name: 'company_introduction', label: '업체소개', routeName: 'store' },
+          { name: 'introduction_work', label: '작업소개', routeName: 'store_work' },
+          { name: 'reviews', label: '후기(633)', routeName: 'store_review' },
+          { name: 'inquire', label: '문의하기', routeName: 'store_inquiry' }
         ],
         store_work: [
-          { name: 'company_introduction', label: '업체소개' },
-          { name: 'job_introduction', label: '작업소개' },
-          { name: 'late', label: '후기(633)' },
-          { name: 'contact', label: '문의하기' }
+          { name: 'company_introduction', label: '업체소개', routeName: 'store' },
+          { name: 'introduction_work', label: '작업소개', routeName: 'store_work' },
+          { name: 'reviews', label: '후기(633)', routeName: 'store_review' },
+          { name: 'inquire', label: '문의하기', routeName: 'store_inquiry' }
+
+        ],
+        store_review: [
+          { name: 'company_introduction', label: '업체소개', routeName: 'store' },
+          { name: 'introduction_work', label: '작업소개', routeName: 'store_work' },
+          { name: 'reviews', label: '후기(633)', routeName: 'store_review' },
+          { name: 'inquire', label: '문의하기', routeName: 'store_inquiry' }
+
         ],
         store_inquiry: [
-          { name: 'company_introduction', label: '업체소개' },
-          { name: 'job_introduction', label: '작업소개' },
-          { name: 'late', label: '후기(633)' },
-          { name: 'contact', label: '문의하기' }
+          { name: 'company_introduction', label: '업체소개', routeName: 'store' },
+          { name: 'introduction_work', label: '작업소개', routeName: 'store_work' },
+          { name: 'reviews', label: '후기(633)', routeName: 'store_review' },
+          { name: 'inquire', label: '문의하기', routeName: 'store_inquiry' }
+
         ],
         store_inquiry_detail: [
-          { name: 'company_introduction', label: '업체소개' },
-          { name: 'job_introduction', label: '작업소개' },
-          { name: 'late', label: '후기(633)' },
-          { name: 'contact', label: '문의하기' }
+          { name: 'company_introduction', label: '업체소개', routeName: 'store' },
+          { name: 'introduction_work', label: '작업소개', routeName: 'store_work' },
+          { name: 'reviews', label: '후기(633)', routeName: 'store_review' },
+          { name: 'inquire', label: '문의하기', routeName: 'store_inquiry' }
         ]
       }
       return get(tabArrays, this.currentRoute)
