@@ -7,8 +7,9 @@
             </q-toolbar-title>
           </q-toolbar>
         </q-header>
+        <h6>{{ currentRoute }}</h6>
         <q-footer>
-          <q-toolbar class="justify-center bg-white">
+          <q-toolbar class="justify-center bg-white" v-if="!isStorePage">
             <q-tabs active-color="secondary">
                 <q-route-tab name="tab1" to="/home" style="color: #999999" label="홈" icon="home"></q-route-tab>
                 <q-route-tab name="tab2" to="/reservation" style="color: #999999" label="예약" icon="calendar_today"></q-route-tab>
@@ -17,6 +18,10 @@
                 <q-route-tab name="tab5" to="/my_page" style="color: #999999" label="마이" icon="person"></q-route-tab>
               </q-tabs>
           </q-toolbar>
+          <div :style="widthMax" v-else class="row">
+            <div class="col-1"><q-btn color="secondary" flat class="full-width" icon="mail" /></div>
+            <div class="col-11"><q-btn color="secondary" flat class="full-width" icon="mail" label="On Left" /></div>
+          </div>
         </q-footer>
         <q-page-container class="doc-container">
           <transition-group
@@ -81,6 +86,15 @@ export default {
     }
   },
   computed: {
+    isStorePage () {
+      return [
+        'store',
+        'store_review',
+        'store_work',
+        'store_inquiry'
+      ].
+      includes(this.currentRoute);
+    },
     currentRoute () {
       const route = get(this, '$route', '')
       const { name } = route
