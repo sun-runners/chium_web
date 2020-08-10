@@ -13,6 +13,9 @@
         <div v-if="currentRoute === 'reservation_detail'" style="height: 44px; font-size: 16px;" >
           <p class="q-py-sm text-dark notosanskr-medium">예약상세보기</p>
         </div>
+        <div v-if="currentRoute === 'request_estimate'" style="height: 44px; font-size: 16px;" >
+          <p class="q-py-sm text-dark notosanskr-medium">견적신청</p>
+        </div>
         <div class="row justify-center" v-if="routeFilter">
             <div class="col" :style="widthMax">
                 <div v-if="currentRoute === 'search'">
