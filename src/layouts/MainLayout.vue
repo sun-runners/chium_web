@@ -48,10 +48,11 @@
                 </q-page>
               </div>
             </div>
-          </transition-group>
-        </q-page-container>
+          </div>
+        </transition-group>
+      </q-page-container>
 
-    </q-layout>
+  </q-layout>
 </template>
 
 <script>
