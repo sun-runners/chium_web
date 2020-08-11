@@ -1,45 +1,45 @@
 <template>
-    <q-layout view="lHr lpR fFf" class="">
-        <q-header class="bg-white text-primary">
-          <q-toolbar class="justify-center no-padding">
-            <q-toolbar-title class="text-center text-accent">
-              <navigation :currentRoute="currentRoute" :widthMax="widthMax"></navigation>
-            </q-toolbar-title>
-          </q-toolbar>
-        </q-header>
-        <h6>{{ currentRoute }}</h6>
-        <q-footer>
-          <q-toolbar class="justify-center bg-white" v-if="!isStorePage">
-            <q-tabs active-color="secondary">
-                <q-route-tab name="tab1" to="/home" style="color: #999999" label="홈" icon="home"></q-route-tab>
-                <q-route-tab name="tab2" to="/reservation" style="color: #999999" label="예약" icon="calendar_today"></q-route-tab>
-                <q-route-tab name="tab3" to="/search" style="color: #999999" label="검색" icon="find_in_page"></q-route-tab>
-                <!-- <q-route-tab name="tab4" to="/store" style="color: #999999" label="업체" icon="store"></q-route-tab> -->
-                <q-route-tab name="tab5" to="/my_page" style="color: #999999" label="마이" icon="person"></q-route-tab>
-              </q-tabs>
-          </q-toolbar>
-          <div :style="widthMax" v-else class="row">
-            <div class="col-1"><q-btn color="secondary" flat class="full-width" icon="mail" /></div>
-            <div class="col-11"><q-btn color="secondary" flat class="full-width" icon="mail" label="On Left" /></div>
-          </div>
-        </q-footer>
-        <q-page-container class="doc-container">
-          <transition-group
-            appear
-            enter-active-class="animated fadeIn"
-            leave-active-class="animated fadeOut"
-          >
-            <div class="row justify-center" key="div-container">
-              <div class="col" :style="widthMax">
-                <q-page style="padding-top: 60px" class="no-padding">
-                  <router-view></router-view>
-                </q-page>
-              </div>
+  <q-layout view="lHr lpR fFf" class="">
+      <q-header class="bg-white text-primary">
+        <q-toolbar class="justify-center no-padding">
+          <q-toolbar-title class="text-center text-accent">
+            <navigation :currentRoute="currentRoute" :widthMax="widthMax"></navigation>
+          </q-toolbar-title>
+        </q-toolbar>
+      </q-header>
+      <h6>{{ currentRoute }}</h6>
+      <q-footer>
+        <q-toolbar class="justify-center bg-white" v-if="!isStorePage">
+          <q-tabs active-color="secondary">
+              <q-route-tab name="tab1" to="/home" style="color: #999999" label="홈" icon="home"></q-route-tab>
+              <q-route-tab name="tab2" to="/reservation" style="color: #999999" label="예약" icon="calendar_today"></q-route-tab>
+              <q-route-tab name="tab3" to="/search" style="color: #999999" label="검색" icon="find_in_page"></q-route-tab>
+              <!-- <q-route-tab name="tab4" to="/store" style="color: #999999" label="업체" icon="store"></q-route-tab> -->
+              <q-route-tab name="tab5" to="/my_page" style="color: #999999" label="마이" icon="person"></q-route-tab>
+            </q-tabs>
+        </q-toolbar>
+        <div :style="widthMax" v-else class="row">
+          <div class="col-1"><q-btn color="secondary" flat class="full-width" icon="mail" /></div>
+          <div class="col-11"><q-btn color="secondary" flat class="full-width" icon="mail" label="On Left" /></div>
+        </div>
+      </q-footer>
+      <q-page-container class="doc-container">
+        <transition-group
+          appear
+          enter-active-class="animated fadeIn"
+          leave-active-class="animated fadeOut"
+        >
+          <div class="row justify-center" key="div-container">
+            <div class="col" :style="widthMax">
+              <q-page style="padding-top: 60px" class="no-padding">
+                <router-view></router-view>
+              </q-page>
             </div>
-          </transition-group>
-        </q-page-container>
+          </div>
+        </transition-group>
+      </q-page-container>
 
-    </q-layout>
+  </q-layout>
 </template>
 
 <script>
