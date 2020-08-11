@@ -1,26 +1,38 @@
 <template>
     <q-layout view="lHr lpR fFf" class="">
         <q-header class="bg-white text-primary">
+          <!-- <q-bar dense class="bg-black text-white">
+            <div>mobi-net</div>
+            <q-icon name="email" />
+            <q-space />
+            <q-icon name="bluetooth" />
+            <q-icon name="signal_wifi_4_bar" />
+            <q-icon name="signal_cellular_4_bar" />
+            <div class="gt-xs">100%</div>
+            <q-icon name="battery_full" />
+            <div>10:00AM</div>
+          </q-bar> -->
           <q-toolbar class="justify-center no-padding">
             <q-toolbar-title class="text-center text-accent">
               <navigation :currentRoute="currentRoute" :widthMax="widthMax"></navigation>
             </q-toolbar-title>
           </q-toolbar>
         </q-header>
-        <h6>{{ currentRoute }}</h6>
-        <q-footer>
-          <q-toolbar class="justify-center bg-white" v-if="!isStorePage">
-            <q-tabs active-color="secondary">
-                <q-route-tab name="tab1" to="/home" style="color: #999999" label="홈" icon="home"></q-route-tab>
-                <q-route-tab name="tab2" to="/reservation" style="color: #999999" label="예약" icon="calendar_today"></q-route-tab>
-                <q-route-tab name="tab3" to="/search" style="color: #999999" label="검색" icon="find_in_page"></q-route-tab>
-                <!-- <q-route-tab name="tab4" to="/store" style="color: #999999" label="업체" icon="store"></q-route-tab> -->
-                <q-route-tab name="tab5" to="/my_page" style="color: #999999" label="마이" icon="person"></q-route-tab>
-              </q-tabs>
-          </q-toolbar>
-          <div :style="widthMax" v-else class="row">
-            <div class="col-1"><q-btn color="secondary" flat class="full-width" icon="mail" /></div>
-            <div class="col-11"><q-btn color="secondary" flat class="full-width" icon="mail" label="On Left" /></div>
+        <q-footer class="bg-white row wrap justify-center items-center">
+          <div :style="widthMax">
+            <q-toolbar class="justify-center bg-white" v-if="!isStorePage">
+              <q-tabs active-color="secondary">
+                  <q-route-tab name="tab1" to="/home" style="color: #999999" label="홈" icon="home"></q-route-tab>
+                  <q-route-tab name="tab2" to="/reservation" style="color: #999999" label="예약" icon="calendar_today"></q-route-tab>
+                  <q-route-tab name="tab3" to="/search" style="color: #999999" label="검색" icon="find_in_page"></q-route-tab>
+                  <!-- <q-route-tab name="tab4" to="/store" style="color: #999999" label="업체" icon="store"></q-route-tab> -->
+                  <q-route-tab name="tab5" to="/my_page" style="color: #999999" label="마이" icon="person"></q-route-tab>
+                </q-tabs>
+            </q-toolbar>
+            <q-btn-group flat v-else class="full-width">
+              <q-btn style="max-width:70px;" class="like-btn no-border-radius	btn-grp-consult notosanskr-medium" icon="radio_button_unchecked" />
+              <q-btn label="견적신청하기" class="full-width no-border-radius	btn-grp-consult notosanskr-medium" color="secondary" />
+            </q-btn-group>
           </div>
         </q-footer>
         <q-page-container class="doc-container">
@@ -108,4 +120,11 @@ export default {
 </script>
 
 <style lang="stylus">
+.like-btn
+  background-color: #3EC5FF
+  border-raduis: 0px
+  width: 75px
+.btn-grp-consult
+  font-size: 16px
+  min-height: 60px
 </style>
