@@ -1,4 +1,3 @@
-
 const routes = [
   {
     path: '/',
@@ -15,7 +14,11 @@ const routes = [
       { path: 'store/work', component: () => import('pages/Store/Work/Index'), name: 'store_work' },
       { path: 'store/inquiry', component: () => import('pages/Store/Inquiry/Index'), name: 'store_inquiry' },
       { path: 'store/inquiry/detail', component: () => import('pages/Store/Inquiry/Detail/Index'), name: 'store_inquiry_detail' },
-      { path: 'request/estimate', component: () => import('pages/RequestEstimate/Index'), name: 'request_estimate'}
+    ]
+  },
+  { path: '/request-estimate', component: () => import('layouts/RequestEstimate'),
+    children: [
+      { path: '', component: () => import('pages/RequestEstimate/SpaceType/Index'), name: 'space_type'}
     ]
   }
 ]
