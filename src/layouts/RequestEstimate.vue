@@ -1,0 +1,52 @@
+<template>
+  <div class="bg-grey">
+    <q-layout view="hHh lpR fFf" class="bg-red">
+      <!-- Header Starts here -->
+      <q-header class="text-dark row justify-center bg-grey-11" height-hint="98">
+        <div :style="widthMax" class="bg-white">
+          <nav-header-info name="견적신청"></nav-header-info>
+          <div class="q-px-sm">
+            <process-indicator
+              :totalSteps="totalSteps"
+              :activeStep="activeStep"
+              :activeColor="activeColor"
+            ></process-indicator>
+          </div>
+        </div>
+      </q-header>
+      <!-- Child Routes content here -->
+      <q-page-container class="row justify-center bg-grey-11" style="min-height:100vh;">
+        <router-view class="row justify-center q-ma-none bg-white" :style="widthMax" />
+      </q-page-container>
+    </q-layout>
+  </div>
+</template>
+
+<script>
+import NavHeaderInfo from "components/Utility/NavHeaderInfo";
+import ProcessIndicator from "components/Utility/ProcessIndicator";
+export default {
+  name: "RequestEstimate",
+  components: {
+    "process-indicator": ProcessIndicator,
+    "nav-header-info": NavHeaderInfo,
+  },
+  data() {
+    return {
+      totalSteps: 6,
+      activeStep: 3,
+      activeColor: "#55E2EB",
+    };
+  },
+  computed: {
+    widthMax() {
+      return { width: window.innerWidth + "px", "max-width": "1000px" };
+    },
+  },
+  mounted() {
+    console.log(this.widthMax);
+  },
+};
+</script>
+
+<style lang="scss" scoped></style>
