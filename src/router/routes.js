@@ -16,7 +16,11 @@ const routes = [
       { path: 'store/inquiry/detail', component: () => import('pages/Store/Inquiry/Detail/Index'), name: 'store_inquiry_detail' },
     ]
   },
-  { path: '/request-estimate', component: () => import('pages/RequestEstimate/Index'), name: 'request_estimate' }
+  { path: '/request-estimate', component: () => import('layouts/RequestEstimate'),
+    children: [
+      { path: '', component: () => import('pages/RequestEstimate/SpaceType/Index'), name: 'space_type'}
+    ]
+  }
 ]
 
 // Always leave this as last one
