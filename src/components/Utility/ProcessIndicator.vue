@@ -1,5 +1,5 @@
 <template>
-  <div class="row q-py-xs progress-bar q-pa-none">
+  <div class="row progress-bar q-pa-none">
     <ul class="col q-pa-none q-ma-none" v-for="(item, index) in totalSteps" :key="index">
       <li
         :style="{'background': index+1 == activeStep ? activeColor : ''}"
