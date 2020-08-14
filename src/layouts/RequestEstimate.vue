@@ -18,6 +18,19 @@
       <q-page-container class="row justify-center bg-grey-11" style="min-height:100vh;">
         <router-view class="row justify-center q-ma-none bg-white" :style="widthMax" />
       </q-page-container>
+      <!-- Request Footer content here -->
+      <q-footer class="row justify-center bg-grey-11 q-py-sm">
+        <q-toolbar class="bg-white text-white" :style="widthMax">
+          <q-toolbar-title>
+            <q-btn
+              color="secondary"
+              class="full-width notosanskr-regular"
+              style="font-size:17px; padding: 17px 0;"
+              label="다음"
+            />
+          </q-toolbar-title>
+        </q-toolbar>
+      </q-footer>
     </q-layout>
   </div>
 </template>
