@@ -19,8 +19,8 @@
         <router-view class="q-ma-none bg-white" :style="widthMax" />
       </q-page-container>
       <!-- Request Footer content here -->
-      <q-footer class="row justify-center bg-grey-11 q-py-sm">
-        <q-toolbar class="bg-white text-white" :style="widthMax">
+      <q-footer class="row justify-center bg-grey-11">
+        <q-toolbar class="bg-white text-white q-py-sm" :style="widthMax">
           <q-toolbar-title>
             <q-btn
               color="secondary"

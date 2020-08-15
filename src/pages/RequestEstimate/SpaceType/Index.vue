@@ -4,12 +4,55 @@
       <span>공간 유형</span>을
       알려주세요.
     </div>
+    <div class="select-space-type notosanskr-regular">
+      <!-- -------------Home Space -->
+      <div class="space-type row items-center justify-between" style="margin-bottom: 25px;">
+        <div class="row">
+          <q-icon class="text-dark" size="30px">
+            <img src="~assets/home.svg" />
+          </q-icon>
+          <div class="row items-center q-ml-md">주거공간</div>
+        </div>
+
+        <radio-check-icon
+          :currentValue="spaceType"
+          value="home"
+          name="spaceType"
+          @change="(value)=> spaceType = value"
+        ></radio-check-icon>
+      </div>
+      <!-- ------------Commercial Space -->
+      <div class="space-type row items-center justify-between">
+        <div class="row">
+          <q-icon class="text-dark" size="30px">
+            <img src="~assets/commercial_space.svg" />
+          </q-icon>
+          <div class="row items-center q-ml-md">상업공간</div>
+        </div>
+
+        <radio-check-icon
+          :currentValue="spaceType"
+          value="commercial"
+          name="spaceType"
+          @change="(value)=> spaceType = value"
+        ></radio-check-icon>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import RadioCheckIcon from "components/Utility/RadioCheckIcon";
 export default {
   name: "RequestSpaceType",
+  components: {
+    "radio-check-icon": RadioCheckIcon,
+  },
+  data() {
+    return {
+      spaceType: "",
+    };
+  },
 };
 </script>
 
@@ -29,6 +72,12 @@ export default {
   letter-spacing: -1.35px;
   span {
     color: #46b3fc;
+  }
+}
+.select-space-type {
+  padding: 35px 0px;
+  .space-type {
+    height: 44px;
   }
 }
 </style>
