@@ -16,7 +16,7 @@
       </q-header>
       <!-- Child Routes content here -->
       <q-page-container class="row justify-center bg-grey-11" style="min-height:100vh;">
-        <router-view class="q-ma-none bg-white" :style="widthMax" />
+        <router-view class="q-ma-none q-pa-none" style="background: #F2F2F2" :style="widthMax" />
       </q-page-container>
       <!-- Request Footer content here -->
       <q-footer class="row justify-center bg-grey-11">
