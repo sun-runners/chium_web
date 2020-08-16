@@ -16,9 +16,12 @@ const routes = [
       { path: 'store/inquiry/detail', component: () => import('pages/Store/Inquiry/Detail/Index'), name: 'store_inquiry_detail' },
     ]
   },
-  { path: '/request-estimate', component: () => import('layouts/RequestEstimate'),
+  { 
+    path: '/request-estimate', redirect: 'request-estimate/space-type', 
+    component: () => import('layouts/RequestEstimate'),
     children: [
-      { path: '', component: () => import('pages/RequestEstimate/SpaceType/Index'), name: 'space_type'}
+      { path: 'space-type', component: () => import('pages/RequestEstimate/SpaceType/Index'), name: 'space_type' },
+      { path: 'floor-space', component: () => import('pages/RequestEstimate/FloorSpace/Index'), name: 'floor_space' }
     ]
   }
 ]
