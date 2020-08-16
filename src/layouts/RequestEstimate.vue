@@ -14,7 +14,7 @@
           </div>
         </div>
       </q-header>
-      <!-- Child Routes content here -->
+      <!-- Child Routes content here            -->
       <q-page-container class="row justify-center bg-grey-11" style="min-height:100vh;">
         <router-view
           @next="(val)=> isBtnReady = val"
@@ -30,8 +30,10 @@
             <q-btn
               class="full-width notosanskr-regular btn-footer"
               :class="{'btn-ready' : isBtnReady }"
+              :disable="!isBtnReady"
               style="font-size:17px; padding: 17px 0;"
-              label="다음"
+              :label="btnLabel"
+              @click="myBtnFunction"
             />
           </q-toolbar-title>
         </q-toolbar>
@@ -52,18 +54,71 @@ export default {
   data() {
     return {
       totalSteps: 6,
-      activeStep: 3,
-      activeColor: "#55E2EB",
+      activeStep: 0,
+      activeColor: "",
+      btnLabel: "다음",
       isBtnReady: false,
+      redirectTo: "",
+      requestComplete: false,
     };
   },
   computed: {
     widthMax() {
       return { width: window.innerWidth + "px", "max-width": "1000px" };
     },
+    stepsList() {
+      return [
+        {
+          routeName: "space_type",
+          indicatorColor: "#55E2EB",
+          stepNum: 1,
+          redirect: "floor_space",
+        },
+        {
+          routeName: "floor_space",
+          indicatorColor: "#46B3FC",
+          stepNum: 2,
+          redirect: "space_type",
+        },
+      ];
+    },
   },
-  mounted() {
-    console.log(this.widthMax);
+  methods: {
+    setProcessIndicator() {
+      const found_route = this.stepsList.find(
+        (step) => step.routeName == this.$route.name
+      );
+      if (found_route) {
+        if (this.activeStep < found_route.stepNum) {
+          this.isBtnReady = false;
+        }
+        this.activeStep = found_route.stepNum;
+        this.activeColor = found_route.indicatorColor;
+        if (found_route.redirect) {
+          this.redirectTo = found_route.redirect;
+          this.requestComplete = false;
+        } else {
+          this.redirectTo = "";
+          this.requestComplete = true;
+        }
+      }
+    },
+    myBtnFunction() {
+      if (this.requestComplete) {
+        // Reqest Estimate Completion
+        console.log("request complete");
+      } else {
+        this.$router.push({ name: this.redirectTo });
+      }
+    },
+  },
+  watch: {
+    $route(to, from) {
+      this.setProcessIndicator();
+    },
+  },
+  created() {
+    this.setProcessIndicator();
   },
 };
 </script>
