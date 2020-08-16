@@ -51,9 +51,11 @@
               unelevated
               rounded
               class="space-type-button"
+              :class="{'space-type-selected': selectedSpaceType == item}"
               v-for="(item, index) in homeType"
               :key="index"
               :label="item"
+              @click="selectedSpaceType=item"
             />
           </div>
         </div>
@@ -68,9 +70,11 @@
               unelevated
               rounded
               class="space-type-button"
+              :class="{'space-type-selected': selectedSpaceType == item}"
               v-for="(item, index) in commercialType"
               :key="index"
               :label="item"
+              @click="selectedSpaceType=item"
             />
           </div>
         </div>
@@ -89,16 +93,18 @@ export default {
   data() {
     return {
       spaceType: "",
+      selectedSpaceType: "",
       commercialType: [
         "카페&식당",
         "상가&매장",
         "숙박&병원",
-        "숙박&병원",
+        "숙박&병s",
         "기타",
       ],
       homeType: ["아파트", "오피스텔", "단독주택", "빌라", "기타"],
     };
   },
+  computed: {},
 };
 </script>
 
@@ -141,5 +147,10 @@ export default {
   font-size: 14px;
   line-height: 32px;
   margin: 7.5px 5px;
+}
+
+.space-type-selected {
+  background: #46b3fc;
+  color: white;
 }
 </style>
