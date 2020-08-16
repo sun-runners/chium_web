@@ -16,15 +16,20 @@
       </q-header>
       <!-- Child Routes content here -->
       <q-page-container class="row justify-center bg-grey-11" style="min-height:100vh;">
-        <router-view class="q-ma-none q-pa-none" style="background: #F2F2F2" :style="widthMax" />
+        <router-view
+          @next="(val)=> isBtnReady = val"
+          class="q-ma-none q-pa-none"
+          style="background: #F2F2F2"
+          :style="widthMax"
+        />
       </q-page-container>
       <!-- Request Footer content here -->
       <q-footer class="row justify-center bg-grey-11">
         <q-toolbar class="bg-white text-white q-py-sm" :style="widthMax">
           <q-toolbar-title>
             <q-btn
-              color="secondary"
-              class="full-width notosanskr-regular"
+              class="full-width notosanskr-regular btn-footer"
+              :class="{'btn-ready' : isBtnReady }"
               style="font-size:17px; padding: 17px 0;"
               label="다음"
             />
@@ -49,6 +54,7 @@ export default {
       totalSteps: 6,
       activeStep: 3,
       activeColor: "#55E2EB",
+      isBtnReady: false,
     };
   },
   computed: {
@@ -62,4 +68,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.btn-footer {
+  color: #919698;
+  background: #e8eaeb;
+  border-radius: 8px;
+}
+
+.btn-ready {
+  color: #ffffff;
+  background: #46b3fc;
+}
+</style>

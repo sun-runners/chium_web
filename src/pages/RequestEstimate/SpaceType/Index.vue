@@ -55,7 +55,7 @@
               v-for="(item, index) in homeType"
               :key="index"
               :label="item"
-              @click="selectedSpaceType=item"
+              @click="spaceTypeSelected(item)"
             />
           </div>
         </div>
@@ -74,7 +74,7 @@
               v-for="(item, index) in commercialType"
               :key="index"
               :label="item"
-              @click="selectedSpaceType=item"
+              @click="spaceTypeSelected(item)"
             />
           </div>
         </div>
@@ -104,7 +104,18 @@ export default {
       homeType: ["아파트", "오피스텔", "단독주택", "빌라", "기타"],
     };
   },
-  computed: {},
+  methods: {
+    spaceTypeSelected(value) {
+      this.selectedSpaceType = value;
+      this.$emit("next", true);
+    },
+  },
+  watch: {
+    spaceType: function () {
+      this.selectedSpaceType = "";
+      this.$emit("next", false);
+    },
+  },
 };
 </script>
 
