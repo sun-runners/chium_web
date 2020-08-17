@@ -30,7 +30,7 @@
                 </q-tabs>
             </q-toolbar>
             <q-btn-group flat v-else class="full-width">
-              <q-btn style="max-width:70px;" class="like-btn no-border-radius	btn-grp-consult notosanskr-medium" icon="radio_button_unchecked" />
+              <q-btn style="max-width:70px;" class="like-btn no-border-radius	btn-grp-consult notosanskr-medium" icon="favorite_border" />
               <q-btn label="견적신청하기" class="full-width no-border-radius	btn-grp-consult notosanskr-medium" color="secondary" />
             </q-btn-group>
           </div>
