@@ -40,19 +40,43 @@
         </div>
       </div>
     </div>
-
+    <!--  Tab panels starts here -->
     <q-tab-panels v-model="spaceType" animated transition-next="slide-left" flat class>
       <q-tab-panel name="home" class="q-pa-none">
         <div style="background: #F2F2F2; height: 10px"></div>
-        <div class="q-pa-md">
+        <div class="q-px-md">
           <div class="specific-type">공간 타입을 선택해주세요.</div>
+          <div class="q-py-md row">
+            <q-btn
+              unelevated
+              rounded
+              class="space-type-button"
+              :class="{'space-type-selected': selectedSpaceType == item}"
+              v-for="(item, index) in homeType"
+              :key="index"
+              :label="item"
+              @click="spaceTypeSelected(item)"
+            />
+          </div>
         </div>
       </q-tab-panel>
 
       <q-tab-panel name="commercial" class="q-pa-none">
         <div style="background: #F2F2F2; height: 10px"></div>
-        <div class="q-pa-md">
+        <div class="q-px-md">
           <div class="specific-type">공간 타입을 선택해주세요.</div>
+          <div class="q-py-md row">
+            <q-btn
+              unelevated
+              rounded
+              class="space-type-button"
+              :class="{'space-type-selected': selectedSpaceType == item}"
+              v-for="(item, index) in commercialType"
+              :key="index"
+              :label="item"
+              @click="spaceTypeSelected(item)"
+            />
+          </div>
         </div>
       </q-tab-panel>
     </q-tab-panels>
@@ -69,7 +93,28 @@ export default {
   data() {
     return {
       spaceType: "",
+      selectedSpaceType: "",
+      commercialType: [
+        "카페&식당",
+        "상가&매장",
+        "숙박&병원",
+        "숙박&병s",
+        "기타",
+      ],
+      homeType: ["아파트", "오피스텔", "단독주택", "빌라", "기타"],
     };
+  },
+  methods: {
+    spaceTypeSelected(value) {
+      this.selectedSpaceType = value;
+      this.$emit("next", true);
+    },
+  },
+  watch: {
+    spaceType: function () {
+      this.selectedSpaceType = "";
+      this.$emit("next", false);
+    },
   },
 };
 </script>
@@ -104,5 +149,19 @@ export default {
   font-weight: normal;
   font-size: 20px;
   line-height: 30px;
+  color: #888888;
+  padding-top: 35px;
+}
+
+.space-type-button {
+  background: #f1f1f1;
+  font-size: 14px;
+  line-height: 32px;
+  margin: 7.5px 5px;
+}
+
+.space-type-selected {
+  background: #46b3fc;
+  color: white;
 }
 </style>
