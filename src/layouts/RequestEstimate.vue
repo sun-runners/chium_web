@@ -4,7 +4,7 @@
       <!-- Header Starts here -->
       <q-header class="text-dark row justify-center bg-grey-11" height-hint="98">
         <div :style="widthMax" class="bg-white">
-          <nav-header-info name="견적신청"></nav-header-info>
+          <nav-header-info name="견적신청" :backTo="returnTo" closedTo="store"></nav-header-info>
           <div class="q-px-sm">
             <process-indicator
               :totalSteps="totalSteps"
@@ -59,6 +59,7 @@ export default {
       btnLabel: "다음",
       isBtnReady: false,
       redirectTo: "",
+      returnTo: "",
       requestComplete: false,
     };
   },
@@ -73,12 +74,14 @@ export default {
           indicatorColor: "#55E2EB",
           stepNum: 1,
           redirect: "floor_space",
+          returnTo: "",
         },
         {
           routeName: "floor_space",
           indicatorColor: "#46B3FC",
           stepNum: 2,
-          redirect: "space_type",
+          redirect: "work_type",
+          returnTo: "space_type",
         },
       ];
     },
@@ -94,6 +97,7 @@ export default {
         }
         this.activeStep = found_route.stepNum;
         this.activeColor = found_route.indicatorColor;
+        this.returnTo = found_route.returnTo;
         if (found_route.redirect) {
           this.redirectTo = found_route.redirect;
           this.requestComplete = false;
@@ -128,7 +132,7 @@ export default {
   color: #919698;
   background: #e8eaeb;
   border-radius: 8px;
-  max-height: 60px;
+  height: 60px;
 }
 
 .btn-ready {
