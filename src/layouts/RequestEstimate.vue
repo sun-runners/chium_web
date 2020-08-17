@@ -24,8 +24,8 @@
           <q-toolbar-title>
             <q-btn
               color="secondary"
-              class="full-width notosanskr-regular"
-              style="font-size:17px; padding: 17px 0;"
+              class="full-width notosanskr-regular active-btn"
+              style="font-size:17px;"
               label="다음"
             />
           </q-toolbar-title>
@@ -62,4 +62,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="stylus">
+.active-btn
+  max-height: 60px
+  background-color: #000
+</style>
