@@ -1,17 +1,6 @@
 <template>
     <q-layout view="lHr lpR fFf" class="">
         <q-header class="bg-white text-primary">
-          <!-- <q-bar dense class="bg-black text-white">
-            <div>mobi-net</div>
-            <q-icon name="email" />
-            <q-space />
-            <q-icon name="bluetooth" />
-            <q-icon name="signal_wifi_4_bar" />
-            <q-icon name="signal_cellular_4_bar" />
-            <div class="gt-xs">100%</div>
-            <q-icon name="battery_full" />
-            <div>10:00AM</div>
-          </q-bar> -->
           <q-toolbar class="justify-center no-padding">
             <q-toolbar-title class="text-center text-accent">
               <navigation :currentRoute="currentRoute" :widthMax="widthMax"></navigation>
@@ -101,7 +90,7 @@ export default {
   computed: {
     isStorePage () {
       return [
-        'store',
+        'store_detail',
         'store_review',
         'store_work',
         'store_inquiry'
