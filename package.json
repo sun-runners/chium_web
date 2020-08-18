@@ -16,7 +16,8 @@
     "axios": "^0.18.1",
     "lodash": "^4.17.15",
     "quasar": "^1.0.0",
-    "vue-i18n": "^8.0.0"
+    "vue-i18n": "^8.0.0",
+    "vue-naver-maps": "^0.14.1"
   },
   "devDependencies": {
     "@quasar/app": "^1.0.0",
