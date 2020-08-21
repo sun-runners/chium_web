@@ -6,13 +6,21 @@
         를 알려주세요.
       </div>
       <div style="color:#767676; font-szie:14px letter-spacing: -0.7px;" class="q-mt-xs">(철거 할 공간면적)</div>
-      <div class="select-acreage">
-        <div class="acreage-input row items-center" @click="open('bottom')">
+      <div class="select-acreage row q-col-gutter-md q-ma-none">
+        <div class="acreage-input col row items-center" @click="open('bottom')">
           <q-icon class="text-dark" size="24px">
             <img src="~assets/union-icon.svg" />
           </q-icon>
           <div class="acreage-text text-secondary">{{ selected ? selected : '평수입력' }}</div>
         </div>
+        <q-btn
+          class="btn-change row q-pa-none q-ma-none justify-center items-center"
+          flat
+          @click="open('bottom')"
+          v-if="selected"
+        >
+          <div class="acreage-text text-secondary" style="font-size: 14px;">변경</div>
+        </q-btn>
       </div>
 
       <q-dialog v-model="dialog" :position="position">
@@ -122,6 +130,13 @@ export default {
       margin-left: 10px;
       font-size: 17px;
     }
+  }
+  .btn-change {
+    border: 1px solid #dedede;
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    margin-left: 10px;
   }
 }
 
