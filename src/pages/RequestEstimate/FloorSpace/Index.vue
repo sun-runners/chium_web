@@ -2,7 +2,8 @@
   <div class="bg-white notosanskr-regular">
     <div class="q-px-md">
       <div class="ask-space q-pa-none">
-        <span>공간 평수</span>를 알려주세요.
+        <span>공간 평수</span>
+        를 알려주세요.
       </div>
       <div style="color:#767676; font-szie:14px letter-spacing: -0.7px;" class="q-mt-xs">(철거 할 공간면적)</div>
       <div class="select-acreage">
@@ -10,7 +11,7 @@
           <q-icon class="text-dark" size="24px">
             <img src="~assets/union-icon.svg" />
           </q-icon>
-          <div class="acreage-text text-secondary">평수입력</div>
+          <div class="acreage-text text-secondary">{{ selected ? selected : '평수입력' }}</div>
         </div>
       </div>
 
@@ -52,10 +53,11 @@ export default {
     return {
       dialog: false,
       position: "top",
+      selected: "",
       data: [
         {
           currentIndex: 2,
-          flex: 4,
+          flex: 3,
           list: ["10미만", "10~20", "20~30 평", "30~40", "40~50", "50~60"],
           // onClick: this.clickedArea,
           textAlign: "center",
@@ -75,6 +77,7 @@ export default {
       this.dialog = true;
     },
     complete() {
+      this.selected = this.data[0].list[this.data[0].currentIndex];
       this.$emit("next", true);
       this.dialog = false;
     },
@@ -82,9 +85,8 @@ export default {
       const ciList = this.$refs.smoothPicker.getCurrentIndexList();
       window.alert("Clicked index:" + ciList[0]);
     },
-    selectedArea(gIndex, iIndex) {
-      const i = this.data[0].list[iIndex];
-      console.log(i);
+    selectedArea(groupIndex, itemIndex) {
+      this.data[0].currentIndex = itemIndex;
     },
   },
 };
