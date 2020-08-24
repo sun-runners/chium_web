@@ -83,6 +83,13 @@ export default {
           redirect: "work_type",
           returnTo: "space_type",
         },
+        {
+          routeName: "work_type",
+          indicatorColor: "#3A81EC",
+          stepNum: 3,
+          redirect: "space_type",
+          returnTo: "floor_space",
+        },
       ];
     },
   },
