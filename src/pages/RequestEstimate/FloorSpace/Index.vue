@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import WheelPicker from "src/components/Utility/WheelPicker/WebWheelPicker";
+import WheelPicker from "src/components/Utility/WebWheelPicker";
 export default {
   components: {
     "wheel-picker": WheelPicker,
