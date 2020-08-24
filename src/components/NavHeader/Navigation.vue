@@ -44,7 +44,7 @@
                   <q-route-tab 
                   class="text-secondary q-pa-sm"  
                   v-for="tab in tabs" 
-                  :keys="tab.name" 
+                  :key="tab.name" 
                   :name="tab.name" 
                   v-bind="tab" 
                   :to="{name: tab.routeName}"
