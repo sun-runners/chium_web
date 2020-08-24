@@ -21,7 +21,8 @@ const routes = [
     component: () => import('layouts/RequestEstimate'),
     children: [
       { path: 'space-type', component: () => import('pages/RequestEstimate/SpaceType/Index'), name: 'space_type' },
-      { path: 'floor-space', component: () => import('pages/RequestEstimate/FloorSpace/Index'), name: 'floor_space' }
+      { path: 'floor-space', component: () => import('pages/RequestEstimate/FloorSpace/Index'), name: 'floor_space' },
+      { path: 'work-type', component: () => import('pages/RequestEstimate/WorkType/Index'), name: 'work_type' }
     ]
   }
 ]
