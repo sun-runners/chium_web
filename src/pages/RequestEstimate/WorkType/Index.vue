@@ -6,7 +6,7 @@
         을 선택해주세요.
       </div>
       <div class="select-work-type">
-        <!-- -------------Home Space -->
+        <!-- ------------Demolition Work --- -->
         <div class="work-type row items-center justify-between" style="margin-bottom: 25px;">
           <div class="row">
             <q-icon class="text-dark" size="30px">
@@ -22,7 +22,7 @@
             @change="(value)=> workType = value"
           ></radio-check-icon>
         </div>
-        <!-- ------------Commercial Space -->
+        <!-- ------------Waste Disposal Work -->
         <div class="work-type row items-center justify-between">
           <div class="row">
             <q-icon class="text-dark" size="30px">
