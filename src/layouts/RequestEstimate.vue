@@ -87,8 +87,15 @@ export default {
           routeName: "work_type",
           indicatorColor: "#3A81EC",
           stepNum: 3,
+          redirect: "due_date",
+          returnTo: "floor_type",
+        },
+        {
+          routeName: "due_date",
+          indicatorColor: "#495AEB",
+          stepNum: 4,
           redirect: "space_type",
-          returnTo: "floor_space",
+          returnTo: "work_type",
         },
       ];
     },
