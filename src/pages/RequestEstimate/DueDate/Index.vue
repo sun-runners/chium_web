@@ -5,12 +5,27 @@
         <span>작업 예정일</span>
         을 선택해주세요.
       </div>
+      <q-card class="my-card" :bordered="false">
+        <q-card-section style="margin-top: 50px;" class="q-pa-none">
+          <custom-calendar :date="new Date()" @dateSelected="setDate()"></custom-calendar>
+        </q-card-section>
+      </q-card>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import CustomCalendar from "src/components/Utility/CustomCalendar";
+export default {
+  components: {
+    "custom-calendar": CustomCalendar,
+  },
+  methods: {
+    setDate() {
+      console.log("date Selected");
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
