@@ -7,8 +7,22 @@
       </div>
       <q-card class="my-card" :bordered="false">
         <q-card-section style="margin-top: 50px;" class="q-pa-none">
-          <custom-calendar :date="new Date()" @dateSelected="(e)=> this.dateSelected = e"></custom-calendar>
+          <custom-calendar ref="calendar" :date="new Date()" @dateSelected="setDateSelected"></custom-calendar>
         </q-card-section>
+      </q-card>
+      <q-card class="my-card q-mt-sm q-pa-none" :bordered="false">
+        <div class="undecided row items-center justify-between">
+          <div class="row">
+            <div class="row items-center q-ml-md">폐기물 처리</div>
+          </div>
+
+          <radio-check-icon
+            :currentValue="dateSelected"
+            value="undecided"
+            name="dateSelected"
+            @change="clearDateSelected"
+          ></radio-check-icon>
+        </div>
       </q-card>
     </div>
   </div>
@@ -16,16 +30,29 @@
 
 <script>
 import CustomCalendar from "src/components/Utility/CustomCalendar";
+import RadioCheckIcon from "src/components/Utility/RadioCheckIcon";
 export default {
   components: {
     "custom-calendar": CustomCalendar,
+    "radio-check-icon": RadioCheckIcon,
   },
   data() {
     return {
       dateSelected: null,
     };
   },
-  methods: {},
+  methods: {
+    setDateSelected(v) {
+      this.dateSelected = `${v.getFullYear()}/${
+        v.getMonth() + 1
+      }/${v.getDate()}`;
+    },
+    clearDateSelected(v) {
+      this.dateSelected = v;
+      this.$refs.calendar.clearSelectedDate();
+    },
+  },
+  created() {},
 };
 </script>
 
@@ -46,5 +73,9 @@ export default {
   span {
     color: #46b3fc;
   }
+}
+.undecided {
+  height: 70px;
+  padding: 16px 16px 16px 5px;
 }
 </style>

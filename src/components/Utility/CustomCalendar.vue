@@ -28,7 +28,7 @@
             v-for="(date, index) in datesDays"
             :key="index"
             v-bind:class="{'date-today':isDayToday(date),'selected-day': isSelectedDay(date)}"
-            @click="    selectDate(date)"
+            @click="setSelectDate(date)"
           >
             <span :class="{'past-day': isPastDay(date)}">
               {{date}}
@@ -124,7 +124,7 @@ export default {
       this.datesDays = [];
       this.initCalendar();
     },
-    selectDate(day) {
+    setSelectDate(day) {
       if (!this.isPastDay(day) && !this.isDayToday(day)) {
         this.selectedDate = new Date(
           `${this.dates.year}`,
@@ -133,6 +133,9 @@ export default {
         );
         this.$emit("dateSelected", this.selectedDate);
       }
+    },
+    clearSelectedDate() {
+      this.selectedDate = null;
     },
   },
   mounted() {
