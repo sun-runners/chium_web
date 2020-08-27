@@ -7,7 +7,7 @@
       </div>
       <q-card class="my-card" :bordered="false">
         <q-card-section style="margin-top: 50px;" class="q-pa-none">
-          <custom-calendar :date="new Date()" @dateSelected="setDate()"></custom-calendar>
+          <custom-calendar :date="new Date()" @dateSelected="(e)=> this.dateSelected = e"></custom-calendar>
         </q-card-section>
       </q-card>
     </div>
@@ -20,11 +20,12 @@ export default {
   components: {
     "custom-calendar": CustomCalendar,
   },
-  methods: {
-    setDate() {
-      console.log("date Selected");
-    },
+  data() {
+    return {
+      dateSelected: null,
+    };
   },
+  methods: {},
 };
 </script>
 

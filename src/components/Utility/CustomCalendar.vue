@@ -1,7 +1,6 @@
 <template>
   <div class="calendar-container">
     <div class="calendar">
-      {{ this.dates.year }} - {{this.dates.month+1}} - {{ this.dates.date}}
       <section class="calendar-head">
         <q-icon
           @click="decreaseMonth"
@@ -132,7 +131,7 @@ export default {
           this.dates.month,
           day
         );
-        console.log(this.selectedDate);
+        this.$emit("dateSelected", this.selectedDate);
       }
     },
   },
