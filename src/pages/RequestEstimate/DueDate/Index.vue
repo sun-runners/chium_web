@@ -6,7 +6,7 @@
         을 선택해주세요.
       </div>
       <q-card class="my-card" :bordered="false">
-        <q-card-section style="margin-top: 50px;" class="q-pa-none">
+        <q-card-section style="margin-top: 50px; height: 430px;" class="q-pa-none">
           <custom-calendar ref="calendar" :date="new Date()" @dateSelected="setDateSelected"></custom-calendar>
         </q-card-section>
       </q-card>

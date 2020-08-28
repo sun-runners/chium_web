@@ -154,7 +154,7 @@ export default {
   width: 100%;
 }
 .calendar-head {
-  height: 50px;
+  height: 70px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -195,7 +195,7 @@ export default {
 }
 .date-day {
   width: 14.285714285714286%;
-  height: 44px;
+  height: 50px;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
@@ -220,8 +220,8 @@ export default {
   span {
     color: #c0c0c0;
     border-radius: 100%;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -245,8 +245,8 @@ export default {
     background: #32dfd5;
     color: whitesmoke;
     border-radius: 100%;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
