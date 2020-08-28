@@ -71,18 +71,21 @@ export default {
           v.getMonth() + 1
         }/${v.getDate()}`;
         this.calendarVisible = false;
-      }, 1500);
+        this.$emit("next", true);
+      }, 1100);
     },
     clearDateSelected(v) {
       this.dateSelected = v;
       setTimeout(() => {
         this.$refs.calendar.clearSelectedDate();
         this.calendarVisible = false;
-      }, 1500);
+        this.$emit("next", true);
+      }, 1100);
     },
     showCalendar() {
       this.calendarVisible = true;
       this.dateSelected = null;
+      this.$emit("next", false);
     },
   },
   created() {},

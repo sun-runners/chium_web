@@ -17,14 +17,14 @@
       <!-- Child Routes content here            -->
       <q-page-container class="row justify-center bg-grey-11" style="min-height:100vh;">
         <router-view
-          @next="(val)=> isBtnReady = val"
+          @next="setBtnReady"
           class="q-ma-none q-pa-none"
           style="background: #F2F2F2"
           :style="widthMax"
         />
       </q-page-container>
       <!-- Request Footer content here -->
-      <q-footer class="row justify-center bg-grey-11">
+      <q-footer class="row justify-center bg-grey-11" v-if="!isBtnHidden">
         <q-toolbar class="bg-white text-white q-py-sm" :style="widthMax">
           <q-toolbar-title>
             <q-btn
@@ -58,6 +58,7 @@ export default {
       activeColor: "",
       btnLabel: "다음",
       isBtnReady: false,
+      isBtnHidden: false,
       redirectTo: "",
       returnTo: "",
       requestComplete: false,
@@ -88,7 +89,7 @@ export default {
           indicatorColor: "#3A81EC",
           stepNum: 3,
           redirect: "due_date",
-          returnTo: "floor_type",
+          returnTo: "floor_space",
         },
         {
           routeName: "due_date",
@@ -96,11 +97,22 @@ export default {
           stepNum: 4,
           redirect: "space_type",
           returnTo: "work_type",
+          hideBtnFooter: true,
         },
       ];
     },
   },
   methods: {
+    setBtnReady(val) {
+      if (val) {
+        if (this.isBtnHidden) {
+          this.isBtnHidden = false;
+        }
+        this.isBtnReady = val;
+      } else {
+        this.setProcessIndicator();
+      }
+    },
     setProcessIndicator() {
       const found_route = this.stepsList.find(
         (step) => step.routeName == this.$route.name
@@ -119,6 +131,7 @@ export default {
           this.redirectTo = "";
           this.requestComplete = true;
         }
+        this.isBtnHidden = found_route.hideBtnFooter ? true : false;
       }
     },
     myBtnFunction() {
@@ -132,6 +145,7 @@ export default {
   },
   watch: {
     $route(to, from) {
+      this.isBtnReady = false;
       this.setProcessIndicator();
     },
   },
