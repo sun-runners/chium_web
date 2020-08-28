@@ -104,11 +104,9 @@ export default {
   },
   methods: {
     setBtnReady(val) {
+      this.isBtnReady = val;
       if (val) {
-        if (this.isBtnHidden) {
-          this.isBtnHidden = false;
-        }
-        this.isBtnReady = val;
+        this.isBtnHidden = false;
       } else {
         this.setProcessIndicator();
       }
