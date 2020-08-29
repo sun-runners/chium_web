@@ -23,7 +23,8 @@ const routes = [
       { path: 'space-type', component: () => import('pages/RequestEstimate/SpaceType/Index'), name: 'space_type' },
       { path: 'floor-space', component: () => import('pages/RequestEstimate/FloorSpace/Index'), name: 'floor_space' },
       { path: 'work-type', component: () => import('pages/RequestEstimate/WorkType/Index'), name: 'work_type' },
-      { path: 'due-date', component: () => import('pages/RequestEstimate/DueDate/Index'), name: 'due_date' }
+      { path: 'due-date', component: () => import('pages/RequestEstimate/DueDate/Index'), name: 'due_date' },
+      { path: 'picture-space', component: () => import('pages/RequestEstimate/PictureSpace/Index'), name: 'picture_space' }
     ]
   }
 ]
