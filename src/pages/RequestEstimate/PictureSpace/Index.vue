@@ -6,7 +6,14 @@
         을 보여주세요.
       </div>
       <div style="color:#767676; font-szie:14px letter-spacing: -0.7px;" class="q-mt-xs">(선택 사항)</div>
-      <div class="select-photo row q-col-gutter-md q-ma-none"></div>
+      <div class="select-photo">
+        <q-btn flat class="upload-button full-width" label="공간 사진 업로드" />
+      </div>
+      <q-dialog v-model="dialog" :position="position">
+        <q-card style="height: 541px;" :style="widthMax" class="popup-content">
+          <q-card-section class="row items-center no-wrap">dsd</q-card-section>
+        </q-card>
+      </q-dialog>
     </div>
   </div>
 </template>
@@ -31,5 +38,16 @@ export default {};
   span {
     color: #46b3fc;
   }
+}
+
+.select-photo {
+  margin-top: 35px;
+}
+
+.upload-button {
+  height: 50px;
+  color: #151515;
+  background: #e8eaeb;
+  border: 1px solid #dedede;
 }
 </style>
