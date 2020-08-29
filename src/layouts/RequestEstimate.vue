@@ -95,8 +95,16 @@ export default {
           routeName: "due_date",
           indicatorColor: "#495AEB",
           stepNum: 4,
-          redirect: "space_type",
+          redirect: "picture_space",
           returnTo: "work_type",
+          hideBtnFooter: true,
+        },
+        {
+          routeName: "picture_space",
+          indicatorColor: "#754BEB",
+          stepNum: 5,
+          redirect: "space_type",
+          returnTo: "due_date",
           hideBtnFooter: true,
         },
       ];
