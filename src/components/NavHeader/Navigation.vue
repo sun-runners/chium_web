@@ -1,25 +1,13 @@
 <template>
-    <div>
-      <div class="row">
+    <div class="flex justify-center items-center">
+      <div class="row" :style="widthMax" v-if="currentRoute !== 'search'">
         <div v-if="doesRouteHasBackButton" class="col-1">
           <q-btn flat icon="keyboard_backspace" @click="$router.go(-1)" />
         </div>
-        <div :class="doesRouteHasBackButton ? 'col-11' : 'col-12' + ' text-center'">
-          <div v-if="currentRoute === 'home'" >
-            괘랑4길 16-38
-            <q-btn icon="arrow_drop_down_circle" dense color="secondary" rounded flat></q-btn>
-          </div>
-          <div v-if="currentRoute === 'my_page'" style="height: 44px; font-size: 16px;" >
-            <p class="q-py-sm text-dark notosanskr-medium">마이페이지</p>
-          </div>
-          <div v-if="currentRoute === 'reservation'" style="height: 44px; font-size: 16px;" >
-            <p class="q-py-sm text-dark notosanskr-medium">작업예약</p>
-          </div>
-          <div v-if="currentRoute === 'reservation_detail'" style="height: 44px; font-size: 16px;" >
-            <p class="q-py-sm text-dark notosanskr-medium">예약상세보기</p>
-          </div>
-          <div v-if="currentRoute === 'request_estimate'" style="height: 44px; font-size: 16px;" >
-            <p class="q-py-sm text-dark notosanskr-medium">견적신청</p>
+        <div :class="doesRouteHasBackButton ? 'col-10' : 'col-12' + ' text-center'">
+          <div class="flex items-center justify-center">
+             <span class="q-py-sm text-dark text-center notosanskr-medium">{{ headingName }}</span>
+            <q-btn icon="arrow_drop_down_circle" v-if="currentRoute === 'home'" dense color="secondary" rounded flat></q-btn>
           </div>
         </div>
       </div> 
@@ -41,13 +29,13 @@
                   align="justify"
                   class="q-mt-sm"
               >
-                  <q-route-tab 
-                  class="text-secondary q-pa-sm"  
-                  v-for="tab in tabs" 
-                  :key="tab.name" 
-                  :name="tab.name" 
-                  v-bind="tab" 
-                  :to="{name: tab.routeName}"
+                  <q-tab 
+                    class="text-secondary q-pa-sm"  
+                    v-for="tab in tabs" 
+                    :key="tab.name" 
+                    :name="tab.name" 
+                    v-bind="tab" 
+                    :to="{name: tab.routeName}"
                   />
               </q-tabs>
           </div>
@@ -60,7 +48,8 @@ import { get, includes, size } from 'lodash'
 
 export default {
   name: 'Navigation',
-  props: ['currentRoute', 'widthMax'],
+  props: ['currentRoute', 'widthMax', 'headingName'],
+  // inject: ['heading_name'],
   data(){
     return {
       storeTab: 'mails'
