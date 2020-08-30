@@ -32,7 +32,12 @@
           class="upload-button full-width"
           :class="{'item-above': selectedImages.length}"
           label="공간 사진 업로드"
+          v-if="selectedImages.length < 3"
         />
+        <div
+          class="upload-to-text"
+          :class="{'uploaded-three': selectedImages.length > 2}"
+        >최대 3장까지 사진을 업로드 할 수 있습니다.</div>
       </div>
       <q-dialog v-model="dialog" :position="position">
         <q-card style="height: 541px;" :style="widthMax" class="popup-content">
@@ -112,6 +117,9 @@ export default {
       return this.selectedImages.includes(image.name);
     },
   },
+  created() {
+    this.$emit("next", true);
+  },
 };
 </script>
 
@@ -147,6 +155,17 @@ export default {
     border: 1px solid #dedede;
     &.item-above {
       margin-top: 20px;
+    }
+  }
+  .upload-to-text {
+    margin-top: 30px;
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height, or 150% */
+    color: #c0c0c0;
+    letter-spacing: -1.35px;
+    &.uploaded-three {
+      color: #46b3fc;
     }
   }
 }
