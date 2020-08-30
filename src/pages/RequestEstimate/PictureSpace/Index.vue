@@ -19,7 +19,12 @@
             </q-icon>
             <div style="width: 232px;" class="ellipsis">{{ pic }}</div>
           </div>
-          <q-btn flat style="color: #151515;border: solid 1px #DEDEDE" label="삭제" />
+          <q-btn
+            flat
+            style="color: #151515;border: solid 1px #DEDEDE"
+            @click="removeSelectedImage(pic)"
+            label="삭제"
+          />
         </div>
         <q-btn
           @click="open('bottom')"
@@ -92,14 +97,15 @@ export default {
       this.position = position;
       this.dialog = true;
     },
+    removeSelectedImage(imageName) {
+      this.selectedImages = this.selectedImages.filter((i) => i != imageName);
+    },
     selectImage(image) {
       if (this.selectedImages.length < 3) {
         this.selectedImages.push(image.name);
-        console.log(this.selectedImages);
+        if (this.selectedImages.length == 3) this.dialog = false;
       } else if (this.selectedImages.includes(image.name)) {
-        this.selectedImages = this.selectedImages.filter(
-          (i) => i != image.name
-        );
+        this.removeSelectedImage(image.name);
       }
     },
     isImageSelected(image) {
