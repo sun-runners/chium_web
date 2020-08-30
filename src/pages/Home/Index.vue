@@ -38,6 +38,9 @@ export default {
       slide: 1,
     }
   },
+  created () {
+    this.$emit('changeHeadingName', '괘랑4길 16-38');
+  },
   computed: {
     getBannerMaxWidth () {
       const { name } = this.$q;
