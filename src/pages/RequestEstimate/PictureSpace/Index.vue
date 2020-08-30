@@ -7,7 +7,27 @@
       </div>
       <div style="color:#767676; font-szie:14px letter-spacing: -0.7px;" class="q-mt-xs">(선택 사항)</div>
       <div class="select-photo">
-        <q-btn @click="open('bottom')" flat class="upload-button full-width" label="공간 사진 업로드" />
+        <div
+          class="display-selected-photo row justify-between items-center"
+          style="height: 58px;"
+          v-for="(pic, index) in selectedImages"
+          :key="index"
+        >
+          <div class="row items-center">
+            <q-icon class="text-dark" size="24px" style="margin-right: 10px;">
+              <img src="~assets/img_icon.svg" />
+            </q-icon>
+            <div style="width: 232px;" class="ellipsis">{{ pic }}</div>
+          </div>
+          <q-btn flat style="color: #151515;border: solid 1px #DEDEDE" label="삭제" />
+        </div>
+        <q-btn
+          @click="open('bottom')"
+          flat
+          class="upload-button full-width"
+          :class="{'item-above': selectedImages.length}"
+          label="공간 사진 업로드"
+        />
       </div>
       <q-dialog v-model="dialog" :position="position">
         <q-card style="height: 541px;" :style="widthMax" class="popup-content">
@@ -110,11 +130,18 @@ export default {
 
 .select-photo {
   margin-top: 35px;
+  .display-selected-photo {
+    height: 58px;
+    border-bottom: 1px solid #0000001a;
+  }
   .upload-button {
     height: 50px;
     color: #151515;
     background: #e8eaeb;
     border: 1px solid #dedede;
+    &.item-above {
+      margin-top: 20px;
+    }
   }
 }
 
