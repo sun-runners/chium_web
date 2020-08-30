@@ -1,27 +1,36 @@
 <template>
-    <q-layout view="lHr lpR fFf" class="">
+    <q-layout view="lHr lpR fff" class="">
         <q-header class="bg-white text-primary">
           <q-toolbar class="justify-center no-padding">
             <q-toolbar-title class="text-center text-accent">
-              <navigation :currentRoute="currentRoute" :widthMax="widthMax" :headingName="heading_name"></navigation>
+              <navigation :currentRoute="currentRoute" :widthMax="widthMax" :headingName="currentRoute"></navigation>
             </q-toolbar-title>
           </q-toolbar>
         </q-header>
-        <q-footer class="bg-white row wrap justify-center items-center">
-          <div :style="widthMax">
-            <q-toolbar class="justify-center bg-white" v-if="!isStorePage">
-              <q-tabs active-color="secondary">
-                  <q-route-tab name="tab1" to="/home" style="color: #999999" label="홈" icon="home"></q-route-tab>
-                  <q-route-tab name="tab2" to="/reservation" style="color: #999999" label="예약" icon="calendar_today"></q-route-tab>
-                  <q-route-tab name="tab3" to="/search" style="color: #999999" label="검색" icon="find_in_page"></q-route-tab>
-                  <!-- <q-route-tab name="tab4" to="/store" style="color: #999999" label="업체" icon="store"></q-route-tab> -->
-                  <q-route-tab name="tab5" to="/my_page" style="color: #999999" label="마이" icon="person"></q-route-tab>
-                </q-tabs>
-            </q-toolbar>
-            <q-btn-group flat v-else class="full-width">
-              <q-btn style="max-width:70px;" class="like-btn no-border-radius	btn-grp-consult notosanskr-medium" icon="favorite_border" />
-              <q-btn label="견적신청하기" class="full-width no-border-radius	btn-grp-consult notosanskr-medium" color="secondary" />
-            </q-btn-group>
+        <q-footer class="bg-white row justify-center items-center ">
+          <div class="row">
+            <div class="col-12  ">
+              <p class="text-grey-7 q-mb-lg text-center">SNS 계정으로 진행하기</p>
+            </div>
+            <div class="col-12">
+              <div class="row">
+                <div class="col flex justify-center items-center">
+                  <q-btn size="50px" class="kakao" round flat :icon="`img:${require('src/assets/sns logo/kakao.svg')}`"/>
+                </div>
+
+                <div class="col flex justify-center items-center">
+                  <q-btn size="50px" class="fb" round flat :icon="`img:${require('src/assets/sns logo/fb.svg')}`"/>
+                </div>
+
+                <div class="col flex justify-center items-center">
+                  <q-btn size="10px" class="naver" round flat :icon="`img:${require('src/assets/sns logo/naver.svg')}`"/>
+                </div>
+
+                <div class="col flex justify-center items-center">
+                  <q-btn size="50px" class="apple" round flat :icon="`img:${require('src/assets/sns logo/apple.svg')}`"/>
+                </div>
+              </div>
+            </div>
           </div>
         </q-footer>
         <q-page-container class="doc-container">
@@ -33,7 +42,7 @@
             <div class="row justify-center" key="div-container">
               <div class="col" :style="widthMax">
                 <q-page style="padding-top: 60px" class="no-padding">
-                  <router-view @changeHeadingName="_ => heading_name = _"></router-view>
+                  <router-view></router-view>
                 </q-page>
               </div>
             </div>
@@ -118,4 +127,16 @@ export default {
 .btn-grp-consult
   font-size: 16px
   min-height: 60px
+
+.kakao
+  background-color: #FFDF2F
+
+.fb
+  background-color: #465C9C
+
+.naver
+  background-color: #26D777
+
+.apple
+  background-color: #171717
 </style>
