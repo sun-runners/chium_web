@@ -11,7 +11,29 @@
       </div>
       <q-dialog v-model="dialog" :position="position">
         <q-card style="height: 541px;" :style="widthMax" class="popup-content">
-          <q-card-section class="row items-center no-wrap">dsd</q-card-section>
+          <q-layout view="Lhh lpR fff" container class="bg-white">
+            <q-header class="bg-white">
+              <q-toolbar>
+                <q-toolbar-title class="popup-header text-dark notosanskr-regular">사진선택</q-toolbar-title>
+              </q-toolbar>
+            </q-header>
+            <q-page-container style="height: 511px;">
+              <q-page padding class="q-pt-none">
+                <div class="row">
+                  <div class="col-4 bg-grey-14" v-for="(item, index) in 10" :key="index">
+                    <div class="img-space">
+                      <q-img
+                        src="https://placeimg.com/500/300/nature"
+                        spinner-color="white"
+                        style="height: 100%; max-width: 100%"
+                        :ratio="1"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </q-page>
+            </q-page-container>
+          </q-layout>
         </q-card>
       </q-dialog>
     </div>
@@ -71,5 +93,18 @@ export default {
 .popup-content {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  .popup-header {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 26px;
+    /* identical to box height, or 173% */
+
+    letter-spacing: -0.85px;
+  }
+  .img-space {
+    width: 100%;
+    // padding-top: 75%; /* 4:3 Aspect Ratio */
+    border: #fff solid 0.5px;
+  }
 }
 </style>
