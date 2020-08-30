@@ -21,14 +21,16 @@
               <q-page padding class="q-pt-none">
                 <div class="row">
                   <div class="col-4 bg-grey-14" v-for="(img, index) in spaceImages" :key="index">
-                    <div class="img-space">
+                    <div class="img-space" @click="selectImage(img)">
                       <q-img
                         :src="img.url"
                         spinner-color="white"
                         style="height: 100%; max-width: 100%"
                         :ratio="1"
                       />
-                      <div class="circle-selected">{{ index + 1 }}</div>
+                      <div class="circle-selected" :class="{'selected': isImageSelected(img)}">
+                        <span v-if="isImageSelected(img)">1</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -69,6 +71,19 @@ export default {
     open(position) {
       this.position = position;
       this.dialog = true;
+    },
+    selectImage(image) {
+      if (this.selectedImages.length < 3) {
+        this.selectedImages.push(image.name);
+        console.log(this.selectedImages);
+      } else if (this.selectedImages.includes(image.name)) {
+        this.selectedImages = this.selectedImages.filter(
+          (i) => i != image.name
+        );
+      }
+    },
+    isImageSelected(image) {
+      return this.selectedImages.includes(image.name);
     },
   },
 };
@@ -131,6 +146,14 @@ export default {
       border-radius: 50%;
       margin-bottom: 10px;
       margin-right: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+
+      &.selected {
+        background: #46b3fc;
+      }
     }
   }
 }
