@@ -12,6 +12,9 @@ export default {
   components: {
     'work-lists': WorkLists
   },
+  created () {
+    this.$emit('changeHeadingName', '어게인업');
+  },
   data () {
     return {
       posts: [

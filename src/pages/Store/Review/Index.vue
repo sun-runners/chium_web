@@ -106,6 +106,9 @@ export default {
     'slide-grade': SlideGrade,
     'review-lists': ReviewLists
   },
+  created () {
+    this.$emit('changeHeadingName', '어게인업');
+  },
   data () {
     return {
       reviewRate: 4,
