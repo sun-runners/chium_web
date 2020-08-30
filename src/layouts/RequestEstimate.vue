@@ -105,7 +105,6 @@ export default {
           stepNum: 5,
           redirect: "space_type",
           returnTo: "due_date",
-          hideBtnFooter: true,
         },
       ];
     },

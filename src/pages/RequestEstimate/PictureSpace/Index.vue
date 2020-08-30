@@ -20,14 +20,15 @@
             <q-page-container style="height: 511px;">
               <q-page padding class="q-pt-none">
                 <div class="row">
-                  <div class="col-4 bg-grey-14" v-for="(item, index) in 10" :key="index">
+                  <div class="col-4 bg-grey-14" v-for="(img, index) in spaceImages" :key="index">
                     <div class="img-space">
                       <q-img
-                        src="https://placeimg.com/500/300/nature"
+                        :src="img.url"
                         spinner-color="white"
                         style="height: 100%; max-width: 100%"
                         :ratio="1"
                       />
+                      <div class="circle-selected">{{ index + 1 }}</div>
                     </div>
                   </div>
                 </div>
@@ -45,11 +46,23 @@ export default {
     return {
       dialog: false,
       position: "top",
+      selectedImages: [],
     };
   },
   computed: {
     widthMax() {
       return { width: window.innerWidth + "px", "max-width": "1000px" };
+    },
+    spaceImages() {
+      const dummyImage = [];
+      for (let item = 0; item < 12; item++) {
+        dummyImage.push({
+          id: item,
+          name: `photo_${item}_2020`,
+          url: "https://placeimg.com/500/300/nature?t=" + Math.random(),
+        });
+      }
+      return dummyImage;
     },
   },
   methods: {
@@ -98,13 +111,27 @@ export default {
     font-size: 15px;
     line-height: 26px;
     /* identical to box height, or 173% */
-
     letter-spacing: -0.85px;
   }
   .img-space {
     width: 100%;
     // padding-top: 75%; /* 4:3 Aspect Ratio */
     border: #fff solid 0.5px;
+    position: relative;
+    cursor: pointer;
+    .circle-selected {
+      position: absolute;
+      z-index: 1000;
+      bottom: 0;
+      right: 0;
+      width: 24px;
+      height: 24px;
+      background: transparent;
+      border: solid 2px white;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      margin-right: 10px;
+    }
   }
 }
 </style>
