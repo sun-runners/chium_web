@@ -25,17 +25,17 @@
       </q-page-container>
       <!-- Request Footer content here -->
       <q-footer class="row justify-center bg-grey-11" v-if="!isBtnHidden">
-        <q-toolbar class="bg-white text-white q-py-sm" :style="widthMax">
-          <q-toolbar-title>
-            <q-btn
-              class="full-width notosanskr-regular btn-footer"
-              :class="{'btn-ready' : isBtnReady }"
-              :disable="!isBtnReady"
-              style="font-size:17px;"
-              :label="btnLabel"
-              @click="myBtnFunction"
-            />
-          </q-toolbar-title>
+        <q-toolbar class="bg-white text-white q-py-sm q-px-none" :style="widthMax">
+          <q-btn
+            class="full-width notosanskr-regular btn-footer"
+            :class="{'btn-ready' : isBtnReady }"
+            :disable="!isBtnReady"
+            style="font-size:17px;"
+            :rounded="false"
+            flat
+            :label="btnLabel"
+            @click="myBtnFunction"
+          />
         </q-toolbar>
       </q-footer>
     </q-layout>
@@ -164,7 +164,7 @@ export default {
 .btn-footer {
   color: #919698;
   background: #e8eaeb;
-  border-radius: 8px;
+  border-radius: 0;
   height: 60px;
 }
 
