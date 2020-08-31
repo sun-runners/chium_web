@@ -47,7 +47,18 @@
                 <q-toolbar-title class="popup-header text-dark notosanskr-regular">사진선택</q-toolbar-title>
               </q-toolbar>
             </q-header>
-            <q-page-container style="height: 511px;">
+            <q-footer class="bg-secondary text-white q-pa-none">
+              <q-toolbar inset class="q-pa-none">
+                <q-btn
+                  class="text-center text-white full-width"
+                  style="height: 60px"
+                  @click="dialog=false"
+                >
+                  <div>선택완료</div>
+                </q-btn>
+              </q-toolbar>
+            </q-footer>
+            <q-page-container style="height: 490px;">
               <q-page padding class="q-pt-none">
                 <div class="row">
                   <div class="col-4 bg-grey-14" v-for="(img, index) in spaceImages" :key="index">
@@ -108,7 +119,6 @@ export default {
     selectImage(image) {
       if (this.selectedImages.length < 3) {
         this.selectedImages.push(image.name);
-        if (this.selectedImages.length == 3) this.dialog = false;
       } else if (this.selectedImages.includes(image.name)) {
         this.removeSelectedImage(image.name);
       }
