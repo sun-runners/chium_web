@@ -74,6 +74,7 @@ export default {
           routeName: "space_type",
           indicatorColor: "#55E2EB",
           stepNum: 1,
+          btnReady: false,
           redirect: "floor_space",
           returnTo: "",
         },
@@ -81,6 +82,7 @@ export default {
           routeName: "floor_space",
           indicatorColor: "#46B3FC",
           stepNum: 2,
+          btnReady: false,
           redirect: "work_type",
           returnTo: "space_type",
         },
@@ -88,6 +90,7 @@ export default {
           routeName: "work_type",
           indicatorColor: "#3A81EC",
           stepNum: 3,
+          btnReady: false,
           redirect: "due_date",
           returnTo: "floor_space",
         },
@@ -95,6 +98,7 @@ export default {
           routeName: "due_date",
           indicatorColor: "#495AEB",
           stepNum: 4,
+          btnReady: false,
           redirect: "picture_space",
           returnTo: "work_type",
           hideBtnFooter: true,
@@ -103,8 +107,17 @@ export default {
           routeName: "picture_space",
           indicatorColor: "#754BEB",
           stepNum: 5,
-          redirect: "space_type",
+          btnReady: true,
+          redirect: "complete_estimate",
           returnTo: "due_date",
+        },
+        {
+          routeName: "complete_estimate",
+          indicatorColor: "#2F00BE",
+          stepNum: 6,
+          btnReady: true,
+          redirect: "store",
+          returnTo: "picture_space",
         },
       ];
     },
@@ -123,9 +136,7 @@ export default {
         (step) => step.routeName == this.$route.name
       );
       if (found_route) {
-        if (this.activeStep < found_route.stepNum) {
-          this.isBtnReady = false;
-        }
+        this.isBtnReady = found_route.btnReady;
         this.activeStep = found_route.stepNum;
         this.activeColor = found_route.indicatorColor;
         this.returnTo = found_route.returnTo;
