@@ -61,6 +61,7 @@
       </div>
       <div class="client-name">홍길동</div>
     </div>
+
     <div class="client-number bg-white row justify-between items-center">
       <div style="width: 232px;" class>010-2345-6789</div>
       <q-btn
@@ -70,6 +71,16 @@
         label="변경"
       />
     </div>
+
+    <div class="demolition-company-info bg-white">
+      <div class="section-text">
+        <span>철거업체 정보</span>
+      </div>
+    </div>
+    <div class="demolition-item">치움철거</div>
+    <div class="demolition-item">000-1234-5678</div>
+    <div class="demolition-item">경력 11년</div>
+    <div class="demolition-item">매칭 12,050</div>
   </div>
 </template>
 <script>
@@ -114,9 +125,15 @@ export default {};
   padding: 15px 16px 0;
   .section-text {
     padding: 15px 0;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: -0.9px;
   }
   .client-name {
     padding: 22px 0;
+    font-size: 17px;
+    line-height: 26px;
+    letter-spacing: -0.85px;
   }
 }
 .client-number {
@@ -124,8 +141,25 @@ export default {};
   border-top: 1px solid #0000001a;
   font-size: 17px;
   line-height: 26px;
-  /* or 153% */
-
   letter-spacing: -0.85px;
+}
+
+.demolition-company-info {
+  margin-top: 10px;
+  padding: 15px 16px 0;
+  .section-text {
+    padding: 15px 0;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: -0.9px;
+  }
+}
+.demolition-item {
+  border-bottom: 1px solid #0000001a;
+  padding: 22px 16px;
+  font-size: 17px;
+  line-height: 26px;
+  letter-spacing: -0.85px;
+  background: white;
 }
 </style>
