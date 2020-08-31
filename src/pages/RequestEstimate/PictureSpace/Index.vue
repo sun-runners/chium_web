@@ -43,8 +43,9 @@
         <q-card style="height: 541px;" :style="widthMax" class="popup-content">
           <q-layout view="Lhh lpR fff" container class="bg-white">
             <q-header class="bg-white">
-              <q-toolbar>
-                <q-toolbar-title class="popup-header text-dark notosanskr-regular">사진선택</q-toolbar-title>
+              <q-toolbar class="row justify-between">
+                <div class="popup-header text-dark notosanskr-regular">사진선택</div>
+                <q-btn flat color="grey" icon="clear" @click="dialog=false" />
               </q-toolbar>
             </q-header>
             <q-footer class="bg-secondary text-white q-pa-none">
