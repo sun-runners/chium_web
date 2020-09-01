@@ -14,6 +14,7 @@
       div(class="col-11" style="max-width: 343px")
         span 비밀번호
         q-input( 
+          type="password"
           outlined 
           class="text-fields q-mt-sm" 
           placeholder="비밀번호는 6자이상 15자이하"
@@ -28,14 +29,14 @@
       div(class="col-11" style="max-width: 343px")
         div(class="row q-gutter-xs flex justify-center")
           div(class="col-5" style="max-width: 127px")
-            q-btn(flat class="full-width btn-group")
+            q-btn(flat class="full-width btn-group" type="button" @click="$router.push({ path: '/auth/sign_up' })")
               q-icon(
                 :name="`img:${require('src/assets/sign_up.svg')}`"
                 class="q-mr-sm" size="13px"
               )
               span(style="font-size:13px") 회원가입하기
           div(class="col-7")
-            q-btn(flat class="full-width btn-group" style="")
+            q-btn(flat class="full-width btn-group" type="button" style="")
               q-icon(
                 :name="`img:${require('src/assets/lock.svg')}`"
                 class="q-mr-sm" 
