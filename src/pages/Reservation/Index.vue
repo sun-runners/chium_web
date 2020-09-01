@@ -41,6 +41,9 @@ export default {
   components: {
     "reservation-item": ReservationItem,
   },
+  created () {
+    this.$emit('changeHeadingName', '어게인업');
+  },
   data() {
     return {
       search: "",

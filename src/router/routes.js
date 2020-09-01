@@ -1,15 +1,25 @@
 const routes = [
   {
+    path: '/auth', redirect: 'auth/login',
+    component: () => import('layouts/AuthLayout.vue'),
+    children: [
+      { path: 'login', component: () => import('pages/Auth/Login/Index'), name: '로그인' },
+      { path: 'sign_up', component: () => import('pages/Auth/SignUp/Index'), name: '회원가입' },
+      { path: 'sign_up/terms_condition/:condition_name', component: () => import('pages/Auth/SignUp/TermsCondition'), name: '' },
+    ],
+  },
+  {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Home/Index'), name: 'home' },
       { path: 'home', component: () => import('pages/Home/Index'), name: 'home' },
       { path: 'reservation', component: () => import('pages/Reservation/Index'), name: 'reservation' },
-      { path: 'reservation/detail', component: () => import('pages/Reservation/Detail/Index'), name: 'reservation_detail' },
+      { path: 'reservation/detail', component: () => import('pages/Reservation/Detail/Index'), name: 'reservation_detail', heading_name: '예약상세보기' },
       { path: 'search', component: () => import('pages/Search/Index'), name: 'search' },
       { path: 'my_page', component: () => import('pages/MyPage/Index'), name: 'my_page' },
-      { path: 'store', component: () => import('pages/Store/Index'), name: 'store' },
+      { path: 'store', redirect: 'store/detail'},
+      { path: 'store/detail', component: () => import('pages/Store/Index'), name: 'store_detail' },
       { path: 'store/review', component: () => import('pages/Store/Review/Index'), name: 'store_review' },
       { path: 'store/work', component: () => import('pages/Store/Work/Index'), name: 'store_work' },
       { path: 'store/inquiry', component: () => import('pages/Store/Inquiry/Index'), name: 'store_inquiry' },

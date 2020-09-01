@@ -167,6 +167,9 @@
 
 <script>
 export default {
+  created () {
+    this.$emit('changeHeadingName', '예약상세보기');
+  },
   data() {
     return {
       item: {

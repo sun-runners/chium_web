@@ -27,6 +27,9 @@ import WorkLists from 'src/components/StoreWork/WorkLists'
 
 export default {
   name: 'Store',
+  created () {
+    this.$emit('changeHeadingName', '어게인업');
+  },
   components: {
     'work-lists': WorkLists
   },
