@@ -8,7 +8,7 @@
           </q-toolbar>
         </q-header>
         <q-footer class="bg-white row justify-center items-center ">
-          <div class="row">
+          <div class="row" v-if="currentRoute == '로그인'">
             <div class="col-12  ">
               <p class="text-grey-7 q-mb-lg text-center">SNS 계정으로 진행하기</p>
             </div>
