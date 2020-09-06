@@ -29,28 +29,18 @@
         </q-item-section>
       </div>
     </div>
-    <div class="bg-white q-mt-md q-pa-none">
-      <div class="row items-center justify-between">
-        <div class="col-8 q-pa-lg">
-          <p class="text-grey q-ma-none notosanskr-medium">내 위치</p>
-          <p
-            class="q-ma-none q-pt-sm notosanskr-regular"
-            style="font-size: 16px; line-height: 24px;"
-          >
-            경기도 화성시 정남면 괘랑4길 16-38
+    <div class="bg-white q-mt-sm q-pa-none ">
+      <div class="my-location row items-center justify-between">
+        <div class="col-8 notosanskr-regular">
+          <p class="text-label q-ma-none notosanskr-medium">내 위치</p>
+          <p class="address-text q-ma-none notosanskr-regular">
+            경기도 치움시 철거면 치움4길 16-38 치움타운하우스
           </p>
         </div>
-        <div class="q-pa-lg">
-          <q-btn
-            color="white"
-            text-color="black"
-            class="notosanskr-medium"
-            outline
-            label="수정"
-          />
-        </div>
+        <q-icon class="text-dark" size="20px">
+          <img src="~assets/arrow_right.svg" />
+        </q-icon>
       </div>
-      <q-separator size="1px" />
       <div class="row items-center justify-between">
         <div class="col-8 q-pa-lg">
           <p class="q-ma-none text-grey notosanskr-medium">연락처</p>
@@ -146,5 +136,27 @@ export default {
   min-width: 114px;
   min-height: 110;
   cursor: pointer;
+}
+
+.my-location {
+  height: 118px;
+  padding: 20px 16px;
+  .text-label {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.65px;
+    color: #767676;
+  }
+  .address-text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.8px;
+    color: #151515;
+    margin-top: 10px;
+  }
 }
 </style>
