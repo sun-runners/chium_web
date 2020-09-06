@@ -1,11 +1,15 @@
 <template>
   <div class="bg-grey-3" style="min-height:100vh;">
     <div class="bg-white">
-      <div class="name-point q-px-sm q-py-md column">
-        <p class="name q-ma-none notosanskr-medium">박가인 님</p>
-        <p class="point notosanskr-bold text-secondary q-ma-none">5,000P</p>
+      <div class="account-info notosanskr-regular">
+        <div class="user-greet">
+          홍길동 님 안녕하세요.
+        </div>
+        <q-icon class="text-dark" size="24px">
+          <img src="~assets/arrow_right.svg" />
+        </q-icon>
       </div>
-      <div class="q-px-lg">
+      <div class="q-px-none">
         <q-separator color="grey-4" size="1px" />
       </div>
       <div class="row items-center justify-evenly">
@@ -121,18 +125,21 @@ export default {
 };
 </script>
 
-<style scoped>
-.name-point .name {
-  font-weight: 500;
-  font-size: 22px;
-  line-height: 33px;
-}
-
-.name-point .point {
-  font-weight: bold;
-  font-size: 30px;
-  line-height: 45px;
-  color: #18a0fb;
+<style lang="scss" scoped>
+.account-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 76px;
+  padding: 0 16px;
+  .user-greet {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 36px;
+    letter-spacing: -1.1px;
+    color: #151515;
+  }
 }
 
 .top-tabs {
