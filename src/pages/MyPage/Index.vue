@@ -41,25 +41,18 @@
           <img src="~assets/arrow_right.svg" />
         </q-icon>
       </div>
-      <div class="row items-center justify-between">
-        <div class="col-8 q-pa-lg">
+      <div class="my-phone row items-center justify-between">
+        <div class="col  notosanskr-regular">
           <p class="q-ma-none text-grey notosanskr-medium">연락처</p>
-          <p
-            class="q-ma-none q-pt-sm notosanskr-bold"
-            style="font-size: 16px; line-height: 24px;"
-          >
+          <p class="phone-number q-ma-none q-pt-sm notosanskr-bold">
             010-2398-0374
           </p>
         </div>
-        <div class="q-pa-lg">
-          <q-btn
-            color="white"
-            class="notosanskr-medium"
-            text-color="black"
-            outline
-            label="수정"
-          />
-        </div>
+
+        <button class="verification-completed">
+          <q-icon name="done" class="text-dark" size="16px"> </q-icon>
+          인증완료
+        </button>
       </div>
       <q-separator size="1px" />
       <div class="q-pa-none q-pt-md q-mt-lg notosanskr-medium">
@@ -157,6 +150,25 @@ export default {
     letter-spacing: -0.8px;
     color: #151515;
     margin-top: 10px;
+  }
+}
+
+.my-phone {
+  padding: 20px 16px;
+  .phone-number {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #151515;
+  }
+  .verification-completed {
+    background: white;
+    padding: 4px 8px;
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+    border-radius: 4px;
   }
 }
 </style>
