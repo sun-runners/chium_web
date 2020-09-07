@@ -140,24 +140,24 @@
 
 <script>
 export default {
-  name: "MyPage",
+  name: 'MyPage',
   components: {},
-  data() {
+  data () {
     return {
       items: [
-        "개인정보",
-        "단골업체",
-        "철거내역",
-        "문의내역",
-        "공지사항",
-        "로그아웃",
-      ],
-    };
+        '개인정보',
+        '단골업체',
+        '철거내역',
+        '문의내역',
+        '공지사항',
+        '로그아웃'
+      ]
+    }
   },
-  created() {
-    this.$emit("changeHeadingName", "마이페이지");
-  },
-};
+  created () {
+    this.$emit('changeHeadingName', '마이페이지')
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -179,7 +179,7 @@ export default {
 
 .top-tabs {
   min-width: 114px;
-  min-height: 110;
+  min-height: 110px;
   cursor: pointer;
 }
 
@@ -235,7 +235,7 @@ export default {
 }
 
 .store-info {
-  padding: 25px 16px;
+  padding: 25px 16px 60px;
   button {
     border-radius: 100px;
     border: none;
