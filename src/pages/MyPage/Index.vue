@@ -34,7 +34,7 @@
       <div class="my-location row items-center justify-between">
         <div class="col-8 notosanskr-regular">
           <p class="text-label q-ma-none notosanskr-medium">내 위치</p>
-          <p class="address-text q-ma-none notosanskr-regular">
+          <p class="address-text q-ma-none  notosanskr-regular">
             경기도 치움시 철거면 치움4길 16-38 치움타운하우스
           </p>
         </div>
@@ -61,6 +61,15 @@
           최근견적
         </div>
         <q-separator size="3px" style="background: #151515" />
+        <div class="store-info">
+          <button class="store-name">전국불도저</button>
+          <button class="store-call">
+            <q-icon class="text-dark" size="24px">
+              <img src="~assets/store_call.svg" />
+            </q-icon>
+            070-345-0789
+          </button>
+        </div>
       </div>
     </div>
 
@@ -179,5 +188,30 @@ export default {
   line-height: 24px;
   letter-spacing: -0.8px;
   color: #151515;
+}
+
+.store-info {
+  padding: 25px 16px;
+  button {
+    border-radius: 100px;
+    border: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 28px;
+    text-align: center;
+    letter-spacing: -0.65px;
+    color: #ffffff;
+    &.store-name {
+      background: #2cb3ff;
+      margin-right: 8px;
+    }
+
+    &.store-call {
+      color: #151515;
+      background: #f7f7f6;
+      border: 1px solid #f0f0f0;
+    }
+  }
 }
 </style>
