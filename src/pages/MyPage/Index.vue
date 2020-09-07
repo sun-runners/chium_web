@@ -29,6 +29,7 @@
         </q-item-section>
       </div>
     </div>
+
     <div class="bg-white q-mt-sm q-pa-none ">
       <div class="my-location row items-center justify-between">
         <div class="col-8 notosanskr-regular">
@@ -56,12 +57,10 @@
       </div>
       <q-separator size="1px" />
       <div class="q-pa-none q-pt-md q-mt-lg notosanskr-medium">
-        <p style="font-size: 18px; line-height: 27px;" class="q-pl-sm">
-          최근 본 업체
-        </p>
-        <gallery-sliding-horizontal></gallery-sliding-horizontal>
+        <p>Recent quote here</p>
       </div>
     </div>
+
     <div class="bg-white q-mt-md q-py-none q-px-lg">
       <q-list separator inset size="3px">
         <q-item
@@ -84,12 +83,9 @@
 </template>
 
 <script>
-import GallerySlidingHorizontal from "src/components/Galleries/GallerySlidingHorizontal";
 export default {
   name: "MyPage",
-  components: {
-    "gallery-sliding-horizontal": GallerySlidingHorizontal,
-  },
+  components: {},
   data() {
     return {
       items: [
