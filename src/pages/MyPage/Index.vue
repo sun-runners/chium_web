@@ -56,6 +56,7 @@
         </button>
       </div>
       <q-separator size="1px" />
+
       <div class="notosanskr-medium">
         <div class="recent-quote-heading">
           최근견적
@@ -69,6 +70,49 @@
             </q-icon>
             070-345-0789
           </button>
+
+          <q-card
+            class="my-card q-mt-md"
+            style="    padding: 20px;"
+            :bordered="false"
+          >
+            <q-card-section class="info-items row justify-between">
+              <div class="label-text col-3">주소</div>
+              <div class="info-text col-9">
+                경기도 치움시 철거4길 16-38번지 치움 타운하우스
+              </div>
+            </q-card-section>
+            <q-card-section class="info-items row justify-between">
+              <div class="label-text col-3">타입</div>
+              <div class="info-text col-9 row">
+                <div>
+                  주거공간
+                </div>
+                <q-separator size="2px" vertical style="margin: 0 6px;" />
+                <div>
+                  30평
+                </div>
+              </div>
+            </q-card-section>
+            <q-card-section class="info-items row justify-between">
+              <div class="label-text col-3">작업 유형</div>
+              <div class="info-text col-9">
+                폐기물
+              </div>
+            </q-card-section>
+            <q-card-section class="info-items row justify-between">
+              <div class="label-text col-3">작업 일시</div>
+              <div class="info-text col-9">
+                미정
+              </div>
+            </q-card-section>
+            <q-card-section class="info-items row justify-between">
+              <div class="label-text col-3">진행 상태</div>
+              <div class="info-text col-9 text-secondary">
+                견적신청
+              </div>
+            </q-card-section>
+          </q-card>
         </div>
       </div>
     </div>
@@ -211,6 +255,24 @@ export default {
       color: #151515;
       background: #f7f7f6;
       border: 1px solid #f0f0f0;
+    }
+  }
+  .info-items {
+    padding: 0 0 15px;
+    .label-text {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 20px;
+      letter-spacing: -0.65px;
+      color: #767676;
+    }
+    .info-text {
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 20px;
+      letter-spacing: -0.65px;
+      color: #151515;
     }
   }
 }
