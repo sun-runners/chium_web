@@ -56,8 +56,11 @@
         </button>
       </div>
       <q-separator size="1px" />
-      <div class="q-pa-none q-pt-md q-mt-lg notosanskr-medium">
-        <p>Recent quote here</p>
+      <div class="notosanskr-medium">
+        <div class="recent-quote-heading">
+          최근견적
+        </div>
+        <q-separator size="3px" style="background: #151515" />
       </div>
     </div>
 
@@ -166,5 +169,15 @@ export default {
     box-sizing: border-box;
     border-radius: 4px;
   }
+}
+
+.recent-quote-heading {
+  padding: 41px 16px 15px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+  color: #151515;
 }
 </style>
