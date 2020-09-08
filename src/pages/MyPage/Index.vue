@@ -162,6 +162,28 @@
         </q-item>
       </q-list>
     </div>
+
+    <div class="bg-white q-mt-md q-py-none">
+      <div
+        class="row justify-between notosanskr-medium"
+        style="padding: 21px 16px;"
+      >
+        <div>
+          <div>
+            고객센터
+            <span class="service-number q-pl-xs">1588-1234</span>
+          </div>
+          <div class="operating-hours">
+            운영시간 / 주 5일 평일 11:00 ~ 18:00
+          </div>
+        </div>
+        <q-icon class="text-dark q-ml-sm" size="42px">
+          <img src="~assets/call_service.svg" />
+        </q-icon>
+      </div>
+    </div>
+
+    <div style="height: 110px"></div>
   </div>
 </template>
 
@@ -249,7 +271,6 @@ export default {
 
 .recent-quote-heading {
   padding: 41px 16px 15px;
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
@@ -263,7 +284,6 @@ export default {
   button {
     border-radius: 100px;
     border: none;
-    font-style: normal;
     font-weight: 500;
     font-size: 13px;
     line-height: 28px;
@@ -287,8 +307,6 @@ export default {
     padding: 0 0 15px;
 
     .label-text {
-      font-style: normal;
-      font-weight: normal;
       font-size: 13px;
       line-height: 20px;
       letter-spacing: -0.65px;
@@ -296,7 +314,6 @@ export default {
     }
 
     .info-text {
-      font-weight: normal;
       font-size: 13px;
       line-height: 20px;
       letter-spacing: -0.65px;
@@ -306,11 +323,30 @@ export default {
 }
 
 .list-item-routes {
-  font-style: normal;
-  font-weight: normal;
   font-size: 15px;
   line-height: 22px;
   letter-spacing: -0.75px;
   color: #151515;
+}
+
+.service-center {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+  color: #151515;
+}
+.service-number {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #151515;
+}
+.operating-hours {
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: -0.65px;
+  color: #767676;
 }
 </style>
