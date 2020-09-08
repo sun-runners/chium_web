@@ -51,7 +51,7 @@
         </div>
 
         <button class="verification-completed">
-          <q-icon name="done" class="text-dark" size="16px"> </q-icon>
+          <q-icon name="done" class="text-dark" size="16px"></q-icon>
           인증완료
         </button>
       </div>
@@ -117,18 +117,45 @@
       </div>
     </div>
 
-    <div class="bg-white q-mt-md q-py-none q-px-lg">
-      <q-list separator inset size="3px">
-        <q-item
-          style="height: 60px;"
-          v-for="(item, index) in items"
-          :key="index"
-          clickable
-          v-ripple
-        >
-          <q-item-section style="line-height: 23px; font-size: 15px;">{{
-            item
-          }}</q-item-section>
+    <div class="bg-white q-mt-md q-py-none">
+      <q-list separator inset size="3px" class="notosanskr-medium">
+        <q-item style="height: 60px;" clickable v-ripple>
+          <q-item-section class="list-item-routes">
+            <div>
+              공사 후기 작성
+              <q-icon class="text-dark q-ml-sm" size="14px">
+                <img src="~assets/new.svg" />
+              </q-icon>
+            </div>
+          </q-item-section>
+          <span class="material-icons" style="font-size: 26px;"
+            >keyboard_arrow_right</span
+          >
+        </q-item>
+        <q-item style="height: 60px;" clickable v-ripple>
+          <q-item-section class="list-item-routes"
+            >철거˙폐기물 전문가로 가입
+          </q-item-section>
+          <span class="material-icons" style="font-size: 26px;"
+            >keyboard_arrow_right</span
+          >
+        </q-item>
+        <q-item style="height: 60px;" clickable v-ripple>
+          <q-item-section class="list-item-routes">공지사항 </q-item-section>
+          <span class="material-icons" style="font-size: 26px;"
+            >keyboard_arrow_right</span
+          >
+        </q-item>
+        <q-item style="height: 60px;" clickable v-ripple>
+          <q-item-section class="list-item-routes">설정 </q-item-section>
+          <span class="material-icons" style="font-size: 26px;"
+            >keyboard_arrow_right</span
+          >
+        </q-item>
+        <q-item style="height: 60px;" clickable v-ripple>
+          <q-item-section class="list-item-routes" style="color: #767676;"
+            >로그아웃
+          </q-item-section>
           <span class="material-icons" style="font-size: 26px;"
             >keyboard_arrow_right</span
           >
@@ -140,24 +167,15 @@
 
 <script>
 export default {
-  name: 'MyPage',
+  name: "MyPage",
   components: {},
-  data () {
-    return {
-      items: [
-        '개인정보',
-        '단골업체',
-        '철거내역',
-        '문의내역',
-        '공지사항',
-        '로그아웃'
-      ]
-    }
+  data() {
+    return {};
   },
-  created () {
-    this.$emit('changeHeadingName', '마이페이지')
-  }
-}
+  created() {
+    this.$emit("changeHeadingName", "마이페이지");
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -167,6 +185,7 @@ export default {
   align-items: center;
   height: 76px;
   padding: 0 16px;
+
   .user-greet {
     font-style: normal;
     font-weight: 500;
@@ -186,6 +205,7 @@ export default {
 .my-location {
   height: 118px;
   padding: 20px 16px;
+
   .text-label {
     font-style: normal;
     font-weight: normal;
@@ -194,6 +214,7 @@ export default {
     letter-spacing: -0.65px;
     color: #767676;
   }
+
   .address-text {
     font-style: normal;
     font-weight: normal;
@@ -207,6 +228,7 @@ export default {
 
 .my-phone {
   padding: 20px 16px;
+
   .phone-number {
     font-family: Roboto;
     font-style: normal;
@@ -215,6 +237,7 @@ export default {
     line-height: 24px;
     color: #151515;
   }
+
   .verification-completed {
     background: white;
     padding: 4px 8px;
@@ -236,6 +259,7 @@ export default {
 
 .store-info {
   padding: 25px 16px 60px;
+
   button {
     border-radius: 100px;
     border: none;
@@ -246,6 +270,7 @@ export default {
     text-align: center;
     letter-spacing: -0.65px;
     color: #ffffff;
+
     &.store-name {
       background: #2cb3ff;
       margin-right: 8px;
@@ -257,8 +282,10 @@ export default {
       border: 1px solid #f0f0f0;
     }
   }
+
   .info-items {
     padding: 0 0 15px;
+
     .label-text {
       font-style: normal;
       font-weight: normal;
@@ -267,6 +294,7 @@ export default {
       letter-spacing: -0.65px;
       color: #767676;
     }
+
     .info-text {
       font-weight: normal;
       font-size: 13px;
@@ -275,5 +303,14 @@ export default {
       color: #151515;
     }
   }
+}
+
+.list-item-routes {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: -0.75px;
+  color: #151515;
 }
 </style>
