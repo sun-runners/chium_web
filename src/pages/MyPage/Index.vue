@@ -209,7 +209,7 @@
         <q-card-section
           class="row items-center no-wrap absolute-bottom q-pa-none"
         >
-          <q-toolbar class="bg-white text-white q-py-sm" :style="widthMax">
+          <q-toolbar class="bg-white text-white q-py-none" :style="widthMax">
             <div class="popup-body full-width column items-center">
               <div class="header">폐기물 버리기!</div>
               <div class="sub-header">
@@ -405,8 +405,16 @@ export default {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 
+  .close-button {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 50px;
+    text-align: right;
+    letter-spacing: -0.7px;
+    cursor: pointer;
+  }
   .popup-body {
-    height: 165px;
+    height: 185px;
     .header {
       font-weight: 500;
       font-size: 22px;
@@ -438,14 +446,6 @@ export default {
       border-radius: 4px;
       border: none;
     }
-  }
-  .close-button {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 50px;
-    text-align: right;
-    letter-spacing: -0.7px;
-    cursor: pointer;
   }
 }
 </style>
