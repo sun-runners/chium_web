@@ -152,7 +152,12 @@
             >keyboard_arrow_right</span
           >
         </q-item>
-        <q-item style="height: 60px;" clickable v-ripple>
+        <q-item
+          style="height: 60px;"
+          clickable
+          v-ripple
+          @click="open('bottom')"
+        >
           <q-item-section class="list-item-routes" style="color: #767676;"
             >로그아웃
           </q-item-section>
@@ -184,6 +189,41 @@
     </div>
 
     <div style="height: 110px"></div>
+    <q-dialog v-model="dialog" :position="position">
+      <q-card
+        style="height: 241px;"
+        :style="widthMax"
+        class="popup-content notosanskr-medium"
+      >
+        <q-card-section class="row items-center no-wrap  q-py-none">
+          <div class="text-right full-width" @click="dialog = false">
+            <q-btn
+              class="close-button"
+              flat
+              style="color: #151515"
+              label="닫기"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section
+          class="row items-center no-wrap absolute-bottom q-pa-none"
+        >
+          <q-toolbar class="bg-white text-white q-py-sm" :style="widthMax">
+            <div class="popup-body full-width column items-center">
+              <div class="header">폐기물 버리기!</div>
+              <div class="sub-header">
+                폐기물 작업을 진행하기 전 업체에게 견적 받는 방법을
+                선택해주세요.
+              </div>
+              <button class=" bg-secondary">
+                업체 한 곳 선정해서 견적받기
+              </button>
+            </div>
+          </q-toolbar>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
@@ -192,7 +232,18 @@ export default {
   name: "MyPage",
   components: {},
   data() {
-    return {};
+    return { dialog: false, position: "bottom" };
+  },
+  computed: {
+    widthMax() {
+      return { width: window.innerWidth + "px", "max-width": "1000px" };
+    },
+  },
+  methods: {
+    open(position) {
+      this.position = position;
+      this.dialog = true;
+    },
   },
   created() {
     this.$emit("changeHeadingName", "마이페이지");
@@ -348,5 +399,53 @@ export default {
   line-height: 20px;
   letter-spacing: -0.65px;
   color: #767676;
+}
+
+.popup-content {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  .popup-body {
+    height: 165px;
+    .header {
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 36px;
+      text-align: center;
+      letter-spacing: -1.1px;
+      color: #151515;
+    }
+    .sub-header {
+      width: 224px;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+      letter-spacing: -0.8px;
+      color: #5a5a5a;
+      padding: 8px 0px 20px;
+    }
+    button {
+      width: 280px;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 50px;
+      text-align: center;
+      letter-spacing: -0.8px;
+      color: #ffffff;
+      background: #2cb3ff;
+      cursor: pointer;
+      border-radius: 4px;
+      border: none;
+    }
+  }
+  .close-button {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 50px;
+    text-align: right;
+    letter-spacing: -0.7px;
+    cursor: pointer;
+  }
 }
 </style>
