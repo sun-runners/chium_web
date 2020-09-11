@@ -1,14 +1,19 @@
 <template>
   <div class="bg-grey-3" style="min-height:100vh;">
     <div class="bg-white">
-      <div class="account-info notosanskr-regular">
-        <div class="user-greet">
-          홍길동 님 안녕하세요.
-        </div>
-        <q-icon class="text-dark" size="24px">
-          <img src="~assets/arrow_right.svg" />
-        </q-icon>
-      </div>
+      <router-link
+        :to="{ name: 'my_account' }"
+        style="
+    text-decoration: none;"
+      >
+        <div class="account-info notosanskr-regular">
+          <div class="user-greet">
+            홍길동 님 안녕하세요.
+          </div>
+          <q-icon class="text-dark" size="24px">
+            <img src="~assets/arrow_right.svg" />
+          </q-icon></div
+      ></router-link>
       <div class="q-px-none">
         <q-separator color="grey-4" size="1px" />
       </div>
