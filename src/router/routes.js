@@ -37,7 +37,8 @@ const routes = [
       { path: 'picture-space', component: () => import('pages/RequestEstimate/PictureSpace/Index'), name: 'picture_space' },
       { path: 'complete-estimate', component: () => import('pages/RequestEstimate/CompleteEstimate/Index'), name: 'complete_estimate' }
     ]
-  }
+  },
+  { path: '/my-account', component: () => import('pages/MyAccount/Index'), name: 'my_account' }
 ]
 
 // Always leave this as last one
