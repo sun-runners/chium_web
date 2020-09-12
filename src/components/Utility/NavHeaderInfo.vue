@@ -12,7 +12,14 @@
       >
         <q-icon class="text-dark" name="keyboard_backspace" size="24px" />
       </router-link>
-      <q-btn flat color="dark" icon="clear" :to="{ name: closedTo }" v-else />
+      <router-link
+        :to="{ name: backTo }"
+        class="row items-center"
+        style="text-decoration:none"
+        v-else
+      >
+        <q-icon class="text-dark" name="clear" size="24px" />
+      </router-link>
       <div
         style="font-weight: 500; font-size: 16px;"
         class="notosanskr-medium col row items-center justify-center  nav-text"
