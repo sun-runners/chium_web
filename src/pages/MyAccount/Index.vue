@@ -1,43 +1,49 @@
 <template>
-  <default-wrapper>
-    <div class="bg-white" style="min-height: 100vh;">
-      <nav-header-info name="내 계정" backTo="my_page" />
-      <!-- Account Info Section -->
-      <div class="account notosanskr-regular">
-        <small>계정</small>
-        <div style="padding-top: 7px;">
-          <q-icon class="text-dark" size="20px" style="margin-right: 10px;">
-            <img src="~assets/apple_link.svg" />
-          </q-icon>
-          <span class="name"> 애플 계정 연동</span>
-        </div>
-      </div>
-      <q-separator style="margin-left: 16px;"></q-separator>
-      <!-- Name Section -->
-      <div class="username notosanskr-regular">
-        <small>이름</small>
-        <div style="padding-top: 5px;" class="name">
-          홍길동
-        </div>
-      </div>
-      <q-separator style="margin-left: 16px;"></q-separator>
-      <!-- Phone Section -->
-      <div class="phone notosanskr-regular row justify-between items-center">
-        <div>
-          <small>핸드폰</small>
-          <div style="padding-top: 5px;" class="name">
-            010-1234-5678
+  <default-wrapper :styleSlots="styleWrapperSlots">
+    <template #pageHeader>
+      <nav-header-info name="내 계정" class="full-width" backTo="my_page" />
+    </template>
+
+    <template #pageContent>
+      <div style="padding-left: 16px;">
+        <!-- Account Info Section -->
+        <div class="account notosanskr-regular">
+          <small>계정</small>
+          <div style="padding-top: 7px;">
+            <q-icon class="text-dark" size="20px" style="margin-right: 10px;">
+              <img src="~assets/apple_link.svg" />
+            </q-icon>
+            <span class="name"> 애플 계정 연동</span>
           </div>
         </div>
-        <div>
-          <button class="change-btn">변경</button>
-          <button class="verification-btn">
-            <q-icon name="done" class="text-dark" size="16px"></q-icon>인증완료
-          </button>
+        <q-separator></q-separator>
+        <!-- Name Section -->
+        <div class="username notosanskr-regular">
+          <small>이름</small>
+          <div style="padding-top: 5px;" class="name">
+            홍길동
+          </div>
         </div>
+        <q-separator></q-separator>
+        <!-- Phone Section -->
+        <div class="phone notosanskr-regular row justify-between items-center">
+          <div>
+            <small>핸드폰</small>
+            <div style="padding-top: 5px;" class="name">
+              010-1234-5678
+            </div>
+          </div>
+          <div>
+            <button class="change-btn">변경</button>
+            <button class="verification-btn">
+              <q-icon name="done" class="text-dark" size="16px"></q-icon
+              >인증완료
+            </button>
+          </div>
+        </div>
+        <q-separator></q-separator>
       </div>
-      <q-separator style="margin-left: 16px;"></q-separator>
-    </div>
+    </template>
   </default-wrapper>
 </template>
 
@@ -49,6 +55,15 @@ export default {
     "default-wrapper": DefaultWrapper,
     "nav-header-info": NavHeaderInfo,
   },
+  data() {
+    return {
+      styleWrapperSlots: {
+        bgHeader: "white",
+        bgBody: "white",
+        bgFooter: "white",
+      },
+    };
+  },
 };
 </script>
 
@@ -56,7 +71,7 @@ export default {
 .account,
 .username,
 .phone {
-  padding: 20px 16px 15px;
+  padding: 20px 0 15px;
   small {
     font-size: 13px;
     line-height: 19px;
