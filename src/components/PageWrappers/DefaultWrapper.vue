@@ -1,9 +1,23 @@
 <template>
-  <div class="bg-grey">
-    <q-layout view="hHh lpR fFf">
-      <q-page-container>
-        <slot :style="widthMax"></slot>
+  <div class="bg-grey row justify-center">
+    <q-layout view="hHh lpR fFf" class="justify-center">
+      <q-header :elevated="elevatedHeader" class="bg-grey row justify-center">
+        <q-toolbar :style="sectionStyle('header')">
+          <slot name="pageHeader" />
+        </q-toolbar>
+      </q-header>
+
+      <q-page-container class="row justify-center" style="min-height: 100vh">
+        <div :style="sectionStyle('body')">
+          <slot name="pageContent"></slot>
+        </div>
       </q-page-container>
+
+      <q-footer :elevated="elevatedFooter" class="bg-grey row justify-center">
+        <q-toolbar :style="sectionStyle('footer')">
+          <slot name="pageFooter" />
+        </q-toolbar>
+      </q-footer>
     </q-layout>
   </div>
 </template>
@@ -14,10 +28,43 @@ export default {
   data() {
     return {};
   },
-  computed: {
-    widthMax() {
-      return { width: window.innerWidth + "px", "max-width": "1000px" };
+  props: {
+    elevatedHeader: Boolean,
+    elevatedFooter: Boolean,
+    styleSlots: {
+      bgHeader: "",
+      bgBody: "",
+      bgFooter: "",
     },
+  },
+  methods: {
+    sectionStyle(section) {
+      return {
+        width: window.innerWidth + "px",
+        "max-width": "1000px",
+        "background-color": this.applySectionBg(section),
+      };
+    },
+    applySectionBg(section) {
+      switch (section) {
+        case "header":
+          return this.styleSlots.bgHeader;
+          break;
+        case "body":
+          return this.styleSlots.bgBody;
+          break;
+        case "footer":
+          return this.styleSlots.bgFooter;
+          break;
+        default:
+          return "#F3F3F3";
+          break;
+      }
+    },
+  },
+  created() {
+    console.log(this.$slots.pageFooter);
+    console.log(this.$slots.pageHeader);
   },
 };
 </script>
