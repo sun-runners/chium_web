@@ -1,17 +1,21 @@
 <template>
   <q-card class="my-card" flat>
-    <q-card-section class="row content-center q-px-none" style="height: 44px;">
-      <q-btn
-        flat
-        color="dark"
-        icon="keyboard_backspace"
+    <q-card-section
+      class="row content-center q-px-none"
+      style="height: 44px; padding: 0 16px;"
+    >
+      <router-link
         :to="{ name: backTo }"
         v-if="backTo"
-      />
+        class="row items-center"
+        style="text-decoration:none"
+      >
+        <q-icon class="text-dark" name="keyboard_backspace" size="24px" />
+      </router-link>
       <q-btn flat color="dark" icon="clear" :to="{ name: closedTo }" v-else />
       <div
         style="font-weight: 500; font-size: 16px;"
-        class="notosanskr-regular col row items-center justify-center"
+        class="notosanskr-medium col row items-center justify-center  nav-text"
       >
         {{ name }}
       </div>
@@ -37,4 +41,13 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.nav-text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 44px;
+  text-align: center;
+  letter-spacing: -0.8px;
+  color: #151515;
+}
+</style>
