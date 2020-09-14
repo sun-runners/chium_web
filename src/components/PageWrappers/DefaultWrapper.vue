@@ -14,7 +14,7 @@
       </q-page-container>
 
       <q-footer :elevated="elevatedFooter" class="bg-grey row justify-center">
-        <q-toolbar :style="sectionStyle('footer')">
+        <q-toolbar :style="sectionStyle('footer')" class="q-pa-none">
           <slot name="pageFooter" />
         </q-toolbar>
       </q-footer>

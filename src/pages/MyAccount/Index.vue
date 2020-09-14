@@ -44,6 +44,15 @@
         <q-separator></q-separator>
       </div>
     </template>
+    <template #pageFooter>
+      <q-btn
+        class="full-width notosanskr-regular btn-footer btn-ready"
+        style="font-size:17px;"
+        :rounded="false"
+        flat
+        :label="'저장'"
+      />
+    </template>
   </default-wrapper>
 </template>
 
@@ -113,5 +122,16 @@ export default {
   i {
     margin-right: 5px;
   }
+}
+.btn-footer {
+  color: #919698;
+  background: #e8eaeb;
+  border-radius: 0;
+  height: 60px;
+}
+
+.btn-ready {
+  color: #ffffff;
+  background: #46b3fc;
 }
 </style>
