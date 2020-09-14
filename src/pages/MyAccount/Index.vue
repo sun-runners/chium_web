@@ -34,7 +34,14 @@
             </div>
           </div>
           <div class="q-pr-sm">
-            <button class="change-btn">변경</button>
+            <q-btn
+              :to="{ name: 'account_phone_change' }"
+              flat
+              class="change-btn"
+              padding="4px 12px"
+              text-color="black"
+              label="변경"
+            />
             <button class="verification-btn">
               <q-icon name="done" class="text-dark" size="16px"></q-icon
               >인증완료
@@ -96,7 +103,6 @@ export default {
 }
 
 .change-btn {
-  padding: 4px 12px;
   background: #f4f4f6;
   border: 1px solid #d6d6d6;
   box-sizing: border-box;
@@ -106,9 +112,9 @@ export default {
   text-align: center;
   letter-spacing: -0.65px;
   color: #151515;
-  margin-right: 8px;
 }
 .verification-btn {
+  margin-left: 8px;
   padding: 4px 8px;
   border: 1px solid #d6d6d6;
   background: white;
