@@ -13,7 +13,11 @@
         </div>
       </q-page-container>
 
-      <q-footer :elevated="elevatedFooter" class="bg-grey row justify-center">
+      <q-footer
+        :elevated="elevatedFooter"
+        class="bg-grey row justify-center"
+        v-if="hasFooter()"
+      >
         <q-toolbar :style="sectionStyle('footer')" class="q-pa-none">
           <slot name="pageFooter" />
         </q-toolbar>
@@ -36,6 +40,11 @@ export default {
       bgBody: "",
       bgFooter: "",
     },
+  },
+  mounted() {
+    console.log("mounted");
+    console.log(this.$slots.pageFooter);
+    console.log(this.$slots.pageHeader);
   },
   methods: {
     sectionStyle(section) {
@@ -61,8 +70,15 @@ export default {
           break;
       }
     },
+    hasFooter() {
+      return this.$slots.pageHeader;
+    },
+    hasFooter() {
+      return this.$slots.pageFooter;
+    },
   },
   created() {
+    console.log("created");
     console.log(this.$slots.pageFooter);
     console.log(this.$slots.pageHeader);
   },
