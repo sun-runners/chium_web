@@ -38,7 +38,8 @@ const routes = [
       { path: 'complete-estimate', component: () => import('pages/RequestEstimate/CompleteEstimate/Index'), name: 'complete_estimate' }
     ]
   },
-  { path: '/my-account', component: () => import('pages/MyAccount/Index'), name: 'my_account' }
+  { path: '/my-account', component: () => import('pages/MyAccount/Index'), name: 'my_account' },
+  { path: '/my-account/phone-change', component: () => import('pages/MyAccount/CellPhoneChange/Index'), name: 'account_phone_change' }
 ]
 
 // Always leave this as last one
