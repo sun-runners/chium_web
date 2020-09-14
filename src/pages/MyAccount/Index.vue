@@ -33,7 +33,7 @@
               010-1234-5678
             </div>
           </div>
-          <div>
+          <div class="q-pr-sm">
             <button class="change-btn">변경</button>
             <button class="verification-btn">
               <q-icon name="done" class="text-dark" size="16px"></q-icon
