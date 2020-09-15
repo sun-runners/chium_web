@@ -39,7 +39,8 @@ const routes = [
     ]
   },
   { path: '/my-account', component: () => import('pages/MyAccount/Index'), name: 'my_account' },
-  { path: '/my-account/phone-change', component: () => import('pages/MyAccount/CellPhoneChange/Index'), name: 'account_phone_change' }
+  { path: '/my-account/phone-change', component: () => import('pages/MyAccount/CellPhoneChange/Index'), name: 'account_phone_change' },
+  { path: '/interested-company', component: () => import('pages/InterestedCompany/Index'), name: 'interested_company' },
 ]
 
 // Always leave this as last one
