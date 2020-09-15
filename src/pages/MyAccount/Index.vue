@@ -1,5 +1,5 @@
 <template>
-  <default-wrapper :styleSlots="styleWrapperSlots">
+  <default-template :styleSlots="styleWrapperSlots">
     <template #pageHeader>
       <nav-header-info name="내 계정" class="full-width" backTo="my_page" />
     </template>
@@ -60,15 +60,15 @@
         :label="'저장'"
       />
     </template>
-  </default-wrapper>
+  </default-template>
 </template>
 
 <script>
-import DefaultWrapper from "src/components/PageWrappers/DefaultWrapper";
+import DefaultTemplate from "src/components/TemplateFrames/DefaultTemplate";
 import NavHeaderInfo from "src/components/Utility/NavHeaderInfo";
 export default {
   components: {
-    "default-wrapper": DefaultWrapper,
+    "default-template": DefaultTemplate,
     "nav-header-info": NavHeaderInfo,
   },
   data() {

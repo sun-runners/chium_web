@@ -28,7 +28,7 @@
 
 <script>
 export default {
-  name: "DefaultWrapper",
+  name: "DefaultTemplate",
   data() {
     return {};
   },
