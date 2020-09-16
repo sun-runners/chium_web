@@ -4,7 +4,7 @@
       <nav-header-info name="내 계정" class="full-width" backTo="my_page" />
     </template>
 
-    <template #pageContent>
+    <template #pageBody>
       <div style="padding-left: 16px;">
         <!-- Account Info Section -->
         <div class="account notosanskr-regular">

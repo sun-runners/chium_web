@@ -9,7 +9,7 @@
 
       <q-page-container class="row justify-center" style="min-height: 100vh">
         <div :style="sectionStyle('body')">
-          <slot name="pageContent"></slot>
+          <slot name="pageBody"></slot>
         </div>
       </q-page-container>
 

@@ -8,7 +8,7 @@
       />
     </template>
 
-    <template #pageContent>
+    <template #pageBody>
       <div style="padding: 30px 16px;">
         <q-select
           outlined
