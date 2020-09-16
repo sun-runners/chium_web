@@ -18,7 +18,10 @@
         <q-separator color="grey-4" size="1px" />
       </div>
       <div class="row items-center justify-evenly">
-        <q-item-section class="top-tabs column items-center">
+        <q-item-section
+          class="top-tabs column items-center"
+          @click="$router.push({ name: 'interested_company' })"
+        >
           <q-img
             :src="require('src/assets/interested_companies.svg')"
             :ratio="1"
