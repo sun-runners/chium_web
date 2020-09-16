@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-grey row justify-center">
+  <div class="bg-white row justify-center">
     <q-layout view="hHh lpR fFf" class="justify-center">
-      <q-header :elevated="elevatedHeader" class="bg-grey row justify-center">
+      <q-header :elevated="elevatedHeader" class="bg-white row justify-center">
         <q-toolbar :style="sectionStyle('header')">
           <slot name="pageHeader" />
         </q-toolbar>
@@ -15,7 +15,7 @@
 
       <q-footer
         :elevated="elevatedFooter"
-        class="bg-grey row justify-center"
+        class="bg-white row justify-center"
         v-if="hasFooter()"
       >
         <q-toolbar :style="sectionStyle('footer')" class="q-pa-none">
