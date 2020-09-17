@@ -41,11 +41,11 @@ export default {
       bgFooter: "",
     },
   },
-  mounted() {
-    console.log("mounted");
-    console.log(this.$slots.pageFooter);
-    console.log(this.$slots.pageHeader);
-  },
+  // mounted() {
+  //   console.log("mounted");
+  //   console.log(this.$slots.pageFooter);
+  //   console.log(this.$slots.pageHeader);
+  // },
   methods: {
     sectionStyle(section) {
       return {
@@ -76,11 +76,6 @@ export default {
     hasFooter() {
       return this.$slots.pageFooter;
     },
-  },
-  created() {
-    console.log("created");
-    console.log(this.$slots.pageFooter);
-    console.log(this.$slots.pageHeader);
   },
 };
 </script>
