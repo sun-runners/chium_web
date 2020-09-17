@@ -22,14 +22,25 @@
           <q-separator inset />
           <!-- company info -->
           <q-card-section>
-            s
+            <div class="info-section ">
+              <div class="info-item">
+                <span class="q-mr-sm">경력</span>11년
+                <!-- {{ company.career }} -->
+              </div>
+              <div class="info-item">
+                <span class="q-mr-sm">매칭</span>1,102회
+                <!-- {{ company.matching }} -->
+              </div>
+              <div class="info-item text-secondary">
+                <span class="q-mr-sm">평점</span>4.0
+                <!-- {{ company.rating }} -->
+              </div>
+            </div>
           </q-card-section>
 
           <q-separator inset />
           <!-- company Q & A -->
-          <q-card-section>
-            s
-          </q-card-section>
+          <q-card-section> </q-card-section>
 
           <q-separator inset />
           <!-- buttons section -->
@@ -84,6 +95,20 @@ export default {
     text-align: center;
     letter-spacing: -0.65px;
     color: #2cb3ff;
+  }
+}
+.info-item {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 20px;
+  padding-bottom: 8px;
+  color: #151515;
+  span {
+    font-weight: normal;
+    line-height: 20px;
+    letter-spacing: -0.65px;
+    color: #767676;
   }
 }
 </style>
