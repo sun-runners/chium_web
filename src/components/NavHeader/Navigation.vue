@@ -29,7 +29,7 @@
                   align="justify"
                   class="q-mt-sm"
               >
-                  <q-tab 
+                  <q-route-tab 
                     class="text-secondary q-pa-sm"  
                     v-for="tab in tabs" 
                     :key="tab.name" 
@@ -51,9 +51,7 @@ export default {
   props: ['currentRoute', 'widthMax', 'headingName'],
   // inject: ['heading_name'],
   data(){
-    return {
-      storeTab: 'mails'
-    }
+    return {}
   },
   mounted() {
     console.log(this);
