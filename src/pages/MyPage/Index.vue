@@ -28,7 +28,10 @@
           />
         </q-item-section>
 
-        <q-item-section class="top-tabs column items-center">
+        <q-item-section
+          class="top-tabs column items-center"
+          @click="$router.push({ name: 'company_inquire' })"
+        >
           <q-img :src="require('src/assets/company_inquiry.svg')" :ratio="1" />
         </q-item-section>
 
