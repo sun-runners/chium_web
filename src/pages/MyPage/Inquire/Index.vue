@@ -40,7 +40,22 @@
 
           <q-separator inset />
           <!-- company Q & A -->
-          <q-card-section> </q-card-section>
+          <q-card-section class="row items-center">
+            <div
+              class="row justify-center items-center bg-dark text-white"
+              style="height: 36px; width: 36px; border-radius: 50%;0"
+            >
+              Q
+            </div>
+            <div class="question-section">
+              <div class="question-message">
+                100평이상 공간 철거비용 문의합니다.
+              </div>
+              <div class="question-date">
+                2020-04-02
+              </div>
+            </div>
+          </q-card-section>
 
           <q-separator inset />
           <!-- buttons section -->
@@ -108,6 +123,20 @@ export default {
     font-weight: normal;
     line-height: 20px;
     letter-spacing: -0.65px;
+    color: #767676;
+  }
+}
+.question-section {
+  padding-left: 10px;
+  .question-message {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.65px;
+    color: #5a5a5a;
+  }
+  .question-date {
+    font-size: 12px;
+    line-height: 18px;
     color: #767676;
   }
 }
