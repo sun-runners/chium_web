@@ -36,9 +36,14 @@ export default {
     elevatedHeader: Boolean,
     elevatedFooter: Boolean,
     styleSlots: {
-      bgHeader: "",
-      bgBody: "",
-      bgFooter: "",
+      type: Object,
+      default: function() {
+        return {
+          bgHeader: "",
+          bgBody: "",
+          bgFooter: "",
+        };
+      },
     },
   },
   // mounted() {
