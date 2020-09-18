@@ -35,7 +35,10 @@
           <q-img :src="require('src/assets/company_inquiry.svg')" :ratio="1" />
         </q-item-section>
 
-        <q-item-section class="top-tabs column items-center">
+        <q-item-section
+          class="top-tabs column items-center"
+          @click="$router.push({ name: 'work_schedule' })"
+        >
           <q-img :src="require('src/assets/work_schedule.svg')" :ratio="1" />
         </q-item-section>
       </div>

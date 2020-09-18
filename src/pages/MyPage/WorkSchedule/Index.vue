@@ -22,7 +22,13 @@ export default {
     "nav-header-info": NavHeaderInfo,
   },
   data() {
-    return {};
+    return {
+      styleSlots: {
+        bgHeader: "white",
+        bgBody: "#F3F3F3",
+        bgFooter: "",
+      },
+    };
   },
 };
 </script>
