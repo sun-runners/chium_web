@@ -27,21 +27,21 @@
                 </q-icon>
               </q-card-section>
               <q-separator inset />
-              <q-card-section class="info-item row notosanskr-medium">
+              <q-card-section class="info-item row notosanskr-regular">
                 <span>업체</span>
                 <div class="col" style="margin-left:20px">
                   전국 불도저
                 </div>
               </q-card-section>
               <q-separator inset />
-              <q-card-section class="info-item row notosanskr-medium">
+              <q-card-section class="info-item row notosanskr-regular">
                 <span>주소</span>
                 <div class="col" style="margin-left:20px">
                   경기도 치움시 철거면 폐기 4길 16-38 폐기 타운하우스
                 </div>
               </q-card-section>
               <q-separator inset />
-              <q-card-section class="info-item row notosanskr-medium">
+              <q-card-section class="info-item row notosanskr-regular">
                 <span>작업</span>
                 <div class="col text-secondary" style="margin-left:20px">
                   사업장 폐기물

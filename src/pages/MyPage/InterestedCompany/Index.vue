@@ -25,7 +25,9 @@
               style="max-width: 60px; height: 80px; margin-right: 14px;"
             >
             </q-img>
-            <div class="col row justify-between items-center notosanskr-medium">
+            <div
+              class="col row justify-between items-center notosanskr-regular"
+            >
               <div class="info-section ">
                 <div class="info-item">
                   <span class="q-mr-sm">경력</span>{{ company.career }}

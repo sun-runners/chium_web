@@ -16,7 +16,7 @@
         >
           <!-- company Name, State -->
           <q-card-section
-            class="row justify-between items-center notosanskr-medium q-py-none"
+            class="row justify-between items-center notosanskr-regular q-py-none"
           >
             <div class="company-name">
               {{ inquiry.name }}
@@ -75,7 +75,7 @@
               A
             </div>
             <div class="col ">
-              <div class="answer-message notosanskr-medium">
+              <div class="answer-message notosanskr-regular">
                 {{ inquiry.answer }}
               </div>
             </div>
@@ -83,7 +83,7 @@
 
           <q-separator inset />
           <!-- buttons section -->
-          <q-card-section class="row notosanskr-medium">
+          <q-card-section class="row notosanskr-regular">
             <button class="col btn-modify" v-if="!inquiry.answer">
               수정하기
             </button>
