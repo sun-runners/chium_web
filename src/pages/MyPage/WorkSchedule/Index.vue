@@ -13,6 +13,20 @@
               <img src="~assets/timeline_ongoing.svg" />
             </q-icon>
             <q-card>
+              <q-card-section class="row justify-between items-center">
+                <div>
+                  <div class="schedule-date">
+                    08/24 - 12:00 PM
+                  </div>
+                  <div class="schedule-work">
+                    작업예정
+                  </div>
+                </div>
+                <q-icon class="text-dark" size="24px">
+                  <img src="~assets/arrow_right.svg" />
+                </q-icon>
+              </q-card-section>
+              <q-separator inset />
               <q-card-section>
                 {{ body }}
               </q-card-section>
@@ -53,7 +67,7 @@ export default {
 <style lang="scss" scoped>
 .vertical-line {
   // background: rgba(121, 255, 128, 0.486);
-  min-height: 100vh;
+  min-height: 90vh;
   width: 46px;
   .vl {
     border-left: 1px dashed #959595;
@@ -68,5 +82,18 @@ export default {
   margin-left: -30px;
   padding-right: 16px;
   margin-bottom: 16px;
+  .schedule-date {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    color: #151515;
+  }
+  .schedule-work {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.7px;
+    color: #959595;
+  }
 }
 </style>
