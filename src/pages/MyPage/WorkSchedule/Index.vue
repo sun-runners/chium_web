@@ -12,23 +12,40 @@
             <q-icon class="text-dark" size="20px" style="margin-right: 10px;">
               <img src="~assets/timeline_ongoing.svg" />
             </q-icon>
-            <q-card>
+            <q-card flat bordered>
               <q-card-section class="row justify-between items-center">
                 <div>
                   <div class="schedule-date">
                     08/24 - 12:00 PM
                   </div>
-                  <div class="schedule-work">
+                  <div class="schedule-work notosanskr-regular">
                     작업예정
                   </div>
                 </div>
-                <q-icon class="text-dark" size="24px">
+                <q-icon class="text-dark" size="20px">
                   <img src="~assets/arrow_right.svg" />
                 </q-icon>
               </q-card-section>
               <q-separator inset />
-              <q-card-section>
-                {{ body }}
+              <q-card-section class="info-item row notosanskr-medium">
+                <span>업체</span>
+                <div class="col" style="margin-left:20px">
+                  전국 불도저
+                </div>
+              </q-card-section>
+              <q-separator inset />
+              <q-card-section class="info-item row notosanskr-medium">
+                <span>주소</span>
+                <div class="col" style="margin-left:20px">
+                  경기도 치움시 철거면 폐기 4길 16-38 폐기 타운하우스
+                </div>
+              </q-card-section>
+              <q-separator inset />
+              <q-card-section class="info-item row notosanskr-medium">
+                <span>작업</span>
+                <div class="col text-secondary" style="margin-left:20px">
+                  사업장 폐기물
+                </div>
               </q-card-section>
             </q-card>
           </div>
@@ -94,6 +111,20 @@ export default {
     line-height: 22px;
     letter-spacing: -0.7px;
     color: #959595;
+  }
+  .info-item {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.65px;
+    color: #151515;
+    span {
+      font-size: 13px;
+      line-height: 20px;
+      letter-spacing: -0.65px;
+      color: #767676;
+    }
   }
 }
 </style>
