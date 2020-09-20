@@ -21,7 +21,7 @@
         <div class="content-container col">
           <div
             class="schedule"
-            v-for="(schedule, index) in schedules"
+            v-for="(schedule, index) in mySchedules"
             :key="index"
           >
             <q-icon class="text-dark" size="20px" style="margin-right: 10px;">
@@ -153,6 +153,23 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    mySchedules() {
+      switch (this.filterTabs) {
+        case "scheduled_work":
+          return this.schedules.filter((item) => item.status == "ongoing");
+          break;
+        case "work_complete":
+          return this.schedules.filter((item) => item.status == "complete");
+          break;
+        case "canceled_work":
+          return this.schedules.filter((item) => item.status == "cancel");
+          break;
+        default:
+          return this.schedules;
+      }
+    },
   },
 };
 </script>
