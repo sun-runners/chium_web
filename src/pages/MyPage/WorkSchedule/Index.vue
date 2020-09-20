@@ -2,6 +2,17 @@
   <default-template :styleSlots="styleSlots">
     <template #pageHeader>
       <nav-header-info name="작업일정" class="full-width" backTo="my_page" />
+      <q-tabs
+        v-model="filterTabs"
+        narrow-indicator
+        class="text-black notosanskr-regular"
+        active-color="secondary"
+      >
+        <q-tab name="view_all" class="filterTab" label="모두보기" />
+        <q-tab name="scheduled_work" class="filterTab" label="작업예정" />
+        <q-tab name="work_complete" class="filterTab" label="작업완료" />
+        <q-tab name="canceled_work" class="filterTab" label="취소일정" />
+      </q-tabs>
     </template>
 
     <template #pageBody>
@@ -67,9 +78,6 @@
               </q-card-section>
             </q-card>
           </div>
-          <div class="bg-grey-13">
-            {{ body }}
-          </div>
         </div>
       </div>
     </template>
@@ -92,6 +100,7 @@ export default {
         bgBody: "#F3F3F3",
         bgFooter: "",
       },
+      filterTabs: "view_all",
       schedules: [
         {
           date: "08/24 - 12:00 PM",
@@ -149,6 +158,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.filterTab {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 44px;
+  text-align: center;
+  letter-spacing: -0.7px;
+}
 .vertical-line {
   // background: rgba(121, 255, 128, 0.486);
   min-height: 90vh;
