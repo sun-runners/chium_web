@@ -134,7 +134,10 @@
     <div class="bg-white q-mt-md q-py-none">
       <q-list separator inset size="3px" class="notosanskr-medium">
         <q-item style="height: 60px;" clickable v-ripple>
-          <q-item-section class="list-item-routes">
+          <q-item-section
+            class="list-item-routes"
+            @click="$router.push({ name: 'notice' })"
+          >
             <div>
               공사 후기 작성
               <q-icon class="text-dark q-ml-sm" size="14px">

@@ -43,7 +43,7 @@ const routes = [
   { path: '/interested-company', component: () => import('pages/MyPage/InterestedCompany/Index'), name: 'interested_company' },
   { path: '/company-inquire', component: () => import('pages/MyPage/Inquire/Index'), name: 'company_inquire' },
   { path: '/work-schedule', component: () => import('pages/MyPage/WorkSchedule/Index'), name: 'work_schedule' },
- 
+  { path: '/notice', component: () => import('pages/MyPage/Notice/Index'), name: 'notice' },
 ]
 
 // Always leave this as last one
