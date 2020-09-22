@@ -17,7 +17,7 @@
 
     <template #pageBody>
       <div class="q-py-sm row">
-        <div class="vertical-line"><div class="vl"></div></div>
+        <div class="vertical-line"></div>
         <div class="content-container col">
           <div
             class="schedule"
@@ -38,7 +38,7 @@
                 v-if="schedule.status == 'complete'"
               />
             </q-icon>
-            <q-card flat bordered>
+            <q-card class="full-width" flat bordered>
               <q-card-section class="row justify-between items-center">
                 <div>
                   <div
@@ -183,20 +183,17 @@ export default {
   letter-spacing: -0.7px;
 }
 .vertical-line {
-  // background: rgba(121, 255, 128, 0.486);
   min-height: 90vh;
-  width: 46px;
-  .vl {
-    border-left: 1px dashed #959595;
-    min-height: 100%;
-    margin-left: 23px;
-  }
+  border-left: 1px dashed #959595;
+  min-height: 100%;
+  margin-left: 23px;
+  margin-right: 0;
+  padding: 0;
 }
 .schedule {
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-left: -32px;
+  margin-left: -10px;
   padding-right: 16px;
   margin-bottom: 16px;
   .schedule-date {

@@ -2,7 +2,7 @@
   <div class="bg-white row justify-center">
     <q-layout view="hHh lpR fFf" class="justify-center">
       <q-header :elevated="elevatedHeader" class="bg-white">
-        <q-toolbar class="q-pa-none">
+        <q-toolbar class="q-pa-none row justify-center">
           <div :style="sectionStyle('header')">
             <slot name="pageHeader" />
           </div>
