@@ -44,6 +44,13 @@ const routes = [
   { path: '/company-inquire', component: () => import('pages/MyPage/Inquire/Index'), name: 'company_inquire' },
   { path: '/work-schedule', component: () => import('pages/MyPage/WorkSchedule/Index'), name: 'work_schedule' },
   { path: '/notice', component: () => import('pages/MyPage/Notice/Index'), name: 'notice' },
+  { 
+    path: '/expert-signup', redirect: 'expert-signup/terms-condition', 
+    component: () => import('layouts/ExpertSignup'),
+    children: [
+      { path: 'terms-condition', component: () => import('pages/ExpertSignup/TermsCondition/Index'), name: 'terms_condition' },
+    ]
+  },
 ]
 
 // Always leave this as last one
