@@ -8,7 +8,7 @@
         :to="{ name: backTo }"
         v-if="backTo"
         class="row items-center"
-        style="text-decoration:none"
+        style="text-decoration:none; width: 56px;"
       >
         <q-icon class="text-dark" name="keyboard_backspace" size="24px" />
       </router-link>
