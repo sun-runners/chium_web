@@ -6,7 +6,8 @@
 
     <template #pageBody>
       <div>
-        <q-list bordered class="rounded-borders">
+        <q-list class="rounded-borders" v-for="(notice, i) in notices" :key="i">
+          <q-separator></q-separator>
           <q-expansion-item
             expand-icon-toggle
             expand-separator
@@ -17,13 +18,20 @@
             <template #header>
               <div class="column q-py-sm full-width  notosanskr-regular">
                 <div class="state-badge">
-                  <div class="state-text">알림</div>
+                  <div class="state-text">{{ notice.state }}</div>
                 </div>
-                <div class="content-message">
-                  개인 정보처리 방침 일부 변경 안내
+                <div class="notice-title">
+                  {{ notice.title }}
+                  <q-icon
+                    class="text-dark q-ml-sm"
+                    size="14px"
+                    v-if="notice.new"
+                  >
+                    <img src="~assets/new.svg" />
+                  </q-icon>
                 </div>
                 <div class="date-area">
-                  2020-08-20
+                  {{ notice.date }}
                 </div>
               </div>
             </template>
@@ -52,7 +60,45 @@ export default {
     "nav-header-info": NavHeaderInfo,
   },
   data() {
-    return {};
+    return {
+      notices: [
+        {
+          title: "개인 정보처리 방침 일부 변경 안내",
+          state: "알림",
+          date: "2020-10-20",
+          new: true,
+          content: "...",
+        },
+        {
+          title: "앱 접속 장애 사과 안내",
+          state: "알림",
+          date: "2020-08-20",
+          new: false,
+          content: "...",
+        },
+        {
+          title: "치움 무더위 여름 이벤트",
+          state: "이벤트",
+          date: "2020-07-09",
+          new: false,
+          content: "...",
+        },
+        {
+          title: "중복 맞이 삼계탕보다 더 더 좋은1 .1.2버전 업데이트 안내",
+          state: "업데이트",
+          date: "2020-06-30",
+          new: false,
+          content: "...",
+        },
+        {
+          title: "이번에도 좋은 기능 왕창 안고 찾아온 1.1.1버전 업데이트 안내",
+          state: "이벤트",
+          date: "2020-06-20",
+          new: false,
+          content: "...",
+        },
+      ],
+    };
   },
 };
 </script>
@@ -72,7 +118,7 @@ export default {
     color: #767676;
   }
 }
-.content-message {
+.notice-title {
   font-size: 15px;
   line-height: 24px;
   letter-spacing: -0.75px;
