@@ -9,8 +9,9 @@
           </div>
           <!-- check sections starts here -->
           <div class="notosanskr-medium row items-center" style="height: 68px;">
-            <q-icon class="text-dark" size="24px">
-              <img src="~assets/circle_check_grey.svg" />
+            <q-icon class="text-dark" size="24px" @click="agreeAll = !agreeAll">
+              <img src="~assets/circle_check_blue.svg" v-if="agreeAll" />
+              <img src="~assets/circle_check_grey.svg" v-else />
             </q-icon>
             <div class="item-text">
               전체동의
@@ -22,8 +23,16 @@
             style="height: 64px;"
           >
             <div class="row items-center">
-              <q-icon class="text-dark" size="24px">
-                <img src="~assets/circle_check_grey.svg" />
+              <q-icon
+                class="text-dark"
+                size="24px"
+                @click="agreements.termsService = !agreements.termsService"
+              >
+                <img
+                  src="~assets/circle_check_blue.svg"
+                  v-if="agreements.termsService"
+                />
+                <img src="~assets/circle_check_grey.svg" v-else />
               </q-icon>
               <div class="item-text required">
                 [필수]서비스 이용약관
@@ -42,8 +51,16 @@
             style="height: 64px;"
           >
             <div class="row items-center">
-              <q-icon class="text-dark" size="24px">
-                <img src="~assets/circle_check_grey.svg" />
+              <q-icon
+                class="text-dark"
+                size="24px"
+                @click="agreements.privacyPolicy = !agreements.privacyPolicy"
+              >
+                <img
+                  src="~assets/circle_check_blue.svg"
+                  v-if="agreements.privacyPolicy"
+                />
+                <img src="~assets/circle_check_grey.svg" v-else />
               </q-icon>
               <div class="item-text required">
                 [필수] 개인정보 처리방침
@@ -62,8 +79,9 @@
     </template>
     <template #pageFooter>
       <q-btn
-        class="full-width notosanskr-regular btn-footer btn-ready"
+        class="full-width notosanskr-regular btn-footer"
         style="font-size:17px;"
+        :class="{ 'btn-ready': agreeAll }"
         :rounded="false"
         flat
         label="다음"
@@ -82,7 +100,44 @@ export default {
     "nav-header-info": NavHeaderInfo,
   },
   data() {
-    return {};
+    return {
+      agreeAll: false,
+      agreements: {
+        termsService: false,
+        privacyPolicy: false,
+      },
+    };
+  },
+  methods: {
+    checkAll() {
+      this.agreeAll = !this.agreeAll;
+    },
+  },
+  watch: {
+    agreements: {
+      handler: function(value) {
+        value.termsService && value.privacyPolicy
+          ? (this.agreeAll = true)
+          : (this.agreeAll = false);
+      },
+      deep: true,
+      immediate: true,
+    },
+    agreeAll(value, from) {
+      if (value) {
+        this.agreements.termsService = true;
+        this.agreements.privacyPolicy = true;
+      }
+      if (
+        from &&
+        this.agreements.termsService &&
+        this.agreements.privacyPolicy
+      ) {
+        this.agreements.termsService = false;
+        this.agreements.privacyPolicy = false;
+      }
+      console.log(from, value);
+    },
   },
 };
 </script>
