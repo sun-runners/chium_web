@@ -50,12 +50,8 @@ export default {
       totalSteps: 6,
       activeStep: 0,
       activeColor: "",
-      btnLabel: "다음",
-      isBtnReady: false,
-      isBtnHidden: false,
       redirectTo: "",
       returnTo: "",
-      requestComplete: false,
     };
   },
   computed: {
@@ -76,39 +72,19 @@ export default {
     },
   },
   methods: {
-    setBtnReady(val) {
-      this.isBtnReady = val;
-      if (val) {
-        this.isBtnHidden = false;
-      } else {
-        this.setProcessIndicator();
-      }
-    },
     setProcessIndicator() {
       const found_route = this.stepsList.find(
         (step) => step.routeName == this.$route.name
       );
       if (found_route) {
-        this.isBtnReady = found_route.btnReady;
         this.activeStep = found_route.stepNum;
         this.activeColor = found_route.indicatorColor;
         this.returnTo = found_route.returnTo;
         if (found_route.redirect) {
           this.redirectTo = found_route.redirect;
-          this.requestComplete = false;
         } else {
           this.redirectTo = "";
-          this.requestComplete = true;
         }
-        this.isBtnHidden = found_route.hideBtnFooter ? true : false;
-      }
-    },
-    myBtnFunction() {
-      if (this.requestComplete) {
-        // Reqest Estimate Completion
-        console.log("request complete");
-      } else {
-        this.$router.push({ name: this.redirectTo });
       }
     },
   },
