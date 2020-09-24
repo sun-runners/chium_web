@@ -60,6 +60,15 @@
         </div>
       </div>
     </template>
+    <template #pageFooter>
+      <q-btn
+        class="full-width notosanskr-regular btn-footer btn-ready"
+        style="font-size:17px;"
+        :rounded="false"
+        flat
+        label="다음"
+      />
+    </template>
   </default-template>
 </template>
 
@@ -122,5 +131,16 @@ export default {
   background: white;
   border: 1px solid #d9d9d9;
   border-radius: 5px;
+}
+.btn-footer {
+  color: #919698;
+  background: #e8eaeb;
+  border-radius: 0;
+  height: 60px;
+}
+
+.btn-ready {
+  color: #ffffff;
+  background: #46b3fc;
 }
 </style>
