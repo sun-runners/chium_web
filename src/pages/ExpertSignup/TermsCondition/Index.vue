@@ -2,7 +2,7 @@
   <default-template :styleSlots="styleSlots">
     <template #pageBody>
       <div class="bg-white">
-        <div class="q-pa-sm">
+        <div class="q-pt-sm q-px-md">
           <div class="title notosanskr-regular">약관동의</div>
           <div class="sub-title notosanskr-regular q-pt-xs">
             전문 업체로 가입하기 위해 아래의 약관에 <br />동의해주세요.
@@ -149,6 +149,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+img {
+  cursor: pointer;
+}
 .title {
   font-size: 27px;
   line-height: 40px;
