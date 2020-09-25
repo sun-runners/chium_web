@@ -1,7 +1,11 @@
 <template>
   <div class="bg-white row justify-center">
     <q-layout view="hHh lpR fFf" class="justify-center">
-      <q-header :elevated="elevatedHeader" class="bg-white" v-if="hasHeader()">
+      <q-header
+        :elevated="elevatedHeader"
+        :style="{ 'background-color': styleSlots.bgHeader }"
+        v-if="hasHeader()"
+      >
         <q-toolbar class="q-pa-none row justify-center">
           <div :style="sectionStyle('header')">
             <slot name="pageHeader" />
@@ -9,7 +13,11 @@
         </q-toolbar>
       </q-header>
 
-      <q-page-container class="row justify-center" style="min-height: 100vh">
+      <q-page-container
+        class="row justify-center"
+        style="min-height: 100vh"
+        :style="{ 'background-color': styleSlots.bgBody }"
+      >
         <div :style="sectionStyle('body')">
           <slot name="pageBody"></slot>
         </div>
@@ -17,7 +25,8 @@
 
       <q-footer
         :elevated="elevatedFooter"
-        class="bg-white row justify-center"
+        class="row justify-center"
+        :style="{ 'background-color': styleSlots.bgFooter }"
         v-if="hasFooter()"
       >
         <q-toolbar :style="sectionStyle('footer')" class="q-pa-none">

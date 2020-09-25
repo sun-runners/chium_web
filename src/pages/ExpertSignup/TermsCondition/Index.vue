@@ -1,5 +1,5 @@
 <template>
-  <default-template>
+  <default-template :styleSlots="styleSlots">
     <template #pageBody>
       <div class="bg-white">
         <div class="q-pa-sm">
@@ -101,6 +101,10 @@ export default {
   },
   data() {
     return {
+      styleSlots: {
+        bgBody: "white",
+        bgFooter: "white",
+      },
       agreeAll: false,
       agreements: {
         termsService: false,
