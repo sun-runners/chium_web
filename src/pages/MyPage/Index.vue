@@ -279,7 +279,6 @@ export default {
   padding: 0 16px;
 
   .user-greet {
-    font-style: normal;
     font-weight: 500;
     font-size: 22px;
     line-height: 36px;
@@ -299,8 +298,6 @@ export default {
   padding: 20px 16px;
 
   .text-label {
-    font-style: normal;
-    font-weight: normal;
     font-size: 13px;
     line-height: 20px;
     letter-spacing: -0.65px;
@@ -308,8 +305,6 @@ export default {
   }
 
   .address-text {
-    font-style: normal;
-    font-weight: normal;
     font-size: 16px;
     line-height: 24px;
     letter-spacing: -0.8px;
@@ -320,11 +315,8 @@ export default {
 
 .my-phone {
   padding: 20px 16px;
-
   .phone-number {
     font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
     font-size: 16px;
     line-height: 24px;
     color: #151515;
@@ -374,19 +366,14 @@ export default {
   }
 
   .info-items {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.65px;
     padding: 0 0 15px;
-
     .label-text {
-      font-size: 13px;
-      line-height: 20px;
-      letter-spacing: -0.65px;
       color: #767676;
     }
-
     .info-text {
-      font-size: 13px;
-      line-height: 20px;
-      letter-spacing: -0.65px;
       color: #151515;
     }
   }
@@ -408,7 +395,6 @@ export default {
 .service-number {
   font-family: Roboto;
   font-weight: 500;
-  font-style: normal;
   font-size: 16px;
   line-height: 24px;
   color: #151515;
@@ -444,7 +430,6 @@ export default {
     }
     .sub-header {
       width: 224px;
-      font-weight: normal;
       font-size: 16px;
       line-height: 24px;
       text-align: center;
