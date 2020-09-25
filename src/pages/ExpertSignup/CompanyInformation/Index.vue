@@ -2,8 +2,16 @@
   <default-template :styleSlots="styleSlots">
     <template #pageBody>
       <div class="bg-white">
-        <div class="q-pa-sm">
-          company Basic Information
+        <div class="q-px-md q-pt-sm">
+          <div class="title notosanskr-regular">업체 기본정보</div>
+          <div class="name-section notosanskr-regular">
+            <div class="name-text q-pb-sm">업체 명</div>
+            <input
+              type="text"
+              class="name-field full-width q-pa-sm"
+              placeholder="업체명을 입력해주세요."
+            />
+          </div>
         </div>
       </div>
     </template>
@@ -40,6 +48,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.title {
+  font-size: 27px;
+  line-height: 40px;
+  letter-spacing: -1.35px;
+  color: #151515;
+}
+.name-section {
+  margin-top: 36px;
+  .name-text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.7px;
+    color: #151515;
+  }
+  .name-field {
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 8px;
+    height: 60px;
+  }
+}
+
 .btn-footer {
   color: #919698;
   background: #e8eaeb;
