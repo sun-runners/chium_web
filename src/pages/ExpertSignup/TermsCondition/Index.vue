@@ -83,8 +83,10 @@
         style="font-size:17px;"
         :class="{ 'btn-ready': agreeAll }"
         :rounded="false"
+        :disable="!agreeAll"
         flat
         label="다음"
+        @click="$router.push({ name: 'company_information' })"
       />
     </template>
   </default-template>

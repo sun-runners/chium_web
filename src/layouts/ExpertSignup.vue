@@ -72,7 +72,7 @@ export default {
       totalSteps: 6,
       activeStep: 0,
       activeColor: "",
-      redirectTo: "",
+
       returnTo: "",
       closedTo: "",
     };
@@ -87,9 +87,13 @@ export default {
           routeName: "terms_condition",
           indicatorColor: "#55E2EB",
           stepNum: 1,
-          btnReady: false,
-          redirect: "floor_space",
           returnTo: "my_page",
+        },
+        {
+          routeName: "company_information",
+          indicatorColor: "#2CB3FF",
+          stepNum: 2,
+          returnTo: "terms_condition",
         },
       ];
     },
@@ -103,17 +107,11 @@ export default {
         this.activeStep = found_route.stepNum;
         this.activeColor = found_route.indicatorColor;
         this.returnTo = found_route.returnTo;
-        if (found_route.redirect) {
-          this.redirectTo = found_route.redirect;
-        } else {
-          this.redirectTo = "";
-        }
       }
     },
   },
   watch: {
     $route(to, from) {
-      this.isBtnReady = false;
       this.setProcessIndicator();
     },
   },

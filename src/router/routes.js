@@ -49,6 +49,7 @@ const routes = [
     component: () => import('layouts/ExpertSignup'),
     children: [
       { path: 'terms-condition', component: () => import('pages/ExpertSignup/TermsCondition/Index'), name: 'terms_condition' },
+      { path: 'company-information', component: () => import('pages/ExpertSignup/CompanyInformation/Index'), name: 'company_information' },
     ]
   },
 ]
