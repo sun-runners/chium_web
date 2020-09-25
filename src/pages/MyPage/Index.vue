@@ -150,7 +150,9 @@
           >
         </q-item>
         <q-item style="height: 60px;" clickable v-ripple>
-          <q-item-section class="list-item-routes"
+          <q-item-section
+            class="list-item-routes"
+            @click="$router.push({ path: '/expert-signup' })"
             >철거˙폐기물 전문가로 가입
           </q-item-section>
           <span class="material-icons" style="font-size: 26px;"
