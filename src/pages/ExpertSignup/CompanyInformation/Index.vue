@@ -69,7 +69,7 @@
 import DefaultTemplate from "src/components/TemplateFrames/DefaultTemplate";
 import NavHeaderInfo from "src/components/Utility/NavHeaderInfo";
 export default {
-  name: "TermsCondition",
+  name: "CompanyInformation",
   components: {
     "default-template": DefaultTemplate,
     "nav-header-info": NavHeaderInfo,
