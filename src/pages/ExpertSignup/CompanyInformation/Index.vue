@@ -60,6 +60,7 @@
         :rounded="false"
         flat
         label="다음"
+        @click="$router.push({ name: 'company_address' })"
       />
     </template>
   </default-template>

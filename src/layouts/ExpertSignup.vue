@@ -95,6 +95,12 @@ export default {
           stepNum: 2,
           returnTo: "terms_condition",
         },
+        {
+          routeName: "company_address",
+          indicatorColor: "#1E84E3",
+          stepNum: 3,
+          returnTo: "company_information",
+        },
       ];
     },
   },
