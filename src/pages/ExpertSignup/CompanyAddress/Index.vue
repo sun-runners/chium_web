@@ -38,6 +38,7 @@
         :rounded="false"
         flat
         label="다음"
+        @click="$router.push({ name: 'service_area' })"
       />
     </template>
   </default-template>
