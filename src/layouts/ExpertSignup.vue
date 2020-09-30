@@ -113,6 +113,12 @@ export default {
           stepNum: 5,
           returnTo: "service_area",
         },
+        {
+          routeName: "proof_company",
+          indicatorColor: "#1B1492",
+          stepNum: 6,
+          returnTo: "representative_service",
+        },
       ];
     },
   },

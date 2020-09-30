@@ -40,6 +40,7 @@
         flat
         label="다음"
         :class="{ 'btn-ready': selectedRepresentative.length }"
+        @click="$router.push({ name: 'proof_company' })"
       />
     </template>
   </default-template>
