@@ -107,6 +107,12 @@ export default {
           stepNum: 4,
           returnTo: "company_address",
         },
+        {
+          routeName: "representative_service",
+          indicatorColor: "#0D32AE",
+          stepNum: 5,
+          returnTo: "service_area",
+        },
       ];
     },
   },

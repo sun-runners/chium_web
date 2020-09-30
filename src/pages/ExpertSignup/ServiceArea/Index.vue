@@ -40,6 +40,7 @@
         flat
         label="다음"
         :class="{ 'btn-ready': selectedServices.length }"
+        @click="$router.push({ name: 'representative_service' })"
       />
     </template>
   </default-template>
