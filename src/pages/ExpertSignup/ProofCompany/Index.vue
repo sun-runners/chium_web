@@ -38,11 +38,12 @@
     </template>
     <template #pageFooter>
       <q-btn
-        class="full-width notosanskr-regular btn-footer "
+        class="full-width notosanskr-regular btn-footer btn-ready"
         style="font-size:17px;"
         :rounded="false"
         flat
         label="가입신청 완료"
+        @click="$router.push({ name: 'registration_completed' })"
       />
     </template>
   </default-template>

@@ -30,9 +30,10 @@
               <q-btn
                 flat
                 color="dark"
-                icon="clear"
-                :to="{ name: closedTo }"
-                v-if="returnTo && closedTo"
+                label="취소"
+                class="cancel-btn notosanskr-medium"
+                :to="{ name: cancel }"
+                v-if="returnTo && cancel"
               />
               <div style="width: 56px" v-else></div>
             </q-card-section>
@@ -52,6 +53,7 @@
           class="q-ma-none q-pa-none"
           style="background: #F2F2F2"
           :style="widthMax"
+          v-if="processVisible"
         />
       </q-page-container>
     </q-layout>
@@ -72,9 +74,10 @@ export default {
       totalSteps: 6,
       activeStep: 0,
       activeColor: "",
+      processVisible: true,
 
       returnTo: "",
-      closedTo: "",
+      cancel: "",
     };
   },
   computed: {
@@ -88,36 +91,42 @@ export default {
           indicatorColor: "#55E2EB",
           stepNum: 1,
           returnTo: "my_page",
+          cancelVisible: false,
         },
         {
           routeName: "company_information",
           indicatorColor: "#2CB3FF",
           stepNum: 2,
           returnTo: "terms_condition",
+          cancelVisible: true,
         },
         {
           routeName: "company_address",
           indicatorColor: "#1E84E3",
           stepNum: 3,
           returnTo: "company_information",
+          cancelVisible: true,
         },
         {
           routeName: "service_area",
           indicatorColor: "#1257C7",
           stepNum: 4,
           returnTo: "company_address",
+          cancelVisible: true,
         },
         {
           routeName: "representative_service",
           indicatorColor: "#0D32AE",
           stepNum: 5,
           returnTo: "service_area",
+          cancelVisible: true,
         },
         {
           routeName: "proof_company",
           indicatorColor: "#1B1492",
           stepNum: 6,
           returnTo: "representative_service",
+          cancelVisible: true,
         },
       ];
     },
@@ -131,6 +140,9 @@ export default {
         this.activeStep = found_route.stepNum;
         this.activeColor = found_route.indicatorColor;
         this.returnTo = found_route.returnTo;
+        found_route.cancelVisible
+          ? (this.cancel = "my_page")
+          : (this.cancel = "");
       }
     },
   },
@@ -146,6 +158,14 @@ export default {
 </script>
 
 <style lang="scss">
+.cancel-btn {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 26px;
+  text-align: right;
+  letter-spacing: -0.75px;
+  color: #151515;
+}
 .btn-footer {
   color: #919698;
   background: #e8eaeb;

@@ -56,6 +56,7 @@ const routes = [
       { path: 'proof-company', component: () => import('pages/ExpertSignup/ProofCompany/Index'), name: 'proof_company' },
     ]
   },
+  { path: '/expert-signup/registration-completed', component: () => import('pages/ExpertSignup/RegistrationCompleted/Index'), name: 'registration_completed' },
 ]
 
 // Always leave this as last one
