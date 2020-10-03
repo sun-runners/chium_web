@@ -2,33 +2,38 @@
   <default-template :styleSlots="styleSlots">
     <template #pageBody>
       <div class="bg-white">
-        <div class="q-px-md q-pt-sm">
+        <div class="q-px-sm q-pt-sm">
           <div class="title notosanskr-regular">대표 서비스</div>
           <!-- service selection section -->
-          <div class="representative-service">
+          <div
+            class="representative-service"
+            v-if="selectedRepresentative.length"
+          >
             <div class="selection-text notosanskr-regular">
               선택된 대표 서비스
             </div>
 
             <div class="selected-item row justify-between q-mt-sm">
               <div class="text  notosanskr-medium">
-                <span># 폐기물</span>
+                <span class="q-mr-lg"># {{ selectedRepresentative[0] }}</span>
               </div>
               <button>선택취소</button>
             </div>
           </div>
-          <div class="selection-section notosanskr-regular">
-            <div class="selection-text q-pb-sm">
-              {{ mainText }}
-              <span style="color: #959595">({{ subText }})</span>
+          <!--  Select representative service STARTS -->
+          <div class="selection-section">
+            <div class="selection-text q-pb-sm  notosanskr-medium">
+              대표 서비스 선택
+              <span style="color: #959595">(중복 선택 가능)</span>
             </div>
-            <div class="row q-col-gutter-sm q-mt-lg notosanskr-regular">
+            <div class="row q-col-gutter-sm q-px-sm q-mt-lg notosanskr-regular">
               <div
-                class="service-item "
+                class="service-item"
+                style="margin: 6px 12px 6px 0;"
                 v-for="(item, index) in representativeService"
                 :key="index"
                 :class="{ selected: selectedRepresentative.includes(item) }"
-                @click="selectItem(item)"
+                @click="selectRepresentativeItem(item)"
               >
                 <q-icon
                   name="done"
@@ -41,6 +46,33 @@
               </div>
             </div>
           </div>
+          <!--  Select Select waste sub-field  STARTS -->
+          <div class="selection-section">
+            <div class="selection-text q-pb-sm  notosanskr-medium">
+              폐기물 세부 분야 선택
+              <span style="color: #959595">(중복 선택 가능)</span>
+            </div>
+            <div class="row q-col-gutter-sm q-mt-lg notosanskr-regular">
+              <div
+                class="service-item"
+                v-for="(item, index) in wasteItems"
+                :key="index"
+                :class="{ selected: selectedWasteItems.includes(item) }"
+                @click="selectWasteItem(item)"
+                style="width:165px; margin: 6px;"
+              >
+                <q-icon
+                  name="done"
+                  class="done-icon"
+                  size="16px"
+                  v-if="selectedWasteItems.includes(item)"
+                  style="color:' #195de4'"
+                ></q-icon
+                >{{ item }}
+              </div>
+            </div>
+          </div>
+          <!--  Select representative service ENDS -->
         </div>
       </div>
     </template>
@@ -73,14 +105,20 @@ export default {
         bgBody: "white",
         bgFooter: "white",
       },
-      mainText: "대표 서비스 선택",
-      subText: "중복 선택 가능",
+
       selectedRepresentative: [],
       representativeService: ["폐기물", "철거"],
+      selectedWasteItems: [],
+      wasteItems: [
+        "가정집 폐기물",
+        "사업장 폐기물",
+        "건설 폐기물",
+        "재활용 정기수거",
+      ],
     };
   },
   methods: {
-    selectItem(item) {
+    selectRepresentativeItem(item) {
       if (!this.selectedRepresentative.includes(item)) {
         this.selectedRepresentative.push(item);
       } else {
@@ -89,6 +127,16 @@ export default {
         );
       }
     },
+    selectWasteItem(item) {
+      if (!this.selectedWasteItems.includes(item)) {
+        this.selectedWasteItems.push(item);
+      } else {
+        this.selectedWasteItems = this.selectedWasteItems.filter(
+          (service) => service != item
+        );
+      }
+    },
+    setSelectedService(name) {},
   },
   watch: {},
 };
@@ -154,7 +202,6 @@ export default {
     box-sizing: border-box;
     border-radius: 1000px;
     padding: 8px 20px;
-    margin: 6px 12px 6px 0;
 
     &.selected {
       padding-left: 4px;
