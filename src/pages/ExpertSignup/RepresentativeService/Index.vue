@@ -5,10 +5,22 @@
         <div class="q-px-md q-pt-sm">
           <div class="title notosanskr-regular">대표 서비스</div>
           <!-- service selection section -->
+          <div class="representative-service">
+            <div class="selection-text notosanskr-regular">
+              선택된 대표 서비스
+            </div>
+
+            <div class="selected-item row justify-between q-mt-sm">
+              <div class="text  notosanskr-medium">
+                <span># 폐기물</span>
+              </div>
+              <button>선택취소</button>
+            </div>
+          </div>
           <div class="selection-section notosanskr-regular">
             <div class="selection-text q-pb-sm">
-              대표 서비스 선택
-              <span style="color: #959595">(중복 선택 가능)</span>
+              {{ mainText }}
+              <span style="color: #959595">({{ subText }})</span>
             </div>
             <div class="row q-col-gutter-sm q-mt-lg notosanskr-regular">
               <div
@@ -61,6 +73,8 @@ export default {
         bgBody: "white",
         bgFooter: "white",
       },
+      mainText: "대표 서비스 선택",
+      subText: "중복 선택 가능",
       selectedRepresentative: [],
       representativeService: ["폐기물", "철거"],
     };
@@ -86,6 +100,36 @@ export default {
   line-height: 40px;
   letter-spacing: -1.35px;
   color: #151515;
+}
+.representative-service {
+  margin-top: 36px;
+  .selected-item {
+    background: #f7f7f6;
+    height: 68px;
+    padding: 16px;
+    font-weight: 500;
+
+    .text {
+      font-size: 22px;
+      line-height: 36px;
+      letter-spacing: -1.1px;
+      color: #151515;
+    }
+
+    button {
+      border: 1px solid #d9d9d9;
+      background: #ffffff;
+      box-sizing: border-box;
+      border-radius: 4px;
+      height: 28px;
+      font-size: 13px;
+      line-height: 26px;
+      text-align: center;
+      letter-spacing: -0.6px;
+      color: #767676;
+      cursor: pointer;
+    }
+  }
 }
 .selection-section {
   margin-top: 36px;
