@@ -1,22 +1,98 @@
-<template lang="pug">
-  div
-    div(class="row flex justify-center" style="margin-top: 40px;")
-      div(class="col-11" style="max-width: 343px")
-        p(class="title") 약관동의
-        span(class="sub-title") 치움 서비스를 사용하기위해 약관에 동의해주세요.
-    
-    div(class="row flex justify-center" style="margin-top: 40px;")
-      div(class="col" style="max-width: 343px")
-        include blocks/list-agreement
-        
+<template lang="pug">    
+  div(class="row flex justify-center")
+    q-tab-panels(v-model="steps" animated class="full-width" style="max-width: 375px")
+      q-tab-panel(class="col"  name="1")
+        include blocks/step1
+      q-tab-panel(class="col" name="2")
+        include blocks/step2
+      q-tab-panel(class="col" name="3")
+        include blocks/step3
+  
+    bottom-modal()
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import { AsYouType, findPhoneNumbersInText, parsePhoneNumberFromString, parsePhoneNumber, ParseError } from 'libphonenumber-js'
+import { cloneDeep, set, isEmpty, includes } from 'lodash'
+import BottomModal from 'src/components/Utility/BottomModal'
+
+const CONTACT_SCHEMA = {
+  country_code: null,
+  phone_number: null,
+};
+
+const CODE_SCHEMA = {
+  c1: null,
+  c2: null,
+  c3: null,
+  c4: null,
+}
+
 export default {
+  provide: {
+    openModal: false,
+  },
+  created() {
+    this.steps = this.$route.params.step;
+  },
+  data() {
+    return {
+      agree: false,
+      steps: 1,
+      model: cloneDeep(CONTACT_SCHEMA),
+      code: cloneDeep(CODE_SCHEMA),
+      // openModal: false,
+    }
+  },
+  computed: {
+    ...mapGetters('resources', ['contactOptions']),
+    isValidNumber() {
+      try {
+        const phoneNumber = parsePhoneNumber(this.model.phone_number, 'KR')
+        return phoneNumber.isValid()
+      } catch (error) {
+        if (error instanceof ParseError) {
+          return false
+        }
+      }
+    },
+    isActivate() {
+      const { activate } = this.$route.query;
+
+      return activate || false;
+    }
+  },
   methods: {
+    includes,
+    isEmpty,
+    sendCode() {
+      if (this.isValidNumber) {
+        this.$router.push({ path: '/auth/sign_up/2?activate=true' })
+      }
+    },
     goToTermsCondition(name) {
       this.$router.push({ path: `/auth/sign_up/terms_condition/${name}` });
+    },
+    AsYouType(val) {
+      const num = new AsYouType('KR').input(val);
+      set(this.model, 'phone_number', num)
+    },
+    revealDatePicker() {
+      this.openModal = !this.openModal
     }
+  },
+  watch: {
+    '$route.params.step': {
+      deep: true,
+      handler(_) {
+        this.steps = _;
+        this.$emit('changeStepping', _)
+      },
+    }
+  },
+  components:{
+    BottomModal,
   }
 }
 </script>
@@ -28,6 +104,7 @@ export default {
 .sub-title
     font-size: 14px
     font-family: 'notosanskr-regular'
+    color: #5A5A5A
 
 .see-more-btn
   border: 1px solid #CCCCCC
@@ -52,4 +129,20 @@ export default {
   padding-left: 0px
   padding-top: 10px
   padding-bottom: 10px
+
+.get-verification-number-btn
+  background-color: #C0C4C8
+  max-height: 50px
+  color: #fff
+  font-family: 'notosanskr-medium'
+  font-size: 15px
+
+.field-qt
+  max-height: 60px
+
+.resend-auth-btn
+  border: 1px solid #CCCCCC
+  border-radius: 4px
+  font-family: 'notosanskr-medium'
+  font-size: 13px 
 </style>

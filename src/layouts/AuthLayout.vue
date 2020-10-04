@@ -6,6 +6,9 @@
               <navigation :currentRoute="currentRoute" :widthMax="widthMax" :headingName="currentRoute"></navigation>
             </q-toolbar-title>
           </q-toolbar>
+
+          <process-indicator v-if="currentRoute === '회원가입'" :totalSteps="4" :activeStep="steps" />
+
         </q-header>
         <q-footer class="bg-white row justify-center items-center ">
           <div class="row" v-if="currentRoute == '로그인'">
@@ -42,7 +45,7 @@
             <div class="row justify-center" key="div-container">
               <div class="col" :style="widthMax">
                 <q-page style="padding-top: 60px" class="no-padding">
-                  <router-view></router-view>
+                  <router-view @changeStepping="_ => setStep(_)"></router-view>
                 </q-page>
               </div>
             </div>
@@ -57,13 +60,16 @@
 
 import { get, cloneDeep } from 'lodash'
 import Navigation from 'src/components/NavHeader/Navigation'
+import ProcessIndicator from 'src/components/Utility/ProcessIndicator'
 
 export default {
   components: {
-    Navigation
+    Navigation,
+    ProcessIndicator
   },
   data () {
     return {
+      steps: 1,
       heading_name: '0',
       window_height: window.innerHeight,
       widnow_width: window.innerWidth,
@@ -92,6 +98,9 @@ export default {
     window.removeEventListener('resize', this.handleHeight)
   },
   methods: {
+    setStep(step_val) {
+      this.steps = step_val
+    },
     handleHeight () {
       this.window_height = window.innerHeight
       this.widnow_width = window.innerWidth
