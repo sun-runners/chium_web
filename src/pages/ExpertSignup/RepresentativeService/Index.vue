@@ -7,7 +7,7 @@
           <!-- service selection section -->
           <div
             class="representative-service"
-            v-if="selectedRepresentative.length"
+            v-if="selectRepresentativeComplete"
           >
             <div class="selection-text notosanskr-regular">
               선택된 대표 서비스
@@ -15,13 +15,18 @@
 
             <div class="selected-item row justify-between q-mt-sm">
               <div class="text  notosanskr-medium">
-                <span class="q-mr-lg"># {{ selectedRepresentative[0] }}</span>
+                <span
+                  class="q-mr-lg"
+                  v-for="(item, i) in selectedRepresentative"
+                  :key="i"
+                  ># {{ item }}</span
+                >
               </div>
-              <button>선택취소</button>
+              <button @click="cancelSelection()">선택취소</button>
             </div>
           </div>
           <!--  Select representative service STARTS -->
-          <div class="selection-section">
+          <div class="selection-section" v-if="!selectRepresentativeComplete">
             <div class="selection-text q-pb-sm  notosanskr-medium">
               대표 서비스 선택
               <span style="color: #959595">(중복 선택 가능)</span>
@@ -47,7 +52,13 @@
             </div>
           </div>
           <!--  Select Select waste sub-field  STARTS -->
-          <div class="selection-section">
+          <div
+            class="selection-section"
+            v-if="
+              selectedRepresentative.includes('폐기물') &&
+                selectRepresentativeComplete
+            "
+          >
             <div class="selection-text q-pb-sm  notosanskr-medium">
               폐기물 세부 분야 선택
               <span style="color: #959595">(중복 선택 가능)</span>
@@ -72,7 +83,38 @@
               </div>
             </div>
           </div>
-          <!--  Select representative service ENDS -->
+          <!--  Selection of detailed areas for demolition ENDS -->
+          <div
+            class="selection-section"
+            v-if="
+              selectedRepresentative.includes('철거') &&
+                selectRepresentativeComplete
+            "
+          >
+            <div class="selection-text q-pb-sm  notosanskr-medium">
+              철거 세부 분야 선택
+              <span style="color: #959595">(중복선택가능)</span>
+            </div>
+            <div class="row q-col-gutter-sm q-mt-lg notosanskr-regular">
+              <div
+                class="service-item"
+                v-for="(item, index) in demolitionArea"
+                :key="index"
+                :class="{ selected: selectedDemolitionArea.includes(item) }"
+                @click="selectDemolitionArea(item)"
+                style="width:165px; margin: 6px;"
+              >
+                <q-icon
+                  name="done"
+                  class="done-icon"
+                  size="16px"
+                  v-if="selectedDemolitionArea.includes(item)"
+                  style="color:' #195de4'"
+                ></q-icon
+                >{{ item }}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </template>
@@ -83,8 +125,9 @@
         :rounded="false"
         flat
         label="다음"
-        :class="{ 'btn-ready': selectedRepresentative.length }"
-        @click="$router.push({ name: 'proof_company' })"
+        :disabled="!nextBtnReady"
+        :class="{ 'btn-ready': nextBtnReady }"
+        @click="goNext()"
       />
     </template>
   </default-template>
@@ -105,7 +148,8 @@ export default {
         bgBody: "white",
         bgFooter: "white",
       },
-
+      nextBtnReady: false,
+      selectRepresentativeComplete: false,
       selectedRepresentative: [],
       representativeService: ["폐기물", "철거"],
       selectedWasteItems: [],
@@ -115,6 +159,8 @@ export default {
         "건설 폐기물",
         "재활용 정기수거",
       ],
+      selectedDemolitionArea: [],
+      demolitionArea: ["내부철거", "건물철거", "구조물 철거", "석면철거"],
     };
   },
   methods: {
@@ -126,6 +172,7 @@ export default {
           (service) => service != item
         );
       }
+      this.isNextReady();
     },
     selectWasteItem(item) {
       if (!this.selectedWasteItems.includes(item)) {
@@ -135,8 +182,47 @@ export default {
           (service) => service != item
         );
       }
+      this.isNextReady();
     },
-    setSelectedService(name) {},
+    selectDemolitionArea(item) {
+      if (!this.selectedDemolitionArea.includes(item)) {
+        this.selectedDemolitionArea.push(item);
+      } else {
+        this.selectedDemolitionArea = this.selectedDemolitionArea.filter(
+          (service) => service != item
+        );
+      }
+      this.isNextReady();
+    },
+    isNextReady() {
+      if (
+        !this.selectRepresentativeComplete &&
+        this.selectedRepresentative.length
+      ) {
+        this.nextBtnReady = true;
+      } else if (
+        this.selectRepresentativeComplete &&
+        (this.selectedWasteItems.length || this.selectedDemolitionArea.length)
+      ) {
+        this.nextBtnReady = true;
+      } else {
+        this.nextBtnReady = false;
+      }
+    },
+    goNext() {
+      if (!this.selectRepresentativeComplete) {
+        this.selectRepresentativeComplete = true;
+        this.nextBtnReady = false;
+      } else {
+        this.$router.push({ name: "proof_company" });
+      }
+    },
+    cancelSelection() {
+      this.selectedRepresentative = [];
+      this.selectedWasteItems = [];
+      this.selectRepresentativeComplete = false;
+      this.nextBtnReady = false;
+    },
   },
   watch: {},
 };
