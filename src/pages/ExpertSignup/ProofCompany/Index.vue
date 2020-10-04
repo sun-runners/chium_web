@@ -9,10 +9,12 @@
             <div class="registration-text q-pb-sm notosanskr-medium">
               사업자등록번호
             </div>
+            <!-- Company Registration Number -->
             <q-file
               outlined
               class="registration-field"
               label="사업자등록번호를 첨부해주세요."
+              v-model="registrationNumber"
             >
               <template v-slot:append>
                 <div class="attachment notosanskr-medium">첨부</div>
@@ -22,11 +24,12 @@
             <div class="permit-license-text q-pb-sm q-mt-lg notosanskr-medium">
               허가증 및 면허
             </div>
-
+            <!-- Permits and licenses -->
             <q-file
               outlined
               class="permit-license-field"
               label="사업자등록번호를 첨부해주세요."
+              v-model="permitLicense"
             >
               <template v-slot:append>
                 <div class="attachment notosanskr-medium">첨부</div>
@@ -38,12 +41,14 @@
     </template>
     <template #pageFooter>
       <q-btn
-        class="full-width notosanskr-regular btn-footer btn-ready"
+        class="full-width notosanskr-regular btn-footer "
         style="font-size:17px;"
         :rounded="false"
         flat
         label="가입신청 완료"
-        @click="$router.push({ name: 'registration_completed' })"
+        :disabled="!permitLicense && !registrationNumber"
+        :class="{ 'btn-ready': permitLicense && registrationNumber }"
+        @click="registrationCompleted"
       />
     </template>
   </default-template>
@@ -64,17 +69,13 @@ export default {
         bgBody: "white",
         bgFooter: "white",
       },
+      permitLicense: null,
+      registrationNumber: null,
     };
   },
   methods: {
-    selectItem(item) {
-      if (!this.selectedRepresentative.includes(item)) {
-        this.selectedRepresentative.push(item);
-      } else {
-        this.selectedRepresentative = this.selectedRepresentative.filter(
-          (service) => service != item
-        );
-      }
+    registrationCompleted() {
+      this.$router.push({ name: "registration_completed" });
     },
   },
   watch: {},
