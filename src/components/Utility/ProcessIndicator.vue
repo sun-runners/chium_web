@@ -1,34 +1,26 @@
-<template>
-  <div class="row progress-bar q-pa-none">
-    <ul class="col q-pa-none q-ma-none" v-for="(item, index) in totalSteps" :key="index">
-      <li
-        :style="{'background': index+1 == activeStep ? activeColor : ''}"
-        class="full-width q-py-xs"
-      ></li>
-    </ul>
-  </div>
+<template lang="pug">
+  div(class="row progress-bar")
+    div(class="col" v-for="step in totalSteps" :class="{ 'progress-step-divider': (step != activeStep) }")
 </template>
 
 <script>
 export default {
   name: "ProcessIndicator",
-  props: {
-    totalSteps: Number,
-    activeStep: Number,
-    activeColor: String,
-  },
+  props: ['totalSteps', 'activeStep'],
 };
 </script>
 
 <style lang="scss" scoped>
-ul {
-  list-style: none;
+.progress-step-divider {
+  background-color: #f2f2f2;
+  max-height: 4px;
+  min-height: 4px; 
 }
-li {
-  border-radius: 10px;
-}
+
 .progress-bar {
   border-radius: 10px;
-  background-color: #f2f2f2;
+  background: linear-gradient(295deg, #B770FF 30%, #46B3FC 90%);
+  // height: 4px;
+  // max-height: 4px;
 }
 </style>
