@@ -4,7 +4,7 @@ const routes = [
     component: () => import('layouts/AuthLayout.vue'),
     children: [
       { path: 'login', component: () => import('pages/Auth/Login/Index'), name: '로그인' },
-      { path: 'sign_up', component: () => import('pages/Auth/SignUp/Index'), name: '회원가입' },
+      { path: 'sign_up/:step', component: () => import('pages/Auth/SignUp/Index'), name: '회원가입' },
       { path: 'sign_up/terms_condition/:condition_name', component: () => import('pages/Auth/SignUp/TermsCondition'), name: '' },
     ],
   },
