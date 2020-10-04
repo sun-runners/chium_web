@@ -1,0 +1,65 @@
+div(
+  class="row flex justify-center q-gutter-md" 
+  style="margin-top: 30px;" 
+  v-if="isActivate"
+)
+  div(class="col-12")
+    p(class="title") 핸드폰인증
+    p(class="sub-title") 치움에서 방금 보내드린 인증번호 숫자4자리를 입력하세요.
+  
+  div(class="col no-padding")
+    div(class="row q-gutter-md" style="max-width: 300px")
+      div(class="col" v-for="list, key in code" :key)
+        q-input(
+          outlined 
+          placeholder="0" 
+          v-model="code[key]" 
+          maxlength="1" 
+          :rules="[ val => val.length <= 1 ]"
+          class="field-qt"
+        )
+    q-btn( flat class="resend-auth-btn q-mt-sm")
+      span(class="no-padding") 인증번호 재전송
+
+  div(class="col-12 q-mt-lg")
+    q-btn(
+      label="인증완료"
+      class="full-width get-verification-number-btn"
+      flat
+      :class="{ 'bg-secondary': !includes(code, null) }"
+      :disable="includes(code, null)"
+    )
+
+div(class="row flex justify-center" style="margin-top: 30px;" v-else)
+  div(class="col-12")
+    p(class="title") 핸드폰인증
+
+  div(class="col-12")
+    q-select(
+      class="field-qt"
+      v-model="model.country_code"
+      :options="contactOptions" 
+      value="+82" 
+      emit-value 
+      map-options 
+      outlined
+    )
+    q-input(
+      class="field-qt q-mt-sm"
+      v-model="model.phone_number"
+      placeholder="010-0000-0000"
+      outlined
+      @input="_ => AsYouType(_)"
+      :error="!isValidNumber && !isEmpty(model.phone_number)"
+    )
+    
+  div(class="col-12 q-mt-sm")
+    q-btn(
+      label="인증번호 받기"
+      class="full-width get-verification-number-btn"
+      :class="{ 'bg-secondary': isValidNumber }"
+      flat
+      @click="sendCode()"
+    )
+  
+    

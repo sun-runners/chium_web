@@ -1,0 +1,13 @@
+div(class="row flex justify-center" style="margin-top: 30px;")
+  div(class="col-12")
+    p(class="title") 생년월일
+
+  div(class="col-12")
+    q-input(
+      outlined
+      placeholder="1991.01.01"
+      @focus="revealDatePicker()"
+    )
+      template(v-slot:append)
+        q-icon(name="keyboard_arrow_down")
+    
