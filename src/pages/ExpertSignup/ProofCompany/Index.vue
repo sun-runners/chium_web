@@ -36,6 +36,13 @@
               </template>
             </q-file>
           </div>
+          <div
+            class="note q-pa-md q-mt-lg notosanskr-regular"
+            v-if="permitLicense && registrationNumber"
+          >
+            ※안전한 서비스와 전문성 확인을 위해 선택하신 전문 분야의 허가증 및
+            면허증을 첨부해주세요.
+          </div>
         </div>
       </div>
     </template>
@@ -116,7 +123,13 @@ export default {
     }
   }
 }
-
+.note {
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: -0.6px;
+  color: #767676;
+  background: #f7f7f6;
+}
 .btn-footer {
   color: #919698;
   background: #e8eaeb;
