@@ -9,7 +9,7 @@
       v-if="value != currentValue"
     />
     <q-icon class="text-dark q-pa-none q-ma-none" size="30px" v-else>
-      <img src="~assets/radio_selected.svg" class="q-pa-none q-ma-none" />
+      <img src="~assets/circle_check_blue.svg" class="q-pa-none q-ma-none" />
     </q-icon>
   </div>
 </template>

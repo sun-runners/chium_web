@@ -37,7 +37,26 @@ const routes = [
       { path: 'picture-space', component: () => import('pages/RequestEstimate/PictureSpace/Index'), name: 'picture_space' },
       { path: 'complete-estimate', component: () => import('pages/RequestEstimate/CompleteEstimate/Index'), name: 'complete_estimate' }
     ]
-  }
+  },
+  { path: '/my-account', component: () => import('pages/MyPage/MyAccount/Index'), name: 'my_account' },
+  { path: '/my-account/phone-change', component: () => import('pages/MyPage/MyAccount/CellPhoneChange/Index'), name: 'account_phone_change' },
+  { path: '/interested-company', component: () => import('pages/MyPage/InterestedCompany/Index'), name: 'interested_company' },
+  { path: '/company-inquire', component: () => import('pages/MyPage/Inquire/Index'), name: 'company_inquire' },
+  { path: '/work-schedule', component: () => import('pages/MyPage/WorkSchedule/Index'), name: 'work_schedule' },
+  { path: '/notice', component: () => import('pages/MyPage/Notice/Index'), name: 'notice' },
+  { 
+    path: '/expert-signup', redirect: 'expert-signup/terms-condition', 
+    component: () => import('layouts/ExpertSignup'),
+    children: [
+      { path: 'terms-condition', component: () => import('pages/ExpertSignup/TermsCondition/Index'), name: 'terms_condition' },
+      { path: 'company-information', component: () => import('pages/ExpertSignup/CompanyInformation/Index'), name: 'company_information' },
+      { path: 'company-address', component: () => import('pages/ExpertSignup/CompanyAddress/Index'), name: 'company_address' },
+      { path: 'service-area', component: () => import('pages/ExpertSignup/ServiceArea/Index'), name: 'service_area' },
+      { path: 'representative-service', component: () => import('pages/ExpertSignup/RepresentativeService/Index'), name: 'representative_service' },
+      { path: 'proof-company', component: () => import('pages/ExpertSignup/ProofCompany/Index'), name: 'proof_company' },
+    ]
+  },
+  { path: '/expert-signup/registration-completed', component: () => import('pages/ExpertSignup/RegistrationCompleted/Index'), name: 'registration_completed' },
 ]
 
 // Always leave this as last one
