@@ -14,10 +14,10 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
+    "libphonenumber-js": "^1.7.57",
     "lodash": "^4.17.15",
     "quasar": "^1.0.0",
-    "vue-i18n": "^8.0.0",
-    "vue-naver-maps": "^0.14.1"
+    "vue-i18n": "^8.0.0"
   },
   "devDependencies": {
     "@quasar/app": "^1.0.0",

@@ -8,7 +8,7 @@
       q-tab-panel(class="col" name="3")
         include blocks/step3
   
-    bottom-modal()
+    bottom-modal(:modal="openModal")
 </template>
 
 <script>
@@ -30,9 +30,6 @@ const CODE_SCHEMA = {
 }
 
 export default {
-  provide: {
-    openModal: false,
-  },
   created() {
     this.steps = this.$route.params.step;
   },
@@ -42,7 +39,7 @@ export default {
       steps: 1,
       model: cloneDeep(CONTACT_SCHEMA),
       code: cloneDeep(CODE_SCHEMA),
-      // openModal: false,
+      openModal: false,
     }
   },
   computed: {

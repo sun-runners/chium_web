@@ -7,6 +7,7 @@ div(class="row flex justify-center" style="margin-top: 30px;")
       outlined
       placeholder="1991.01.01"
       @focus="revealDatePicker()"
+      @click="revealDatePicker()"
     )
       template(v-slot:append)
         q-icon(name="keyboard_arrow_down")
