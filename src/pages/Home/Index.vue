@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  .bg-primary
     .text-white.no-margin(style='height: 100%; background-color:#46B3FC;')
       .row
         .col(style='min-width: 228px;')
@@ -12,7 +12,7 @@
               q-btn.guide-btn.q-ml-lg.q-mt-md(label='치움 가이드 보러가기', flat='flat', size='sm', align='left', icon-right='arrow_forward_ios')
         .col.flex.justify-end.items-end.content-end(style='min-height: 420px;')
           q-img.q-mr-sm(:src="require('src/assets/boy.svg')", style='max-width: 250px; min-width: 250px; height: 100%; max-height: 268px')
-    .row.q-gutter-sm.q-pa-sm.bg-primary(style='')
+    .row.q-gutter-sm.q-pa-sm(style='')
       .col.bg-white.q-pa-sm.flex.content-center.justify-center
         q-btn.full-width.full-height.home-btn.bg-white(flat='flat', align='center', type='a')
           q-icon(size='110px', :name="`img:${require('src/assets/icon_truck.svg')}`")
@@ -21,7 +21,6 @@
         q-btn.full-width.full-height.home-btn.bg-white(type='a', align='center', flat='flat')
           q-icon(size='110px', :name="`img:${require('src/assets/icon_swipe.svg')}`")
           p.notosanskr-medium.q-pt-sm 철거하기
-
 </template>
 
 <script>
@@ -57,7 +56,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" scss>
+<style lang="scss" scoped>
 .home-btn {
   min-height: 179px;
   max-width: 166px;
@@ -66,7 +65,7 @@ export default {
   line-height: 26px;
   text-align: center;
   letter-spacing: -0.85px;
-  color: #15161A;
+  color: #15161a;
 }
 
 .banner-text {
