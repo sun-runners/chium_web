@@ -7,15 +7,15 @@
         include blocks/step2
       q-tab-panel(class="col" name="3")
         include blocks/step3
+      q-tab-panel(class="col" name="4")
+        include blocks/step4
   
-    bottom-modal(:modal="openModal")
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import { AsYouType, findPhoneNumbersInText, parsePhoneNumberFromString, parsePhoneNumber, ParseError } from 'libphonenumber-js'
 import { cloneDeep, set, isEmpty, includes } from 'lodash'
-import BottomModal from 'src/components/Utility/BottomModal'
 
 const CONTACT_SCHEMA = {
   country_code: null,
@@ -89,7 +89,7 @@ export default {
     }
   },
   components:{
-    BottomModal,
+    DateWheelPicker,
   }
 }
 </script>
@@ -141,5 +141,13 @@ export default {
   border: 1px solid #CCCCCC
   border-radius: 4px
   font-family: 'notosanskr-medium'
-  font-size: 13px 
+  font-size: 13px
+
+.next-btn
+  color: #ffffff
+  background-color: #BCC0C5
+  height: 52px
+  border-radius: 5px
+  font-family: 'notosanskr-medium'
+  font-size: 13px
 </style>

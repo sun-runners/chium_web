@@ -12,11 +12,11 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.9.7",
     "axios": "^0.18.1",
     "libphonenumber-js": "^1.8.3",
     "lodash": "^4.17.15",
-    "quasar": "^1.0.0",
+    "quasar": "^1.14.1",
     "vue-i18n": "^8.0.0"
   },
   "devDependencies": {
