@@ -1,0 +1,30 @@
+div(class="row flex justify-center q-col-gutter-sm" style="margin-top: 30px;")
+  div(class="col-12")
+    p(class="title") 정보입력
+
+  div(class="col-12")
+    p 이름
+    q-input(
+      outlined
+      placeholder="한글2글자이상"
+      type="text"
+    )
+  
+  div(class="col-12")
+    p 이메일
+    q-input(
+      outlined
+      placeholder="chium@naver.com"
+      type="text"
+    )
+
+  div(class="col-12")
+    p 비밀번호
+    q-input(
+      outlined
+      placeholder="영문, 숫자, 특수문자 포함 15자이하"
+      type="text"
+    )
+
+  div(class="col-12 q-mt-sm")
+    q-btn(label="완료" class="full-width next-btn" flat)

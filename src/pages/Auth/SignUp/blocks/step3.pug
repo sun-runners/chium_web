@@ -6,9 +6,9 @@ div(class="row flex justify-center" style="margin-top: 30px;")
     q-input(
       outlined
       placeholder="1991.01.01"
-      @focus="revealDatePicker()"
-      @click="revealDatePicker()"
+      type="date"
+      navigation-max-year-month="2020/10"
     )
-      template(v-slot:append)
-        q-icon(name="keyboard_arrow_down")
-    
+
+  div(class="col-12 q-mt-sm")
+    q-btn(label="다음" class="full-width next-btn" flat)
