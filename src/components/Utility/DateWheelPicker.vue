@@ -5,24 +5,8 @@
         q-card-section
           div(class="row q-gutter-lg")
             div(class="col")
-              div(class="column no-wrap q-gutter-lg  flex justify-center content-center items-center wheeler-year" v-touch-swipe.mouse="_ => onHandleSwipeWheel(_, 'startYearRange')" @wheel.prevent="onHandleScroll")
-                div(
-                  class="col text-subtitle1 no-padding date-wheel-val" 
-                  style="transition: width 2s;transition-timing-function: ease;" 
-                  v-for="year,index in yearRange" :class="{ 'text-grey-5': index === 0 }" 
-                )
-                  | {{ year }}
+              q-date(v-model="date")
 
-            div(class="col")
-              div(class="column no-wrap q-gutter-lg  flex justify-center content-center items-center wheeler-year" v-touch-swipe.mouse="_ => onHandleSwipeWheel(_, 'startDayRange')" @wheel.prevent="onHandleScroll")
-                div(class="col text-subtitle1 no-padding date-wheel-val" v-for="day,index in dayRange" :class="{ 'text-grey-5': index === 0 }" )
-                  | {{ day < 10 ? '0'+day : day }}
-
-
-            div(class="col")
-              div(class="column no-wrap q-gutter-lg  flex justify-center content-center items-center wheeler-year" v-touch-swipe.mouse="_ => onHandleSwipeWheel(_, 'startMonthRange')" @wheel.prevent="onHandleScroll")
-                div(class="col text-subtitle1 no-padding date-wheel-val" v-for="day,index in monthRange" :class="{ 'text-grey-5': index === 0 }" )
-                  | {{ day < 10 ? '0'+day : day }}
 </template>
 
 <script>
@@ -38,7 +22,9 @@ export default {
   },
   data() {
     return {
+      date: '',
       model: 0,
+      currentYearIndex: 1,
       startYearRange: 1980,
       startDayRange: 1,
       startMonthRange: 1,
@@ -55,7 +41,7 @@ export default {
   computed: {
     yearRange () {
       const ranges = [];
-      for (let x = this.startYearRange; x <= this.startYearRange+1; x++) {
+      for (let x = this.startYearRange; x <= this.startYearRange+4; x++) {
         ranges.push(x)
       }
       return ranges;
@@ -76,18 +62,38 @@ export default {
     },
    },
    methods: {
-    onHandleSwipeWheel({ direction }, type, max = [0,0]) {
-      console.log(direction);
+    onHandleSwipeWheel({ direction,  }, type, max = [0,0]) {
+      console.log("this.$refs.itemRef",this.$refs.itemRef);
+      console.log("this.$refs.wheelerBox",this.$refs.wheelerBox);
       let range = get(this, type);
       if (isEqual(direction, 'up')) {
         if (range < new Date().getFullYear()) {
-              range++;
-              set(this, type, range);       
+            console.log("this.$refs.wheelerBox.offsetHeight",this.$refs.wheelerBox.offsetHeight)
+            for(let x = this.$refs.wheelerBox.scrollTop; x <= this.$refs.wheelerBox.scrollTop + this.$refs.wheelerBox.offsetHeight; x++) {
+              setTimeout(() => { this.$refs.wheelerBox.scrollTop = x; }, 1000);
+            }
+            range++;
+            this.currentYearIndex+2;
+
+            if (this.$refs.wheelerBox.offsetHeight > 125) {
+              set(this, type, range);
+              this.$refs.wheelerBox.scrollTop = 0;     
+            }
         }
       } else if(isEqual(direction, 'down')) {
           if (this.startYearRange > 1900) {
+              for(let x = this.$refs.wheelerBox.scrollTop; x >= this.$refs.wheelerBox.scrollTop - this.$refs.wheelerBox.offsetHeight; x--) {
+                setTimeout(() => { this.$refs.wheelerBox.scrollTop = x; }, 1000);
+              }
+              
               range--;
-              set(this, type, range);
+              
+              if (this.currentYearIndex > 0) {
+                this.currentYearIndex-2;
+              }
+
+              // set(this, type, range);
+              // this.$refs.wheelerBox.scrollTop = 0;
           }
       }
     },
@@ -121,16 +127,34 @@ export default {
     border-radius: 100px
     height: 268px 
     width: 375px
+  
+  .wheeler
+    text-align: left
+    height: 63+63px
+    width: 110
+    overflow-y: hidden
+    display: flex
+    flex-direction: column
+    box-sizing: border-box
+    scroll-snap-type: y mandatory
+    transition-property: scroll
 
   .date-wheel-val
+    flex: 0 0 63px
+    flex-grow: 0
+    flex-shrink: 0
+    flex-basis: 63px
+    font-size: 30px
+    display: flex
+    align-items: center
+    justify-content: center
+    scroll-snap-align: start
     font-family: 'notosanskr-medium'
     font-size: 30px
-    -webkit-touch-callout: none
-    -webkit-user-select: none
-    -khtml-user-select: none
-    -moz-user-select: none
-    -ms-user-select: none
-    user-select: none
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+
   // .wheeler-year
   //   max-height: 30%
   //   overflow-y: scroll
