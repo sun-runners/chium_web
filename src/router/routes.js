@@ -18,12 +18,17 @@ const routes = [
       { path: 'reservation/detail', component: () => import('pages/Reservation/Detail/Index'), name: 'reservation_detail', heading_name: '예약상세보기' },
       { path: 'search', component: () => import('pages/Search/Index'), name: 'search' },
       { path: 'my_page', component: () => import('pages/MyPage/Index'), name: 'my_page' },
-      { path: 'store', redirect: 'store/detail'},
-      { path: 'store/detail', component: () => import('pages/Store/Index'), name: 'store_detail' },
-      { path: 'store/review', component: () => import('pages/Store/Review/Index'), name: 'store_review' },
-      { path: 'store/work', component: () => import('pages/Store/Work/Index'), name: 'store_work' },
-      { path: 'store/inquiry', component: () => import('pages/Store/Inquiry/Index'), name: 'store_inquiry' },
-      { path: 'store/inquiry/detail', component: () => import('pages/Store/Inquiry/Detail/Index'), name: 'store_inquiry_detail' },
+    ]
+  },
+  { 
+    path: '/store', redirect: 'store/detail', 
+    component: () => import('layouts/StoreLayout'),
+    children: [
+      { path: 'detail', component: () => import('pages/Store/Index'), name: 'store_detail' },
+      { path: 'review', component: () => import('pages/Store/Review/Index'), name: 'store_review' },
+      { path: 'work', component: () => import('pages/Store/Work/Index'), name: 'store_work' },
+      { path: 'inquiry', component: () => import('pages/Store/Inquiry/Index'), name: 'store_inquiry' },
+      { path: 'inquiry/detail', component: () => import('pages/Store/Inquiry/Detail/Index'), name: 'store_inquiry_detail' },
     ]
   },
   { 
