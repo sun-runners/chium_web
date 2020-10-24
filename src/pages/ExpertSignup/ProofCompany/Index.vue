@@ -6,35 +6,12 @@
           <div class="title notosanskr-regular">업체증빙</div>
           <!-- company info section -->
           <div class="company-info-section notosanskr-regular">
-            <div class="registration-text q-pb-sm notosanskr-medium">
-              사업자등록번호
-            </div>
-            <!-- Company Registration Number -->
-            <q-file
-              outlined
-              class="registration-field"
-              label="사업자등록번호를 첨부해주세요."
-              v-model="registrationNumber"
-            >
-              <template v-slot:append>
-                <div class="attachment notosanskr-medium">첨부</div>
-              </template>
-            </q-file>
-
-            <div class="permit-license-text q-pb-sm q-mt-lg notosanskr-medium">
-              허가증 및 면허
-            </div>
-            <!-- Permits and licenses -->
-            <q-file
-              outlined
-              class="permit-license-field"
-              label="사업자등록번호를 첨부해주세요."
-              v-model="permitLicense"
-            >
-              <template v-slot:append>
-                <div class="attachment notosanskr-medium">첨부</div>
-              </template>
-            </q-file>
+            <!-- Registration License Set -->
+            <div class="registration-text q-pb-sm notosanskr-medium">사업자등록번호</div>
+            <custom-file-upoad label="사업자등록번호를 첨부해주세요." @changed="registrationNumberSet" />
+            <!-- Permit License Set -->
+            <div class="permit-license-text q-pb-sm q-mt-lg notosanskr-medium">허가증 및 면허</div>
+            <custom-file-upoad label="사업자등록번호를 첨부해주세요." @changed="permitLicenseSet" />
           </div>
           <div
             class="note q-pa-md q-mt-lg notosanskr-regular"
@@ -48,7 +25,7 @@
     </template>
     <template #pageFooter>
       <q-btn
-        class="full-width notosanskr-regular btn-footer "
+        class="full-width notosanskr-regular btn-footer"
         style="font-size:17px;"
         :rounded="false"
         flat
@@ -64,11 +41,13 @@
 <script>
 import DefaultTemplate from "src/components/TemplateFrames/DefaultTemplate";
 import NavHeaderInfo from "src/components/Utility/NavHeaderInfo";
+import CustomFileUpload from "src/components/Utility/CustomFileUpload";
 export default {
   name: "ProofCompany",
   components: {
     "default-template": DefaultTemplate,
     "nav-header-info": NavHeaderInfo,
+    "custom-file-upoad": CustomFileUpload,
   },
   data() {
     return {
@@ -83,6 +62,14 @@ export default {
   methods: {
     registrationCompleted() {
       this.$router.push({ name: "registration_completed" });
+    },
+    registrationNumberSet(file) {
+      console.log("registration number file: " + file.name);
+      this.registrationNumber = file;
+    },
+    permitLicenseSet(file) {
+      console.log("permit license File " + file.name);
+      this.permitLicense = file;
     },
   },
   watch: {},
@@ -107,20 +94,6 @@ export default {
     line-height: 22px;
     letter-spacing: -0.7px;
     color: #151515;
-  }
-  .registration-field,
-  .permit-license-field {
-    background: #ffffff !important;
-    box-sizing: border-box;
-    border-radius: 8px;
-    .attachment {
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 24px;
-      text-align: center;
-      letter-spacing: -0.8px;
-      color: #195de4;
-    }
   }
 }
 .note {
