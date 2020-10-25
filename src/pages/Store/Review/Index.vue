@@ -23,7 +23,12 @@
     <div class="bg-white q-mt-md">
       <div class="row justify-centerl" style="padding-top: 36px;">
         <div class="col q-px-md row">
-          <q-btn class="btn-sort items-center q-px-sm" flat padding="0px" align="between">
+          <q-btn
+            class="btn-sort items-center full-width q-px-sm"
+            flat
+            padding="0px"
+            align="between"
+          >
             최신순
             <q-icon name="keyboard_arrow_down" size="16px"></q-icon>
           </q-btn>
@@ -130,7 +135,6 @@ export default {
   color: #15161a;
 
   cursor: pointer;
-  width: 114px;
 }
 .btn-reviews {
   width: 100%;
