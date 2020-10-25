@@ -1,7 +1,7 @@
 <template>
   <default-template :styleSlots="styleSlots">
     <template #pageHeader>
-      <nav-header-info name="작업일정" class="full-width" backTo="my_page" />
+      <nav-header-info name="작업일정" class="full-width" backTo="search" />
       <q-tabs
         v-model="filterTabs"
         class="text-black notosanskr-regular"
