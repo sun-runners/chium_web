@@ -33,27 +33,10 @@
     <div class="bg-white q-mt-md">
       <div class="row justify-center">
         <div class="col q-pa-md row">
-          <q-btn-dropdown outline class="full-width" color="primary" text-color="dark" label="별점순">
-            <q-list>
-              <q-item clickable v-close-popup @click="onItemClick">
-                <q-item-section>
-                  <q-item-label>별점순</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="onItemClick">
-                <q-item-section>
-                  <q-item-label>별점순</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="onItemClick">
-                <q-item-section>
-                  <q-item-label>별점순</q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-          </q-btn-dropdown>
+          <q-btn class="btn-sort items-center q-px-sm" flat padding="0px" align="between">
+            최신순
+            <q-icon name="keyboard_arrow_down" size="16px"></q-icon>
+          </q-btn>
         </div>
         <div class="col-8 q-pa-md row justify-center">
           <q-btn
@@ -193,5 +176,21 @@ export default {
   span {
     color: #959595;
   }
+}
+
+.btn-sort {
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.7px;
+  color: #15161a;
+
+  cursor: pointer;
+  width: 114px;
 }
 </style>
