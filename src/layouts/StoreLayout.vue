@@ -47,7 +47,7 @@ export default {
         bgBody: "#F3F3F3",
         bgFooter: "",
       },
-      filterTabs: "view_all",
+      filterTabs: null,
     };
   },
 };

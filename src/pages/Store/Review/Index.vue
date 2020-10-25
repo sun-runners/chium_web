@@ -19,68 +19,21 @@
           </div>
         </div>
       </div>
-      <!-- <q-separator size="3px" inset/> -->
-      <!-- <div class="q-px-none">
-                <div class="q-py-sm" v-for="(slider, index) in sliders" :key="index">
-                    <slide-grade
-                    :label="slider.label"
-                    :value="slider.value"
-                    @changeValue="e => slider.value = e"
-                    ></slide-grade>
-                </div>
-      </div>-->
     </div>
     <div class="bg-white q-mt-md">
-      <div class="row justify-center">
-        <div class="col q-pa-md row">
+      <div class="row justify-centerl" style="padding-top: 36px;">
+        <div class="col q-px-md row">
           <q-btn class="btn-sort items-center q-px-sm" flat padding="0px" align="between">
             최신순
             <q-icon name="keyboard_arrow_down" size="16px"></q-icon>
           </q-btn>
         </div>
-        <div class="col-8 q-pa-md row justify-center">
-          <q-btn
-            outline
-            color="white"
-            class="full-width"
-            text-color="black"
-            label="포토후기만 모아보기 (116)"
-          />
+        <div class="col-8 q-px-md row justify-center">
+          <q-btn class="btn-reviews" flat label="포토후기만 모아보기 (116)" />
         </div>
       </div>
       <q-card class="q-pt-md q-p" flat>
-        <q-tabs
-          v-model="tab"
-          dense
-          class="primary"
-          active-color="secondary"
-          indicator-color="secondary"
-          align="justify"
-          narrow-indicator
-        >
-          <q-tab name="all" label="전체" />
-          <q-tab name="commercial_space" label="상업공간" />
-          <q-tab name="office_space" label="사무공간" />
-          <q-tab name="residential_space" label="주거공간" />
-          <q-tab name="facility_waste" label="시설물/폐기물" />
-        </q-tabs>
-
-        <q-separator color="grey-3" size="20px" />
-
-        <q-tab-panels v-model="tab" class="q-pa-none q-ma-none" animated>
-          <q-tab-panel name="all" class="q-pa-none">
-            <!-- This show All posts of review -->
-            <review-lists :posts="review.all"></review-lists>
-          </q-tab-panel>
-
-          <q-tab-panel name="commercial_space">
-            <div class="text-h6">상업공간</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </q-tab-panel>
-
-          <q-tab-panel name="office_space">
-            <div class="text-h6">사무공간</div>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </q-tab-panel>
-        </q-tab-panels>
+        <review-lists :posts="review.all"></review-lists>
       </q-card>
     </div>
   </div>
@@ -102,24 +55,6 @@ export default {
     return {
       reviewRate: 4,
       tab: "all",
-      sliders: [
-        {
-          label: "상업 공간",
-          value: "3.9",
-        },
-        {
-          label: "사무공간",
-          value: "3.8",
-        },
-        {
-          label: "주거공간",
-          value: "4.0",
-        },
-        {
-          label: "시설물 / 폐기물",
-          value: "4.9",
-        },
-      ],
       review: {
         all: [
           {
@@ -135,6 +70,7 @@ export default {
             ],
             message:
               "안전하게 철거해주셔서 감사했습니다. 작업해주신 분들도 너무 친절하고 좋아요 ^ ^",
+            date: "2020/08/26",
           },
           {
             name: "박가인",
@@ -146,6 +82,7 @@ export default {
             ],
             message:
               "가게를 처음하는거라 어떻게 해야할지 막막했어요 ㅠㅠ 인테리어부터 싹뜯어내고 다시해야할거 같아서 철거업체에 의뢰를 하여 진행했습니다. 너무나 안전하게 시공날짜에 맞춰서 신속하게 진행해줘서 감사했어요 ㅎㅎ 덕분에 가게 인테리어도 기분좋게 끝냈습니다.",
+            date: "2020/09/26",
           },
           {
             name: "박가인",
@@ -153,6 +90,7 @@ export default {
             details: ["상업공간", "상가/매장", "15평", "서울 송파구"],
             gallery: [],
             message: "감사합니다 ^^ 덕분에 리모델링도 잘끝났어요~",
+            date: "2020/05/26",
           },
         ],
       },
@@ -178,7 +116,8 @@ export default {
   }
 }
 
-.btn-sort {
+.btn-sort,
+.btn-reviews {
   background: #ffffff;
   border: 1px solid #d9d9d9;
   box-sizing: border-box;
@@ -192,5 +131,8 @@ export default {
 
   cursor: pointer;
   width: 114px;
+}
+.btn-reviews {
+  width: 100%;
 }
 </style>
