@@ -31,6 +31,7 @@ const routes = [
       { path: 'inquiry/detail', component: () => import('pages/Store/Inquiry/Detail/Index'), name: 'store_inquiry_detail' },
     ]
   },
+  { path: '/store/review/detailed', component: () => import('pages/Store/Review/ReviewDetailed/Index'), name: 'review_detailed' },
   { 
     path: '/request-estimate', redirect: 'request-estimate/space-type', 
     component: () => import('layouts/RequestEstimate'),
