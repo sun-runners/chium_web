@@ -29,10 +29,12 @@
     </q-card-section>
 
     <q-card-section class="q-mb-xl row">
-      <div class="message col q-pr-xl ellipsis-2-lines">{{ post.message }}</div>
-      <div class="col-1 row items-center">
-        <q-icon size="34px" style="color: #A0A0A0" class="end" name="keyboard_arrow_right"></q-icon>
-      </div>
+      <q-btn flat align="between" padding="0px" class="col" :to="{name:'store_review_detailed'}">
+        <div class="message col q-pr-xl ellipsis-2-lines text-left">{{ post.message }}</div>
+        <div class="col-1 row items-center">
+          <q-icon size="34px" style="color: #A0A0A0" class="end" name="keyboard_arrow_right"></q-icon>
+        </div>
+      </q-btn>
     </q-card-section>
     <q-separator inset size="2px" />
   </q-card>
