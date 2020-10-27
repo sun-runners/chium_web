@@ -28,6 +28,7 @@
             flat
             padding="0px"
             align="between"
+            @click="dialogCriteria=true"
           >
             최신순
             <q-icon name="keyboard_arrow_down" size="16px"></q-icon>
@@ -41,6 +42,43 @@
         <review-lists :posts="review.all"></review-lists>
       </q-card>
     </div>
+    <!-- Modal Popup for changing Criteria -->
+    <q-dialog v-model="dialogCriteria" position="bottom" full-width>
+      <div style="box-shadow: none">
+        <q-card
+          style="width: 100%; border-radius: 18px;"
+          class="criteria-card col-12 row q-pa-none"
+        >
+          <q-card-section class="col-12 q-pa-none" style="height: 60px;">
+            <q-btn flat class="notosanskr-medium full-width full-height" label="최신순" v-close-popup />
+          </q-card-section>
+
+          <q-card-section class="col-12 q-pa-none" style="height: 60px;">
+            <q-btn
+              flat
+              class="notosanskr-medium full-width full-height"
+              label="별점 높은순"
+              v-close-popup
+            />
+          </q-card-section>
+
+          <q-card-actions class="col-12 q-pa-none" style="height: 60px;">
+            <q-btn
+              flat
+              class="notosanskr-medium full-width full-height"
+              label="별점 낮은순"
+              v-close-popup
+            />
+          </q-card-actions>
+        </q-card>
+        <br />
+        <q-card style="border-radius: 18px;" class="cancel-card col-12 q-mb-xl">
+          <q-card-actions class="q-pa-none" style="height: 60px">
+            <q-btn flat class="notosanskr-medium full-width full-height" label="취소" v-close-popup />
+          </q-card-actions>
+        </q-card>
+      </div>
+    </q-dialog>
   </div>
 </template>
 
@@ -58,8 +96,8 @@ export default {
   },
   data() {
     return {
+      dialogCriteria: false,
       reviewRate: 4,
-      tab: "all",
       review: {
         all: [
           {
@@ -138,5 +176,18 @@ export default {
 }
 .btn-reviews {
   width: 100%;
+}
+.criteria-card {
+  font-size: 18px;
+  line-height: 60px;
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: #195de4;
+}
+.cancel-card {
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+  color: #151515;
 }
 </style>
