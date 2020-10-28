@@ -1,10 +1,14 @@
 <template>
   <default-template :styleSlots="styleSlots">
     <template #pageHeader>
-      <nav-header-info :name="'포토후기(116)'" class="full-width" backTo="search" />
+      <nav-header-info :name="'포토후기(116)'" class="full-width" backTo="store_review" />
     </template>
     <template #pageBody>
-      <div class="bg-white q-ma-md">photos</div>
+      <div class="row q-col-gutter-xs bg-white q-ma-md full-height">
+        <div v-for="(item, i) in 40" :key="i" class="col-4">
+          <q-img src="https://placeimg.com/500/300/nature" :ratio="1" />
+        </div>
+      </div>
     </template>
   </default-template>
 </template>
@@ -22,7 +26,7 @@ export default {
     return {
       styleSlots: {
         bgHeader: "white",
-        bgBody: "white",
+        bgBody: "#F3F3F3",
         bgFooter: "",
       },
     };
