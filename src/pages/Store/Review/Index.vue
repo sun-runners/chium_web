@@ -35,7 +35,12 @@
           </q-btn>
         </div>
         <div class="col-8 q-px-md row justify-center">
-          <q-btn class="btn-reviews" flat label="포토후기만 모아보기 (116)" />
+          <q-btn
+            class="btn-reviews"
+            flat
+            label="포토후기만 모아보기 (116)"
+            :to="{ name: 'store_review_photos'}"
+          />
         </div>
       </div>
       <q-card class="q-pt-md q-p" flat>
