@@ -5,8 +5,8 @@
     </template>
     <template #pageBody>
       <div class="row q-col-gutter-xs bg-white q-ma-md full-height">
-        <div v-for="(item, i) in 40" :key="i" class="col-4">
-          <q-img src="https://placeimg.com/500/300/nature" :ratio="1" />
+        <div v-for="(item, i) in 30" :key="i" class="col-4">
+          <q-img :src="'https://placeimg.com/500/300/nature?t=' + Math.random()" :ratio="1" />
         </div>
       </div>
     </template>
