@@ -28,6 +28,17 @@
     <template #pageBody>
       <router-view></router-view>
     </template>
+
+    <template #pageFooter>
+      <div class="full-width notosanskr-medium">
+        <!-- Request Quote Button -->
+        <q-btn flat align="between" class="btn-request-quote row full-width">
+          <q-icon name="favorite_border" style="width: 75px"></q-icon>
+          <q-separator vertical inset></q-separator>
+          <div class="col">견적신청</div>
+        </q-btn>
+      </div>
+    </template>
   </default-template>
 </template>
 
@@ -54,4 +65,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.btn-request-quote {
+  height: 60px;
+  background: #2cb3ff;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 60px;
+  text-align: center;
+  letter-spacing: -0.8px;
+  color: #ffffff;
+}
 </style>
