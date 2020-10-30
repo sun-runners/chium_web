@@ -123,12 +123,12 @@ button {
   letter-spacing: -0.65px;
   color: #767676;
   width: 114px;
-  border-right: 1px solid #e0e0e0;
 }
 
 .company-data {
   font-size: 13px;
   padding: 12px;
+  border-left: 1px solid #e0e0e0;
   letter-spacing: -0.65px;
   color: #15161a;
 }
