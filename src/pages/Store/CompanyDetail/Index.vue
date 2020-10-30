@@ -23,7 +23,20 @@
     </template>
 
     <template #pageBody>
-      <div class="full-height">content her</div>
+      <div class="full-height full-height bg-white q-mt-sm q-px-md notosanskr-regular">
+        <div class="business-text notosanskr-medium">사업자정보</div>
+        <div class="row" style="margin-top: 12px; border-top: #15161a 2px solid;">
+          <div
+            class="col-12 row"
+            style="border-bottom: 1px solid #e0e0e0;"
+            v-for="(company, i) in companyInfo"
+            :key="i"
+          >
+            <div class="company-label">{{ company.label }}</div>
+            <div class="company-data col items-center row items-center">{{ company.data}}</div>
+          </div>
+        </div>
+      </div>
     </template>
   </default-template>
 </template>
@@ -44,6 +57,18 @@ export default {
         bgBody: "#F3F3F3",
         bgFooter: "",
       },
+
+      companyInfo: [
+        { label: "상호 명", data: "어게인업 (Again up)" },
+        { label: "대표자", data: "홍길동" },
+        { label: "사업자등록번호", data: "1234567899" },
+        {
+          label: "사업장 소재지",
+          data:
+            "치움도 폐기시 클리닝구 폐기로380번길 5-20 1층 일부 (우 : 10406)",
+        },
+        { label: "이메일", data: "chium01@naver.com" },
+      ],
     };
   },
 };
@@ -79,5 +104,32 @@ button {
   height: 44px;
   border: 1px solid #d9d9d9;
   border-radius: 8px;
+}
+
+.business-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.7px;
+  color: #15161a;
+  padding-top: 36px;
+}
+
+.company-label {
+  height: 48px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 48px;
+  letter-spacing: -0.65px;
+  color: #767676;
+  width: 114px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.company-data {
+  font-size: 13px;
+  padding: 12px;
+  letter-spacing: -0.65px;
+  color: #15161a;
 }
 </style>
