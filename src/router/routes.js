@@ -33,6 +33,7 @@ const routes = [
   },
   { path: '/store/review/detailed', component: () => import('pages/Store/Review/ReviewDetailed/Index'), name: 'store_review_detailed' },
   { path: '/store/review/photos', component: () => import('pages/Store/Review/ReviewPhotos/Index'), name: 'store_review_photos' },
+  { path: '/store/company/detail', component: () => import('pages/Store/CompanyDetail/Index'), name: 'store_company_detail' },
   { 
     path: '/request-estimate', redirect: 'request-estimate/space-type', 
     component: () => import('layouts/RequestEstimate'),
