@@ -21,7 +21,8 @@
           align="between",
           flat,
           color="black",
-          style="height: 60px;"
+          style="height: 60px;",
+          :to="{ name: 'store_company_detail' }"
         ) 업체 상세정보
           q-icon(name="keyboard_arrow_right")
 </template>
