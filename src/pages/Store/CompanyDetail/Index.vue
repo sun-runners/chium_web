@@ -12,7 +12,11 @@
           <!-- Actions -->
           <div class="row q-col-gutter-sm q-mt-lg">
             <div class="col-6">
-              <q-btn unelevated class="text-black full-width">신고하기</q-btn>
+              <q-btn
+                unelevated
+                class="text-black full-width"
+                :to="{ name: 'store_company_report'}"
+              >신고하기</q-btn>
             </div>
             <div class="col-6">
               <q-btn unelevated class="text-black full-width">전화하기</q-btn>
