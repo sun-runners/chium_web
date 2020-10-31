@@ -14,11 +14,30 @@
     </template>
 
     <template #pageBody>
-      <div class="full-height full-height q-mt-sm q-px-md notosanskr-regular">Company Rsesport</div>
+      <div class="full-height full-height q-mt-sm q-px-md notosanskr-regular">
+        <div class="report-label q-mb-sm notosanskr-medium">신고사유</div>
+        <div style="height: 206px">
+          <textarea
+            name="report"
+            id="report"
+            v-model="reportText"
+            class="report-text full-width"
+            placeholder="신고사유를 적어주세요."
+            rows="9"
+          ></textarea>
+        </div>
+        <br />
+        <div class="helper-text q-pt-sm">신고사유 피드백은 따로 전달되지 않습니다.</div>
+      </div>
     </template>
 
     <template #pageFooter>
-      <q-btn flat align="center" class="btn-report notosanskr-medium full-width">신고하기</q-btn>
+      <q-btn
+        flat
+        align="center"
+        class="btn-report notosanskr-medium full-width"
+        :class="{'complete' : reportText.length}"
+      >신고하기</q-btn>
     </template>
   </default-template>
 </template>
@@ -39,6 +58,7 @@ export default {
         bgBody: "#F3F3F3",
         bgFooter: "",
       },
+      reportText: "",
     };
   },
 };
@@ -69,6 +89,33 @@ export default {
     margin-left: 8px;
   }
 }
+
+.report-label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+  color: #15161a;
+  margin-top: 37px;
+}
+
+.report-text {
+  font-size: 14px;
+  line-height: 22px;
+  /* or 157% */
+  background: white;
+  border: none;
+  padding: 16px;
+  letter-spacing: -0.8px;
+  color: #151515;
+}
+
+.helper-text {
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: -0.6px;
+  color: #767676;
+}
 .btn-report {
   font-weight: 500;
   font-size: 18px;
@@ -78,7 +125,7 @@ export default {
   color: #ffffff;
   background: #bcc0c5;
 
-  .complete {
+  &.complete {
     background: #2cb3ff;
   }
 }
