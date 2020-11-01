@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-grey">
-    <q-layout view="hHh lpR fFf" class="bg-red">
+  <div class="bg-white">
+    <q-layout view="hHh lpR fFf" class="bg-white">
       <!-- Header Starts here -->
-      <q-header class="text-dark row justify-center bg-grey-11" height-hint="98">
+      <q-header class="text-dark row justify-center bg-white" height-hint="98">
         <div :style="widthMax" class="bg-white">
           <nav-header-info name="견적신청" :backTo="returnTo" closedTo="store"></nav-header-info>
           <div class="q-px-sm">
@@ -15,16 +15,17 @@
         </div>
       </q-header>
       <!-- Child Routes content here            -->
-      <q-page-container class="row justify-center bg-grey-11" style="min-height:100vh;">
+      <q-page-container class="row justify-center bg-white" style="min-height:100vh;">
         <router-view
           @next="setBtnReady"
-          class="q-ma-none q-pa-none"
+          class="q-ma-none q-pa-none bg-white"
           style="background: #F2F2F2"
           :style="widthMax"
+          @onHandleStep="_ => activeStep = _"
         />
       </q-page-container>
       <!-- Request Footer content here -->
-      <q-footer class="row justify-center bg-grey-11" v-if="!isBtnHidden">
+      <q-footer class="row justify-center bg-white" v-if="!isBtnHidden">
         <q-toolbar class="bg-white text-white q-py-sm q-px-none" :style="widthMax">
           <q-btn
             class="full-width notosanskr-regular btn-footer"
@@ -45,6 +46,8 @@
 <script>
 import NavHeaderInfo from "components/Utility/NavHeaderInfo";
 import ProcessIndicator from "components/Utility/ProcessIndicator";
+import { toInteger } from 'lodash';
+
 export default {
   name: "RequestEstimate",
   components: {
@@ -54,7 +57,7 @@ export default {
   data() {
     return {
       totalSteps: 6,
-      activeStep: 0,
+      activeStep: 1,
       activeColor: "",
       btnLabel: "다음",
       isBtnReady: false,
@@ -151,12 +154,8 @@ export default {
       }
     },
     myBtnFunction() {
-      if (this.requestComplete) {
-        // Reqest Estimate Completion
-        console.log("request complete");
-      } else {
-        this.$router.push({ name: this.redirectTo });
-      }
+      const { params: { step } } = this.$route;
+      this.$router.push(`/request/${toInteger(step)+1}`);
     },
   },
   watch: {
@@ -164,6 +163,12 @@ export default {
       this.isBtnReady = false;
       this.setProcessIndicator();
     },
+    '$route.params.step': {
+      deep: true,
+      handler(newStep) {
+        this.activeStep = toInteger(newStep);
+      }
+    }
   },
   created() {
     this.setProcessIndicator();
