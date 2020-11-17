@@ -11,10 +11,7 @@
             clickable="clickable"
             v-for="(list, key) in list_waste_type"
             :key="key"
-            @click="
-              selectedWaste = list.val;
-              $emit('next', true);
-            "
+            @click="selectedWaste = list.val; $emit('next', true);"
           >
             <q-item-section avatar="avatar">
               <q-icon>
