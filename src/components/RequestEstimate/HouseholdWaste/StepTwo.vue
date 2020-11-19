@@ -33,7 +33,7 @@
       </div>
     </div>
     <!-- Modal Starts Here -->
-    <search-modal :dialog="dialog"></search-modal>
+    <search-modal :dialog="dialog" @closeModal="(v)=> dialog=v"></search-modal>
   </div>
 </template>
 

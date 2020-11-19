@@ -1,6 +1,6 @@
 <template>
   <q-dialog
-    v-model="dialog"
+    v-model="searchModal"
     position="bottom"
     transition-show="slide-up"
     class="q-pa-none"
@@ -47,7 +47,17 @@ export default {
     };
   },
   props: {
-    dialog: Boolean
+    dialog: Boolean,
+  },
+  computed: {
+    searchModal: {
+      get() {
+        return this.dialog;
+      },
+      set(val) {
+        this.$emit("closeModal", val);
+      },
+    },
   },
 };
 </script>
