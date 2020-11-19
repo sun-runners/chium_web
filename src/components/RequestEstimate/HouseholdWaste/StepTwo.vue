@@ -12,7 +12,7 @@
             clickable="clickable"
             v-for="(list, key) in list_household_waste_type"
             :key="key"
-            @click="selectedWaste = list.val; $emit('next', true);"
+            @click="openDialog()"
           >
             <q-item-section avatar="avatar">
               <q-icon>
@@ -32,6 +32,14 @@
         </q-list>
       </div>
     </div>
+    <!-- Modal Starts Here -->
+    <q-dialog v-model="dialog" position="bottom" transition-show="slide-up" class="q-pa-none">
+      <q-card>
+        <q-card-section class="row items-center no-wrap q-pa-none">
+          Hello
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
@@ -39,6 +47,7 @@
 export default {
   data() {
     return {
+      dialog: false,
       selectedWaste: "",
       list_household_waste_type: [
         {
@@ -66,19 +75,28 @@ export default {
   },
   computed: {},
   methods: {
-    myIcon() {
-      return;
-    },
+    openDialog(position) {
+      this.dialog = true
+    }
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .heading-title {
   font-size: 27px;
   font-family: "notosanskr-regular";
 }
 .heading-subtitle {
   color: #959595;
+}
+
+.q-card {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0px;
+  margin-top: 50px;
+  min-height: 93vh;
+  background: white;
 }
 </style>
