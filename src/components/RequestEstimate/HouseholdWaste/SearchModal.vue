@@ -31,9 +31,23 @@
           </template>
         </q-input>
       </q-card-section>
-      <q-separator></q-separator>
-      <q-card-section class="row items-center no-wrap q-pa-none">
-        Hello
+      <q-separator size="2px" color="black" />
+      <q-card-section class="column q-px-md q-pb-md">
+        <!-- check sections starts here -->
+        <div v-for="(item, i) in searchItems" :key="i">
+          <div
+            class="search-item notosanskr-medium row items-center full-width"
+          >
+            <q-icon class="text-dark q-mr-md" size="24px">
+              <!-- <img src="~assets/circle_check_blue.svg" /> -->
+              <img src="~assets/circle_check_grey.svg" />
+            </q-icon>
+            <div class="item-text">
+              {{ item }}
+            </div>
+          </div>
+          <q-separator />
+        </div>
       </q-card-section>
     </q-card>
   </q-dialog>
@@ -44,6 +58,25 @@ export default {
   data() {
     return {
       searchText: "",
+      searchItems: [
+        "TV",
+        "냉장고",
+        "김치 냉장고",
+        "세탁기",
+        "세탁기",
+        "공기청정기",
+        "가습기",
+        "제습기",
+        "세탁기",
+        "커피머신",
+        "오븐",
+        "전자렌지",
+        "세탁기",
+        "커피머신",
+        "오븐",
+        "전자렌지",
+        "세탁기",
+      ],
     };
   },
   props: {
@@ -76,5 +109,17 @@ export default {
     letter-spacing: -0.8px;
     color: #151515;
   }
+}
+.search-item {
+  font-size: 15px;
+  line-height: 22px;
+  /* identical to box height, or 147% */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.75px;
+
+  color: #151515;
+  padding: 10px 0px;
 }
 </style>
