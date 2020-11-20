@@ -21,10 +21,10 @@ const routes = [
     ]
   },
   {
-    path: '/request/:step',
+    path: '/request', redirect: 'request/1',
     component: () => import('layouts/RequestEstimate'),
     children: [
-      { path: '/', component: () => import('pages/Request/Index') }
+      { path: ':step', component: () => import('pages/Request/Index') }
     ]
   },
   { 
