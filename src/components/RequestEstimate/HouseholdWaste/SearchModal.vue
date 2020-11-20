@@ -34,20 +34,28 @@
       <q-separator size="2px" color="black" />
       <q-card-section class="column q-px-md q-pb-md">
         <!-- check sections starts here -->
-        <div v-for="(item, i) in searchItems" :key="i">
+        <q-btn
+          flat
+          v-for="(item, i) in searchItems"
+          :key="i"
+          @click="checkItem(item)"
+        >
           <div
             class="search-item notosanskr-medium row items-center full-width"
           >
             <q-icon class="text-dark q-mr-md" size="24px">
-              <!-- <img src="~assets/circle_check_blue.svg" /> -->
-              <img src="~assets/circle_check_grey.svg" />
+              <img
+                src="~assets/circle_check_blue.svg"
+                v-if="selectedItem.includes(item)"
+              />
+              <img src="~assets/circle_check_grey.svg" v-else />
             </q-icon>
             <div class="item-text">
               {{ item }}
             </div>
           </div>
           <q-separator />
-        </div>
+        </q-btn>
       </q-card-section>
     </q-card>
   </q-dialog>
@@ -63,20 +71,21 @@ export default {
         "냉장고",
         "김치 냉장고",
         "세탁기",
-        "세탁기",
+        "건조기",
         "공기청정기",
         "가습기",
         "제습기",
-        "세탁기",
+        "세탁기-",
         "커피머신",
         "오븐",
         "전자렌지",
-        "세탁기",
+        "세탁기1",
         "커피머신",
         "오븐",
         "전자렌지",
         "세탁기",
       ],
+      selectedItem: [],
     };
   },
   props: {
@@ -92,6 +101,15 @@ export default {
       },
     },
   },
+  methods: {
+    checkItem(item) {
+      if (!this.selectedItem.includes(item)) {
+        this.selectedItem.push(item);
+      } else {
+        this.selectedItem = this.selectedItem.filter((i) => i != item);
+      }
+    },
+  },
 };
 </script>
 
@@ -101,7 +119,7 @@ export default {
   max-width: 1000px;
   margin: 0px;
   margin-top: 50px;
-  min-height: 93vh;
+  height: 93vh;
   background: white;
   .header {
     font-size: 16px;
