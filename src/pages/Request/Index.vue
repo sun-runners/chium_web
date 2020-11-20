@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import StepOne from "src/components/RequestEstimate/StepOne";
-import HouseholdWasteStepTwo from "src/components/RequestEstimate/HouseholdWaste/StepTwo";
+import StepOne from "src/pages/Request/Steps/StepOne";
+import HouseholdWasteStepTwo from "src/pages/Request/Steps/HouseholdWaste/StepTwo";
 export default {
   components: {
     StepOne,
