@@ -16,15 +16,19 @@
           >
             <q-item-section avatar="avatar">
               <q-icon>
-                <img :src="require(`assets/request_estimate-icon/${list.icon1}`)" />
+                <img
+                  :src="require(`assets/request_estimate-icon/${list.icon1}`)"
+                />
               </q-icon>
             </q-item-section>
             <q-item-section
               style="font-size: 16px; font-family: notosanskr-regular"
-            >{{ list.label }}</q-item-section>
+              >{{ list.label }}</q-item-section
+            >
             <q-item-section avatar="avatar">
               <q-icon>
-                <img src="~assets/request_estimate-icon/medium_arrow.right.svg"
+                <img
+                  src="~assets/request_estimate-icon/medium_arrow.right.svg"
                 />
               </q-icon>
             </q-item-section>
@@ -33,15 +37,19 @@
       </div>
     </div>
     <!-- Modal Starts Here -->
-    <search-modal :dialog="dialog" @closeModal="(v)=> dialog=v"></search-modal>
+    <search-modal
+      :dialog="dialog"
+      @selectionComplete="enableNext"
+      @toggleModal="(v) => (dialog = v)"
+    ></search-modal>
   </div>
 </template>
 
 <script>
-import SearchModal from 'src/components/RequestEstimate/HouseholdWaste/SearchModal';
+import SearchModal from "src/components/RequestEstimate/HouseholdWaste/SearchModal";
 export default {
-  components:{
-    "search-modal": SearchModal
+  components: {
+    "search-modal": SearchModal,
   },
   data() {
     return {
@@ -74,8 +82,13 @@ export default {
   computed: {},
   methods: {
     openDialog(position) {
-      this.dialog = true
-    }
+      this.dialog = true;
+    },
+    enableNext(items) {
+      if (items.length) {
+        this.$emit("next", true);
+      }
+    },
   },
 };
 </script>
