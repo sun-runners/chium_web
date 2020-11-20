@@ -20,22 +20,27 @@ export default {
     };
   },
   mounted() {
-    this.$emit("onHandleStep", this.$route.params.step);
+    this.setPageDisplay();
   },
-  methods: {},
+  methods: {
+    setPageDisplay(step = this.$route.params.step) {
+      switch (parseInt(step)) {
+        case 2:
+          this.component = "HouseholdWasteStepTwo";
+          break;
+
+        default:
+          this.component = "StepOne";
+          break;
+      }
+      this.$emit("onHandleStep", this.$route.params.step);
+    },
+  },
   watch: {
     "$route.params.step": {
       deep: true,
       handler(newStep) {
-        switch (parseInt(newStep)) {
-          case 2:
-            this.component = "HouseholdWasteStepTwo";
-            break;
-
-          default:
-            this.component = "StepOne";
-            break;
-        }
+        this.setPageDisplay(newStep);
       },
     },
   },
