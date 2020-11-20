@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="q-pl-md">
     <p class="heading-title">
       폐기물 유형<span class="heading-subtitle">을 알려주세요.</span>
     </p>

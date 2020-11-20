@@ -1,5 +1,5 @@
 <template>
-  <div class="q-px-md">
+  <div class="q-pl-md q-pr-xs">
     <p class="heading-title">
       폐기물 유형
       <span class="heading-subtitle">을 알려주세요.</span>
@@ -8,7 +8,7 @@
       <div class="col">
         <q-list separator="separator">
           <q-item
-            class="q-pt-lg q-pb-lg q-pl-none"
+            class="q-pt-lg q-pb-lg q-px-none"
             clickable="clickable"
             v-for="(list, key) in list_household_waste_type"
             :key="key"
