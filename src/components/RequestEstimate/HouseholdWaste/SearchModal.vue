@@ -6,57 +6,71 @@
     class="q-pa-none"
   >
     <q-card>
-      <q-card-section class="header notosanskr-medium">
-        가전 항목 0개 선택
-      </q-card-section>
-      <q-card-section class="q-py-none notosanskr-regular">
-        <q-input
-          v-model="searchText"
-          filled
-          bottom-slots
-          color="secondary"
-          label="냉장고, 건조기 등 검색"
-          label-color="grey-14"
-          :input-class="{ 'search-field': true }"
-        >
-          <template v-slot:prepend>
-            <q-icon name="search" />
-          </template>
-          <template v-slot:append>
-            <q-icon
-              name="close"
-              @click="searchText = ''"
-              class="cursor-pointer"
-            />
-          </template>
-        </q-input>
-      </q-card-section>
-      <q-separator size="2px" color="black" />
-      <q-card-section class="column q-px-md q-pb-md">
-        <!-- check sections starts here -->
-        <q-btn
-          flat
-          v-for="(item, i) in searchItems"
-          :key="i"
-          @click="checkItem(item)"
-        >
-          <div
-            class="search-item notosanskr-medium row items-center full-width"
-          >
-            <q-icon class="text-dark q-mr-md" size="24px">
-              <img
-                src="~assets/circle_check_blue.svg"
-                v-if="selectedItem.includes(item)"
-              />
-              <img src="~assets/circle_check_grey.svg" v-else />
-            </q-icon>
-            <div class="item-text">
-              {{ item }}
-            </div>
-          </div>
-          <q-separator />
-        </q-btn>
-      </q-card-section>
+      <q-layout view="Lhh lpR fff" container class="bg-white">
+        <q-header class="bg-white">
+          <q-card-section class=" header notosanskr-medium">
+            가전 항목 0개 선택
+          </q-card-section>
+          <q-card-section class=" q-py-none notosanskr-regular">
+            <q-input
+              v-model="searchText"
+              filled
+              bottom-slots
+              color="secondary"
+              label="냉장고, 건조기 등 검색"
+              label-color="grey-14"
+              :input-class="{ 'search-field': true }"
+            >
+              <template v-slot:prepend>
+                <q-icon name="search" />
+              </template>
+              <template v-slot:append>
+                <q-icon
+                  name="close"
+                  @click="searchText = ''"
+                  class="cursor-pointer"
+                />
+              </template>
+            </q-input>
+          </q-card-section>
+          <q-separator size="2px" color="black" />
+        </q-header>
+
+        <q-footer class="bg-white text-center q-px-md q-pb-xs">
+          <q-btn flat class="selection-done notosanskr-regular">
+            선택 완료
+          </q-btn>
+        </q-footer>
+
+        <q-page-container>
+          <q-page padding>
+            <!-- check sections starts here -->
+            <q-btn
+              flat
+              v-for="(item, i) in searchItems"
+              :key="i"
+              @click="checkItem(item)"
+              class="full-width"
+            >
+              <div
+                class="search-item notosanskr-medium row items-center full-width"
+              >
+                <q-icon class="text-dark q-mr-md" size="24px">
+                  <img
+                    src="~assets/circle_check_blue.svg"
+                    v-if="selectedItem.includes(item)"
+                  />
+                  <img src="~assets/circle_check_grey.svg" v-else />
+                </q-icon>
+                <div class="item-text">
+                  {{ item }}
+                </div>
+              </div>
+              <q-separator />
+            </q-btn>
+          </q-page>
+        </q-page-container>
+      </q-layout>
     </q-card>
   </q-dialog>
 </template>
@@ -83,7 +97,7 @@ export default {
         "커피머신",
         "오븐",
         "전자렌지",
-        "세탁기",
+        "세탁기 last",
       ],
       selectedItem: [],
     };
@@ -139,5 +153,19 @@ export default {
 
   color: #151515;
   padding: 10px 0px;
+}
+.selection-done {
+  /* Color/Main */
+  background: #2cb3ff;
+  border-radius: 8px;
+  width: 100%;
+  max-width: calc(1000px - 32px);
+  height: 60px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: #ffffff;
 }
 </style>
