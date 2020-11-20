@@ -37,7 +37,13 @@
         </q-header>
 
         <q-footer class="bg-white text-center q-px-md q-pb-xs">
-          <q-btn flat class="selection-done notosanskr-regular">
+          <q-btn
+            flat
+            class="selection-done notosanskr-regular"
+            @click="selectionComplete()"
+            :disable="!selectedItem.length"
+            :class="{ 'btn-disabel': !selectedItem.length }"
+          >
             선택 완료
           </q-btn>
         </q-footer>
@@ -111,7 +117,7 @@ export default {
         return this.dialog;
       },
       set(val) {
-        this.$emit("closeModal", val);
+        this.$emit("toggleModal", val);
       },
     },
   },
@@ -121,6 +127,12 @@ export default {
         this.selectedItem.push(item);
       } else {
         this.selectedItem = this.selectedItem.filter((i) => i != item);
+      }
+    },
+    selectionComplete() {
+      if (this.selectedItem.length) {
+        this.$emit("selectionComplete", this.selectedItem);
+        this.$emit("toggleModal", false);
       }
     },
   },
@@ -167,5 +179,8 @@ export default {
   text-align: center;
   letter-spacing: -0.9px;
   color: #ffffff;
+}
+.btn-disabel {
+  background: #bcc0c5;
 }
 </style>
