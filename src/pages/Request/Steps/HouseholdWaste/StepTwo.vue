@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="q-px-md">
     <p class="heading-title">
       폐기물 유형
       <span class="heading-subtitle">을 알려주세요.</span>
@@ -24,7 +24,7 @@
             >{{ list.label }}</q-item-section>
             <q-item-section avatar="avatar">
               <q-icon>
-                <img :src="require(`assets/request_estimate-icon/medium_arrow.right.svg`)"
+                <img src="~assets/request_estimate-icon/medium_arrow.right.svg"
                 />
               </q-icon>
             </q-item-section>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import SearchModal from './SearchModal.vue';
+import SearchModal from 'src/components/RequestEstimate/HouseholdWaste/SearchModal';
 export default {
   components:{
     "search-modal": SearchModal
