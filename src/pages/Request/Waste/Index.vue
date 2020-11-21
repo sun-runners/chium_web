@@ -8,7 +8,7 @@
 
 <script>
 import StepOne from "src/pages/Request/Waste/Steps/StepOne";
-import HouseholdWasteStepTwo from "src/pages/Request/Waste/Steps/HouseholdWaste/StepTwo";
+import HouseholdWasteStepTwo from "src/pages/Request/Waste/Steps/StepTwo";
 export default {
   components: {
     StepOne,
