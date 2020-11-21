@@ -1,0 +1,50 @@
+<template>
+  <div class="q-mt-lg row">
+    <div class="col-12">
+      <component :is="component" @next="$emit('next', true)"></component>
+    </div>
+  </div>
+</template>
+
+<script>
+import StepOne from "src/pages/Request/Waste/Steps/StepOne";
+import StepTwo from "src/pages/Request/Waste/Steps/StepTwo";
+export default {
+  components: {
+    StepOne,
+    StepTwo,
+  },
+  data() {
+    return {
+      component: "StepOne",
+    };
+  },
+  mounted() {
+    this.setPageDisplay();
+  },
+  methods: {
+    setPageDisplay(step = this.$route.params.step) {
+      switch (parseInt(step)) {
+        case 2:
+          this.component = "StepTwo";
+          break;
+
+        default:
+          this.component = "StepOne";
+          break;
+      }
+      this.$emit("onHandleStep", this.$route.params.step);
+    },
+  },
+  watch: {
+    "$route.params.step": {
+      deep: true,
+      handler(newStep) {
+        this.setPageDisplay(newStep);
+      },
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped></style>
