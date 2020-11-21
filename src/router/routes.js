@@ -21,10 +21,11 @@ const routes = [
     ]
   },
   {
-    path: '/request', redirect: 'request/1',
+    path: '/request', redirect: 'request/waste/1',
     component: () => import('layouts/RequestEstimate'),
     children: [
-      { path: ':step', component: () => import('pages/Request/Index') }
+      { path: 'waste', redirect: 'request/waste/1'},
+      { path: 'waste/:step', component: () => import('pages/Request/Waste/Index') }
     ]
   },
   { 
