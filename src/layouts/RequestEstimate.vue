@@ -10,7 +10,7 @@
               style="height: 44px; padding: 0 16px;"
             >
               <router-link
-                :to="{ name: '' }"
+                :to="{ path: `${path}/${activeStep - 1}` }"
                 v-if="activeStep > 1"
                 class="row items-center"
                 style="text-decoration:none; width: 56px;"
@@ -22,7 +22,7 @@
                 />
               </router-link>
               <router-link
-                :to="{ name: '' }"
+                :to="{ name: 'home' }"
                 class="row items-center"
                 style="text-decoration:none"
                 v-else
@@ -108,6 +108,7 @@ export default {
       isBtnReady: false,
       isBtnHidden: false,
       requestComplete: false,
+      path: "",
     };
   },
   computed: {
@@ -167,7 +168,9 @@ export default {
     },
     myBtnFunction() {
       // we get the current step and we move to the next
-      this.$router.push(`/request/${toInteger(this.$route.params.step) + 1}`);
+      this.$router.push(
+        `${this.path}/${toInteger(this.$route.params.step) + 1}`
+      );
     },
   },
   watch: {
@@ -183,6 +186,8 @@ export default {
     },
   },
   created() {
+    const path = this.$route.path.split("/")[2];
+    this.path = `/request/${path}`;
     this.setProcessIndicator();
   },
 };

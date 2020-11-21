@@ -8,11 +8,11 @@
 
 <script>
 import StepOne from "src/pages/Request/Waste/Steps/StepOne";
-import HouseholdWasteStepTwo from "src/pages/Request/Waste/Steps/StepTwo";
+import StepTwo from "src/pages/Request/Waste/Steps/StepTwo";
 export default {
   components: {
     StepOne,
-    HouseholdWasteStepTwo,
+    StepTwo,
   },
   data() {
     return {
@@ -26,7 +26,7 @@ export default {
     setPageDisplay(step = this.$route.params.step) {
       switch (parseInt(step)) {
         case 2:
-          this.component = "HouseholdWasteStepTwo";
+          this.component = "StepTwo";
           break;
 
         default:
