@@ -21,11 +21,13 @@ const routes = [
     ]
   },
   {
-    path: '/request', redirect: 'request/waste/1',
-    component: () => import('layouts/RequestEstimate'),
+    path: '/request', redirect: '/request/waste',
+    component: () => import('layouts/RequestEstimate.vue'),
     children: [
-      { path: 'waste', redirect: 'request/waste/1'},
-      { path: 'waste/:step', component: () => import('pages/Request/Waste/Index') }
+      { path: 'waste', component: () => import('pages/Request/Waste/Index.vue'), name: 'waste'},
+      // { path: 'waste/two', component: () => import('pages/Request/Waste/Steps/StepTwo.household.vue'), name: 'step_two_household' }
+      { path: 'waste/two/household', component: () => import('pages/Request/Waste/StepTwo/household.vue') },
+      { path: 'waste/two/construction', component: () => import('pages/Request/Waste/StepTwo/construction.vue')}
     ]
   },
   { 
