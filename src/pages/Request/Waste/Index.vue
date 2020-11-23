@@ -1,50 +1,103 @@
 <template>
-  <div class="q-mt-lg row">
-    <div class="col-12">
-      <component :is="component" @next="$emit('next', true)"></component>
+  <div class="q-pl-md">
+    <p class="heading-title">
+      폐기물 유형<span class="heading-subtitle">을 알려주세요.</span>
+    </p>
+    <div class="row">
+      <div class="col">
+        <q-list separator="separator">
+          <q-item
+            class="q-pt-lg q-pb-lg q-pl-none"
+            clickable="clickable"
+            v-for="(list, key) in list_waste_type"
+            :key="key"
+            @click="selectedWaste = list.val; $emit('next', true);"
+          >
+            <q-item-section avatar="avatar">
+              <q-icon>
+                <img
+                  :src="require(`assets/request_estimate-icon/${list.icon1}`)"
+                />
+              </q-icon>
+            </q-item-section>
+            <q-item-section
+              style="font-size: 16px; font-family: notosanskr-regular"
+              >{{ list.label }}</q-item-section
+            >
+            <q-item-section avatar="avatar">
+              <q-icon>
+                <img
+                  :src="
+                    require(`assets/request_estimate-icon/${
+                      selectedWaste === list.val
+                        ? 'radio-btn-selected.png'
+                        : 'radio-btn-unselected.png'
+                    }`)"
+                />
+              </q-icon>
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import StepOne from "src/pages/Request/Waste/Steps/StepOne";
-import StepTwo from "src/pages/Request/Waste/Steps/StepTwo";
 export default {
-  components: {
-    StepOne,
-    StepTwo,
-  },
   data() {
     return {
-      component: "StepOne",
+      selectedWaste: "",
+      list_waste_type: [
+        {
+          icon1: "domestic-waste.svg",
+          label: "가정집 폐기물",
+          val: "domestic",
+        },
+        {
+          icon1: "industrial-waste.svg",
+          label: "사업장 폐기물",
+          val: "industrial",
+        },
+        {
+          icon1: "construction-waste.svg",
+          label: "건설 폐기물",
+          val: "construction",
+        },
+        {
+          icon1: "box.svg",
+          label: "재활용 정기수거",
+          val: "box",
+        },
+      ],
     };
   },
-  mounted() {
-    this.setPageDisplay();
-  },
-  methods: {
-    setPageDisplay(step = this.$route.params.step) {
-      switch (parseInt(step)) {
-        case 2:
-          this.component = "StepTwo";
-          break;
-
-        default:
-          this.component = "StepOne";
-          break;
+  computed: {
+    layoutState(){
+      return {
+        totalSteps: 7,
+        activeStep: 1,
+        btnLabel: "다음",
+        isBtnReady: false,
+        isBtnHidden: false,
+        requestComplete: false,
+        nextPathName: 'step_two_household',
+        prevPathName: ''
       }
-      this.$emit("onHandleStep", this.$route.params.step);
-    },
+    }
   },
-  watch: {
-    "$route.params.step": {
-      deep: true,
-      handler(newStep) {
-        this.setPageDisplay(newStep);
-      },
-    },
+  mounted(){
+    this.$emit('setStateLayout', this.layoutState)
   },
+  methods: {},
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.heading-title {
+  font-size: 27px;
+  font-family: "notosanskr-regular";
+}
+.heading-subtitle {
+  color: #959595;
+}</style>
