@@ -92,7 +92,6 @@
 <script>
 import NavHeaderInfo from "components/Utility/NavHeaderInfo";
 import ProcessIndicator from "components/Utility/ProcessIndicator";
-import { toInteger } from "lodash";
 
 export default {
   name: "RequestEstimate",
@@ -162,15 +161,12 @@ export default {
       if (found_route) {
         this.isBtnReady = found_route.btnReady;
         this.activeStep = found_route.stepNum;
-
         this.isBtnHidden = found_route.hideBtnFooter ? true : false;
       }
     },
     myBtnFunction() {
       // we get the current step and we move to the next
-      this.$router.push(
-        `${this.path}/${toInteger(this.$route.params.step) + 1}`
-      );
+      this.$router.push(`${this.path}/${this.activeStep + 1}`);
     },
   },
   watch: {
@@ -178,16 +174,18 @@ export default {
       this.isBtnReady = false;
       this.setProcessIndicator();
     },
-    "$route.params.step": {
+    "$route.path": {
       deep: true,
-      handler(newStep) {
-        this.activeStep = toInteger(newStep);
+      handler(path) {
+        this.activeStep = parseInt(path.split("/")[4]);
+        console.log(this.activeStep);
       },
     },
   },
   created() {
-    const path = this.$route.path.split("/")[2];
-    this.path = `/request/${path}`;
+    const r = this.$route.path.split("/");
+    this.path = `/${r[1]}/${r[2]}/${r[3]}`;
+    this.activeStep = parseInt(r[4]);
     this.setProcessIndicator();
   },
 };
