@@ -1,0 +1,116 @@
+<template>
+  <div class="q-pl-md">
+    <p class="heading-title">
+      폐기물 유형<span class="heading-subtitle">을 알려주세요.</span>
+    </p>
+    <div class="row">
+      <!-- check sections starts here -->
+      <q-btn
+        flat
+        v-for="(item, i) in scrapItems"
+        :key="i"
+        @click="checkItem(item)"
+        class="full-width"
+      >
+        <div class="search-item notosanskr-medium row items-center full-width">
+          <q-icon class="text-dark q-mr-md" size="24px">
+            <img
+              src="~assets/circle_check_blue.svg"
+              v-if="selectedItem.includes(item)"
+            />
+            <img src="~assets/circle_check_grey.svg" v-else />
+          </q-icon>
+          <div class="item-text">
+            {{ item }}
+          </div>
+        </div>
+        <q-separator />
+      </q-btn>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      searchText: "",
+      scrapItems: [
+        "TV",
+        "냉장고",
+        "김치 냉장고",
+        "세탁기",
+        "건조기",
+        "공기청정기",
+        "가습기",
+        "제습기",
+        "세탁기-",
+        "커피머신",
+        "오븐",
+        "전자렌지",
+        "세탁기1",
+        "커피머신",
+        "오븐",
+        "전자렌지",
+        "세탁기 last",
+      ],
+      selectedItem: [],
+    };
+  },
+  props: {
+    dialog: Boolean,
+  },
+  computed: {
+    layoutState() {
+      return {
+        totalSteps: 6,
+        activeStep: 2,
+        btnLabel: "다음",
+        isBtnReady: false,
+        isBtnHidden: false,
+        requestComplete: false,
+        nextPathRoute: "/request/waste/two/household",
+        prevPathRoute: "/request/waste",
+      };
+    },
+  },
+  mounted() {
+    this.$emit("setStateLayout", this.layoutState);
+  },
+  methods: {
+    checkItem(item) {
+      if (!this.selectedItem.includes(item)) {
+        this.selectedItem.push(item);
+      } else {
+        this.selectedItem = this.selectedItem.filter((i) => i != item);
+      }
+    },
+    selectionComplete() {
+      if (this.selectedItem.length) {
+        this.$emit("selectionComplete", this.selectedItem);
+        this.$emit("toggleModal", false);
+      }
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.heading-title {
+  font-size: 27px;
+  font-family: "notosanskr-regular";
+}
+.heading-subtitle {
+  color: #959595;
+}
+.search-item {
+  font-size: 15px;
+  line-height: 22px;
+  /* identical to box height, or 147% */
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.75px;
+  color: #151515;
+  padding: 10px 0px;
+}
+</style>
