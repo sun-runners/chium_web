@@ -10,7 +10,7 @@
               style="height: 44px; padding: 0 16px;"
             >
               <router-link
-                :to="{ path: `${path}/${activeStep - 1}` }"
+                :to="{ name: prevPathName }"
                 v-if="activeStep > 1"
                 class="row items-center"
                 style="text-decoration:none; width: 56px;"
@@ -64,7 +64,7 @@
           class="q-ma-none q-pa-none bg-white"
           style="background: #F2F2F2"
           :style="widthMax"
-          @onHandleStep="(_) => (activeStep = _)"
+          @setStateLayout="setLayoutState"
         />
       </q-page-container>
       <!-- Request Footer content here -->
@@ -101,13 +101,14 @@ export default {
   },
   data() {
     return {
-      totalSteps: 6,
-      activeStep: 1,
+      totalSteps: 0,
+      activeStep: 0,
       btnLabel: "다음",
       isBtnReady: false,
       isBtnHidden: false,
       requestComplete: false,
-      path: "",
+      nextPathName: '',
+      prevPathName: ''
     };
   },
   computed: {
@@ -115,34 +116,34 @@ export default {
       return { width: window.innerWidth + "px", "max-width": "1000px" };
     },
     stepsList() {
-      return [
-        {
-          stepNum: 1,
-          btnReady: false,
-        },
-        {
-          stepNum: 2,
-          btnReady: false,
-        },
-        {
-          stepNum: 3,
-          btnReady: false,
-        },
-        {
-          stepNum: 4,
-          btnReady: false,
-          hideBtnFooter: true,
-        },
-        {
-          routeName: "picture_space",
-          stepNum: 5,
-          btnReady: true,
-        },
-        {
-          stepNum: 6,
-          btnReady: true,
-        },
-      ];
+      // return [
+      //   {
+      //     stepNum: 1,
+      //     btnReady: false,
+      //   },
+      //   {
+      //     stepNum: 2,
+      //     btnReady: false,
+      //   },
+      //   {
+      //     stepNum: 3,
+      //     btnReady: false,
+      //   },
+      //   {
+      //     stepNum: 4,
+      //     btnReady: false,
+      //     hideBtnFooter: true,
+      //   },
+      //   {
+      //     routeName: "picture_space",
+      //     stepNum: 5,
+      //     btnReady: true,
+      //   },
+      //   {
+      //     stepNum: 6,
+      //     btnReady: true,
+      //   },
+      // ];
     },
   },
   methods: {
@@ -155,38 +156,49 @@ export default {
       }
     },
     setProcessIndicator() {
-      const found_route = this.stepsList.find(
-        (step) => step.stepNum == this.$route.params.step
-      );
-      if (found_route) {
-        this.isBtnReady = found_route.btnReady;
-        this.activeStep = found_route.stepNum;
-        this.isBtnHidden = found_route.hideBtnFooter ? true : false;
-      }
+      // const found_route = this.stepsList.find(
+      //   (step) => step.stepNum == this.$route.params.step
+      // );
+      // if (found_route) {
+      //   this.isBtnReady = found_route.btnReady;
+      //   this.activeStep = found_route.stepNum;
+      //   this.isBtnHidden = found_route.hideBtnFooter ? true : false;
+      // }
     },
     myBtnFunction() {
       // we get the current step and we move to the next
-      this.$router.push(`${this.path}/${this.activeStep + 1}`);
+      this.$router.push({name: this.nextPathName });
     },
+    setLayoutState(state) {
+      this.totalSteps = state.totalSteps;
+      this.activeStep = state.activeStep;
+      this.btnLabel = state.btnLabel;
+      this.isBtnReady = state.isBtnReady;
+      this.isBtnHidden = state.isBtnHidden;
+      this.requestComplete = state.requestComplete;
+      this.nextPathName = state.nextPathName;
+      this.prevPathName = state.prevPathName;
+      console.log(state, 'inLayout')
+    }
   },
   watch: {
-    $route(to, from) {
-      this.isBtnReady = false;
-      this.setProcessIndicator();
-    },
-    "$route.path": {
-      deep: true,
-      handler(path) {
-        this.activeStep = parseInt(path.split("/")[4]);
-        console.log(this.activeStep);
-      },
-    },
+    // $route(to, from) {
+    //   this.isBtnReady = false;
+    //   this.setProcessIndicator();
+    // },
+    // "$route.path": {
+    //   deep: true,
+    //   handler(path) {
+    //     this.activeStep = parseInt(path.split("/")[4]);
+    //     console.log(this.activeStep);
+    //   },
+    // },
   },
   created() {
-    const r = this.$route.path.split("/");
-    this.path = `/${r[1]}/${r[2]}/${r[3]}`;
-    this.activeStep = parseInt(r[4]);
-    this.setProcessIndicator();
+    // const r = this.$route.path.split("/");
+    // this.path = `/${r[1]}/${r[2]}/${r[3]}`;
+    // this.activeStep = parseInt(r[4]);
+    // this.setProcessIndicator();
   },
 };
 </script>
