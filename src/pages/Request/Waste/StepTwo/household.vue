@@ -70,7 +70,23 @@ export default {
       discardedItems: [],
     };
   },
-  computed: {},
+  computed: {
+    layoutState() {
+      return {
+        totalSteps: 6,
+        activeStep: 2,
+        btnLabel: "다음",
+        isBtnReady: false,
+        isBtnHidden: false,
+        requestComplete: false,
+        nextPathRoute: "/request/waste",
+        prevPathRoute: "/request/waste",
+      };
+    },
+  },
+  mounted() {
+    this.$emit("setStateLayout", this.layoutState);
+  },
   methods: {
     addToDiscarded() {
       if (this.myItem && !this.discardedItems.includes(this.myItem)) {
