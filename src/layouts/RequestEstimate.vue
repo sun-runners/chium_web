@@ -82,7 +82,9 @@ export default {
   methods: {
     setBtnReady(val) {
       this.isBtnReady = val;
-      this.isBtnHidden = !val;
+      if (this.isBtnHidden && val) {
+        this.isBtnHidden = !val;
+      }
     },
     myBtnFunction() {
       this.$router.push({ path: this.nextPathRoute });
@@ -96,7 +98,6 @@ export default {
       this.requestComplete = state.requestComplete;
       this.nextPathRoute = state.nextPathRoute;
       this.prevPathRoute = state.prevPathRoute;
-      console.log(state, "inLayout");
     },
   },
 };

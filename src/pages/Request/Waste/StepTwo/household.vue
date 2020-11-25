@@ -101,6 +101,14 @@ export default {
       }
     },
   },
+  watch: {
+    discardedItems(newVal) {
+      this.$emit("next", true);
+      if (!newVal.length) {
+        this.$emit("next", false);
+      }
+    },
+  },
 };
 </script>
 
