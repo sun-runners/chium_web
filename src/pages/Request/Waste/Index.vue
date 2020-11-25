@@ -11,7 +11,7 @@
             clickable="clickable"
             v-for="(list, key) in list_waste_type"
             :key="key"
-            @click="selectedWaste = list.val; $emit('next', true);"
+            @click="setSelectedWaste(list.val); $emit('next', true);"
           >
             <q-item-section avatar="avatar">
               <q-icon>
@@ -52,12 +52,12 @@ export default {
         {
           icon1: "domestic-waste.svg",
           label: "가정집 폐기물",
-          val: "domestic",
+          val: "household",
         },
         {
           icon1: "industrial-waste.svg",
           label: "사업장 폐기물",
-          val: "industrial",
+          val: "workplace",
         },
         {
           icon1: "construction-waste.svg",
@@ -67,7 +67,7 @@ export default {
         {
           icon1: "box.svg",
           label: "재활용 정기수거",
-          val: "box",
+          val: "recycling",
         },
       ],
     };
@@ -75,21 +75,28 @@ export default {
   computed: {
     layoutState(){
       return {
-        totalSteps: 7,
+        totalSteps: 6,
         activeStep: 1,
         btnLabel: "다음",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathName: 'step_two_household',
-        prevPathName: ''
+        nextPathRoute: '/request/waste/two/household',
+        prevPathRoute: '/home'
       }
     }
   },
   mounted(){
     this.$emit('setStateLayout', this.layoutState)
   },
-  methods: {},
+  methods: {
+    setSelectedWaste(val) {
+      this.selectedWaste = val;
+      const layoutState = this.layoutState;
+      layoutState.nextPathRoute = `/request/waste/two/${val}`;
+      this.$emit('setStateLayout', layoutState);
+    }
+  },
 };
 </script>
 
@@ -100,4 +107,5 @@ export default {
 }
 .heading-subtitle {
   color: #959595;
-}</style>
+}
+</style>
