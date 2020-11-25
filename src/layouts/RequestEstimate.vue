@@ -4,47 +4,10 @@
       <!-- Header Starts here -->
       <q-header class="text-dark row justify-center bg-white" height-hint="98">
         <div :style="widthMax" class="bg-white">
-          <q-card class="my-card notosanskr-medium" flat>
-            <q-card-section
-              class="row content-center q-px-none"
-              style="height: 44px; padding: 0 16px;"
-            >
-              <router-link
-                :to="{ name: prevPathName }"
-                v-if="activeStep > 1"
-                class="row items-center"
-                style="text-decoration:none; width: 56px;"
-              >
-                <q-icon
-                  class="text-dark"
-                  name="keyboard_backspace"
-                  size="24px"
-                />
-              </router-link>
-              <router-link
-                :to="{ name: 'home' }"
-                class="row items-center"
-                style="text-decoration:none"
-                v-else
-              >
-                <q-icon class="text-dark" name="clear" size="24px" />
-              </router-link>
-              <div
-                style="font-weight: 500; font-size: 16px;"
-                class="col row items-center justify-center  nav-text"
-              >
-                견적신청
-              </div>
-              <q-btn
-                flat
-                color="dark"
-                :to="{ name: 'my_page' }"
-                v-if="activeStep > 1"
-                label="취소"
-              />
-              <div style="width: 56px" v-else></div>
-            </q-card-section>
-          </q-card>
+          <toolbar-head
+            :prevPathRoute="prevPathRoute"
+            :activeStep="activeStep"
+          />
           <!-- Progress of Process Starts here -->
           <div class="q-px-sm">
             <process-indicator
@@ -90,14 +53,14 @@
 </template>
 
 <script>
-import NavHeaderInfo from "components/Utility/NavHeaderInfo";
+import ToolbarHead from "components/RequestEstimate/ToolbarHead";
 import ProcessIndicator from "components/Utility/ProcessIndicator";
 
 export default {
   name: "RequestEstimate",
   components: {
     "process-indicator": ProcessIndicator,
-    "nav-header-info": NavHeaderInfo,
+    "toolbar-head": ToolbarHead,
   },
   data() {
     return {
@@ -107,67 +70,22 @@ export default {
       isBtnReady: false,
       isBtnHidden: false,
       requestComplete: false,
-      nextPathName: '',
-      prevPathName: ''
+      nextPathRoute: "",
+      prevPathRoute: "",
     };
   },
   computed: {
     widthMax() {
       return { width: window.innerWidth + "px", "max-width": "1000px" };
     },
-    stepsList() {
-      // return [
-      //   {
-      //     stepNum: 1,
-      //     btnReady: false,
-      //   },
-      //   {
-      //     stepNum: 2,
-      //     btnReady: false,
-      //   },
-      //   {
-      //     stepNum: 3,
-      //     btnReady: false,
-      //   },
-      //   {
-      //     stepNum: 4,
-      //     btnReady: false,
-      //     hideBtnFooter: true,
-      //   },
-      //   {
-      //     routeName: "picture_space",
-      //     stepNum: 5,
-      //     btnReady: true,
-      //   },
-      //   {
-      //     stepNum: 6,
-      //     btnReady: true,
-      //   },
-      // ];
-    },
   },
   methods: {
     setBtnReady(val) {
       this.isBtnReady = val;
-      if (val) {
-        this.isBtnHidden = false;
-      } else {
-        this.setProcessIndicator();
-      }
-    },
-    setProcessIndicator() {
-      // const found_route = this.stepsList.find(
-      //   (step) => step.stepNum == this.$route.params.step
-      // );
-      // if (found_route) {
-      //   this.isBtnReady = found_route.btnReady;
-      //   this.activeStep = found_route.stepNum;
-      //   this.isBtnHidden = found_route.hideBtnFooter ? true : false;
-      // }
+      this.isBtnHidden = !val;
     },
     myBtnFunction() {
-      // we get the current step and we move to the next
-      this.$router.push({name: this.nextPathName });
+      this.$router.push({ path: this.nextPathRoute });
     },
     setLayoutState(state) {
       this.totalSteps = state.totalSteps;
@@ -176,29 +94,10 @@ export default {
       this.isBtnReady = state.isBtnReady;
       this.isBtnHidden = state.isBtnHidden;
       this.requestComplete = state.requestComplete;
-      this.nextPathName = state.nextPathName;
-      this.prevPathName = state.prevPathName;
-      console.log(state, 'inLayout')
-    }
-  },
-  watch: {
-    // $route(to, from) {
-    //   this.isBtnReady = false;
-    //   this.setProcessIndicator();
-    // },
-    // "$route.path": {
-    //   deep: true,
-    //   handler(path) {
-    //     this.activeStep = parseInt(path.split("/")[4]);
-    //     console.log(this.activeStep);
-    //   },
-    // },
-  },
-  created() {
-    // const r = this.$route.path.split("/");
-    // this.path = `/${r[1]}/${r[2]}/${r[3]}`;
-    // this.activeStep = parseInt(r[4]);
-    // this.setProcessIndicator();
+      this.nextPathRoute = state.nextPathRoute;
+      this.prevPathRoute = state.prevPathRoute;
+      console.log(state, "inLayout");
+    },
   },
 };
 </script>
