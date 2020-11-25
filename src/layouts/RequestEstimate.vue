@@ -33,7 +33,7 @@
       <!-- Request Footer content here -->
       <q-footer class="row justify-center bg-white" v-if="!isBtnHidden">
         <q-toolbar
-          class="bg-white text-white q-py-sm q-px-none"
+          class="bg-white text-white q-py-none q-px-none"
           :style="widthMax"
         >
           <q-btn
@@ -105,7 +105,7 @@ export default {
 <style lang="scss">
 .btn-footer {
   color: #919698;
-  background: #e8eaeb;
+  background: #bcc0c5;
   border-radius: 0;
   height: 60px;
 }
