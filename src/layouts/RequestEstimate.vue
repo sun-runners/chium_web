@@ -24,7 +24,7 @@
       >
         <router-view
           @next="setBtnReady"
-          class="q-ma-none q-pa-none bg-white"
+          class="q-ma-none q-pa-none"
           style="background: #F2F2F2"
           :style="widthMax"
           @setStateLayout="setLayoutState"
