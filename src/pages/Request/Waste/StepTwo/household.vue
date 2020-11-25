@@ -1,23 +1,42 @@
 <template>
-  <div class="bg-white q-px-md">
-    <p class="heading-title notosanskr-regular">
+  <div class="">
+    <p class="heading-title bg-white q-ma-none q-px-md notosanskr-regular">
       폐기할 물품
       <span class="heading-subtitle">을 알려주세요.</span>
     </p>
-    <div class="row">
-      <div class="col notosanskr-regular">
-        <q-file
-          outlined
-          class="field"
-          ref="filepicker"
-          :label="label"
-          v-model="myItem"
-          v-show="!myItem"
-        >
-          <template v-slot:append>
-            <div class="attachment notosanskr-medium">등록</div>
-          </template>
-        </q-file>
+    <div class="column full-height ">
+      <div class="notosanskr-regular bg-white q-px-md">
+        <div class="col-12 q-pa-none" style="padding-bottom: 24px">
+          <q-input
+            outlined
+            class="field"
+            ref="myItemField"
+            :label="label"
+            label-color="grey-13"
+            v-model="myItem"
+          >
+            <template v-slot:append>
+              <q-btn
+                flat
+                class="attachment notosanskr-medium"
+                @click="addToDiscarded"
+              >
+                등록
+              </q-btn>
+            </template>
+          </q-input>
+        </div>
+      </div>
+
+      <div
+        style="flex-grow:1;"
+        class="bg-white"
+        v-if="!discardedItems.length"
+      ></div>
+      <div class="q-mt-sm" style="background: #F3F3F3; flex-grow:1;" v-else>
+        <div class="discarded bg-white q-px-md q-py-lg notosanskr-regular">
+          <div class="heading-text notosanskr-medium">폐기품목</div>
+        </div>
       </div>
     </div>
   </div>
@@ -30,10 +49,17 @@ export default {
     return {
       myItem: "",
       label: "옷장2개 (품목과 수량을 적어주세요.)",
+      discardedItems: [],
     };
   },
   computed: {},
-  methods: {},
+  methods: {
+    addToDiscarded() {
+      this.discardedItems.push(this.myItem);
+      this.myItem = "";
+      this.$refs.myItemField.blur();
+    },
+  },
 };
 </script>
 
@@ -62,6 +88,16 @@ export default {
     text-align: center;
     letter-spacing: -0.8px;
     color: #195de4;
+  }
+}
+.discarded {
+  .heading-text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.8px;
+    color: #15161a;
+    padding-bottom: 20px;
   }
 }
 </style>
