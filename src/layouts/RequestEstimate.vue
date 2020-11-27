@@ -9,7 +9,7 @@
             :activeStep="activeStep"
           />
           <!-- Progress of Process Starts here -->
-          <div class="q-px-sm">
+          <div class="q-px-sm q-pb-md">
             <process-indicator
               :totalSteps="totalSteps"
               :activeStep="activeStep"
