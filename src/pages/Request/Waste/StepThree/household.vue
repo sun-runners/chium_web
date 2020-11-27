@@ -4,15 +4,16 @@
       현장 사전방문
       <span class="heading-subtitle">을 원하시나요?</span>
     </p>
-    <div class="column full-height ">
-      content
-    </div>
+    <visit-options></visit-options>
   </div>
 </template>
 
 <script>
+import VisitOptions from "components/RequestEstimate/HouseholdWaste/StepThree/VisitOptions";
 export default {
-  components: {},
+  components: {
+    "visit-options": VisitOptions,
+  },
   data() {
     return {};
   },
@@ -45,7 +46,7 @@ export default {
   align-items: center;
   letter-spacing: -1.35px;
   color: #15161a;
-  padding-bottom: 36px;
+  padding-bottom: 24px;
 }
 .heading-subtitle {
   color: #959595;
