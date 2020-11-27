@@ -4,18 +4,25 @@
       현장 사전방문
       <span class="heading-subtitle">을 원하시나요?</span>
     </p>
+    <!-- visit options answers -->
     <visit-options></visit-options>
+    <!-- visit time & dates -->
+    <visit-date-time></visit-date-time>
   </div>
 </template>
 
 <script>
 import VisitOptions from "components/RequestEstimate/HouseholdWaste/StepThree/VisitOptions";
+import VisitDateTime from "components/RequestEstimate/HouseholdWaste/StepThree/VisitDateTime";
 export default {
   components: {
     "visit-options": VisitOptions,
+    "visit-date-time": VisitDateTime,
   },
   data() {
-    return {};
+    return {
+      visit: "",
+    };
   },
   computed: {
     layoutState() {
