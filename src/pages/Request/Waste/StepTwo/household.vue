@@ -79,7 +79,7 @@ export default {
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste",
+        nextPathRoute: "/request/waste/three/household",
         prevPathRoute: "/request/waste",
       };
     },
