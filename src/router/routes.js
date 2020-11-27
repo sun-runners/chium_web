@@ -25,9 +25,11 @@ const routes = [
     component: () => import('layouts/RequestEstimate.vue'),
     children: [
       { path: 'waste', component: () => import('pages/Request/Waste/Index.vue'), name: 'waste'},
-      // { path: 'waste/two', component: () => import('pages/Request/Waste/Steps/StepTwo.household.vue'), name: 'step_two_household' }
+      // step Two
       { path: 'waste/two/household', component: () => import('pages/Request/Waste/StepTwo/household.vue') },
-      { path: 'waste/two/construction', component: () => import('pages/Request/Waste/StepTwo/construction.vue')}
+      { path: 'waste/two/construction', component: () => import('pages/Request/Waste/StepTwo/construction.vue') },
+      // step Three
+      { path: 'waste/three/household', component: () => import('pages/Request/Waste/StepThree/household.vue') },
     ]
   },
   { 
