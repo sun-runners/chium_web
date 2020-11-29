@@ -7,7 +7,7 @@
     <!-- visit options answers -->
     <visit-options @visit="(v) => (visit = v)"></visit-options>
     <!-- visit time & dates -->
-    <visit-date-time v-show="visit"></visit-date-time>
+    <visit-date-time @schedule="setSchedule" v-show="visit"></visit-date-time>
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       visit: false,
-      dateTime: {
+      schedule: {
         date: "",
         time: "",
       },
@@ -34,7 +34,7 @@ export default {
         totalSteps: 4,
         activeStep: 3,
         btnLabel: "다음",
-        isBtnReady: false,
+        isBtnReady: true,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: "/request/waste/four/household",
@@ -44,9 +44,32 @@ export default {
   },
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
-    this.$emit("next", true);
   },
-  methods: {},
+  methods: {
+    setSchedule(v) {
+      this.schedule = { ...v };
+    },
+    validation() {
+      if (this.schedule.date && this.schedule.time) {
+        this.$emit("next", true);
+      } else {
+        this.$emit("next", false);
+      }
+    },
+  },
+  watch: {
+    visit: function(v) {
+      !v ? this.$emit("next", true) : this.$emit("next", false);
+    },
+    schedule: {
+      handler(v) {
+        if (this.visit) {
+          this.validation();
+        }
+      },
+      deep: true,
+    },
+  },
 };
 </script>
 
