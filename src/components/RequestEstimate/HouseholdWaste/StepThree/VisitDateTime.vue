@@ -3,7 +3,7 @@
     <q-card-section class="q-pa-none  notosanskr-medium">
       <q-input
         filled
-        v-model="date"
+        v-model="schedule.date"
         bg-color="white"
         color="secondary"
         placeholder="방문 날짜"
@@ -19,7 +19,7 @@
               transition-show="scale"
               transition-hide="scale"
             >
-              <q-date v-model="date" color="secondary">
+              <q-date v-model="schedule.date" color="secondary">
                 <div class="row items-center justify-end">
                   <q-btn v-close-popup label="Close" color="primary" flat />
                 </div>
@@ -33,7 +33,7 @@
         filled
         bg-color="white"
         color="secondary"
-        v-model="time"
+        v-model="schedule.time"
         placeholder="시간"
         mask="time"
         :rules="['time']"
@@ -43,7 +43,11 @@
           <q-icon class="cursor-pointer">
             <div class="select">선택</div>
             <q-popup-proxy transition-show="scale" transition-hide="scale">
-              <q-time v-model="time" color="secondary" text-color="black">
+              <q-time
+                v-model="schedule.time"
+                color="secondary"
+                text-color="black"
+              >
                 <div class="row items-center justify-end">
                   <q-btn v-close-popup label="Close" color="primary" flat />
                 </div>
@@ -60,9 +64,20 @@
 export default {
   data() {
     return {
-      time: "",
-      date: "",
+      schedule: {
+        date: "",
+        time: "",
+      },
     };
+  },
+  watch: {
+    schedule: {
+      // eslint-disable-next-line object-shorthand
+      handler: function(schedule) {
+        this.$emit("schedule", schedule);
+      },
+      deep: true,
+    },
   },
 };
 </script>
