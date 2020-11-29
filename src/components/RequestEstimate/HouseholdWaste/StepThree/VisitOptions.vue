@@ -31,6 +31,11 @@ export default {
       selectedOption: "예",
     };
   },
+  watch: {
+    selectedOption(v) {
+      v === "아니오" ? this.$emit("visit", true) : this.$emit("visit", false);
+    },
+  },
 };
 </script>
 

@@ -5,9 +5,9 @@
       <span class="heading-subtitle">을 원하시나요?</span>
     </p>
     <!-- visit options answers -->
-    <visit-options></visit-options>
+    <visit-options @visit="(v) => (visit = v)"></visit-options>
     <!-- visit time & dates -->
-    <visit-date-time></visit-date-time>
+    <visit-date-time v-show="visit"></visit-date-time>
   </div>
 </template>
 
@@ -21,25 +21,30 @@ export default {
   },
   data() {
     return {
-      visit: "",
+      visit: false,
+      dateTime: {
+        date: "",
+        time: "",
+      },
     };
   },
   computed: {
     layoutState() {
       return {
-        totalSteps: 6,
+        totalSteps: 4,
         activeStep: 3,
         btnLabel: "다음",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste",
+        nextPathRoute: "/request/waste/four/household",
         prevPathRoute: "/request/waste/two/household",
       };
     },
   },
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
+    this.$emit("next", true);
   },
   methods: {},
 };
