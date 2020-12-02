@@ -1,12 +1,6 @@
 <template>
   <div class="">
-    <q-card flat class="bg-white">
-      <p class="heading-title q-ma-none q-px-md notosanskr-regular">
-        견적신청서
-        <span class="heading-subtitle">를 검토해보세요.</span>
-      </p>
-      <p class="q-ma-none q-px-md ">07월 24일(금) 오후 02:00시 예정</p>
-    </q-card>
+    <head-section />
     <div class="column full-height ">
       <h4>Step Four</h4>
     </div>
@@ -14,8 +8,11 @@
 </template>
 
 <script>
+import HeadSection from "components/RequestEstimate/HouseholdWaste/FinalStep/HeadSection";
 export default {
-  components: {},
+  components: {
+    "head-section": HeadSection,
+  },
   data() {
     return {};
   },
@@ -41,51 +38,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.heading-title {
-  font-size: 27px;
-  line-height: 38px;
-  display: flex;
-  align-items: center;
-  letter-spacing: -1.35px;
-  color: #15161a;
-  padding-bottom: 36px;
-}
-.heading-subtitle {
-  color: #959595;
-}
-// input
-.field {
-  background: #ffffff;
-  box-sizing: border-box;
-  border-radius: 8px;
-  .attachment {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    letter-spacing: -0.8px;
-    color: #195de4;
-  }
-}
-.discarded {
-  .heading-text {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: -0.8px;
-    color: #15161a;
-    padding-bottom: 20px;
-  }
-  .item {
-    font-size: 14px;
-    line-height: 36px;
-    text-align: center;
-    letter-spacing: -0.7px;
-    color: #15161a;
-
-    background: #f6f6f6;
-    border-radius: 8px;
-  }
-}
-</style>
+<style lang="scss" scoped></style>
