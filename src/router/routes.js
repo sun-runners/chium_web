@@ -31,7 +31,7 @@ const routes = [
       // step Three
       { path: 'waste/three/household', component: () => import('pages/Request/Waste/StepThree/household.vue') },
       // step four
-      { path: 'waste/four/household', component: () => import('pages/Request/Waste/StepFour/household.vue') },
+      { path: 'waste/final/household', component: () => import('pages/Request/Waste/FinalStep/household.vue') },
     ]
   },
   { 

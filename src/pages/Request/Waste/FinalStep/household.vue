@@ -1,9 +1,12 @@
 <template>
   <div class="">
-    <p class="heading-title bg-white q-ma-none q-px-md notosanskr-regular">
-      폐기할 물품
-      <span class="heading-subtitle">을 알려주세요.</span>
-    </p>
+    <q-card flat class="bg-white">
+      <p class="heading-title q-ma-none q-px-md notosanskr-regular">
+        견적신청서
+        <span class="heading-subtitle">를 검토해보세요.</span>
+      </p>
+      <p class="q-ma-none q-px-md ">07월 24일(금) 오후 02:00시 예정</p>
+    </q-card>
     <div class="column full-height ">
       <h4>Step Four</h4>
     </div>
