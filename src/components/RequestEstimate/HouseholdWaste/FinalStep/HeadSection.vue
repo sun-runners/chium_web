@@ -12,7 +12,10 @@
     <q-card-section class="notice">
       ※예상 견적서를 받은 후 작업 진행을 수락해야지만 업체와 작업이 진행됩니다.
     </q-card-section>
-    <q-card-section class="bg-white"></q-card-section>
+    <q-card-section
+      class="bg-white q-pa-none"
+      style="height: 20px;"
+    ></q-card-section>
   </q-card>
 </template>
 
