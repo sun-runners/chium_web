@@ -2,6 +2,7 @@
   <div class="">
     <head-section />
     <request-place />
+    <requester />
   </div>
 </template>
 
@@ -9,11 +10,13 @@
 import {
   HeadSection,
   RequestPlace,
+  Requester,
 } from "components/RequestEstimate/HouseholdWaste/FinalStep";
 export default {
   components: {
     "head-section": HeadSection,
     "request-place": RequestPlace,
+    requester: Requester,
   },
   data() {
     return {};
