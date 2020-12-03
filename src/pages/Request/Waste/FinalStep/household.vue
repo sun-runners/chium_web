@@ -1,17 +1,19 @@
 <template>
   <div class="">
     <head-section />
-    <div class="column full-height ">
-      <h4>Step Four</h4>
-    </div>
+    <request-place />
   </div>
 </template>
 
 <script>
-import HeadSection from "components/RequestEstimate/HouseholdWaste/FinalStep/HeadSection";
+import {
+  HeadSection,
+  RequestPlace,
+} from "components/RequestEstimate/HouseholdWaste/FinalStep";
 export default {
   components: {
     "head-section": HeadSection,
+    "request-place": RequestPlace,
   },
   data() {
     return {};
