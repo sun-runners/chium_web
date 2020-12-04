@@ -1,37 +1,50 @@
 <template>
-  <div class="">
+  <div>
     <p class="heading-title bg-white q-ma-none q-px-md notosanskr-regular">
-      현장 사전방문
-      <span class="heading-subtitle">을 원하시나요?</span>
+      작업 예정일
+      <span class="heading-subtitle">을 알려주세요.</span>
     </p>
-    <!-- visit options answers -->
-    <visit-options @visit="(v) => (visit = v)"></visit-options>
-    <!-- visit time & dates -->
-    <visit-date-time @schedule="setSchedule" v-show="visit"></visit-date-time>
+    <q-card class="my-card q-ma-sm" flat :bordered="false">
+      <q-card-section style="height: 430px;" class="q-pa-none">
+        <custom-calendar
+          ref="calendar"
+          :date="new Date()"
+          @dateSelected="setDateSelected"
+        ></custom-calendar>
+      </q-card-section>
+    </q-card>
+    <q-btn
+      class="schedule-undecided full-width bg-white notosanskr-regular q-py-sm"
+      align="between"
+      flat
+      @click="undecided = !undecided"
+    >
+      작업 예정일 미정
+      <q-icon>
+        <img src="~assets/circle_check_grey.svg" v-if="!undecided" />
+        <img src="~assets/circle_check_blue.svg" v-else />
+      </q-icon>
+    </q-btn>
   </div>
 </template>
 
 <script>
-import VisitOptions from "components/RequestEstimate/HouseholdWaste/StepThree/VisitOptions";
-import VisitDateTime from "components/RequestEstimate/HouseholdWaste/StepThree/VisitDateTime";
+import CustomCalendar from "src/components/Utility/CustomCalendar";
 export default {
   components: {
-    "visit-options": VisitOptions,
-    "visit-date-time": VisitDateTime,
+    "custom-calendar": CustomCalendar,
   },
   data() {
     return {
-      visit: false,
-      schedule: {
-        date: "",
-        time: "",
-      },
+      dateSelected: null,
+      calendarVisible: true,
+      undecided: false,
     };
   },
   computed: {
     layoutState() {
       return {
-        totalSteps: 4,
+        totalSteps: 5,
         activeStep: 3,
         btnLabel: "다음",
         isBtnReady: true,
@@ -46,28 +59,13 @@ export default {
     this.$emit("setStateLayout", this.layoutState);
   },
   methods: {
-    setSchedule(v) {
-      this.schedule = { ...v };
-    },
-    validation() {
-      if (this.schedule.date && this.schedule.time) {
+    setDateSelected(v) {
+      setTimeout(() => {
+        this.dateSelected = `${v.getFullYear()}/${v.getMonth() +
+          1}/${v.getDate()}`;
+        this.calendarVisible = false;
         this.$emit("next", true);
-      } else {
-        this.$emit("next", false);
-      }
-    },
-  },
-  watch: {
-    visit: function(v) {
-      !v ? this.$emit("next", true) : this.$emit("next", false);
-    },
-    schedule: {
-      handler(v) {
-        if (this.visit) {
-          this.validation();
-        }
-      },
-      deep: true,
+      }, 1100);
     },
   },
 };
@@ -81,9 +79,15 @@ export default {
   align-items: center;
   letter-spacing: -1.35px;
   color: #15161a;
-  padding-bottom: 24px;
+  padding-bottom: 36px;
 }
 .heading-subtitle {
   color: #959595;
+}
+.schedule-undecided {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+  color: #15161a;
 }
 </style>
