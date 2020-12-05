@@ -17,12 +17,15 @@
       class="schedule-undecided full-width bg-white notosanskr-regular q-py-sm"
       align="between"
       flat
-      @click="undecided = !undecided"
+      @click="setUndecided()"
     >
       작업 예정일 미정
       <q-icon>
-        <img src="~assets/circle_check_grey.svg" v-if="!undecided" />
-        <img src="~assets/circle_check_blue.svg" v-else />
+        <img
+          src="~assets/circle_check_blue.svg"
+          v-if="dateSelected == 'undecided'"
+        />
+        <img src="~assets/circle_check_grey.svg" v-else />
       </q-icon>
     </q-btn>
   </div>
@@ -37,7 +40,6 @@ export default {
   data() {
     return {
       dateSelected: null,
-      calendarVisible: true,
       undecided: false,
     };
   },
@@ -47,7 +49,7 @@ export default {
         totalSteps: 5,
         activeStep: 3,
         btnLabel: "다음",
-        isBtnReady: true,
+        isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: "/request/waste/four/household",
@@ -60,12 +62,14 @@ export default {
   },
   methods: {
     setDateSelected(v) {
-      setTimeout(() => {
-        this.dateSelected = `${v.getFullYear()}/${v.getMonth() +
-          1}/${v.getDate()}`;
-        this.calendarVisible = false;
-        this.$emit("next", true);
-      }, 1100);
+      this.dateSelected = `${v.getFullYear()}/${v.getMonth() +
+        1}/${v.getDate()}`;
+      this.$emit("next", true);
+    },
+    setUndecided() {
+      this.dateSelected = "undecided";
+      this.$refs.calendar.clearSelectedDate();
+      this.$emit("next", true);
     },
   },
 };
