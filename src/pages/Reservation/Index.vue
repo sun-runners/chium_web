@@ -1,5 +1,6 @@
 <template>
   <div style="background: #F2F2F2; min-height: 100vh;">
+    <top-toolbar></top-toolbar>
     <div class="top-tab-container row">
       <q-card class="my-card q-pa-sm full-width" flat>
         <q-separator inset />
@@ -36,10 +37,12 @@
 
 <script>
 import ReservationItem from "src/components/Reservation/ReservationItem";
+import TopToolbar from 'src/components/Reservation/TopToolbar.vue';
 export default {
   name: "Reservation",
   components: {
     "reservation-item": ReservationItem,
+    "top-toolbar": TopToolbar
   },
   created () {
     this.$emit('changeHeadingName', '어게인업');
