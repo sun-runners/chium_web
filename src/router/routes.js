@@ -51,18 +51,6 @@ const routes = [
   { path: '/store/review/photos', component: () => import('pages/Store/Review/ReviewPhotos/Index'), name: 'store_review_photos' },
   { path: '/store/company/detail', component: () => import('pages/Store/CompanyDetail/Index'), name: 'store_company_detail' },
   { path: '/store/company/report', component: () => import('pages/Store/CompanyReport/Index'), name: 'store_company_report' },
-  // { 
-  //   path: '/request-estimate', redirect: 'request-estimate/space-type', 
-  //   component: () => import('layouts/RequestEstimate'),
-  //   children: [
-  //     { path: 'space-type', component: () => import('pages/RequestEstimate/SpaceType/Index'), name: 'space_type' },
-  //     { path: 'floor-space', component: () => import('pages/RequestEstimate/FloorSpace/Index'), name: 'floor_space' },
-  //     { path: 'work-type', component: () => import('pages/RequestEstimate/WorkType/Index'), name: 'work_type' },
-  //     { path: 'due-date', component: () => import('pages/RequestEstimate/DueDate/Index'), name: 'due_date' },
-  //     { path: 'picture-space', component: () => import('pages/RequestEstimate/PictureSpace/Index'), name: 'picture_space' },
-  //     { path: 'complete-estimate', component: () => import('pages/RequestEstimate/CompleteEstimate/Index'), name: 'complete_estimate' }
-  //   ]
-  // },
   { path: '/my-account', component: () => import('pages/MyPage/MyAccount/Index'), name: 'my_account' },
   { path: '/my-account/phone-change', component: () => import('pages/MyPage/MyAccount/CellPhoneChange/Index'), name: 'account_phone_change' },
   { path: '/interested-company', component: () => import('pages/MyPage/InterestedCompany/Index'), name: 'interested_company' },
