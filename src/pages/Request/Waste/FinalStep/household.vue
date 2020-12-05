@@ -27,14 +27,14 @@ export default {
   computed: {
     layoutState() {
       return {
-        totalSteps: 4,
-        activeStep: 4,
+        totalSteps: 5,
+        activeStep: 5,
         btnLabel: "다음",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: "/request/waste/",
-        prevPathRoute: "/request/waste/three/household",
+        prevPathRoute: "/request/waste/four/household",
       };
     },
   },
