@@ -34,7 +34,7 @@ export default {
         totalSteps: 5,
         activeStep: 4,
         btnLabel: "다음",
-        isBtnReady: true,
+        isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: "/request/waste/final/household",
@@ -44,6 +44,9 @@ export default {
   },
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
+    setTimeout(() => {
+      this.$emit("next", true);
+    }, 1000);
   },
   methods: {
     setSchedule(v) {
