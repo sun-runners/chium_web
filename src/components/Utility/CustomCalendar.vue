@@ -8,7 +8,7 @@
           size="40px"
           style="color: #C0C0C0; cursor: pointer"
         />
-        <div class="text">{{dates.year}}. {{ dates.month+1 }}</div>
+        <div class="text">{{ dates.year }}. {{ dates.month + 1 }}</div>
         <q-icon
           @click="increaseMonth"
           name="keyboard_arrow_right"
@@ -19,7 +19,7 @@
       <section class="calendar-body">
         <div class="weeks-days">
           <div v-for="(day, index) in days" :key="index">
-            <span class="notosanskr-regular">{{day}}</span>
+            <span class="notosanskr-regular">{{ day }}</span>
           </div>
         </div>
         <div class="dates">
@@ -27,13 +27,21 @@
             class="date-day"
             v-for="(date, index) in datesDays"
             :key="index"
-            v-bind:class="{'date-today':isDayToday(date),'selected-day': isSelectedDay(date)}"
+            v-bind:class="{
+              'selected-day': isSelectedDay(date),
+            }"
             @click="setSelectDate(date)"
           >
-            <span :class="{'past-day': isPastDay(date)}">
-              {{date}}
-              <div class="this-day-text">오늘</div>
-            </span>
+            <div
+              class="inner-date-day notosanskr-medium"
+              :class="{
+                available: isDateAvailable(date),
+                selected: isSelectedDay(date),
+              }"
+            >
+              {{ isDayToday(date) ? "오늘" : date }}
+              <!-- <div class="this-day-text">오늘</div> -->
+            </div>
           </div>
         </div>
       </section>
@@ -76,6 +84,9 @@ export default {
         }
         return this.dates.month < this.date.getMonth();
       }
+    },
+    isDateAvailable(day) {
+      return !this.isDayToday(day) && !this.isPastDay(day);
     },
     isSelectedDay(day) {
       if (this.selectedDate && this.dates.month >= this.date.getMonth()) {
@@ -207,8 +218,25 @@ export default {
   justify-content: center;
   cursor: pointer;
   color: #151515;
-  .past-day {
-    color: #c0c0c0;
+  padding: 3px;
+  .inner-date-day {
+    color: #a0a0a0;
+    background: #f4f6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+
+    &.available {
+      background: #e5e8ff;
+      color: #151515;
+    }
+    &.selected {
+      background-color: #195de4;
+      color: white;
+    }
   }
   span {
     .this-day-text {
