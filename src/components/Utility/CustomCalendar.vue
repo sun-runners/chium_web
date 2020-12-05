@@ -35,12 +35,12 @@
             <div
               class="inner-date-day notosanskr-medium"
               :class="{
+                'day-of-month': isDateThisMonth(date),
                 available: isDateAvailable(date),
                 selected: isSelectedDay(date.day),
               }"
             >
               {{ isDayToday(date.day) ? "오늘" : date.day }}
-              <!-- <div class="this-day-text">오늘</div> -->
             </div>
           </div>
         </div>
@@ -85,10 +85,14 @@ export default {
         return this.dates.month < this.date.getMonth();
       }
     },
+    isDateThisMonth(date) {
+      return !date.prevMonth && !date.nextMonth;
+    },
     isDateAvailable(date) {
-      const notThisMonth = !date.prevMonth && !date.nextMonth;
       return (
-        !this.isDayToday(date.day) && !this.isPastDay(date.day) && notThisMonth
+        !this.isDayToday(date.day) &&
+        !this.isPastDay(date.day) &&
+        this.isDateThisMonth(date)
       );
     },
     isSelectedDay(day) {
@@ -110,11 +114,21 @@ export default {
       const lastMonthDay = this.getLastDate(year, prevMonth - 1);
       return `${lastMonthDay - (firstDay - dayLast)}`;
     },
+    getNextMonthDay(dayLast, firstDay) {
+      const curMonth = this.dates.month;
+      // we get the next month
+      const nextMonth = curMonth < 11 ? curMonth + 1 : 0;
+      const year = curMonth > 0 ? this.dates.year : this.dates.year - 1;
+      const nextMonthDay = 1;
+      return `${nextMonthDay}`;
+      // return `${nextMonthDay - (firstDay - dayLast)}`;
+    },
     initCalendar() {
       const firstDay = this.getFirstDay(this.dates.year, this.dates.month);
       const dateEnd = this.getLastDate(this.dates.year, this.dates.month);
       let dateValue = 1;
-      const limit = 43;
+      let nextMonthDate = 1;
+      const limit = firstDay >= 5 ? 43 : 36;
       for (let i = 1; i < limit; i++) {
         if (i <= firstDay) {
           this.datesDays.push({
@@ -124,8 +138,9 @@ export default {
         } else if (dateEnd < dateValue) {
           this.datesDays.push({
             nextMonth: true,
-            day: ``,
+            day: nextMonthDate,
           });
+          nextMonthDate++;
         } else {
           this.datesDays.push({
             day: dateValue,
@@ -239,15 +254,17 @@ export default {
   color: #151515;
   padding: 3px;
   .inner-date-day {
-    color: #a0a0a0;
-    background: #f4f6ff;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 8px;
     width: 100%;
     height: 100%;
-
+    color: #b6b3b3;
+    &.day-of-month {
+      color: #a0a0a0;
+      background: #f4f6ff;
+    }
     &.available {
       background: #e5e8ff;
       color: #151515;
