@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import SearchFilter from "components/SearchPage/SearchFilter.vue";
+import SearchFilter from "components/SearchPageComponents/SearchFilter.vue";
 export default {
   name: "Search",
   components: {
