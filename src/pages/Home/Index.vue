@@ -84,15 +84,17 @@ de<template>
           <p class="text-sub-heading q-mt-sm">
             철거를 진행하기전 업체에게서 견적 받는 방법을 선택해주세요.
           </p>
-          <q-btn class="vendor-btn" style="background: #2CB3FF; color: white">
-            업체 한 곳에서 견적받기
-          </q-btn>
-          <q-btn
-            class="vendor-btn bg-white"
-            style="color: #15161A; margin-top: 10px;"
-          >
-            여러 업체에게 역 견적 받기
-          </q-btn>
+          <div class="row justify-center">
+            <q-btn
+              class="vendor-btn q-ma-xs"
+              style="background: #2CB3FF; color: white"
+            >
+              업체 한 곳에서 견적받기
+            </q-btn>
+            <q-btn class="vendor-btn bg-white q-ma-xs" style="color: #15161A;">
+              여러 업체에게 역 견적 받기
+            </q-btn>
+          </div>
         </div>
         <!-- demolition-->
         <div
@@ -194,6 +196,8 @@ export default {
     font-size: 15px;
     line-height: 40px;
     color: #ffffff;
+    height: 50px;
+    background: red;
     width: 280px;
     padding: 0;
   }
