@@ -44,7 +44,7 @@
             :rounded="false"
             flat
             :label="btnLabel"
-            @click="myBtnFunction"
+            @click.once="myBtnFunction"
           />
         </q-toolbar>
       </q-footer>

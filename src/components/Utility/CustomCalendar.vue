@@ -8,7 +8,7 @@
           size="40px"
           style="color: #C0C0C0; cursor: pointer"
         />
-        <div class="text">{{dates.year}}. {{ dates.month+1 }}</div>
+        <div class="text">{{ dates.year }}. {{ dates.month + 1 }}</div>
         <q-icon
           @click="increaseMonth"
           name="keyboard_arrow_right"
@@ -19,7 +19,7 @@
       <section class="calendar-body">
         <div class="weeks-days">
           <div v-for="(day, index) in days" :key="index">
-            <span class="notosanskr-regular">{{day}}</span>
+            <span class="notosanskr-regular">{{ day }}</span>
           </div>
         </div>
         <div class="dates">
@@ -27,13 +27,21 @@
             class="date-day"
             v-for="(date, index) in datesDays"
             :key="index"
-            v-bind:class="{'date-today':isDayToday(date),'selected-day': isSelectedDay(date)}"
-            @click="setSelectDate(date)"
+            v-bind:class="{
+              'selected-day': isSelectedDay(date.day),
+            }"
+            @click="setSelectDate(date.day)"
           >
-            <span :class="{'past-day': isPastDay(date)}">
-              {{date}}
-              <div class="this-day-text">오늘</div>
-            </span>
+            <div
+              class="inner-date-day notosanskr-medium"
+              :class="{
+                'day-of-month': isDateThisMonth(date),
+                available: isDateAvailable(date),
+                selected: isSelectedDay(date.day),
+              }"
+            >
+              {{ isDayToday(date.day) ? "오늘" : date.day }}
+            </div>
           </div>
         </div>
       </section>
@@ -77,6 +85,16 @@ export default {
         return this.dates.month < this.date.getMonth();
       }
     },
+    isDateThisMonth(date) {
+      return !date.prevMonth && !date.nextMonth;
+    },
+    isDateAvailable(date) {
+      return (
+        !this.isDayToday(date.day) &&
+        !this.isPastDay(date.day) &&
+        this.isDateThisMonth(date)
+      );
+    },
     isSelectedDay(day) {
       if (this.selectedDate && this.dates.month >= this.date.getMonth()) {
         return this.selectedDate.getDate() == day;
@@ -88,19 +106,46 @@ export default {
     getFirstDay(year, month) {
       return new Date(year, month, 1).getDay();
     },
+    getPrevMonthDay(dayLast, firstDay) {
+      const curMonth = this.dates.month;
+      // we get the previous month
+      const prevMonth = curMonth > 0 ? curMonth : 12;
+      const year = curMonth > 0 ? this.dates.year : this.dates.year - 1;
+      const lastMonthDay = this.getLastDate(year, prevMonth - 1);
+      return `${lastMonthDay - (firstDay - dayLast)}`;
+    },
+    getNextMonthDay(dayLast, firstDay) {
+      const curMonth = this.dates.month;
+      // we get the next month
+      const nextMonth = curMonth < 11 ? curMonth + 1 : 0;
+      const year = curMonth > 0 ? this.dates.year : this.dates.year - 1;
+      const nextMonthDay = 1;
+      return `${nextMonthDay}`;
+      // return `${nextMonthDay - (firstDay - dayLast)}`;
+    },
     initCalendar() {
       const firstDay = this.getFirstDay(this.dates.year, this.dates.month);
       const dateEnd = this.getLastDate(this.dates.year, this.dates.month);
-      let dateStart = 1;
-      const limit = 43;
+      let dateValue = 1;
+      let nextMonthDate = 1;
+      const limit = firstDay >= 5 ? 43 : 36;
       for (let i = 1; i < limit; i++) {
         if (i <= firstDay) {
-          this.datesDays.push(" ");
-        } else if (dateEnd < dateStart) {
-          this.datesDays.push(" ");
+          this.datesDays.push({
+            prevMonth: true,
+            day: `${this.getPrevMonthDay(i, firstDay)}`,
+          });
+        } else if (dateEnd < dateValue) {
+          this.datesDays.push({
+            nextMonth: true,
+            day: nextMonthDate,
+          });
+          nextMonthDate++;
         } else {
-          this.datesDays.push(`${dateStart}`);
-          dateStart++;
+          this.datesDays.push({
+            day: dateValue,
+          });
+          dateValue++;
         }
       }
     },
@@ -207,8 +252,27 @@ export default {
   justify-content: center;
   cursor: pointer;
   color: #151515;
-  .past-day {
-    color: #c0c0c0;
+  padding: 3px;
+  .inner-date-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    color: #b6b3b3;
+    &.day-of-month {
+      color: #a0a0a0;
+      background: #f4f6ff;
+    }
+    &.available {
+      background: #e5e8ff;
+      color: #151515;
+    }
+    &.selected {
+      background-color: #195de4;
+      color: white;
+    }
   }
   span {
     .this-day-text {

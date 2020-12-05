@@ -27,19 +27,22 @@ export default {
   computed: {
     layoutState() {
       return {
-        totalSteps: 4,
-        activeStep: 4,
-        btnLabel: "다음",
+        totalSteps: 5,
+        activeStep: 5,
+        btnLabel: "견적신청완료",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/",
-        prevPathRoute: "/request/waste/three/household",
+        nextPathRoute: "/home",
+        prevPathRoute: "/request/waste/four/household",
       };
     },
   },
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
+    setTimeout(() => {
+      this.$emit("next", true);
+    }, 1000);
   },
   methods: {},
   watch: {},
