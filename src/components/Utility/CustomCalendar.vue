@@ -28,18 +28,18 @@
             v-for="(date, index) in datesDays"
             :key="index"
             v-bind:class="{
-              'selected-day': isSelectedDay(date),
+              'selected-day': isSelectedDay(date.day),
             }"
-            @click="setSelectDate(date)"
+            @click="setSelectDate(date.day)"
           >
             <div
               class="inner-date-day notosanskr-medium"
               :class="{
                 available: isDateAvailable(date),
-                selected: isSelectedDay(date),
+                selected: isSelectedDay(date.day),
               }"
             >
-              {{ isDayToday(date) ? "오늘" : date }}
+              {{ isDayToday(date.day) ? "오늘" : date.day }}
               <!-- <div class="this-day-text">오늘</div> -->
             </div>
           </div>
@@ -85,8 +85,11 @@ export default {
         return this.dates.month < this.date.getMonth();
       }
     },
-    isDateAvailable(day) {
-      return !this.isDayToday(day) && !this.isPastDay(day);
+    isDateAvailable(date) {
+      const notThisMonth = !date.prevMonth && !date.nextMonth;
+      return (
+        !this.isDayToday(date.day) && !this.isPastDay(date.day) && notThisMonth
+      );
     },
     isSelectedDay(day) {
       if (this.selectedDate && this.dates.month >= this.date.getMonth()) {
@@ -99,19 +102,35 @@ export default {
     getFirstDay(year, month) {
       return new Date(year, month, 1).getDay();
     },
+    getPrevMonthDay(dayLast, firstDay) {
+      const curMonth = this.dates.month;
+      // we get the previous month
+      const prevMonth = curMonth > 0 ? curMonth : 12;
+      const year = curMonth > 0 ? this.dates.year : this.dates.year - 1;
+      const lastMonthDay = this.getLastDate(year, prevMonth - 1);
+      return `${lastMonthDay - (firstDay - dayLast)}`;
+    },
     initCalendar() {
       const firstDay = this.getFirstDay(this.dates.year, this.dates.month);
       const dateEnd = this.getLastDate(this.dates.year, this.dates.month);
-      let dateStart = 1;
+      let dateValue = 1;
       const limit = 43;
       for (let i = 1; i < limit; i++) {
         if (i <= firstDay) {
-          this.datesDays.push(" ");
-        } else if (dateEnd < dateStart) {
-          this.datesDays.push(" ");
+          this.datesDays.push({
+            prevMonth: true,
+            day: `${this.getPrevMonthDay(i, firstDay)}`,
+          });
+        } else if (dateEnd < dateValue) {
+          this.datesDays.push({
+            nextMonth: true,
+            day: ``,
+          });
         } else {
-          this.datesDays.push(`${dateStart}`);
-          dateStart++;
+          this.datesDays.push({
+            day: dateValue,
+          });
+          dateValue++;
         }
       }
     },
