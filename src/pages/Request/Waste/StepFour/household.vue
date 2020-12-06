@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import VisitOptions from "components/RequestEstimate/HouseholdWaste/StepThree/VisitOptions";
-import VisitDateTime from "components/RequestEstimate/HouseholdWaste/StepThree/VisitDateTime";
+import VisitOptions from "components/RequestEstimate/HouseholdWaste/StepFour/VisitOptions";
+import VisitDateTime from "components/RequestEstimate/HouseholdWaste/StepFour/VisitDateTime";
 export default {
   components: {
     "visit-options": VisitOptions,
