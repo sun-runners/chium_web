@@ -28,6 +28,7 @@ const routes = [
       // step Two
       { path: 'waste/two/household', component: () => import('pages/Request/Waste/StepTwo/household.vue') },
       { path: 'waste/two/construction', component: () => import('pages/Request/Waste/StepTwo/construction.vue') },
+      { path: 'waste/two/workplace', component: () => import('pages/Request/Waste/StepTwo/workplace.vue') },
       // step Three
       { path: 'waste/three/household', component: () => import('pages/Request/Waste/StepThree/household.vue') },
       // step Four
