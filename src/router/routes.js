@@ -37,6 +37,7 @@ const routes = [
       { path: 'waste/four/workplace', component: () => import('pages/Request/Waste/StepFour/workplace.vue') },
       // step Final
       { path: 'waste/final/household', component: () => import('pages/Request/Waste/FinalStep/household.vue') },
+      { path: 'waste/final/workplace', component: () => import('pages/Request/Waste/FinalStep/workplace.vue') },
     ]
   },
   { 
