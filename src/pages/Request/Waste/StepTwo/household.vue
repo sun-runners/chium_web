@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { ItemsToDispose } from "src/components/RequestEstimate/Utility";
+import { ItemsToDispose } from "src/components/RequestEstimate/Common";
 export default {
   components: {
     "items-to-dispose": ItemsToDispose,

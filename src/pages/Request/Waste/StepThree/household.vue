@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { WorkDueDate } from "src/components/RequestEstimate/Utility";
+import { WorkDueDate } from "src/components/RequestEstimate/Common";
 export default {
   components: {
     WorkDueDate,
