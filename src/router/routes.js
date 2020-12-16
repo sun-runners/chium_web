@@ -27,11 +27,12 @@ const routes = [
       { path: 'waste', component: () => import('pages/Request/Waste/Index.vue'), name: 'waste'},
       // step Two
       { path: 'waste/two/household', component: () => import('pages/Request/Waste/StepTwo/household.vue') },
-      { path: 'waste/two/construction', component: () => import('pages/Request/Waste/StepTwo/construction.vue') },
       { path: 'waste/two/workplace', component: () => import('pages/Request/Waste/StepTwo/workplace.vue') },
+      { path: 'waste/two/construction', component: () => import('pages/Request/Waste/StepTwo/construction.vue') },
       // step Three
       { path: 'waste/three/household', component: () => import('pages/Request/Waste/StepThree/household.vue') },
       { path: 'waste/three/workplace', component: () => import('pages/Request/Waste/StepThree/workplace.vue') },
+      { path: 'waste/three/construction', component: () => import('pages/Request/Waste/StepThree/construction.vue') },
       // step Four
       { path: 'waste/four/household', component: () => import('pages/Request/Waste/StepFour/household.vue') },
       { path: 'waste/four/workplace', component: () => import('pages/Request/Waste/StepFour/workplace.vue') },
