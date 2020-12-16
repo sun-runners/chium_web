@@ -1,0 +1,62 @@
+<template>
+  <div>
+    <p class="heading-title bg-white q-ma-none q-px-md notosanskr-regular">
+      작업 예정일
+      <span class="heading-subtitle">을 알려주세요.</span>
+    </p>
+    <q-card class="my-card q-ma-sm" flat :bordered="false">
+      <q-card-section style="height: 430px;" class="q-pa-none">
+        <custom-calendar
+          ref="calendar"
+          :date="new Date()"
+          @dateSelected="setDateSelected"
+        ></custom-calendar>
+      </q-card-section>
+    </q-card>
+    <q-btn
+      class="schedule-undecided full-width bg-white notosanskr-regular q-py-sm"
+      align="between"
+      flat
+      @click="setUndecided()"
+    >
+      작업 예정일 미정
+      <q-icon>
+        <img
+          src="~assets/circle_check_blue.svg"
+          v-if="dateSelected == 'undecided'"
+        />
+        <img src="~assets/circle_check_grey.svg" v-else />
+      </q-icon>
+    </q-btn>
+  </div>
+</template>
+
+<script>
+import CustomCalendar from "src/components/Utility/CustomCalendar";
+export default {
+  components: {
+    "custom-calendar": CustomCalendar,
+  },
+  data() {
+    return {
+      dateSelected: null,
+      undecided: false,
+    };
+  },
+
+  methods: {
+    setDateSelected(v) {
+      this.dateSelected = `${v.getFullYear()}/${v.getMonth() +
+        1}/${v.getDate()}`;
+      this.$emit("next", true);
+    },
+    setUndecided() {
+      this.dateSelected = "undecided";
+      this.$refs.calendar.clearSelectedDate();
+      this.$emit("next", true);
+    },
+  },
+};
+</script>
+
+<style scoped></style>
