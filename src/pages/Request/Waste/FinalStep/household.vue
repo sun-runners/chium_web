@@ -13,7 +13,7 @@ import {
   RequestPlace,
   Requester,
   RequestDetails,
-} from "components/RequestEstimate/HouseholdWaste/FinalStep";
+} from "components/RequestEstimate/FinalStep";
 export default {
   components: {
     "head-section": HeadSection,
