@@ -1,12 +1,14 @@
 <template>
   <div>
-    step three
+    <upload-picture-site @next="(val) => $emit('next', val)" />
   </div>
 </template>
 
 <script>
+import { UploadPictureSite } from "src/components/RequestEstimate/Common";
 export default {
   components: {
+    "upload-picture-site": UploadPictureSite,
   },
   computed: {
     layoutState() {
@@ -28,5 +30,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style scoped></style>
