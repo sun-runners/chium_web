@@ -59,4 +59,23 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.heading-title {
+  font-size: 27px;
+  line-height: 38px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -1.35px;
+  color: #15161a;
+  padding-bottom: 36px;
+}
+.heading-subtitle {
+  color: #959595;
+}
+.schedule-undecided {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+  color: #15161a;
+}
+</style>
