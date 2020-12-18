@@ -20,7 +20,7 @@ export default {
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: "/request/waste/final/construction",
-        prevPathRoute: "/request/waste/three/construction",
+        prevPathRoute: "/request/waste/four/construction",
       };
     },
   },
