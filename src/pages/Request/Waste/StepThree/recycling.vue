@@ -6,34 +6,61 @@
       </p>
       <!-- address section -->
       <div class="address-section notosanskr-regular">
-        <div class="address-text q-pb-sm">주소</div>
+        <div class="address-text q-pb-sm notosanskr-medium">주소</div>
         <div class="row q-col-gutter-sm">
           <div class="col-8">
-            <input type="text" class="address-field full-width q-pa-sm" />
+            <input
+              type="text"
+              v-model="field1"
+              class="address-field full-width q-pa-sm"
+            />
           </div>
           <div class="col-4">
-            <q-btn flat class="find-postal-btn full-width">
+            <q-btn flat class="find-postal-btn full-width" @click="toggleBtn()">
               우편번호 찾기
             </q-btn>
           </div>
           <div class="col-12">
-            <input type="text" class="address-field full-width q-pa-sm" />
+            <input
+              type="text"
+              v-model="field2"
+              class="address-field full-width q-pa-sm"
+            />
           </div>
           <div class="col-12">
             <input
               type="text"
+              v-model="field3"
               class="address-field full-width q-pa-sm bg-white"
               placeholder="나머지 상세주소를 입력하세요."
             />
           </div>
         </div>
       </div>
+      <!-- other description -->
+      <div class="other-desc notosanskr-medium q-pb-sm">
+        장소 기타설명 <span>(선택사항)</span>
+      </div>
+      <textarea
+        name="description"
+        v-model="description"
+        class="other-desc-textarea q-pa-none q-ma-none"
+        id=""
+      ></textarea>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      field1: null,
+      field2: null,
+      field3: null,
+      description: null,
+    };
+  },
   computed: {
     layoutState() {
       return {
@@ -50,6 +77,12 @@ export default {
   },
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
+  },
+  methods: {
+    toggleBtn() {
+      console.log(this.field1, this.field2, this.field3, this.description);
+      this.$emit("next", true);
+    },
   },
 };
 </script>
@@ -91,5 +124,23 @@ export default {
     border-radius: 8px;
     background: white;
   }
+}
+.other-desc {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.7px;
+  padding-top: 36px;
+  span {
+    color: #959595;
+  }
+}
+.other-desc-textarea {
+  border: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 100%;
+  height: 108px;
+  resize: none;
 }
 </style>
