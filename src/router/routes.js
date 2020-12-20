@@ -29,23 +29,27 @@ const routes = [
       { path: 'waste/two/household', component: () => import('pages/Request/Waste/StepTwo/household.vue') },
       { path: 'waste/two/workplace', component: () => import('pages/Request/Waste/StepTwo/workplace.vue') },
       { path: 'waste/two/construction', component: () => import('pages/Request/Waste/StepTwo/construction.vue') },
+      { path: 'waste/two/recycling', component: () => import('pages/Request/Waste/StepTwo/recycling.vue') },
       // step Three
       { path: 'waste/three/household', component: () => import('pages/Request/Waste/StepThree/household.vue') },
       { path: 'waste/three/workplace', component: () => import('pages/Request/Waste/StepThree/workplace.vue') },
       { path: 'waste/three/construction', component: () => import('pages/Request/Waste/StepThree/construction.vue') },
+      { path: 'waste/three/recycling', component: () => import('pages/Request/Waste/StepThree/recycling.vue') },
       // step Four
       { path: 'waste/four/household', component: () => import('pages/Request/Waste/StepFour/household.vue') },
       { path: 'waste/four/workplace', component: () => import('pages/Request/Waste/StepFour/workplace.vue') },
       { path: 'waste/four/construction', component: () => import('pages/Request/Waste/StepFour/construction.vue') },
+      { path: 'waste/four/recycling', component: () => import('pages/Request/Waste/StepFour/recycling.vue') },
       // step Five
       { path: 'waste/five/construction', component: () => import('pages/Request/Waste/StepFive/construction.vue') },
+      { path: 'waste/five/recycling', component: () => import('pages/Request/Waste/StepFive/recycling.vue') },
       // step Final
       { path: 'waste/final/household', component: () => import('pages/Request/Waste/FinalStep/household.vue') },
       { path: 'waste/final/workplace', component: () => import('pages/Request/Waste/FinalStep/workplace.vue') },
       { path: 'waste/final/construction', component: () => import('pages/Request/Waste/FinalStep/construction.vue') },
-
+      { path: 'waste/final/recycling', component: () => import('pages/Request/Waste/FinalStep/recycling.vue') },
+      
       // demolition
-
       { path: 'demolition/one', component: () => import('pages/Request/Demolition/Index.vue') },
     ]
   },
