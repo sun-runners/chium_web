@@ -42,6 +42,7 @@ const routes = [
       { path: 'waste/four/recycling', component: () => import('pages/Request/Waste/StepFour/recycling.vue') },
       // step Five
       { path: 'waste/five/construction', component: () => import('pages/Request/Waste/StepFive/construction.vue') },
+      { path: 'waste/five/recycling', component: () => import('pages/Request/Waste/StepFive/recycling.vue') },
       // step Final
       { path: 'waste/final/household', component: () => import('pages/Request/Waste/FinalStep/household.vue') },
       { path: 'waste/final/workplace', component: () => import('pages/Request/Waste/FinalStep/workplace.vue') },
