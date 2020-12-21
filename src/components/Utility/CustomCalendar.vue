@@ -27,9 +27,6 @@
             class="date-day"
             v-for="(date, index) in datesDays"
             :key="index"
-            v-bind:class="{
-              'selected-day': isSelectedDay(date.day),
-            }"
             @click="setSelectDate(date.day)"
           >
             <div
@@ -37,7 +34,7 @@
               :class="{
                 'day-of-month': isDateThisMonth(date),
                 available: isDateAvailable(date),
-                selected: isSelectedDay(date.day),
+                selected: isSelectedDay(date),
               }"
             >
               {{ isDayToday(date.day) ? "오늘" : date.day }}
@@ -95,9 +92,13 @@ export default {
         this.isDateThisMonth(date)
       );
     },
-    isSelectedDay(day) {
-      if (this.selectedDate && this.dates.month >= this.date.getMonth()) {
-        return this.selectedDate.getDate() == day;
+    isSelectedDay(date) {
+      if (
+        this.selectedDate &&
+        this.dates.month >= this.date.getMonth() &&
+        !date.prevMonth
+      ) {
+        return this.selectedDate.getDate() == date.day;
       }
     },
     getLastDate(year, month) {
@@ -302,18 +303,6 @@ export default {
       line-height: 18px;
       letter-spacing: -0.6px;
     }
-  }
-}
-.selected-day {
-  span {
-    background: #32dfd5;
-    color: whitesmoke;
-    border-radius: 100%;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 .tips {
