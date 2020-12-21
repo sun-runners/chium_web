@@ -43,7 +43,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('resources', ['contactOptions']),
+    ...mapGetters('module-example', ['contactOptions']),
     isValidNumber() {
       try {
         const phoneNumber = parsePhoneNumber(this.model.phone_number, 'KR')

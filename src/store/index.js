@@ -1,7 +1,12 @@
+// Import Section
 import Vue from 'vue'
 import Vuex from 'vuex'
-import resources from './resources'
+import createPersistedState from 'vuex-persistedstate'
 
+// Modules
+import { userStore } from './modules/user'
+
+// Main Section
 Vue.use(Vuex)
 
 /*
@@ -16,8 +21,10 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      resources
+      user: userStore
     },
+
+    plugins: [createPersistedState()],
 
     // enable strict mode (adds overhead!)
     // for dev mode only

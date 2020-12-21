@@ -14,6 +14,14 @@ Vue.use(VueRouter)
  * with the Router instance.
  */
 
+const isIncludedRoute = function (routeNames, routeName) {
+  if (routeNames.indexOf(routeName) >= 0) {
+    return true
+  } else {
+    return false
+  }
+}
+
 export default function (/* { store, ssrContext } */) {
   const Router = new VueRouter({
     scrollBehavior: () => ({ x: 0, y: 0 }),
@@ -23,7 +31,18 @@ export default function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
     mode: process.env.VUE_ROUTER_MODE,
-    base: process.env.VUE_ROUTER_BASE
+    base: process.env.VUE_ROUTER_BASE,
+  })
+
+  Router.beforeEach((to, from, next) => {
+    console.log(to)
+    if (isIncludedRoute(routesSigned, to.name)) {
+      if (!(store.getters.user && store.getters.user.id)) {
+        next('landing')
+        return
+      }
+    }
+    next()
   })
 
   return Router
