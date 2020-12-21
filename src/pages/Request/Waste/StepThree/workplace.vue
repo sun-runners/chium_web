@@ -1,34 +1,31 @@
 <template>
   <div>
-    <visit-site-advance @next="(val) => $emit('next', val)" />
+    <work-due-date @next="(val) => $emit('next', val)" />
   </div>
 </template>
 
 <script>
-import { VisitSiteAdvance } from "src/components/RequestEstimate/Common";
+import { WorkDueDate } from "src/components/RequestEstimate/Common";
 export default {
   components: {
-    "visit-site-advance": VisitSiteAdvance,
+    WorkDueDate,
   },
   computed: {
     layoutState() {
       return {
         totalSteps: 5,
-        activeStep: 4,
+        activeStep: 3,
         btnLabel: "다음",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/final/household",
-        prevPathRoute: "/request/waste/three/household",
+        nextPathRoute: "/request/waste/four/workplace",
+        prevPathRoute: "/request/waste/two/workplace",
       };
     },
   },
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
-    setTimeout(() => {
-      this.$emit("next", true);
-    }, 1000);
   },
 };
 </script>

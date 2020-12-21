@@ -69,7 +69,7 @@ export default {
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/two/household",
+        nextPathRoute: "/request/waste/three/construction",
         prevPathRoute: "/request/waste",
       };
     },
@@ -90,6 +90,11 @@ export default {
         this.$emit("selectionComplete", this.selectedItem);
         this.$emit("toggleModal", false);
       }
+    },
+  },
+  watch: {
+    selectedItem(newVal) {
+      newVal.length > 0 ? this.$emit("next", true) : this.$emit("next", false);
     },
   },
 };

@@ -13,14 +13,14 @@ export default {
   computed: {
     layoutState() {
       return {
-        totalSteps: 5,
-        activeStep: 4,
+        totalSteps: 6,
+        activeStep: 5,
         btnLabel: "다음",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/final/household",
-        prevPathRoute: "/request/waste/three/household",
+        nextPathRoute: "/request/waste/final/recycling",
+        prevPathRoute: "/request/waste/four/recycling",
       };
     },
   },

@@ -3,13 +3,15 @@
     <!-- Request Quote Button -->
     <q-btn
       flat
-      align="between"
       class="btn-request-quote row full-width"
+      padding="0px"
       @click="showPopup()"
     >
-      <q-icon name="favorite_border" style="width: 75px"></q-icon>
-      <q-separator vertical inset></q-separator>
-      <div class="col">견적신청</div>
+      <div class="row items-center full-width">
+        <q-icon name="favorite_border" style="width: 75px"></q-icon>
+        <q-separator vertical inset></q-separator>
+        <div class="col">견적신청</div>
+      </div>
     </q-btn>
 
     <q-dialog v-model="popupBottom" full-width="" position="bottom">
