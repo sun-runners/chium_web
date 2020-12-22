@@ -31,8 +31,8 @@
           <div class="text col">
             상업공간
           </div>
-          <div class="notosanskr-medium" style="padding-left: 40px">
-            <q-btn flat class="change-btn" padding="0px">변경</q-btn>
+          <div style="padding-left: 40px">
+            <change-type></change-type>
           </div>
         </div>
       </div>
@@ -69,9 +69,11 @@
 
 <script>
 import ChangeLocationQuest from "./BottomDialogs/ChangeLocationQuest/Index";
+import ChangeType from "./BottomDialogs/ChangeType";
 export default {
   components: {
     "change-location-quest": ChangeLocationQuest,
+    "change-type": ChangeType,
   },
 };
 </script>
