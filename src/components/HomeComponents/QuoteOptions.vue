@@ -82,6 +82,8 @@
 </template>
 
 <script>
+import store from "src/store";
+
 export default {
   data () {
     return {
@@ -99,24 +101,29 @@ export default {
       this.popupBottom = false
     },
     async goWaste () {
-      if (!(this.$store.getters.user && this.$store.getters.user.id)) { await this.login() }
-      await this.$router.push({ name: 'waste' })
+      if (!(this.$store.getters.user && this.$store.getters.user.id)) {
+        await this.login('waste')
+      }
     },
     async goDemolition () {
-      if (!(this.$store.getters.user && this.$store.getters.user.id)) { await this.login() }
-      await this.$router.push({ name: 'demolition' })
+      if (!(this.$store.getters.user && this.$store.getters.user.id)) {
+        await this.login('demolition')
+      }
     },
-    async login () {
+    async login (nextState) {
       // Function Section
       const login = async (dataUser) => {
         const { data } = await this.$axios.post('/users/kakaologin/', this.$qs.stringify(dataUser))
         this.$store.commit('setUser', data)
-        if (this.$store.getters.user && this.$store.getters.user.id) {
-          await this.$router.push({ name: 'home' })
+        console.log(store.getters)
+        console.log(store.getters.user)
+        console.log(store.getters.user.id)
+        if (store.getters.user && store.getters.user.id) {
+          await this.$router.push({ name: nextState })
         }
       }
 
-      const meSuccess = (response) => {
+      const meSuccess = async (response) => {
         const dataUser = {}
 
         // Set user date
@@ -133,7 +140,7 @@ export default {
             dataUser.nickname = res.nickname
             dataUser.profile_image = res.profile_image
           }
-          login(dataUser)
+          await login(dataUser)
         }
       }
 

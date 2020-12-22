@@ -7,7 +7,7 @@ import qs from 'qs'
 const instance = axios.create({})
 
 // instance.defaults.baseURL = 'https://admin.chium.kr/api/'
-instance.defaults.baseURL = 'http://127.0.0.1:9015/api/'
+instance.defaults.baseURL = 'http://127.0.0.1:9014/api/'
 instance.defaults.timeout = 2500
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
