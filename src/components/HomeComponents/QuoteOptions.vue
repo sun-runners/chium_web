@@ -2,11 +2,12 @@
   <div>
     <div class="row q-gutter-md q-pa-sm q-pt-md q-px-md">
       <div class="col bg-white flex content-center justify-center">
+        <!--@click="showPopup()"-->
         <q-btn
           class="full-width full-height home-btn bg-white"
-          @click="showPopup()"
           align="center"
           type="a"
+          @click="$router.push({name: 'waste'})"
         >
           <q-icon
             size="110px"
@@ -16,11 +17,12 @@
         </q-btn>
       </div>
       <div class="col bg-white flex content-center justify-center">
+        <!--@click="showPopup('demolition')"-->
         <q-btn
           class="full-width full-height home-btn bg-white"
-          @click="showPopup('demolition')"
           type="a"
           align="center"
+          @click="$router.push({name: 'waste'})"
         >
           <q-icon
             size="110px"

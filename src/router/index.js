@@ -35,13 +35,12 @@ export default function (/* { store, ssrContext } */) {
   })
 
   Router.beforeEach((to, from, next) => {
-    console.log(to)
-    if (isIncludedRoute(routesSigned, to.name)) {
-      if (!(store.getters.user && store.getters.user.id)) {
-        next('landing')
-        return
-      }
-    }
+    // if (isIncludedRoute(routesSigned, to.name)) {
+    //   if (!(store.getters.user && store.getters.user.id)) {
+    //     next('landing')
+    //     return
+    //   }
+    // }
     next()
   })
 
