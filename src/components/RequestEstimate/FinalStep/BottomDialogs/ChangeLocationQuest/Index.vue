@@ -64,7 +64,7 @@
 export default {
   data() {
     return {
-      dialog: "",
+      dialog: false,
       tab: "",
     };
   },
