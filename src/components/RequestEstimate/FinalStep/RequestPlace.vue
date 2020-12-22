@@ -16,8 +16,8 @@
           <div class="text col">
             경기도 치움시 철거동 123-4 치움 번지 폐기 타운하우스 112호
           </div>
-          <div class="notosanskr-medium" style="padding-left: 40px">
-            <q-btn flat class="change-btn" padding="0px">변경</q-btn>
+          <div style="padding-left: 40px">
+            <change-location-quest></change-location-quest>
           </div>
         </div>
       </div>
@@ -68,7 +68,12 @@
 </template>
 
 <script>
-export default {};
+import ChangeLocationQuest from "./BottomDialogs/ChangeLocationQuest/Index";
+export default {
+  components: {
+    "change-location-quest": ChangeLocationQuest,
+  },
+};
 </script>
 
 <style lang="scss" scoped>

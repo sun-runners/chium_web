@@ -1,8 +1,12 @@
+// Vue
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+// Local
 import routes from './routes'
+import store from '../store'
 
+// Main Section
 Vue.use(VueRouter)
 
 /*
@@ -13,6 +17,9 @@ Vue.use(VueRouter)
  * async/await or return a Promise which resolves
  * with the Router instance.
  */
+
+// Variable Section
+const routesSigned = ['waste', 'demolition']
 
 const isIncludedRoute = function (routeNames, routeName) {
   if (routeNames.indexOf(routeName) >= 0) {
@@ -35,12 +42,11 @@ export default function (/* { store, ssrContext } */) {
   })
 
   Router.beforeEach((to, from, next) => {
-    // if (isIncludedRoute(routesSigned, to.name)) {
-    //   if (!(store.getters.user && store.getters.user.id)) {
-    //     next('landing')
-    //     return
-    //   }
-    // }
+    if (isIncludedRoute(routesSigned, to.name)) {
+      if (!(store.getters.user && store.getters.user.id)) {
+        return
+      }
+    }
     next()
   })
 

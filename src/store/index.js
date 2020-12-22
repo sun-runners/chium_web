@@ -17,19 +17,16 @@ Vue.use(Vuex)
  * async/await or return a Promise which resolves
  * with the Store instance.
  */
+const store = new Vuex.Store({
+  modules: {
+    user: userStore
+  },
 
-export default function (/* { ssrContext } */) {
-  const Store = new Vuex.Store({
-    modules: {
-      user: userStore
-    },
+  plugins: [createPersistedState()],
 
-    plugins: [createPersistedState()],
+  // enable strict mode (adds overhead!)
+  // for dev mode only
+  strict: process.env.DEV
+})
 
-    // enable strict mode (adds overhead!)
-    // for dev mode only
-    strict: process.env.DEV
-  })
-
-  return Store
-}
+export default store
