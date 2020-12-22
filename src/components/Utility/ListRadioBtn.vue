@@ -1,6 +1,10 @@
 <template>
   <div class="q-pl-md bg-white">
-    <div class="row">
+    <p class="heading-title bg-white q-ma-none notosanskr-regular">
+      공간 유형을
+      <span class="heading-subtitle"> 알려주세요.</span>
+    </p>
+    <div class="row q-mt-md">
       <div class="col">
         <q-list separator>
           <q-item

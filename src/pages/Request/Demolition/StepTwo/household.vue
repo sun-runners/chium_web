@@ -1,6 +1,7 @@
 <template>
-  <div class="">
+  <div class="column bg-white">
     <list-radio-button />
+    <q-separator class="q-mt-xl q-mb-xl" color="black" />
     <items-to-dispose @next="(val) => $emit('next', val)" />
   </div>
 </template>
