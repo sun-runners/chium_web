@@ -51,6 +51,11 @@ const routes = [
       
       // demolition
       { path: 'demolition/one', component: () => import('pages/Request/Demolition/Index.vue') },
+      { path: 'demolition/two/household', component: () => import('pages/Request/Demolition/StepTwo/household.vue') },
+      { path: 'demolition/three/household', component: () => import('pages/Request/Demolition/StepThree/household.vue') },
+      { path: 'demolition/four/household', component: () => import('pages/Request/Demolition/StepFour/household.vue') },
+      // { path: 'demolition/five/household', component: () => import('pages/Request/Demolition/StepFive/household.vue') },
+      { path: 'demolition/final/household', component: () => import('pages/Request/Demolition/FinalStep/household.vue') },
     ]
   },
   { 

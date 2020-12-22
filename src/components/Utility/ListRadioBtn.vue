@@ -1,8 +1,5 @@
 <template>
   <div class="q-pl-md bg-white">
-    <p class="heading-title">
-      철거 유형<span class="heading-subtitle">을 알려주세요.</span>
-    </p>
     <div class="row">
       <div class="col">
         <q-list separator>
@@ -45,7 +42,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       selectedWaste: '',
       list_waste_type: [
@@ -59,45 +56,20 @@ export default {
           label: '사업장 폐기물',
           val: 'workplace',
         },
-        {
-          icon1: 'Structure.svg',
-          label: '구조물 철거',
-          val: 'construction',
-        },
-        {
-          icon1: 'Asbestos.svg',
-          label: '석면철거',
-          val: 'recycling',
-        },
-      ],
-    };
+      ]
+    }
   },
   computed: {
-    layoutState(){
-      return {
-        totalSteps: 6,
-        activeStep: 1,
-        btnLabel: '다음',
-        isBtnReady: false,
-        isBtnHidden: false,
-        requestComplete: false,
-        nextPathRoute: '/request/demolition/two/household',
-        prevPathRoute: '/home'
-      }
-    }
   },
-  mounted(){
-    this.$emit('setStateLayout', this.layoutState)
+  mounted () {
   },
   methods: {
-    setSelectedWaste(val) {
+    setSelectedWaste (val) {
       this.selectedWaste = val;
-      const layoutState = this.layoutState;
-      layoutState.nextPathRoute = `/request/demolition/two/${val}`;
-      this.$emit('setStateLayout', layoutState);
+      // this.$emit('change', layoutState);
     }
-  },
-};
+  }
+}
 </script>
 
 <style scoped>
