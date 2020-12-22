@@ -20,6 +20,41 @@
             <q-icon name="close" />
           </q-btn>
         </q-card-section>
+
+        <q-card-section>
+          <q-tabs
+            v-model="tab"
+            dense
+            class="text-grey"
+            active-color="dark"
+            align="justify"
+          >
+            <q-tab name="recent_place">
+              <div class="notosanskr-medium tabs-text">
+                최근 장소
+              </div>
+            </q-tab>
+            <q-tab name="new_place">
+              <div class="notosanskr-medium tabs-text">
+                새로운 장소
+              </div>
+            </q-tab>
+          </q-tabs>
+
+          <q-separator />
+
+          <q-tab-panels v-model="tab" animated>
+            <q-tab-panel name="recent_place">
+              <div class="text-h6">Recent Place</div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </q-tab-panel>
+
+            <q-tab-panel name="new_place">
+              <div class="text-h6">New Place</div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </q-tab-panel>
+          </q-tab-panels>
+        </q-card-section>
       </q-card>
     </q-dialog>
   </div>
@@ -30,6 +65,7 @@ export default {
   data() {
     return {
       dialog: "",
+      tab: "",
     };
   },
 };
@@ -49,6 +85,13 @@ export default {
   line-height: 22px;
   letter-spacing: -0.75px;
   color: #15161a;
+}
+.tabs-text {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 48px;
+  text-align: center;
+  letter-spacing: -0.75px;
 }
 .change-btn {
   font-weight: 500;
