@@ -19,8 +19,8 @@ export default {
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/four/household",
-        prevPathRoute: "/request/waste/two/household",
+        nextPathRoute: "/request/demolition/four/household",
+        prevPathRoute: "/request/demolition/two/household",
       };
     },
   },

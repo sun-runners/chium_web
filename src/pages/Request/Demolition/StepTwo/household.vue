@@ -1,31 +1,36 @@
 <template>
-  <div class="">
+  <div class="column bg-white">
+    <list-radio-button />
+    <q-separator class="q-mt-xl q-mb-xl" color="black" />
     <items-to-dispose @next="(val) => $emit('next', val)" />
   </div>
 </template>
 
 <script>
-import { ItemsToDispose } from "src/components/RequestEstimate/Common";
+import { SelectedItemToDisPosed } from 'src/components/RequestEstimate/Common'
+import ListRadioBtn from 'src/components/Utility/ListRadioBtn'
+
 export default {
   components: {
-    "items-to-dispose": ItemsToDispose,
+    'items-to-dispose': SelectedItemToDisPosed,
+    'list-radio-button': ListRadioBtn
   },
   computed: {
-    layoutState() {
+    layoutState () {
       return {
         totalSteps: 4,
         activeStep: 2,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/three/household",
-        prevPathRoute: "/request/waste",
-      };
-    },
+        nextPathRoute: '/request/demolition/three/household',
+        prevPathRoute: '/request/demolition'
+      }
+    }
   },
-  mounted() {
-    this.$emit("setStateLayout", this.layoutState);
+  mounted () {
+    this.$emit('setStateLayout', this.layoutState)
   },
 };
 </script>
