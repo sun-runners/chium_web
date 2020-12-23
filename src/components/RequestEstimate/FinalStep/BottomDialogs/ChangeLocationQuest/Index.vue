@@ -21,7 +21,7 @@
           </q-btn>
         </q-card-section>
 
-        <q-card-section>
+        <q-card-section class="full-height q-pa-none">
           <q-tabs
             v-model="tab"
             dense
@@ -43,10 +43,10 @@
 
           <q-separator />
 
-          <q-tab-panels v-model="tab" animated>
-            <q-tab-panel name="recent_place">
-              <div class="text-h6">Recent Place</div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <q-tab-panels v-model="tab" class="full-height" animated>
+            <q-tab-panel name="recent_place" class="full-height q-pa-none">
+              <!-- contents for recent places Items | 최근 장소의 항목에 대한 내용 -->
+              <recent-places></recent-places>
             </q-tab-panel>
 
             <q-tab-panel name="new_place">
@@ -61,11 +61,15 @@
 </template>
 
 <script>
+import RecentPlaces from "./RecentPlaces";
 export default {
+  components: {
+    "recent-places": RecentPlaces,
+  },
   data() {
     return {
       dialog: false,
-      tab: "",
+      tab: "recent_place",
     };
   },
 };
