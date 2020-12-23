@@ -57,8 +57,8 @@
             </q-tab-panel>
 
             <q-tab-panel name="new_place">
-              <div class="text-h6">New Place</div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <!-- content for setting new address | 새 주소 설정 내용 -->
+              <new-place></new-place>
             </q-tab-panel>
           </q-tab-panels>
         </q-card-section>
@@ -81,9 +81,11 @@
 
 <script>
 import RecentPlaces from "./RecentPlaces";
+import NewPlace from "./NewPlace";
 export default {
   components: {
     "recent-places": RecentPlaces,
+    "new-place": NewPlace,
   },
   data() {
     return {
