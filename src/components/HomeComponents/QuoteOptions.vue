@@ -103,11 +103,15 @@ export default {
     async goWaste () {
       if (!(this.$store.getters.user && this.$store.getters.user.id)) {
         await this.login('waste')
+      } else {
+        await this.$router.push({ name: 'waste' })
       }
     },
     async goDemolition () {
       if (!(this.$store.getters.user && this.$store.getters.user.id)) {
         await this.login('demolition')
+      } else {
+        await this.$router.push({ name: 'demolition' })
       }
     },
     async login (nextState) {
@@ -115,9 +119,6 @@ export default {
       const login = async (dataUser) => {
         const { data } = await this.$axios.post('/users/kakaologin/', this.$qs.stringify(dataUser))
         this.$store.commit('setUser', data)
-        console.log(store.getters)
-        console.log(store.getters.user)
-        console.log(store.getters.user.id)
         if (store.getters.user && store.getters.user.id) {
           await this.$router.push({ name: nextState })
         }
@@ -145,6 +146,7 @@ export default {
       }
 
       const loginSuccess = async (authObj) => {
+        console.log('authObj', authObj)
         await Kakao.API.request({ url: '/v2/user/me', success: meSuccess })
       }
 
