@@ -51,7 +51,12 @@ const routes = [
       { path: 'waste/final/recycling', component: () => import('pages/Request/Waste/FinalStep/recycling.vue') },
 
       // demolition
-      { path: 'demolition/one', component: () => import('pages/Request/Demolition/Index.vue'), name: 'demolition' }
+      { path: 'demolition/one', component: () => import('pages/Request/Demolition/Index.vue'), name: 'demolition' },
+      { path: 'demolition/two/household', component: () => import('pages/Request/Demolition/StepTwo/household.vue') },
+      { path: 'demolition/three/household', component: () => import('pages/Request/Demolition/StepThree/household.vue') },
+      { path: 'demolition/four/household', component: () => import('pages/Request/Demolition/StepFour/household.vue') },
+      // { path: 'demolition/five/household', component: () => import('pages/Request/Demolition/StepFive/household.vue') },
+      { path: 'demolition/final/household', component: () => import('pages/Request/Demolition/FinalStep/household.vue') }
     ]
   }, {
     path: '/store',

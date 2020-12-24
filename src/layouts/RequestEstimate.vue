@@ -44,7 +44,7 @@
             :rounded="false"
             flat
             :label="btnLabel"
-            @click.once="myBtnFunction"
+            @click.once="__onHandleNextStep"
           />
         </q-toolbar>
       </q-footer>
@@ -86,7 +86,7 @@ export default {
         this.isBtnHidden = !val;
       }
     },
-    myBtnFunction() {
+    __onHandleNextStep() {
       this.$router.push({ path: this.nextPathRoute });
     },
     setLayoutState(state) {

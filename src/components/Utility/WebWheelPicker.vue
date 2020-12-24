@@ -1,37 +1,42 @@
 <template>
-  <div class="smooth-picker flex-box">
-    <!-- smooth-group-layer -->
-    <div
-      ref="smoothGroup"
-      v-for="(group, gIndex) in data"
-      :key="gIndex"
-      class="smooth-group"
-      :class="getGroupClass(gIndex)"
-    >
-      <div class="smooth-list">
+  <div>
+      <div>
+        {{ getInitialCurrentIndexList() }}
+      </div>
+      <div class="smooth-picker flex-box">
+        <!-- smooth-group-layer -->
         <div
-          v-if="group.divider"
-          class="smooth-item divider"
-          :class="getItemClass(gIndex, iIndex, true)"
-        >{{ group.text }}</div>
+          ref="smoothGroup"
+          v-for="(group, gIndex) in data"
+          :key="gIndex"
+          class="smooth-group"
+          :class="getGroupClass(gIndex)"
+        >
+          <div class="smooth-list">
+            <div
+              v-if="group.divider"
+              class="smooth-item divider"
+              :class="getItemClass(gIndex, iIndex, true)"
+            >{{ group.text }}</div>
 
-        <div
-          v-else
-          v-for="(item, iIndex) in group.list"
-          :key="iIndex"
-          class="smooth-item current-selected-item notosanskr-regular"
-          :class="getItemClass(gIndex, iIndex)"
-          :style="getItemStyle(gIndex, iIndex)"
-        >{{ item.value || item }}</div>
+            <div
+              v-else
+              v-for="(item, iIndex) in group.list"
+              :key="iIndex"
+              class="smooth-item current-selected-item notosanskr-regular"
+              :class="getItemClass(gIndex, iIndex)"
+              :style="getItemStyle(gIndex, iIndex)"
+            >{{ item.value || item }}</div>
+          </div>
+        </div>
+
+        <div ref="smoothHandleLayer" class="smooth-handle-layer flex-box direction-column">
+          <div data-type="top" class="smooth-top flex-1"></div>
+          <div data-type="middle" class="smooth-middle"></div>
+          <div data-type="bottom" class="smooth-bottom flex-1"></div>
+        </div>
       </div>
     </div>
-
-    <div ref="smoothHandleLayer" class="smooth-handle-layer flex-box direction-column">
-      <div data-type="top" class="smooth-top flex-1"></div>
-      <div data-type="middle" class="smooth-middle"></div>
-      <div data-type="bottom" class="smooth-bottom flex-1"></div>
-    </div>
-  </div>
 </template>
 
 <script>
