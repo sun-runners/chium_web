@@ -59,9 +59,7 @@ module.exports = function (ctx) {
       },
       // Environment
       env: {
-        // API: ctx.dev ? 'http://127.0.0.1:9014/api/' : 'https://admin.chium.kr/api/'
-        // API: ctx.dev ? 'http://127.0.0.1:9014/api/' : 'http://chium.ap-northeast-2.elasticbeanstalk.com/api/'
-        API: ctx.dev ? 'http://127.0.0.1:9014/api/' : 'http://chium.ap-northeast-2.elasticbeanstalk.com/api/'
+        API: ctx.dev ? 'http://127.0.0.1:9014/api/' : 'https://admin.chium.sunwook.com/api/'
       }
     },
 
