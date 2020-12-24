@@ -2,12 +2,12 @@
   <div>
     <div class="row q-gutter-md q-pa-sm q-pt-md q-px-md">
       <div class="col bg-white flex content-center justify-center">
+        <!--@click="showPopup()"-->
         <q-btn
           class="full-width full-height home-btn bg-white"
-          @click="showPopup()"
           align="center"
           type="a"
-        >
+          @click="goWaste">
           <q-icon
             size="110px"
             :name="`img:${require('src/assets/icon_truck.svg')}`"
@@ -16,12 +16,12 @@
         </q-btn>
       </div>
       <div class="col bg-white flex content-center justify-center">
+        <!--@click="showPopup('demolition')"-->
         <q-btn
           class="full-width full-height home-btn bg-white"
-          @click="showPopup('demolition')"
           type="a"
           align="center"
-        >
+          @click="goDemolition">
           <q-icon
             size="110px"
             :name="`img:${require('src/assets/icon_swipe.svg')}`"
@@ -82,24 +82,84 @@
 </template>
 
 <script>
+import store from "src/store";
+
 export default {
-  data() {
+  data () {
     return {
       slide: 1,
       popupBottom: false,
-      contentWaste: true,
-    };
+      contentWaste: true
+    }
   },
   methods: {
-    showPopup(content = "waste") {
-      this.popupBottom = !this.popupBottom;
-      this.contentWaste = content == "waste";
+    showPopup (content = 'waste') {
+      this.popupBottom = !this.popupBottom
+      this.contentWaste = content === 'waste'
     },
-    closePopup() {
-      this.popupBottom = false;
+    closePopup () {
+      this.popupBottom = false
     },
-  },
-};
+    async goWaste () {
+      if (!(this.$store.getters.user && this.$store.getters.user.id)) {
+        await this.login('waste')
+      } else {
+        await this.$router.push({ name: 'waste' })
+      }
+    },
+    async goDemolition () {
+      if (!(this.$store.getters.user && this.$store.getters.user.id)) {
+        await this.login('demolition')
+      } else {
+        await this.$router.push({ name: 'demolition' })
+      }
+    },
+    async login (nextState) {
+      // Function Section
+      const login = async (dataUser) => {
+        const { data } = await this.$axios.post('/users/kakaologin/', this.$qs.stringify(dataUser))
+        this.$store.commit('setUser', data)
+        if (store.getters.user && store.getters.user.id) {
+          await this.$router.push({ name: nextState })
+        }
+      }
+
+      const meSuccess = async (response) => {
+        const dataUser = {}
+
+        // Set user date
+        if (response) {
+          dataUser.id = response.id
+          if (response.kakao_account) {
+            const res = response.kakao_account
+            dataUser.email = res.email // sunus7@kakao.com
+            dataUser.birthday = res.birthday // 0426
+            dataUser.gender = res.gender // male
+          }
+          if (response.properties) {
+            const res = response.properties
+            dataUser.nickname = res.nickname
+            dataUser.profile_image = res.profile_image
+          }
+          await login(dataUser)
+        }
+      }
+
+      const loginSuccess = async (authObj) => {
+        console.log('authObj', authObj)
+        await Kakao.API.request({ url: '/v2/user/me', success: meSuccess })
+      }
+
+      const loginFail = (err) => {
+        console.error(err)
+        alert('카카오 로그인 실패하였습니다. 카카오톡을 최신 버전으로 업데이트해주세요.')
+      }
+
+      // Main Section
+      await Kakao.Auth.login({ success: loginSuccess, fail: loginFail }) // Login Kakao
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
