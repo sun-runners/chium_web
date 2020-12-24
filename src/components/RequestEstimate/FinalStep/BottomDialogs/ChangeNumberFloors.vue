@@ -24,10 +24,26 @@
 
         <!-- wheel picker section | 휠 선택기 섹션-->
         <q-card-section
-          class="flex-grow full-height full-width q-pa-none"
+          class="flex-grow full-height full-width q-pa-none row justify-center items-center"
           style="padding-bottom: 170px;"
         >
-          <h5>Hello</h5>
+          <div class="row justify-center items-center">
+            <div class="" style=" width: 80px">
+              <custom-wheel-picker
+                v-model="selectedFirstDigit"
+                :options="numbers"
+              ></custom-wheel-picker>
+            </div>
+            <div class="" style=" width: 80px">
+              <custom-wheel-picker
+                v-model="selectedSecondDigit"
+                :options="numbers"
+              ></custom-wheel-picker>
+            </div>
+            <div class="layer">
+              층
+            </div>
+          </div>
         </q-card-section>
 
         <!-- Footer section | 바닥 글 버튼 섹션  -->
@@ -47,15 +63,22 @@
 </template>
 
 <script>
+import CustomWheelPicker from "components/Utility/CustomWheelPicker/Index";
 export default {
-  components: {},
+  components: {
+    "custom-wheel-picker": CustomWheelPicker,
+  },
   data() {
     return {
-      dialog: false,
+      dialog: true,
       tab: "recent_place",
-      changeEnable: false,
+      changeEnable: true,
+      selectedFirstDigit: "0",
+      selectedSecondDigit: "1",
+      numbers: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
     };
   },
+  methods: {},
 };
 </script>
 
@@ -75,7 +98,7 @@ export default {
   max-width: 1000px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  height: 100vh;
+  height: 558px;
 }
 .heading-title {
   font-weight: 500;
@@ -89,5 +112,12 @@ export default {
   font-size: 18px;
   text-align: center;
   letter-spacing: -0.9px;
+}
+.layer {
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: #15161a;
 }
 </style>
