@@ -56,6 +56,21 @@
         </div>
       </div>
 
+      <!-- Acreage | 평수 -->
+      <div class="bg-white q-pa-md" style="margin-bottom: 2px" v-if="acreage">
+        <div class="heading-text notosanskr-medium">
+          평수
+        </div>
+        <div class="row q-pt-sm">
+          <div class="text col">
+            48층
+          </div>
+          <div style="padding-left: 40px">
+            <change-area></change-area>
+          </div>
+        </div>
+      </div>
+
       <!-- elevator 엘레베이터 -->
       <div class="bg-white q-pa-md" style="margin-bottom: 2px" v-if="elevator">
         <div class="heading-text notosanskr-medium">
@@ -90,11 +105,13 @@
 import ChangeLocationQuest from "./BottomDialogs/ChangeLocationQuest/Index";
 import ChangeType from "./BottomDialogs/ChangeType";
 import ChangeNumberFloors from "./BottomDialogs/ChangeNumberFloors";
+import ChangeArea from "./BottomDialogs/ChangeArea";
 export default {
   components: {
     "change-location-quest": ChangeLocationQuest,
     "change-type": ChangeType,
     "change-number-floors": ChangeNumberFloors,
+    "change-area": ChangeArea,
   },
   props: {
     type: {
@@ -106,6 +123,10 @@ export default {
       default: true,
     },
     numberOfFloor: {
+      type: Boolean,
+      default: true,
+    },
+    acreage: {
       type: Boolean,
       default: true,
     },
