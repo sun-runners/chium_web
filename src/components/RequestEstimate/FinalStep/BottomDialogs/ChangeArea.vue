@@ -47,7 +47,7 @@
               ></custom-wheel-picker>
             </div>
             <div class="layer">
-              층
+              평
             </div>
           </div>
         </q-card-section>

@@ -15,7 +15,7 @@
           class="q-pa-none q-py-sm row items-center justify-between full-width"
         >
           <div class="heading-title q-pl-md notosanskr-medium">
-            의뢰장소 변경
+            층수변경
           </div>
           <q-btn color="white" flat text-color="black" @click="dialog = false">
             <q-icon name="close" />
