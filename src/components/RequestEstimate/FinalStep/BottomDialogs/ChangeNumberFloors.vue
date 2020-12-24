@@ -70,7 +70,7 @@ export default {
   },
   data() {
     return {
-      dialog: true,
+      dialog: false,
       tab: "recent_place",
       changeEnable: true,
       selectedFirstDigit: "0",
