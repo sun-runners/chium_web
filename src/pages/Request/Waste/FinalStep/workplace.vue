@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <head-section />
-    <request-place />
+    <request-place hiddenFloor />
     <requester />
     <request-details />
   </div>

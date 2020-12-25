@@ -23,7 +23,11 @@
       </div>
 
       <!-- type 유형 -->
-      <div class="bg-white q-pa-md" style="margin-bottom: 2px">
+      <div
+        class="bg-white q-pa-md"
+        style="margin-bottom: 2px"
+        v-if="!hiddenType"
+      >
         <div class="heading-text notosanskr-medium">
           유형
         </div>
@@ -31,14 +35,56 @@
           <div class="text col">
             상업공간
           </div>
-          <div class="notosanskr-medium" style="padding-left: 40px">
-            <q-btn flat class="change-btn" padding="0px">변경</q-btn>
+          <div style="padding-left: 40px">
+            <change-type></change-type>
+          </div>
+        </div>
+      </div>
+
+      <!-- Number of floors 층수 -->
+      <div
+        class="bg-white q-pa-md"
+        style="margin-bottom: 2px"
+        v-if="!hiddenFloor"
+      >
+        <div class="heading-text notosanskr-medium">
+          층수
+        </div>
+        <div class="row q-pt-sm">
+          <div class="text col">
+            10층
+          </div>
+          <div style="padding-left: 40px">
+            <change-number-floors></change-number-floors>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acreage | 평수 -->
+      <div
+        class="bg-white q-pa-md"
+        style="margin-bottom: 2px"
+        v-if="!hiddenAcreage"
+      >
+        <div class="heading-text notosanskr-medium">
+          평수
+        </div>
+        <div class="row q-pt-sm">
+          <div class="text col">
+            48층
+          </div>
+          <div style="padding-left: 40px">
+            <change-area></change-area>
           </div>
         </div>
       </div>
 
       <!-- elevator 엘레베이터 -->
-      <div class="bg-white q-pa-md" style="margin-bottom: 2px">
+      <div
+        class="bg-white q-pa-md"
+        style="margin-bottom: 2px"
+        v-if="!hiddenElevator"
+      >
         <div class="heading-text notosanskr-medium">
           엘레베이터
         </div>
@@ -47,14 +93,15 @@
             있음
           </div>
           <div class="notosanskr-medium" style="padding-left: 40px">
-            <q-btn flat class="change-btn" padding="0px">변경</q-btn>
+            <change-elevator></change-elevator>
           </div>
         </div>
       </div>
 
       <!-- caution -->
       <div
-        class="bg-white q-pa-md caution notosanskr-medium border-bottom-rad "
+        class="bg-white q-pa-md caution notosanskr-medium border-bottom-rad"
+        v-if="!hiddenCaution"
       >
         <span>[주의] </span>업체 방문시 알려주신 정보와 실제 정보가 차이가
         발생할 경우 예상 견적비용과 실제 작업비용이 차이가 날 수 있습니다.
@@ -69,9 +116,39 @@
 
 <script>
 import ChangeLocationQuest from "./BottomDialogs/ChangeLocationQuest/Index";
+import ChangeType from "./BottomDialogs/ChangeType";
+import ChangeNumberFloors from "./BottomDialogs/ChangeNumberFloors";
+import ChangeArea from "./BottomDialogs/ChangeArea";
+import ChangeElevator from "./BottomDialogs/ChangeElevator";
 export default {
   components: {
     "change-location-quest": ChangeLocationQuest,
+    "change-type": ChangeType,
+    "change-number-floors": ChangeNumberFloors,
+    "change-area": ChangeArea,
+    "change-elevator": ChangeElevator,
+  },
+  props: {
+    hiddenType: {
+      type: Boolean,
+      default: false,
+    },
+    hiddenElevator: {
+      type: Boolean,
+      default: false,
+    },
+    hiddenFloor: {
+      type: Boolean,
+      default: false,
+    },
+    hiddenAcreage: {
+      type: Boolean,
+      default: false,
+    },
+    hiddenCaution: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>

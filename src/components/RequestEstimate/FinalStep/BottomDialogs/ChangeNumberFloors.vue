@@ -15,52 +15,35 @@
           class="q-pa-none q-py-sm row items-center justify-between full-width"
         >
           <div class="heading-title q-pl-md notosanskr-medium">
-            의뢰장소 변경
+            층수변경
           </div>
           <q-btn color="white" flat text-color="black" @click="dialog = false">
             <q-icon name="close" />
           </q-btn>
         </q-card-section>
 
-        <!-- Tabs content section | 탭 콘텐츠 섹션 -->
+        <!-- wheel picker section | 휠 선택기 섹션-->
         <q-card-section
-          class="flex-grow full-height full-width q-pa-none"
+          class="flex-grow full-height full-width q-pa-none row justify-center items-center"
           style="padding-bottom: 170px;"
         >
-          <q-tabs
-            v-model="tab"
-            dense
-            class="text-grey bg-grey-3"
-            active-color="dark"
-            align="justify"
-            active-bg-color="white"
-            indicator-color="white"
-          >
-            <q-tab name="recent_place">
-              <div class="notosanskr-medium tabs-text">
-                최근 장소
-              </div>
-            </q-tab>
-            <q-tab name="new_place">
-              <div class="notosanskr-medium tabs-text">
-                새로운 장소
-              </div>
-            </q-tab>
-          </q-tabs>
-
-          <q-separator />
-
-          <q-tab-panels v-model="tab" class="full-height" animated>
-            <q-tab-panel name="recent_place" class="q-pa-none overflow-scroll">
-              <!-- contents for recent places Items | 최근 장소의 항목에 대한 내용 -->
-              <recent-places></recent-places>
-            </q-tab-panel>
-
-            <q-tab-panel name="new_place">
-              <!-- content for setting new address | 새 주소 설정 내용 -->
-              <new-place></new-place>
-            </q-tab-panel>
-          </q-tab-panels>
+          <div class="row justify-center items-center">
+            <div class="" style=" width: 80px">
+              <custom-wheel-picker
+                v-model="selectedFirstDigit"
+                :options="numbers"
+              ></custom-wheel-picker>
+            </div>
+            <div class="" style=" width: 80px">
+              <custom-wheel-picker
+                v-model="selectedSecondDigit"
+                :options="numbers"
+              ></custom-wheel-picker>
+            </div>
+            <div class="layer">
+              층
+            </div>
+          </div>
         </q-card-section>
 
         <!-- Footer section | 바닥 글 버튼 섹션  -->
@@ -80,20 +63,22 @@
 </template>
 
 <script>
-import RecentPlaces from "./RecentPlaces";
-import NewPlace from "./NewPlace";
+import CustomWheelPicker from "components/Utility/CustomWheelPicker/Index";
 export default {
   components: {
-    "recent-places": RecentPlaces,
-    "new-place": NewPlace,
+    "custom-wheel-picker": CustomWheelPicker,
   },
   data() {
     return {
       dialog: false,
       tab: "recent_place",
-      changeEnable: false,
+      changeEnable: true,
+      selectedFirstDigit: "0",
+      selectedSecondDigit: "1",
+      numbers: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
     };
   },
+  methods: {},
 };
 </script>
 
@@ -113,7 +98,7 @@ export default {
   max-width: 1000px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  height: 100vh;
+  height: 558px;
 }
 .heading-title {
   font-weight: 500;
@@ -122,18 +107,17 @@ export default {
   letter-spacing: -0.75px;
   color: #15161a;
 }
-.tabs-text {
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 48px;
-  text-align: center;
-  letter-spacing: -0.75px;
-  color: #15161a;
-}
 .change-btn {
   font-weight: 500;
   font-size: 18px;
   text-align: center;
   letter-spacing: -0.9px;
+}
+.layer {
+  font-size: 18px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: -0.9px;
+  color: #15161a;
 }
 </style>
