@@ -23,7 +23,11 @@
       </div>
 
       <!-- type 유형 -->
-      <div class="bg-white q-pa-md" style="margin-bottom: 2px" v-if="type">
+      <div
+        class="bg-white q-pa-md"
+        style="margin-bottom: 2px"
+        v-if="!hiddenType"
+      >
         <div class="heading-text notosanskr-medium">
           유형
         </div>
@@ -41,7 +45,7 @@
       <div
         class="bg-white q-pa-md"
         style="margin-bottom: 2px"
-        v-if="numberOfFloor"
+        v-if="!hiddenFloor"
       >
         <div class="heading-text notosanskr-medium">
           층수
@@ -57,7 +61,11 @@
       </div>
 
       <!-- Acreage | 평수 -->
-      <div class="bg-white q-pa-md" style="margin-bottom: 2px" v-if="acreage">
+      <div
+        class="bg-white q-pa-md"
+        style="margin-bottom: 2px"
+        v-if="!hiddenAcreage"
+      >
         <div class="heading-text notosanskr-medium">
           평수
         </div>
@@ -72,7 +80,11 @@
       </div>
 
       <!-- elevator 엘레베이터 -->
-      <div class="bg-white q-pa-md" style="margin-bottom: 2px" v-if="elevator">
+      <div
+        class="bg-white q-pa-md"
+        style="margin-bottom: 2px"
+        v-if="!hiddenElevator"
+      >
         <div class="heading-text notosanskr-medium">
           엘레베이터
         </div>
@@ -88,7 +100,8 @@
 
       <!-- caution -->
       <div
-        class="bg-white q-pa-md caution notosanskr-medium border-bottom-rad "
+        class="bg-white q-pa-md caution notosanskr-medium border-bottom-rad"
+        v-if="!hiddenCaution"
       >
         <span>[주의] </span>업체 방문시 알려주신 정보와 실제 정보가 차이가
         발생할 경우 예상 견적비용과 실제 작업비용이 차이가 날 수 있습니다.
@@ -116,21 +129,25 @@ export default {
     "change-elevator": ChangeElevator,
   },
   props: {
-    type: {
+    hiddenType: {
       type: Boolean,
-      default: true,
+      default: false,
     },
-    elevator: {
+    hiddenElevator: {
       type: Boolean,
-      default: true,
+      default: false,
     },
-    numberOfFloor: {
+    hiddenFloor: {
       type: Boolean,
-      default: true,
+      default: false,
     },
-    acreage: {
+    hiddenAcreage: {
       type: Boolean,
-      default: true,
+      default: false,
+    },
+    hiddenCaution: {
+      type: Boolean,
+      default: false,
     },
   },
 };
