@@ -82,7 +82,7 @@
 export default {
   data() {
     return {
-      dialog: true,
+      dialog: false,
       changeEnable: true,
       selectedType: '',
       listType: [
