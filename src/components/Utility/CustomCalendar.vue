@@ -8,7 +8,9 @@
           size="40px"
           style="color: #C0C0C0; cursor: pointer"
         />
-        <div class="text">{{ dates.year }}. {{ dates.month + 1 }}</div>
+        <div class="text">
+          {{ calendarDates.year }}. {{ calendarDates.month + 1 }}
+        </div>
         <q-icon
           @click="increaseMonth"
           name="keyboard_arrow_right"
@@ -27,12 +29,12 @@
             class="date-day"
             v-for="(date, index) in datesDays"
             :key="index"
-            @click="setSelectDate(date.day)"
+            @click="setSelectDate(date)"
           >
             <div
               class="inner-date-day notosanskr-medium"
               :class="{
-                'day-of-month': isDateThisMonth(date),
+                'day-of-month': date.currentMonth,
                 available: isDateAvailable(date),
                 selected: isSelectedDay(date),
               }"
@@ -57,7 +59,7 @@ export default {
       calendar_header: "2019, 08, 12",
       days: ["일", "월", "화", "수", "목", "금", "토"],
       datesDays: [],
-      dates: {
+      calendarDates: {
         year: this.date.getFullYear(),
         month: this.date.getMonth(),
         date: this.date.getDate(),
@@ -68,36 +70,32 @@ export default {
   methods: {
     isDayToday(day) {
       if (
-        this.dates.month == this.date.getMonth() &&
-        this.dates.year == this.date.getFullYear()
+        this.calendarDates.month == this.date.getMonth() &&
+        this.calendarDates.year == this.date.getFullYear()
       ) {
-        return this.dates.date == day;
+        return this.calendarDates.date == day;
       }
     },
     isPastDay(day) {
-      if (this.dates.year <= this.date.getFullYear()) {
-        if (this.dates.month == this.date.getMonth()) {
-          return this.dates.date > day;
+      if (this.calendarDates.year <= this.date.getFullYear()) {
+        if (this.calendarDates.month == this.date.getMonth()) {
+          return this.calendarDates.date > day;
         }
-        return this.dates.month < this.date.getMonth();
+        return this.calendarDates.month < this.date.getMonth();
       }
     },
-    isDateThisMonth(date) {
-      return !date.prevMonth && !date.nextMonth;
-    },
     isDateAvailable(date) {
+      if (this.calendarDates.year < this.date.getFullYear()) {
+        return;
+      }
       return (
         !this.isDayToday(date.day) &&
         !this.isPastDay(date.day) &&
-        this.isDateThisMonth(date)
+        date.currentMonth
       );
     },
     isSelectedDay(date) {
-      if (
-        this.selectedDate &&
-        this.dates.month >= this.date.getMonth() &&
-        !date.prevMonth
-      ) {
+      if (this.selectedDate && date.currentMonth) {
         return this.selectedDate.getDate() == date.day;
       }
     },
@@ -108,25 +106,33 @@ export default {
       return new Date(year, month, 1).getDay();
     },
     getPrevMonthDay(dayLast, firstDay) {
-      const curMonth = this.dates.month;
+      const curMonth = this.calendarDates.month;
       // we get the previous month
       const prevMonth = curMonth > 0 ? curMonth : 12;
-      const year = curMonth > 0 ? this.dates.year : this.dates.year - 1;
+      const year =
+        curMonth > 0 ? this.calendarDates.year : this.calendarDates.year - 1;
       const lastMonthDay = this.getLastDate(year, prevMonth - 1);
       return `${lastMonthDay - (firstDay - dayLast)}`;
     },
     getNextMonthDay(dayLast, firstDay) {
-      const curMonth = this.dates.month;
+      const curMonth = this.calendarDates.month;
       // we get the next month
       const nextMonth = curMonth < 11 ? curMonth + 1 : 0;
-      const year = curMonth > 0 ? this.dates.year : this.dates.year - 1;
+      const year =
+        curMonth > 0 ? this.calendarDates.year : this.calendarDates.year - 1;
       const nextMonthDay = 1;
       return `${nextMonthDay}`;
       // return `${nextMonthDay - (firstDay - dayLast)}`;
     },
     initCalendar() {
-      const firstDay = this.getFirstDay(this.dates.year, this.dates.month);
-      const dateEnd = this.getLastDate(this.dates.year, this.dates.month);
+      const firstDay = this.getFirstDay(
+        this.calendarDates.year,
+        this.calendarDates.month
+      );
+      const dateEnd = this.getLastDate(
+        this.calendarDates.year,
+        this.calendarDates.month
+      );
       let dateValue = 1;
       let nextMonthDate = 1;
       const limit = firstDay >= 5 ? 43 : 36;
@@ -144,6 +150,7 @@ export default {
           nextMonthDate++;
         } else {
           this.datesDays.push({
+            currentMonth: true,
             day: dateValue,
           });
           dateValue++;
@@ -151,34 +158,42 @@ export default {
       }
     },
     increaseMonth() {
-      this.dates.month += 1;
-      if (this.dates.month > 11) {
-        this.dates.year += 1;
-        this.dates.month = 0;
+      this.calendarDates.month += 1;
+      if (this.calendarDates.month > 11) {
+        this.calendarDates.year += 1;
+        this.calendarDates.month = 0;
       }
       this.selectedDate = null;
       this.datesDays = [];
       this.initCalendar();
     },
     decreaseMonth() {
-      this.dates.month -= 1;
-      if (this.dates.month < 0) {
-        this.dates.year -= 1;
-        this.dates.month = 11;
+      this.calendarDates.month -= 1;
+      if (this.calendarDates.month < 0) {
+        this.calendarDates.year -= 1;
+        this.calendarDates.month = 11;
       }
       this.selectedDate = null;
       this.datesDays = [];
       this.initCalendar();
     },
-    setSelectDate(day) {
-      if (!this.isPastDay(day) && !this.isDayToday(day)) {
+    setSelectDate(date) {
+      if (this.validateSelectDate(date)) {
         this.selectedDate = new Date(
-          `${this.dates.year}`,
-          this.dates.month,
-          day
+          this.calendarDates.year,
+          this.calendarDates.month,
+          date.day
         );
         this.$emit("dateSelected", this.selectedDate);
       }
+    },
+    validateSelectDate(date) {
+      if (!date.currentMonth) return;
+      if (this.calendarDates.year < this.date.getFullYear()) return;
+      if (this.calendarDates.year > this.date.getFullYear()) return true;
+      if (this.calendarDates.month > this.date.getMonth()) return true;
+      if (date.day > this.date.getDate()) return true;
+      return;
     },
     clearSelectedDate() {
       this.selectedDate = null;
