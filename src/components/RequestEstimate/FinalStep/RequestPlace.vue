@@ -81,7 +81,7 @@
             있음
           </div>
           <div class="notosanskr-medium" style="padding-left: 40px">
-            <q-btn flat class="change-btn" padding="0px">변경</q-btn>
+            <change-elevator></change-elevator>
           </div>
         </div>
       </div>
@@ -106,12 +106,14 @@ import ChangeLocationQuest from "./BottomDialogs/ChangeLocationQuest/Index";
 import ChangeType from "./BottomDialogs/ChangeType";
 import ChangeNumberFloors from "./BottomDialogs/ChangeNumberFloors";
 import ChangeArea from "./BottomDialogs/ChangeArea";
+import ChangeElevator from "./BottomDialogs/ChangeElevator";
 export default {
   components: {
     "change-location-quest": ChangeLocationQuest,
     "change-type": ChangeType,
     "change-number-floors": ChangeNumberFloors,
     "change-area": ChangeArea,
+    "change-elevator": ChangeElevator,
   },
   props: {
     type: {
