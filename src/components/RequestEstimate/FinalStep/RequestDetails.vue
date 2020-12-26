@@ -31,14 +31,14 @@
       <!-- schedule date 예정 날짜 -->
       <div class="bg-white q-pa-md" style="margin-bottom: 2px">
         <div class="heading-text notosanskr-medium">
-          유형
+          예정 날짜
         </div>
         <div class="row q-pt-sm">
           <div class="text col">
             07월 24일 (목)
           </div>
-          <div class="notosanskr-medium" style="padding-left: 40px">
-            <q-btn flat class="change-btn" padding="0px">수정</q-btn>
+          <div style="padding-left: 40px">
+            <change-schedule-work></change-schedule-work>
           </div>
         </div>
       </div>
@@ -76,7 +76,12 @@
 </template>
 
 <script>
-export default {};
+import ChangeScheduleWork from './BottomDialogs/ChangeScheduleWork';
+export default {
+  components:{
+    'change-schedule-work': ChangeScheduleWork
+  }
+};
 </script>
 
 <style lang="scss" scoped>

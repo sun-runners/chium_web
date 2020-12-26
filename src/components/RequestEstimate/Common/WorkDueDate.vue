@@ -40,7 +40,6 @@ export default {
   data() {
     return {
       dateSelected: null,
-      undecided: false,
     };
   },
 
@@ -48,12 +47,17 @@ export default {
     setDateSelected(v) {
       this.dateSelected = `${v.getFullYear()}/${v.getMonth() +
         1}/${v.getDate()}`;
-      this.$emit("next", true);
     },
     setUndecided() {
-      this.dateSelected = "undecided";
+      this.dateSelected != "undecided"
+        ? (this.dateSelected = "undecided")
+        : (this.dateSelected = null);
       this.$refs.calendar.clearSelectedDate();
-      this.$emit("next", true);
+    },
+  },
+  watch: {
+    dateSelected(newVal) {
+      newVal != null ? this.$emit("next", true) : this.$emit("next", false);
     },
   },
 };
