@@ -12,14 +12,14 @@
               icon="home"
             ></q-route-tab>
             <q-route-tab
-              name="tab2"
+              name="reservation"
               to="/reservation"
               style="color: #999999"
               label="예약"
               icon="calendar_today"
             ></q-route-tab>
             <q-route-tab
-              name="tab3"
+              name="search"
               to="/search"
               style="color: #999999"
               label="검색"
@@ -27,7 +27,7 @@
               @click="notReady"
             ></q-route-tab>
             <q-route-tab
-              name="tab4"
+              name="store"
               to="/store"
               style="color: #999999"
               label="업체"
@@ -35,7 +35,7 @@
               @click="notReady"
             ></q-route-tab>
             <q-route-tab
-              name="tab5"
+              name="my_page"
               to="/my_page"
               style="color: #999999"
               label="마이"
@@ -94,21 +94,6 @@ export default {
       heading_name: '0',
       window_height: window.innerHeight,
       widnow_width: window.innerWidth,
-      contentStyle: {
-        backgroundColor: 'rgba(0,0,0,0.02)',
-        color: '#555'
-      },
-      contentActiveStyle: {
-        backgroundColor: '#eee',
-        color: 'black'
-      },
-      thumbStyle: {
-        right: '2px',
-        borderRadius: '5px',
-        backgroundColor: '#027be3',
-        width: '5px',
-        opacity: 0.75
-      },
       dialogNotReady: false
     }
   },
