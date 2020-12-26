@@ -17,6 +17,7 @@
               size="sm"
               align="left"
               icon-right="arrow_forward_ios"
+              @click="alertNotReady"
             ></q-btn>
           </div>
         </div>
@@ -36,7 +37,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    alertNotReady () {
+      this.$emit('alertNotReady')
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -52,5 +59,6 @@ export default {};
   height: 46px;
   border-radius: 1000px;
   border: 1px solid #fff;
+  z-index: 99;
 }
 </style>

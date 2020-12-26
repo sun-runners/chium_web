@@ -2,6 +2,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+// Third Party
+import qs from 'qs'
+
 // Local
 import routes from './routes'
 import store from '../store'
@@ -19,7 +22,7 @@ Vue.use(VueRouter)
  */
 
 // Variable Section
-const routesSigned = ['waste', 'demolition']
+const routesSigned = ['waste', 'demolition', 'reservation', 'my_page']
 
 const isIncludedRoute = function (routeNames, routeName) {
   if (routeNames.indexOf(routeName) >= 0) {
@@ -41,10 +44,16 @@ export default function (/* { store, ssrContext } */) {
     base: process.env.VUE_ROUTER_BASE,
   })
 
-  Router.beforeEach((to, from, next) => {
+  Router.beforeEach(async (to, from, next) => {
     if (isIncludedRoute(routesSigned, to.name)) {
       if (!(store.getters.user && store.getters.user.id)) {
-        return
+        // Get kakaoUser
+        const kakaoUser = await Vue.prototype.$kakaologin()
+
+        // Get user
+        const { data: user } = await Vue.prototype.$axios.post('/users/kakaologin/', qs.stringify(kakaoUser))
+        if (!user) { return }
+        store.commit('setUser', user)
       }
     }
     next()

@@ -5,7 +5,7 @@
         <q-toolbar class="justify-center bg-white">
           <q-tabs active-color="secondary">
             <q-route-tab
-              name="tab1"
+              name="home"
               to="/home"
               style="color: #999999"
               label="홈"
@@ -56,6 +56,7 @@
             <q-page style="padding-top: 60px" class="no-padding">
               <router-view
                 @changeHeadingName="(_) => (heading_name = _)"
+                @alertNotReady="alertNotReady"
               ></router-view>
             </q-page>
           </div>
@@ -125,6 +126,9 @@ export default {
     },
     notReady (e, go) {
       e.navigate = false
+      this.dialogNotReady = true
+    },
+    alertNotReady () {
       this.dialogNotReady = true
     }
   },

@@ -3,24 +3,25 @@
     <!-- Home toolbar starts -->
     <top-toolbar></top-toolbar>
     <!-- Home banner starts -->
-    <banner></banner>
+    <banner @alertNotReady="$emit('alertNotReady')"></banner>
     <!-- Content -->
     <quote-options></quote-options>
   </div>
 </template>
 
 <script>
-import TopToolbar from "components/HomeComponents/TopToolbar.vue";
-import Banner from "components/HomeComponents/Banner.vue";
-import QuoteOptions from "components/HomeComponents/QuoteOptions.vue";
+import TopToolbar from 'components/HomeComponents/TopToolbar.vue'
+import Banner from 'components/HomeComponents/Banner.vue'
+import QuoteOptions from 'components/HomeComponents/QuoteOptions.vue'
+
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
-    "top-toolbar": TopToolbar,
+    'top-toolbar': TopToolbar,
     banner: Banner,
-    "quote-options": QuoteOptions,
-  },
-};
+    'quote-options': QuoteOptions
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>
