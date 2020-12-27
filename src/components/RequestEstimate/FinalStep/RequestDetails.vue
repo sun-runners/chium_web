@@ -52,8 +52,8 @@
           <div class="text col">
             오전 08:00시
           </div>
-          <div class="notosanskr-medium" style="padding-left: 40px">
-            <q-btn flat class="change-btn" padding="0px">수정</q-btn>
+          <div style="padding-left: 40px">
+            <change-schedule-work-time></change-schedule-work-time>
           </div>
         </div>
       </div>
@@ -78,10 +78,12 @@
 <script>
 import ChangeScheduleWork from './BottomDialogs/ChangeScheduleWork'
 import ChangeDiscardedGoods from './BottomDialogs/ChangeDiscardedGoods'
+import ChangeScheduleWorkTime from './BottomDialogs/ChangeScheduleWorkTime'
 export default {
   components: {
+    'change-discarded-goods': ChangeDiscardedGoods,
     'change-schedule-work': ChangeScheduleWork,
-    'change-discarded-goods': ChangeDiscardedGoods
+    'change-schedule-work-time': ChangeScheduleWorkTime
   }
 }
 </script>
