@@ -14,7 +14,7 @@
           class="q-pa-none q-py-sm row items-center justify-between full-width"
         >
           <div class="toolbar-title q-pl-md notosanskr-medium">
-            유형변경
+            폐기 된 상품 변경
           </div>
           <q-btn color="white" flat text-color="black" @click="dialog = false">
             <q-icon name="close" />
