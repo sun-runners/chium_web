@@ -248,26 +248,32 @@
 
 <script>
 export default {
-  name: "MyPage",
+  name: 'MyPage',
   components: {},
-  data() {
-    return { dialog: false, position: "bottom" };
+  data () {
+    return {
+      dialog: false,
+      position: 'bottom'
+    }
   },
   computed: {
-    widthMax() {
-      return { width: window.innerWidth + "px", "max-width": "1000px" };
-    },
+    widthMax () {
+      return {
+        width: window.innerWidth + 'px', 'max-width': '1000px'
+      }
+    }
   },
   methods: {
-    open(position) {
-      this.position = position;
-      this.dialog = true;
+    open (position) {
+      this.position = position
+      this.dialog = true
     },
+
   },
-  created() {
-    this.$emit("changeHeadingName", "마이페이지");
-  },
-};
+  created () {
+    this.$emit('changeHeadingName', '마이페이지')
+  }
+}
 </script>
 
 <style lang="scss" scoped>
