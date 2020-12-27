@@ -9,7 +9,7 @@
       변경
     </q-btn>
     <q-dialog v-model="dialog" position="bottom">
-      <q-card class="notosanskr-regular">
+      <q-card class="row overflow-hidden notosanskr-regular">
         <q-card-section
           class="q-pa-none q-py-sm row items-center justify-between full-width bg-white"
         >
@@ -20,15 +20,18 @@
             <q-icon name="close" />
           </q-btn>
         </q-card-section>
-
-        <q-card-section class="q-pa-none">
+        <q-separator color="grey-12" />
+        <q-card-section class="flex-grow full-height full-width q-pa-none">
           <div class="bg-white q-px-md">
-            <div class="selected-date q-py-md">
+            <div class="selected-time q-py-md">
               <p class="q-ma-none">선택한 시간</p>
-              <div class="date-value notosanskr-medium">오전 08:00시</div>
+              <div class="time-value notosanskr-medium">오전 08:00시</div>
             </div>
           </div>
-          <h5>time selection here</h5>
+          <!-- time selection section | 시간 선택 섹션 -->
+          <time-grid-selection
+            class="bg-white full-height "
+          ></time-grid-selection>
         </q-card-section>
 
         <!-- Footer section | 바닥 글 버튼 섹션  -->
@@ -49,14 +52,15 @@
 </template>
 
 <script>
-import CustomCalendar from 'src/components/Utility/CustomCalendar'
+import TimeGridSelection from 'src/components/Utility/TimeGridSelection'
+
 export default {
   components: {
-    'custom-calendar': CustomCalendar
+    'time-grid-selection': TimeGridSelection
   },
   data () {
     return {
-      dialog: false,
+      dialog: true,
       changeEnable: true,
       selectedDate: null
     }
@@ -108,7 +112,7 @@ export default {
 .heading-subtitle {
   color: #959595;
 }
-.selected-date {
+.selected-time {
   p {
     font-weight: 500;
     font-size: 13px;
@@ -116,24 +120,12 @@ export default {
     letter-spacing: -0.65px;
     color: #959595;
   }
-  .date-value {
+  .time-value {
     font-weight: 500;
     font-size: 18px;
     line-height: 24px;
     color: #195de4;
   }
-}
-.calendar-container {
-  margin-top: 12px;
-  padding-bottom: 50px;
-}
-
-.schedule-undecided {
-  margin-top: 12px;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: -0.8px;
-  color: #15161a;
 }
 .change-btn {
   font-weight: 500;
