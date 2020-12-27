@@ -54,10 +54,7 @@
         <div class="row justify-center" key="div-container">
           <div class="col" :style="widthMax">
             <q-page style="padding-top: 60px" class="no-padding">
-              <router-view
-                @changeHeadingName="(_) => (heading_name = _)"
-                @alertNotReady="alertNotReady"
-              ></router-view>
+              <router-view @alertNotReady="alertNotReady"></router-view>
             </q-page>
           </div>
         </div>
@@ -70,8 +67,8 @@
           <div class="text-h5">준비중인 페이지입니다.</div>
         </q-card-section>
         <q-card-section>
-          고객님, 죄송합니다.
-          현재는 베타서비스(1월 ~ 3월) 기간이며, 4월 초로 정식 런칭예정입니다.
+          고객님, 죄송합니다. 현재는 베타서비스(1월 ~ 3월) 기간이며, 4월 초로
+          정식 런칭예정입니다.
         </q-card-section>
         <q-card-actions align="center">
           <q-btn label="확인" v-close-popup />
@@ -82,16 +79,9 @@
 </template>
 
 <script>
-import { get, cloneDeep } from 'lodash'
-import Navigation from 'src/components/NavHeader/Navigation'
-
 export default {
-  components: {
-    Navigation
-  },
   data () {
     return {
-      heading_name: '0',
       window_height: window.innerHeight,
       widnow_width: window.innerWidth,
       dialogNotReady: false
