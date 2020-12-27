@@ -8,7 +8,7 @@
       >
         <div class="account-info notosanskr-regular">
           <div class="user-greet">
-            홍길동 님 안녕하세요.
+            {{$store.getters.user.name}} 님 안녕하세요.
           </div>
           <q-icon class="text-dark" size="24px">
             <img src="~assets/arrow_right.svg" />
