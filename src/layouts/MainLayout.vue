@@ -6,7 +6,7 @@
           <q-tabs active-color="secondary">
             <q-route-tab
               name="tab1"
-              to="/home"
+              to="/"
               style="color: #999999"
               label="홈"
               icon="home"
@@ -70,21 +70,6 @@ export default {
       heading_name: "0",
       window_height: window.innerHeight,
       widnow_width: window.innerWidth,
-      contentStyle: {
-        backgroundColor: "rgba(0,0,0,0.02)",
-        color: "#555",
-      },
-      contentActiveStyle: {
-        backgroundColor: "#eee",
-        color: "black",
-      },
-      thumbStyle: {
-        right: "2px",
-        borderRadius: "5px",
-        backgroundColor: "#027be3",
-        width: "5px",
-        opacity: 0.75,
-      },
     };
   },
   created() {

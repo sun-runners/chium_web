@@ -14,7 +14,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Home/Index'), name: 'home' },
-      { path: 'home', component: () => import('pages/Home/Index'), name: 'home' },
+      { path: 'home', redirect:'/' },
       { path: 'reservation', component: () => import('pages/Reservation/Index'), name: 'reservation' },
       { path: 'reservation/detail', component: () => import('pages/Reservation/Detail/Index'), name: 'reservation_detail', heading_name: '예약상세보기' },
       { path: 'search', component: () => import('pages/Search/Index'), name: 'search' },
