@@ -20,7 +20,7 @@ export const userStore = {
       )
       this.commit('setUser', user)
     },
-    reset: function (state, payload) {
+    logout: function (state, payload) {
       state.data = {}
     }
   },

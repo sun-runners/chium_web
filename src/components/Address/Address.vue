@@ -29,6 +29,9 @@
 export default {
   name: 'AddressDialog',
   mounted () {},
+  created() {
+    console.log(this.$route.query)
+  },
   methods: {
     async patchAddress (data) {
       // Variable Section
@@ -38,7 +41,12 @@ export default {
       await this.$store.commit('patchUser', dataUser)
 
       // Go home
-      await this.$router.push({ name: 'home' })
+      if (this.$route.query && this.$route.query.back) {
+        await this.$router.push({ name: this.$route.query.back })
+      } else {
+        await this.$router.push({ name: 'home' })
+      }
+
     }
   }
 }
