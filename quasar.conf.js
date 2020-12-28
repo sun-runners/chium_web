@@ -60,8 +60,8 @@ module.exports = function (ctx) {
       },
       // Environment
       env: {
-        API: ctx.dev ? 'http://127.0.0.1:9014/api/' : 'https://admin.chium.sunwook.com/api/'
-        // API: 'https://admin.chium.sunwook.com/api/'
+        API: ctx.dev ? 'http://127.0.0.1:9014/api/' : 'https://admin.chium.sunwook.com/api/',
+        KAKAO: '889fb05af1265fead2ae422f9f6865bf'
       }
     },
 
