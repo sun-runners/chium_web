@@ -55,6 +55,10 @@ export default function (/* { store, ssrContext } */) {
         if (!user) { return }
         store.commit('setUser', user)
       }
+
+      if (!(store.getters.user && store.getters.user.address1)) {
+        this.$router.push({ name: 'address' })
+      }
     }
     next()
   })
