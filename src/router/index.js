@@ -57,7 +57,7 @@ export default function (/* { store, ssrContext } */) {
       }
 
       if (!(store.getters.user && store.getters.user.address1)) {
-        this.$router.push({ name: 'address' })
+        next({ name: 'address' })
       }
     }
     next()
