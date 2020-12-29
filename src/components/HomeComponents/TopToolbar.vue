@@ -1,8 +1,8 @@
 <template>
-  <div class="text-center bg-white">
+  <div class="text-center bg-white" @click="goAddress">
     <div class="flex items-center justify-center">
       <span class="q-py-sm text-dark text-center notosanskr-medium">
-        괘랑4길 16-38
+        {{$store.getters.user.address1 || '주소를 입력해주세요'}}
       </span>
       <q-btn
         icon="arrow_drop_down_circle"
@@ -16,7 +16,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    goAddress () {
+      this.$router.push({ name: 'address' })
+    }
+  }
+}
 </script>
 
 <style scoped></style>

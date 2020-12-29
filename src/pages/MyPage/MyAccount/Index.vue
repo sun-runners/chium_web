@@ -10,43 +10,43 @@
         <div class="account notosanskr-regular">
           <small>계정</small>
           <div style="padding-top: 7px;">
-            <q-icon class="text-dark" size="20px" style="margin-right: 10px;">
-              <img src="~assets/apple_link.svg" />
-            </q-icon>
-            <span class="name"> 애플 계정 연동</span>
+<!--            <q-icon class="text-dark" size="20px" style="margin-right: 10px;">-->
+<!--              <img src="~assets/apple_link.svg" />-->
+<!--            </q-icon>-->
+            <span class="name">카카오 계정 연동</span>
           </div>
         </div>
         <q-separator></q-separator>
         <!-- Name Section -->
         <div class="username notosanskr-regular">
           <small>이름</small>
-          <div style="padding-top: 5px;" class="name">
-            홍길동
-          </div>
+          <input style="display:block; width: 100%; border: 0; margin-top: 5px;" class="name"
+                 v-model="name"
+                 placeholder="이름을 입력해주세요."/>
         </div>
         <q-separator></q-separator>
         <!-- Phone Section -->
         <div class="phone notosanskr-regular row justify-between items-center">
           <div>
             <small>핸드폰</small>
-            <div style="padding-top: 5px;" class="name">
-              010-1234-5678
-            </div>
+            <input style="display:block; width: 100%; border: 0; margin-top: 5px;" class="name"
+                   v-model="phone"
+                   placeholder="핸드폰 번호를 입력해주세요."/>
           </div>
-          <div class="q-pr-sm">
-            <q-btn
-              :to="{ name: 'account_phone_change' }"
-              flat
-              class="change-btn"
-              padding="4px 12px"
-              text-color="black"
-              label="변경"
-            />
-            <button class="verification-btn">
-              <q-icon name="done" class="text-dark" size="16px"></q-icon
-              >인증완료
-            </button>
-          </div>
+<!--          <div class="q-pr-sm">-->
+<!--            <q-btn-->
+<!--              :to="{ name: 'account_phone_change' }"-->
+<!--              flat-->
+<!--              class="change-btn"-->
+<!--              padding="4px 12px"-->
+<!--              text-color="black"-->
+<!--              label="변경"-->
+<!--            />-->
+<!--            <button class="verification-btn">-->
+<!--              <q-icon name="done" class="text-dark" size="16px"></q-icon-->
+<!--              >인증완료-->
+<!--            </button>-->
+<!--          </div>-->
         </div>
         <q-separator></q-separator>
       </div>
@@ -58,29 +58,41 @@
         :rounded="false"
         flat
         :label="'저장'"
+        @click="save"
       />
     </template>
   </default-template>
 </template>
 
 <script>
-import DefaultTemplate from "src/components/TemplateFrames/DefaultTemplate";
-import NavHeaderInfo from "src/components/Utility/NavHeaderInfo";
+import DefaultTemplate from 'src/components/TemplateFrames/DefaultTemplate'
+import NavHeaderInfo from 'src/components/Utility/NavHeaderInfo'
 export default {
   components: {
-    "default-template": DefaultTemplate,
-    "nav-header-info": NavHeaderInfo,
+    'default-template': DefaultTemplate,
+    'nav-header-info': NavHeaderInfo
   },
-  data() {
+  data () {
     return {
       styleWrapperSlots: {
-        bgHeader: "white",
-        bgBody: "white",
-        bgFooter: "white",
+        bgHeader: 'white',
+        bgBody: 'white',
+        bgFooter: 'white'
       },
-    };
+      name: null,
+      phone: null
+    }
   },
-};
+  created () {
+    this.name = this.$store.getters.user.name
+    this.phone = this.$store.getters.user.phone
+  },
+  methods: {
+    async save () {
+      await this.$store.commit('patchUser', { name: this.name, phone: this.phone })
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

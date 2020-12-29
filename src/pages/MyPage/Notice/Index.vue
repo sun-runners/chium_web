@@ -36,12 +36,7 @@
               </div>
             </template>
             <q-card>
-              <q-card-section class="notice-content">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Quidem, eius reprehenderit eos corrupti commodi magni quaerat ex
-                numquam, dolorum officiis modi facere maiores architecto
-                suscipit iste eveniet doloribus ullam aliquid.
-              </q-card-section>
+              <q-card-section class="notice-content" v-html="notice.content"></q-card-section>
             </q-card>
           </q-expansion-item>
         </q-list>
@@ -63,40 +58,14 @@ export default {
     return {
       notices: [
         {
-          title: "개인 정보처리 방침 일부 변경 안내",
-          state: "알림",
-          date: "2020-10-20",
+          title: "베타테스트 준비중입니다.",
+          state: "공지사항",
+          date: "2020-12-31",
           new: true,
-          content: "...",
-        },
-        {
-          title: "앱 접속 장애 사과 안내",
-          state: "알림",
-          date: "2020-08-20",
-          new: false,
-          content: "...",
-        },
-        {
-          title: "치움 무더위 여름 이벤트",
-          state: "이벤트",
-          date: "2020-07-09",
-          new: false,
-          content: "...",
-        },
-        {
-          title: "중복 맞이 삼계탕보다 더 더 좋은1 .1.2버전 업데이트 안내",
-          state: "업데이트",
-          date: "2020-06-30",
-          new: false,
-          content: "...",
-        },
-        {
-          title: "이번에도 좋은 기능 왕창 안고 찾아온 1.1.1버전 업데이트 안내",
-          state: "이벤트",
-          date: "2020-06-20",
-          new: false,
-          content: "...",
-        },
+          content: '안녕하세요. 치움 개발팀입니다.\n' +
+            '지금은 대부분의 기능들이 현재 개발중이며, 2021-01-31일에 정식 런칭을 준비하고 있습니다.\n' +
+            '좋은 모습으로 런칭하겠습니다!'
+        }
       ],
     };
   },
@@ -134,5 +103,6 @@ export default {
 .notice-content {
   background: #f6f6f6;
   padding: 30px 16px;
+  white-space: pre-wrap;
 }
 </style>

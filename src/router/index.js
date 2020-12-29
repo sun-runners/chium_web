@@ -41,7 +41,7 @@ export default function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
     mode: process.env.VUE_ROUTER_MODE,
-    base: process.env.VUE_ROUTER_BASE,
+    base: process.env.VUE_ROUTER_BASE
   })
 
   Router.beforeEach(async (to, from, next) => {
@@ -54,6 +54,10 @@ export default function (/* { store, ssrContext } */) {
         const { data: user } = await Vue.prototype.$axios.post('/users/kakaologin/', qs.stringify(kakaoUser))
         if (!user) { return }
         store.commit('setUser', user)
+      }
+
+      if (!(store.getters.user && store.getters.user.address1)) {
+        next({ name: 'address' })
       }
     }
     next()
