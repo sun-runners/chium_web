@@ -10,14 +10,14 @@
           <q-item
             class="q-pt-lg q-pb-lg q-pl-none"
             clickable="clickable"
-            v-for="(list, key) in list_waste_type"
+            v-for="(list, key) in listWasteType"
             :key="key"
             @click="setSelectedWaste(list.val); $emit('next', true);"
           >
             <q-item-section avatar="avatar">
               <q-icon>
                 <img
-                  :src="require(`assets/demolition_icon/${list.icon1}`)"
+                  :src="require(`assets/${list.icon1}`)"
                 />
               </q-icon>
             </q-item-section>
@@ -30,7 +30,7 @@
                 <img
                   :src="
                     require(`assets/request_estimate-icon/${
-                      selectedWaste === list.val
+                      value === list.val
                         ? 'radio-btn-selected.png'
                         : 'radio-btn-unselected.png'
                     }`)"
@@ -46,21 +46,18 @@
 
 <script>
 export default {
+  props: {
+    listWasteType: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    value: String
+  },
   data () {
     return {
-      selectedWaste: '',
-      list_waste_type: [
-        {
-          icon1: 'House.svg',
-          label: '내부 철거',
-          val: 'household',
-        },
-        {
-          icon1: 'Building_1.svg',
-          label: '사업장 폐기물',
-          val: 'workplace',
-        },
-      ]
+      selectedWaste: ''
     }
   },
   computed: {
@@ -69,8 +66,7 @@ export default {
   },
   methods: {
     setSelectedWaste (val) {
-      this.selectedWaste = val;
-      // this.$emit('change', layoutState);
+      this.$emit('change', val)
     }
   }
 }

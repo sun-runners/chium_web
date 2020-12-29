@@ -1,12 +1,14 @@
 <template>
   <div class="">
-    <p class="heading-title bg-white q-ma-none q-px-md notosanskr-regular">
-      상업공간 타입
-      <span class="heading-subtitle">을 골라주세요.</span>
-    </p>
     <div class="row q-col-gutter-md q-pa-md">
       <div v-for="(list, key) in options" :key="key" class="col-6">
-        <q-btn class="full-width selected-btn items-center justify-center" flat>
+        <q-btn
+          @click="selectItem(list)"
+          class="full-width selected-btn row wrap justify-"
+          :class="{ selected: (discardedItems.includes(list)) }"
+          flat
+        >
+          <q-icon v-if="discardedItems.includes(list)" size="20px" name="check" color="blue" />
           {{ list }}
         </q-btn>
       </div>
@@ -14,23 +16,36 @@
   </div>
 </template>
 <script>
+import { filter } from 'lodash'
+
 export default {
+  props: {
+    options: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  },
   data () {
     return {
       myItem: '',
       label: '',
-      discardedItems: [],
-      options: [
-        '카페/식당',
-        '상가/매장',
-        '숙박/병원',
-        '학원/교육',
-        '사무실'
-      ]
+      discardedItems: []
     }
   },
 
   methods: {
+    selectItem (val) {
+      if (this.discardedItems.includes(val)) {
+        this.discardedItems = filter(this.discardedItems, (item) => {
+          return item !== val
+        })
+        return
+      }
+
+      this.discardedItems.push(val)
+    },
     addToDiscarded () {
       if (this.myItem && !this.discardedItems.includes(this.myItem)) {
         this.discardedItems.push(this.myItem);
@@ -73,8 +88,12 @@ export default {
   border: 1px solid #D9D9D9;
   box-sizing: border-box;
   border-radius: 1000px;
-  height: 48px;
   font-size: 15px;
   line-height: 48px;
+}
+
+.selected {
+  border: 1px solid #195DE4;
+  color: #195DE4;
 }
 </style>

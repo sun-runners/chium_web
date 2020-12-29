@@ -1,15 +1,14 @@
 div(class="row flex justify-center" style="margin-top: 30px;")
-  div(class="col-11")
+  div(class="col-11 no-margin")
     p(class="title") 약관동의
     span(class="sub-title") 치움 서비스를 사용하기위해 약관에 동의해주세요.
 
-q-list(padding)
+q-list(padding separator)
   q-item(class="item-lists")
     q-item-section(avatar)
-      q-checkbox(color="secondary" v-model="agree" @input="$router.push({ path: '/auth/sign_up/2' })")
+      q-checkbox(color="secondary" v-model="agree")
     q-item-section(class="list-title") 전체동의
-
-q-list(padding separator)
+    
   q-item(class="item-lists")
     q-item-section(avatar)
       q-checkbox(color="secondary" :value="true")
