@@ -1,4 +1,4 @@
-<template lang="pug">    
+<template lang="pug">
   div(class="row flex justify-center")
     q-tab-panels(v-model="steps" animated class="full-width" style="max-width: 375px")
       q-tab-panel(class="col"  name="1")
@@ -9,7 +9,6 @@
         include blocks/step3
       q-tab-panel(class="col" name="4")
         include blocks/step4
-  
 </template>
 
 <script>
