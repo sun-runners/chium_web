@@ -6,7 +6,7 @@
             <navigation :currentRoute="currentRoute" :widthMax="widthMax" :headingName="currentRoute"></navigation>
           </q-toolbar-title>
         </q-toolbar>
-        <process-indicator v-if="currentRoute === '회원가입'" :totalSteps="4" :activeStep="steps" />
+        <process-indicator v-if="currentRoute === '회원가입'" :totalSteps="totalSteps" :activeStep="stepData.currentStep" />
       </q-header>
       <q-footer class="bg-white row justify-center items-center ">
         <div class="row" v-if="currentRoute == '로그인'">
@@ -33,7 +33,16 @@
             </div>
           </div>
         </div>
-        <q-btn v-else @click="__onHandleNextStep" label="다음" class="next-btn full-width" flat />
+        <!-- <h1 class="text-black">mmm {{ isNextBtnReady }}</h1> -->
+        <q-btn
+          v-if="currentRoute == '회원가입'"
+          @click="__onHandleNextStep"
+          label="다음"
+          class="next-btn full-width"
+          :class="{ 'next-btn-ready': isNextBtnReady }"
+          :disable="!isNextBtnReady"
+          flat
+        />
       </q-footer>
       <q-page-container class="doc-container">
         <transition-group
@@ -44,7 +53,11 @@
           <div class="row justify-center" key="div-container">
             <div class="col" :style="widthMax">
               <q-page style="padding-top: 60px" class="no-padding">
-                <router-view @changeStepping="_ => setStep(_)"></router-view>
+                <router-view
+                  @whenReady="_ => isNextBtnReady = _"
+                  @setStepData="_ => stepData = _"
+                >
+                </router-view>
               </q-page>
             </div>
           </div>
@@ -68,25 +81,11 @@ export default {
   },
   data () {
     return {
-      steps: 1,
-      heading_name: '0',
+      totalSteps: 4,
+      stepData: {},
+      isNextBtnReady: false,
       window_height: window.innerHeight,
-      widnow_width: window.innerWidth,
-      contentStyle: {
-        backgroundColor: 'rgba(0,0,0,0.02)',
-        color: '#555'
-      },
-      contentActiveStyle: {
-        backgroundColor: '#eee',
-        color: 'black'
-      },
-      thumbStyle: {
-        right: '2px',
-        borderRadius: '5px',
-        backgroundColor: '#027be3',
-        width: '5px',
-        opacity: 0.75
-      }
+      widnow_width: window.innerWidth
     }
   },
   created () {
@@ -100,12 +99,12 @@ export default {
     setStep (stepVal) {
       this.steps = stepVal
     },
-    __onHandleNextStep () {
-      this.$router.push({ path: '/auth/sign_up/2' })
-    },
     handleHeight () {
       this.window_height = window.innerHeight
       this.widnow_width = window.innerWidth
+    },
+    __onHandleNextStep () {
+      this.$router.push({ path: `/auth/sign_up/${this.stepData.routeNext}` })
     }
   },
   computed: {

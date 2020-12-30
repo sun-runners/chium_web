@@ -43,7 +43,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('module-example', ['contactOptions']),
+    ...mapGetters('contact', ['contactOptions']),
     isValidNumber () {
       try {
         const phoneNumber = parsePhoneNumber(this.model.phone_number, 'KR')
@@ -93,53 +93,3 @@ export default {
   }
 }
 </script>
-
-<style lang="stylus">
-.title
-    font-size: 27px
-    font-family: 'notosanskr-regular'
-.sub-title
-    font-size: 14px
-    font-family: 'notosanskr-regular'
-    color: #959595
-
-.see-more-btn
-  border: 1px solid #CCCCCC
-  min-height: 24px
-  border-radius: 4px
-
-.see-more-label
-  font-family: 'notosanskr-regular'
-  font-size: 12px
-
-.q-checkbox__bg
-  border-radius: 50px
-  min-width: 20px
-  min-height: 20px
-
-.list-title
-  font-family: 'notosanskr-regular'
-  font-size: 15px
-
-.item-lists
-  padding-right: 0px
-  padding-left: 0px
-  padding-top: 10px
-  padding-bottom: 10px
-
-.get-verification-number-btn
-  background-color: #C0C4C8
-  max-height: 50px
-  color: #fff
-  font-family: 'notosanskr-medium'
-  font-size: 15px
-
-.field-qt
-  max-height: 60px
-
-.resend-auth-btn
-  border: 1px solid #CCCCCC
-  border-radius: 4px
-  font-family: 'notosanskr-medium'
-  font-size: 13px
-</style>

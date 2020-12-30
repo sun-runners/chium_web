@@ -17,18 +17,10 @@ div(
           maxlength="1" 
           :rules="[ val => val.length <= 1 ]"
           class="field-qt"
+          mask="#"
         )
     q-btn( flat class="resend-auth-btn q-mt-sm")
       span(class="no-padding") 인증번호 재전송
-
-  div(class="col-12 q-mt-lg")
-    q-btn(
-      label="인증완료"
-      class="full-width get-verification-number-btn"
-      flat
-      :class="{ 'bg-secondary': !includes(code, null) }"
-      :disable="includes(code, null)"
-    )
 
 div(class="row flex justify-center" style="margin-top: 30px;" v-else)
   div(class="col-12")
@@ -43,23 +35,22 @@ div(class="row flex justify-center" style="margin-top: 30px;" v-else)
       emit-value 
       map-options 
       outlined
+      color="secondary"
     )
     q-input(
       class="field-qt q-mt-sm"
       v-model="model.phone_number"
       placeholder="010-0000-0000"
       outlined
-      @input="_ => AsYouType(_)"
+      mask="###-####-####"
       :error="!isValidNumber && !isEmpty(model.phone_number)"
     )
-    
-  div(class="col-12 q-mt-sm")
-    q-btn(
-      label="인증번호 받기"
-      class="full-width get-verification-number-btn"
-      :class="{ 'bg-secondary': isValidNumber }"
-      flat
-      @click="sendCode()"
-    )
+      template(v-slot:append)
+        q-btn(
+          class="btn-verify-code"
+          flat
+          label="인증번호 받기"
+          @click="sendCode()"
+        )
   
     
