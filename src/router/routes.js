@@ -5,7 +5,10 @@ const routes = [
     component: () => import('layouts/AuthLayout.vue'),
     children: [
       { path: 'login', component: () => import('pages/Auth/Login/Index'), name: '로그인' },
-      { path: 'sign_up/:step', component: () => import('pages/Auth/SignUp/Index'), name: '회원가입' },
+      { path: 'sign_up/stepOne', component: () => import('pages/Auth/SignUp/StepOne.vue'), name: '회원가입' },
+      { path: 'sign_up/stepTwo', component: () => import('pages/Auth/SignUp/StepTwo.vue'), name: '회원가입' },
+      { path: 'sign_up/stepThree', component: () => import('pages/Auth/SignUp/StepThree.vue'), name: '회원가입' },
+      { path: 'sign_up/stepFour', component: () => import('pages/Auth/SignUp/StepFour.vue'), name: '회원가입' },
       { path: 'sign_up/terms_condition/:condition_name', component: () => import('pages/Auth/SignUp/TermsCondition'), name: '' }
     ]
   },

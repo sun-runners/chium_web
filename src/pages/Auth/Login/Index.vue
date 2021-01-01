@@ -29,7 +29,7 @@
       div(class="col-11" style="max-width: 343px")
         div(class="row q-gutter-xs flex justify-center")
           div(class="col-5" style="max-width: 127px")
-            q-btn(flat class="full-width btn-group" type="button" @click="$router.push({ path: '/auth/sign_up/1' })")
+            q-btn(flat class="full-width btn-group" type="button" @click="$router.push({ path: '/auth/sign_up/stepOne' })")
               q-icon(
                 :name="`img:${require('src/assets/sign_up.svg')}`"
                 class="q-mr-sm" size="13px"
@@ -39,7 +39,7 @@
             q-btn(flat class="full-width btn-group" type="button" style="")
               q-icon(
                 :name="`img:${require('src/assets/lock.svg')}`"
-                class="q-mr-sm" 
+                class="q-mr-sm"
                 size="13px"
               )
               span(style="font-size:13px") 비밀번호찾기/아이디 찾기

@@ -5,6 +5,7 @@ import createPersistedState from 'vuex-persistedstate'
 
 // Modules
 import { userStore } from './modules/user'
+import contactList from './contactList/index.js'
 
 // Main Section
 Vue.use(Vuex)
@@ -19,7 +20,8 @@ Vue.use(Vuex)
  */
 const store = new Vuex.Store({
   modules: {
-    user: userStore
+    user: userStore,
+    contact: contactList
   },
 
   plugins: [createPersistedState()],
