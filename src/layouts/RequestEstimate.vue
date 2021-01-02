@@ -54,55 +54,55 @@
 </template>
 
 <script>
-import ToolbarHead from "components/RequestEstimate/ToolbarHead";
-import ProcessIndicator from "components/Utility/ProcessIndicator";
+import ToolbarHead from 'components/RequestEstimate/ToolbarHead'
+import ProcessIndicator from 'components/Utility/ProcessIndicator'
 
 export default {
-  name: "RequestEstimate",
+  name: 'RequestEstimate',
   components: {
-    "process-indicator": ProcessIndicator,
-    "toolbar-head": ToolbarHead,
+    'process-indicator': ProcessIndicator,
+    'toolbar-head': ToolbarHead
   },
-  data() {
+  data () {
     return {
       totalSteps: 0,
       activeStep: 0,
-      btnLabel: "다음",
+      btnLabel: '다음',
       isBtnReady: false,
       isBtnHidden: false,
       requestComplete: false,
-      nextPathRoute: "",
-      prevPathRoute: "",
-    };
+      nextPathRoute: '',
+      prevPathRoute: ''
+    }
   },
   computed: {
-    widthMax() {
-      return { width: window.innerWidth + "px", "max-width": "1000px" };
-    },
+    widthMax () {
+      return { width: window.innerWidth + 'px', 'max-width': '1000px' }
+    }
   },
   methods: {
     setEnquiryData () {},
-    setBtnReady(val) {
-      this.isBtnReady = val;
+    setBtnReady (val) {
+      this.isBtnReady = val
       if (this.isBtnHidden && val) {
-        this.isBtnHidden = !val;
+        this.isBtnHidden = !val
       }
     },
-    __onHandleNextStep() {
-      this.$router.push({ path: this.nextPathRoute });
+    __onHandleNextStep () {
+      this.$router.push({ path: this.nextPathRoute })
     },
-    setLayoutState(state) {
-      this.totalSteps = state.totalSteps;
-      this.activeStep = state.activeStep;
-      this.btnLabel = state.btnLabel;
-      this.isBtnReady = state.isBtnReady;
-      this.isBtnHidden = state.isBtnHidden;
-      this.requestComplete = state.requestComplete;
-      this.nextPathRoute = state.nextPathRoute;
-      this.prevPathRoute = state.prevPathRoute;
-    },
-  },
-};
+    setLayoutState (state) {
+      this.totalSteps = state.totalSteps
+      this.activeStep = state.activeStep
+      this.btnLabel = state.btnLabel
+      this.isBtnReady = state.isBtnReady
+      this.isBtnHidden = state.isBtnHidden
+      this.requestComplete = state.requestComplete
+      this.nextPathRoute = state.nextPathRoute
+      this.prevPathRoute = state.prevPathRoute
+    }
+  }
+}
 </script>
 
 <style lang="scss">
