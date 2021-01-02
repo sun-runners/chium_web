@@ -36,23 +36,23 @@ export default {
     return {
       searchText: "",
       scrapItems: [
-        "TV",
-        "냉장고",
-        "김치 냉장고",
-        "세탁기",
-        "건조기",
-        "공기청정기",
-        "가습기",
-        "제습기",
-        "세탁기-",
-        "커피머신",
-        "오븐",
-        "전자렌지",
-        "세탁기1",
-        "커피머신",
-        "오븐",
-        "전자렌지",
-        "세탁기 last",
+        "콘크리트",
+        "아스팔트 콘크리트",
+        "벽돌",
+        "기와",
+        "목재",
+        "합성수지",
+        "섬유",
+        "벽지",
+        "건설오니",
+        "금속류",
+        "유리",
+        "타일 및 도자기",
+        "보드류",
+        "판넬",
+        "건설토석",
+        "혼합 건설 폐기물",
+        "기타 폐기물",
       ],
       selectedItem: [],
     };
@@ -91,12 +91,17 @@ export default {
         this.$emit("toggleModal", false);
       }
     },
+
+    patchData: function (){
+      const { data } = this.$axios.patch('buildingenquiries/');
+      console.log(1234)
+    }
   },
   watch: {
     selectedItem(newVal) {
       newVal.length > 0 ? this.$emit("next", true) : this.$emit("next", false);
     },
-  },
+  }
 };
 </script>
 
