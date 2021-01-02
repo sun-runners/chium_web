@@ -34,7 +34,7 @@ export default {
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: "/home",
-        prevPathRoute: "/request/waste/five/recycling",
+        prevPathRoute: "/request/waste/five/recycleenquiries",
       };
     },
   },

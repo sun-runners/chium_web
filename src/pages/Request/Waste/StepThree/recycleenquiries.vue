@@ -53,38 +53,38 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       field1: null,
       field2: null,
       field3: null,
-      description: null,
-    };
+      description: null
+    }
   },
   computed: {
-    layoutState() {
+    layoutState () {
       return {
         totalSteps: 6,
         activeStep: 3,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/four/recycling",
-        prevPathRoute: "/request/waste/two/recycling",
-      };
-    },
+        nextPathRoute: '/request/waste/four/recycleenquiries',
+        prevPathRoute: '/request/waste/two/recycleenquiries'
+      }
+    }
   },
-  mounted() {
-    this.$emit("setStateLayout", this.layoutState);
+  mounted () {
+    this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
-    toggleBtn() {
-      console.log(this.field1, this.field2, this.field3, this.description);
-      this.$emit("next", true);
-    },
-  },
-};
+    toggleBtn () {
+      console.log(this.field1, this.field2, this.field3, this.description)
+      this.$emit('next', true)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

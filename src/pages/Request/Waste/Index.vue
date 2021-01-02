@@ -45,39 +45,39 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      selectedWaste: "",
+      selectedWaste: '',
       list_waste_type: [
         {
-          icon1: "domestic-waste.svg",
-          label: "가정집 폐기물",
-          val: "household",
+          icon1: 'domestic-waste.svg',
+          label: '가정집 폐기물',
+          val: 'household'
         },
         {
-          icon1: "industrial-waste.svg",
-          label: "사업장 폐기물",
-          val: "workplace",
+          icon1: 'industrial-waste.svg',
+          label: '사업장 폐기물',
+          val: 'business'
         },
         {
-          icon1: "construction-waste.svg",
-          label: "건설 폐기물",
-          val: "construction",
+          icon1: 'construction-waste.svg',
+          label: '건설 폐기물',
+          val: 'construction'
         },
         {
-          icon1: "box.svg",
-          label: "재활용 정기수거",
-          val: "recycling",
-        },
-      ],
-    };
+          icon1: 'box.svg',
+          label: '재활용 정기수거',
+          val: 'recycle'
+        }
+      ]
+    }
   },
   computed: {
-    layoutState(){
+    layoutState () {
       return {
         totalSteps: 6,
         activeStep: 1,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
@@ -86,18 +86,19 @@ export default {
       }
     }
   },
-  mounted(){
+  mounted () {
     this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
-    setSelectedWaste(val) {
-      this.selectedWaste = val;
-      const layoutState = this.layoutState;
-      layoutState.nextPathRoute = `/request/waste/two/${val}`;
-      this.$emit('setStateLayout', layoutState);
+    setSelectedWaste (val) {
+      this.selectedWaste = val
+      const layoutState = this.layoutState
+      layoutState.nextPathRoute = `/request/waste/two/${val}`
+      this.$emit('setStateLayout', layoutState)
+      this.$store.commit('setCategory', val)
     }
-  },
-};
+  }
+}
 </script>
 
 <style scoped>

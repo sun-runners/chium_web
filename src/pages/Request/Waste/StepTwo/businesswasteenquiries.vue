@@ -19,7 +19,7 @@ export default {
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/three/workplace",
+        nextPathRoute: "/request/waste/three/business",
         prevPathRoute: "/request/waste",
       };
     },

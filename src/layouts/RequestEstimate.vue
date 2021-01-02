@@ -28,6 +28,7 @@
           style="background: #F2F2F2"
           :style="widthMax"
           @setStateLayout="setLayoutState"
+          @setEnquiryData="setEnquiryData"
         />
       </q-page-container>
       <!-- Request Footer content here -->
@@ -80,6 +81,7 @@ export default {
     },
   },
   methods: {
+    setEnquiryData () {},
     setBtnReady(val) {
       this.isBtnReady = val;
       if (this.isBtnHidden && val) {

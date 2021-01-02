@@ -5,29 +5,29 @@
 </template>
 
 <script>
-import { ItemsToDispose } from "src/components/RequestEstimate/Common";
+import { ItemsToDispose } from 'src/components/RequestEstimate/Common'
 export default {
   components: {
-    "items-to-dispose": ItemsToDispose,
+    'items-to-dispose': ItemsToDispose
   },
   computed: {
-    layoutState() {
+    layoutState () {
       return {
         totalSteps: 4,
         activeStep: 2,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/three/household",
-        prevPathRoute: "/request/waste",
-      };
-    },
+        nextPathRoute: '/request/waste/three/household',
+        prevPathRoute: '/request/waste'
+      }
+    }
   },
-  mounted() {
-    this.$emit("setStateLayout", this.layoutState);
-  },
-};
+  mounted () {
+    this.$emit('setStateLayout', this.layoutState)
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>

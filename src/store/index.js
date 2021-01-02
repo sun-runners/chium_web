@@ -5,6 +5,7 @@ import createPersistedState from 'vuex-persistedstate'
 
 // Modules
 import { userStore } from './modules/user'
+import { enquiryStore } from './modules/enquiry'
 
 // Main Section
 Vue.use(Vuex)
@@ -19,7 +20,9 @@ Vue.use(Vuex)
  */
 const store = new Vuex.Store({
   modules: {
-    user: userStore
+    user: userStore,
+    category: enquiryStore,
+
   },
 
   plugins: [createPersistedState()],

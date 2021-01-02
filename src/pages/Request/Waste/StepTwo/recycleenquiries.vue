@@ -11,12 +11,12 @@
             clickable="clickable"
             v-for="(list, key) in list_recycle_type"
             :key="key"
-            @click="setSelectedRecycling(list.val)"
+            @click="setSelectedRecycleenquiries(list.val)"
           >
             <q-item-section avatar="avatar">
               <q-icon>
                 <img
-                  :src="require(`assets/request_estimate-icon/${list.iconRecycling}`)"
+                  :src="require(`assets/request_estimate-icon/${list.iconRecycleenquiries}`)"
                 />
               </q-icon>
             </q-item-section>
@@ -29,7 +29,7 @@
                 <img
                   :src="
                     require(`assets/request_estimate-icon/${
-                      selectedRecycling === list.val
+                      selectedRecycleenquiries === list.val
                         ? 'radio-btn-selected.png'
                         : 'radio-btn-unselected.png'
                     }`)"
@@ -47,25 +47,25 @@
 export default {
   data() {
     return {
-      selectedRecycling: "",
+      selectedRecycleenquiries: "",
       list_recycle_type: [
         {
-          iconRecycling: "recycle_house.svg",
+          iconRecycleenquiries: "recycle_house.svg",
           label: "주거단지",
           val: "주거단지",
         },
         {
-          iconRecycling: "recycle_building.svg",
+          iconRecycleenquiries: "recycle_building.svg",
           label: "빌딩 및 오피스텔",
           val: "빌딩 및 오피스텔",
         },
         {
-          iconRecycling: "recycle_store.svg",
+          iconRecycleenquiries: "recycle_store.svg",
           label: "상업시설",
           val: "상업시설",
         },
         {
-          iconRecycling: "recycle_school.svg",
+          iconRecycleenquiries: "recycle_school.svg",
           label: "기타",
           val: "기타",
         },
@@ -77,11 +77,11 @@ export default {
       return {
         totalSteps: 6,
         activeStep: 2,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/three/recycling",
+        nextPathRoute: '/request/waste/three/recycleenquiries',
         prevPathRoute: '/request/waste/'
       }
     }
@@ -90,8 +90,8 @@ export default {
     this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
-    setSelectedRecycling(val) {
-      this.selectedRecycling = val;
+    setSelectedRecycleenquiries(val) {
+      this.selectedRecycleenquiries = val;
       this.$emit('next', true);
     }
   },
