@@ -96,14 +96,15 @@ export default {
     window.removeEventListener('resize', this.handleHeight())
   },
   methods: {
-    setStep (stepVal) {
-      this.steps = stepVal
-    },
     handleHeight () {
       this.window_height = window.innerHeight
       this.widnow_width = window.innerWidth
     },
     __onHandleNextStep () {
+      if (this.isFinalStep) {
+        alert('done submit here!')
+        return
+      }
       this.$router.push({ path: `/auth/sign_up/${this.stepData.routeNext}` })
     }
   },
@@ -123,6 +124,9 @@ export default {
     },
     widthMax () {
       return { width: this.widnow_width + 'px', 'max-width': '1000px' }
+    },
+    isFinalStep () {
+      return (this.stepData.currentStep === this.totalSteps)
     }
   }
 }

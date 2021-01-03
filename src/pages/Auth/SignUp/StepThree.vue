@@ -4,14 +4,11 @@
         p(class="title") 생년월일
 
     div(class="col-11")
-        q-input(
-          outlined
-          placeholder="1991.01.01"
-          mask="####.##.##"
-          v-model="bdate"
-        )
+      q-input(outlined v-model="bdate" mask="####.##.##" placeholder="1991.01.01")
           template(v-slot:append)
-            q-icon(name="keyboard_arrow_down")
+            q-icon(name="event" class="cursor-pointer")
+              q-popup-proxy(ref="qDateProxy" transition-show="scale" transition-hide="scale")
+                q-date(v-model="bdate" color="secondary" years-in-month-view)
 </template>
 
 <script>
