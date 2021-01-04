@@ -70,8 +70,8 @@ export default {
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: '/request/waste/four/recycleenquiries',
-        prevPathRoute: '/request/waste/two/recycleenquiries'
+        nextPathRoute: '/request/waste/four/recycle',
+        prevPathRoute: '/request/waste/two/recycle'
       }
     }
   },

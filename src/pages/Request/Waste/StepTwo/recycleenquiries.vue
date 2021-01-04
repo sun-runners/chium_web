@@ -11,7 +11,7 @@
             clickable="clickable"
             v-for="(list, key) in list_recycle_type"
             :key="key"
-            @click="setSelectedRecycleenquiries(list.val)"
+            @click="setRecyclePlace(list.val)"
           >
             <q-item-section avatar="avatar">
               <q-icon>
@@ -29,7 +29,7 @@
                 <img
                   :src="
                     require(`assets/request_estimate-icon/${
-                      selectedRecycleenquiries === list.val
+                      recyclePlace === list.val
                         ? 'radio-btn-selected.png'
                         : 'radio-btn-unselected.png'
                     }`)"
@@ -45,35 +45,35 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      selectedRecycleenquiries: "",
+      recyclePlace: '',
       list_recycle_type: [
         {
-          iconRecycleenquiries: "recycle_house.svg",
-          label: "주거단지",
-          val: "주거단지",
+          iconRecycleenquiries: 'recycle_house.svg',
+          label: '주거단지',
+          val: '주거단지',
         },
         {
-          iconRecycleenquiries: "recycle_building.svg",
-          label: "빌딩 및 오피스텔",
-          val: "빌딩 및 오피스텔",
+          iconRecycleenquiries: 'recycle_building.svg',
+          label: '빌딩 및 오피스텔',
+          val: '빌딩 및 오피스텔',
         },
         {
-          iconRecycleenquiries: "recycle_store.svg",
-          label: "상업시설",
-          val: "상업시설",
+          iconRecycleenquiries: 'recycle_store.svg',
+          label: '상업시설',
+          val: '상업시설',
         },
         {
-          iconRecycleenquiries: "recycle_school.svg",
-          label: "기타",
-          val: "기타",
+          iconRecycleenquiries: 'recycle_school.svg',
+          label: '기타',
+          val: '기타',
         },
       ],
     };
   },
   computed: {
-    layoutState(){
+    layoutState () {
       return {
         totalSteps: 6,
         activeStep: 2,
@@ -81,21 +81,23 @@ export default {
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: '/request/waste/three/recycleenquiries',
-        prevPathRoute: '/request/waste/'
+        nextPathRoute: '/request/waste/three/recycle',
+        prevPathRoute: '/request/waste/',
+        patchData: null
       }
     }
   },
-  mounted(){
+  mounted () {
     this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
-    setSelectedRecycleenquiries(val) {
-      this.selectedRecycleenquiries = val;
-      this.$emit('next', true);
+    setRecyclePlace (val) {
+      this.recyclePlace = val
+      this.$emit('setEnquiryData', { recyclePlace: val })
+      this.$emit('next', true)
     }
-  },
-};
+  }
+}
 </script>
 
 <style scoped>

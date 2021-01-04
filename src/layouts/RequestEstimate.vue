@@ -72,7 +72,9 @@ export default {
       isBtnHidden: false,
       requestComplete: false,
       nextPathRoute: '',
-      prevPathRoute: ''
+      prevPathRoute: '',
+      category: null,
+      patchData: null
     }
   },
   computed: {
@@ -81,7 +83,18 @@ export default {
     }
   },
   methods: {
-    setEnquiryData () {},
+    setEnquiryData (data) {
+      console.log(data)
+      if (data.category) { // 카테고리
+        this.category = data.category
+      }
+      // if (data.patchData) { // 데이터
+      //   this.patchData = data.patchData
+      // }
+      else {
+        this.patchData = data.recyclePlace
+      }
+    },
     setBtnReady (val) {
       this.isBtnReady = val
       if (this.isBtnHidden && val) {
@@ -89,6 +102,13 @@ export default {
       }
     },
     __onHandleNextStep () {
+      console.log(this.patchData)
+      if (this.activeStep === 1) {
+        this.$store.commit('setCategory', this.category)
+      } else {
+        console.log(this.patchData)
+        this.$store.commit('patchEnquiry', this.patchData)
+      }
       this.$router.push({ path: this.nextPathRoute })
     },
     setLayoutState (state) {
@@ -100,6 +120,7 @@ export default {
       this.requestComplete = state.requestComplete
       this.nextPathRoute = state.nextPathRoute
       this.prevPathRoute = state.prevPathRoute
+      this.patchData = state.patchData
     }
   }
 }

@@ -11,7 +11,7 @@
             clickable="clickable"
             v-for="(list, key) in list_waste_type"
             :key="key"
-            @click="setSelectedWaste(list.val); $emit('next', true);"
+            @click="setCategory(list.val); $emit('next', true);"
           >
             <q-item-section avatar="avatar">
               <q-icon>
@@ -29,7 +29,7 @@
                 <img
                   :src="
                     require(`assets/request_estimate-icon/${
-                      selectedWaste === list.val
+                      category === list.val
                         ? 'radio-btn-selected.png'
                         : 'radio-btn-unselected.png'
                     }`)"
@@ -47,7 +47,7 @@
 export default {
   data () {
     return {
-      selectedWaste: '',
+      category: '',
       list_waste_type: [
         {
           icon1: 'domestic-waste.svg',
@@ -82,7 +82,8 @@ export default {
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: '/request/waste/two/household',
-        prevPathRoute: '/home'
+        prevPathRoute: '/home',
+        patchData: { category: this.category }
       }
     }
   },
@@ -90,12 +91,12 @@ export default {
     this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
-    setSelectedWaste (val) {
-      this.selectedWaste = val
+    setCategory (val) {
+      this.category = val
       const layoutState = this.layoutState
       layoutState.nextPathRoute = `/request/waste/two/${val}`
       this.$emit('setStateLayout', layoutState)
-      this.$store.commit('setCategory', val)
+      this.$emit('setEnquiryData', { category: val })
     }
   }
 }

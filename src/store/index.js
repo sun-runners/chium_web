@@ -21,8 +21,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   modules: {
     user: userStore,
-    category: enquiryStore,
-
+    category: enquiryStore
   },
 
   plugins: [createPersistedState()],

@@ -67,13 +67,13 @@ export default {
         {
           icon1: 'Asbestos.svg',
           label: '석면철거',
-          val: 'recycleenquiries',
+          val: 'recycle',
         },
       ],
     };
   },
   computed: {
-    layoutState(){
+    layoutState (){
       return {
         totalSteps: 6,
         activeStep: 1,

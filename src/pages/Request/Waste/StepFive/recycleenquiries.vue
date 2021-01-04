@@ -19,8 +19,8 @@ export default {
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/final/recycleenquiries",
-        prevPathRoute: "/request/waste/four/recycleenquiries",
+        nextPathRoute: "/request/waste/final/recycle",
+        prevPathRoute: "/request/waste/four/recycle",
       };
     },
   },

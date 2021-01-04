@@ -6,7 +6,6 @@ import Vue from 'vue'
 // Function Section
 function getApiUrl (state) {
   const regex = /enquiries$/gi
-  console.log(state)
   const api = state.category.replace(regex, '') // 마지막의 y를 ies 로 바꾼다
   return api
 }
@@ -15,6 +14,7 @@ export const enquiryStore = {
   state: {
     category: null, // enquiries...
     enquiry: {}
+
     // {
     //   a: 1,
     //   b: 1,
@@ -44,14 +44,20 @@ export const enquiryStore = {
     patchEnquiry: async function (state, payload) {
       // Variable Section
       const api = getApiUrl(state)
-
       // Main Section
+      // const { data: enquiry } = await Vue.prototype.$axios.patch(
+      //   `/${api}/${this.getters.enquiry.id}/`, // 견적서 id를 patch 함
+      //   Vue.prototype.$qs.stringify(payload)
+      // )
       const { data: enquiry } = await Vue.prototype.$axios.patch(
-        `/${api}/${this.getters.enquiry.id}/`, // 견적서 id를 patch 함
-        Vue.prototype.$qs.stringify(payload)
+        `/${api}/1/`, // 견적서 id를 patch 함
+        { replace_place: payload }
       )
       this.commit('setEnquiry', enquiry)
     }
   },
-  actions: {}
+  actions: {
+
+  },
+
 }
