@@ -49,15 +49,12 @@ export const enquiryStore = {
       //   `/${api}/${this.getters.enquiry.id}/`, // 견적서 id를 patch 함
       //   Vue.prototype.$qs.stringify(payload)
       // )
-      const { data: enquiry } = await Vue.prototype.$axios.patch(
-        `/${api}/1/`, // 견적서 id를 patch 함
-        { replace_place: payload }
-      )
+      // eslint-disable-next-line no-unused-vars
+      const key = Object.keys(payload)
+      console.log(payload)
+      const { data: enquiry } = await Vue.prototype.$axios.patch(`/${api}/53/`,payload)
       this.commit('setEnquiry', enquiry)
     }
-  },
-  actions: {
-
-  },
-
+  }
 }
+

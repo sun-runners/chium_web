@@ -93,7 +93,7 @@ export default {
   methods: {
     setRecyclePlace (val) {
       this.recyclePlace = val
-      this.$emit('setEnquiryData', { recyclePlace: val })
+      this.$emit('setEnquiryData', { recycle_place: val })
       this.$emit('next', true)
     }
   }

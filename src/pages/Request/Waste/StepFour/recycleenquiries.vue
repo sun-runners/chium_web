@@ -1,6 +1,6 @@
 <template>
   <div>
-    <work-due-date @next="(val) => $emit('next', val)" />
+    <work-due-date @click="setDate(val)" />
   </div>
 </template>
 
@@ -25,8 +25,14 @@ export default {
     },
   },
   mounted() {
-    this.$emit("setStateLayout", this.layoutState);
+    this.$emit("setStateLayout", this.layoutState)
   },
+  methods:{
+    setDate (val) {
+      this.$emit('setEnquiry', {regular_date : val})
+      this.$emit('next', true)
+    }
+  }
 };
 </script>
 

@@ -81,6 +81,8 @@ export default {
   methods: {
     toggleBtn () {
       console.log(this.field1, this.field2, this.field3, this.description)
+      this.$emit('setEnquiryData',
+          { address :this.field2+' '+this.field3, description :this.description })
       this.$emit('next', true)
     }
   }

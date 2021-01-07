@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <items-to-dispose @next="(val) => $emit('next', val)" />
+    <items-to-dispose @next="setItems" />
   </div>
 </template>
 
@@ -26,7 +26,16 @@ export default {
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
-    this.$store.commit('patchEnquiry', 'business')
+    // this.$store.commit('patchEnquiry', )
+  },
+  methods:{
+    setItems (val){
+      if(val!==true) {
+        console.log(val)
+        this.$emit('setEnquiryData', {items: val})
+        this.$emit('next', true)
+      }
+    }
   }
 }
 </script>

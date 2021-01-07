@@ -84,7 +84,8 @@ export default {
   },
   methods: {
     setEnquiryData (data) {
-      console.log(data)
+
+      // console.log(`${Object.keys(data)[0]} ${data[Object.keys(data)[0]]}`)
       if (data.category) { // 카테고리
         this.category = data.category
       }
@@ -92,7 +93,13 @@ export default {
       //   this.patchData = data.patchData
       // }
       else {
-        this.patchData = data.recyclePlace
+        // eslint-disable-next-line no-unused-vars
+        // var temp = new Object()
+        // for (var i = 0; i < Object.keys(data).length; i++) {
+        //   const key = Object.keys(data)[i]
+        //   temp[key] = data[key]
+        // }
+        this.patchData = data
       }
     },
     setBtnReady (val) {
@@ -103,6 +110,8 @@ export default {
     },
     __onHandleNextStep () {
       console.log(this.patchData)
+      const key = Object.keys(this.patchData)[0]
+      console.log(this.patchData[key])
       if (this.activeStep === 1) {
         this.$store.commit('setCategory', this.category)
       } else {
