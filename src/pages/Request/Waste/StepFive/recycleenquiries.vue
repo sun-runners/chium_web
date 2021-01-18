@@ -1,6 +1,6 @@
 <template>
   <div>
-    <visit-site-advance @next="(val) => $emit('next', val)" />
+    <visit-site-advance @next="setPrevisit" />
   </div>
 </template>
 
@@ -30,6 +30,11 @@ export default {
       this.$emit("next", true);
     }, 1000);
   },
+  methods:{
+    setPrevisit(val){
+
+    }
+  }
 };
 </script>
 

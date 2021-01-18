@@ -84,7 +84,7 @@ export default {
   },
   methods: {
     setEnquiryData (data) {
-
+      console.log(data)
       // console.log(`${Object.keys(data)[0]} ${data[Object.keys(data)[0]]}`)
       if (data.category) { // 카테고리
         this.category = data.category
@@ -109,9 +109,7 @@ export default {
       }
     },
     __onHandleNextStep () {
-      console.log(this.patchData)
       const key = Object.keys(this.patchData)[0]
-      console.log(this.patchData[key])
       if (this.activeStep === 1) {
         this.$store.commit('setCategory', this.category)
       } else {

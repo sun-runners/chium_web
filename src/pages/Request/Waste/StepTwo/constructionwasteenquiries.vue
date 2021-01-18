@@ -1,7 +1,7 @@
 <template>
   <div class="q-pl-md">
     <p class="heading-title">
-      폐기물 유형<span class="heading-subtitle">을 알려주세요.</span>
+      건설 폐기 품목<span class="heading-subtitle">을 알려주세요.</span>
     </p>
     <div class="row">
       <!-- check sections starts here -->
@@ -84,18 +84,16 @@ export default {
       } else {
         this.selectedItem = this.selectedItem.filter((i) => i != item);
       }
-    },
-    selectionComplete() {
       if (this.selectedItem.length) {
-        this.$emit("selectionComplete", this.selectedItem);
-        this.$emit("toggleModal", false);
+        this.$emit("setEnquiryData", {items:this.selectedItem.join()});
+        this.$emit("next", true);
       }
-    },
-
-    patchData: function (){
-      const { data } = this.$axios.patch('buildingenquiries/');
-      console.log(1234)
     }
+    //
+    // patchData: function (){
+    //   const { data } = this.$axios.patch('buildingenquiries/');
+    //   console.log(1234)
+    // }
   },
   watch: {
     selectedItem(newVal) {

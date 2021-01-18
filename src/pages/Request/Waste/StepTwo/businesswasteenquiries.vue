@@ -30,9 +30,10 @@ export default {
   },
   methods:{
     setItems (val){
-      if(val!==true) {
-        console.log(val)
-        this.$emit('setEnquiryData', {items: val})
+      console.log(val.length)
+      if(val) {
+        console.log({items: val.join()})
+        this.$emit('setEnquiryData', {items: val.join()})
         this.$emit('next', true)
       }
     }

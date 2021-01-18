@@ -1,6 +1,6 @@
 <template>
   <div>
-    <work-due-date @next="(val) => $emit('next', val)" />
+    <work-due-date @next= "setDate" />
   </div>
 </template>
 
@@ -27,6 +27,19 @@ export default {
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
   },
+  methods:{
+    setDate (val){
+      if(val==='undecided'){
+        console.log('undecided')
+        this.$emit("setEnquiryData", {work_date:null})
+        this.$emit("next",val)
+      }
+      else if(val){
+        this.$emit("setEnquiryData", {work_date:val})
+        this.$emit("next",val)
+      }
+    }
+  }
 };
 </script>
 

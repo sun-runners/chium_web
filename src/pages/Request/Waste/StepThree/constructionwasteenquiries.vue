@@ -27,6 +27,11 @@ export default {
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
   },
+  methods:{
+    setImages(){
+
+    }
+  }
 };
 </script>
 

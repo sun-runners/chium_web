@@ -1,6 +1,6 @@
 <template>
   <div>
-    <work-due-date @click="setDate(val)" />
+    <work-due-date @next="setDate" />
   </div>
 </template>
 
@@ -29,7 +29,7 @@ export default {
   },
   methods:{
     setDate (val) {
-      this.$emit('setEnquiry', {regular_date : val})
+      this.$emit('setEnquiryData', {regular_date : val})
       this.$emit('next', true)
     }
   }
