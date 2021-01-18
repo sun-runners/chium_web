@@ -1,6 +1,6 @@
 <template>
   <div>
-    <work-due-date @next="(val) => $emit('next', val)" />
+    <work-due-date @next= "setDate" />
   </div>
 </template>
 
@@ -19,14 +19,27 @@ export default {
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/four/workplace",
-        prevPathRoute: "/request/waste/two/workplace",
+        nextPathRoute: "/request/waste/four/business",
+        prevPathRoute: "/request/waste/two/business",
       };
     },
   },
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
   },
+  methods:{
+    setDate (val){
+      if(val==='undecided'){
+        console.log('undecided')
+        this.$emit("setEnquiryData", {work_date:null})
+        this.$emit("next",val)
+      }
+      else if(val){
+        this.$emit("setEnquiryData", {work_date:val})
+        this.$emit("next",val)
+      }
+    }
+  }
 };
 </script>
 

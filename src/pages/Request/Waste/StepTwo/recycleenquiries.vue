@@ -11,12 +11,12 @@
             clickable="clickable"
             v-for="(list, key) in list_recycle_type"
             :key="key"
-            @click="setSelectedRecycling(list.val)"
+            @click="setRecyclePlace(list.val)"
           >
             <q-item-section avatar="avatar">
               <q-icon>
                 <img
-                  :src="require(`assets/request_estimate-icon/${list.iconRecycling}`)"
+                  :src="require(`assets/request_estimate-icon/${list.iconRecycleenquiries}`)"
                 />
               </q-icon>
             </q-item-section>
@@ -29,7 +29,7 @@
                 <img
                   :src="
                     require(`assets/request_estimate-icon/${
-                      selectedRecycling === list.val
+                      recyclePlace === list.val
                         ? 'radio-btn-selected.png'
                         : 'radio-btn-unselected.png'
                     }`)"
@@ -45,57 +45,59 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      selectedRecycling: "",
+      recyclePlace: '',
       list_recycle_type: [
         {
-          iconRecycling: "recycle_house.svg",
-          label: "주거단지",
-          val: "주거단지",
+          iconRecycleenquiries: 'recycle_house.svg',
+          label: '주거단지',
+          val: '주거단지',
         },
         {
-          iconRecycling: "recycle_building.svg",
-          label: "빌딩 및 오피스텔",
-          val: "빌딩 및 오피스텔",
+          iconRecycleenquiries: 'recycle_building.svg',
+          label: '빌딩 및 오피스텔',
+          val: '빌딩 및 오피스텔',
         },
         {
-          iconRecycling: "recycle_store.svg",
-          label: "상업시설",
-          val: "상업시설",
+          iconRecycleenquiries: 'recycle_store.svg',
+          label: '상업시설',
+          val: '상업시설',
         },
         {
-          iconRecycling: "recycle_school.svg",
-          label: "기타",
-          val: "기타",
+          iconRecycleenquiries: 'recycle_school.svg',
+          label: '기타',
+          val: '기타',
         },
       ],
     };
   },
   computed: {
-    layoutState(){
+    layoutState () {
       return {
         totalSteps: 6,
         activeStep: 2,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/three/recycling",
-        prevPathRoute: '/request/waste/'
+        nextPathRoute: '/request/waste/three/recycle',
+        prevPathRoute: '/request/waste/',
+        patchData: null
       }
     }
   },
-  mounted(){
+  mounted () {
     this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
-    setSelectedRecycling(val) {
-      this.selectedRecycling = val;
-      this.$emit('next', true);
+    setRecyclePlace (val) {
+      this.recyclePlace = val
+      this.$emit('setEnquiryData', { recycle_place: val })
+      this.$emit('next', true)
     }
-  },
-};
+  }
+}
 </script>
 
 <style scoped>

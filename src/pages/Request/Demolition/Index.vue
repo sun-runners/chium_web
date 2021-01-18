@@ -57,7 +57,7 @@ export default {
         {
           icon1: 'Building_1.svg',
           label: '사업장 폐기물',
-          val: 'workplace',
+          val: 'business',
         },
         {
           icon1: 'Structure.svg',
@@ -67,13 +67,13 @@ export default {
         {
           icon1: 'Asbestos.svg',
           label: '석면철거',
-          val: 'recycling',
+          val: 'recycle',
         },
       ],
     };
   },
   computed: {
-    layoutState(){
+    layoutState (){
       return {
         totalSteps: 6,
         activeStep: 1,

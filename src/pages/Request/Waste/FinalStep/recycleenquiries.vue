@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <head-section />
-    <request-place hiddenFloor />
+    <request-place hiddenFloor hiddenAcreage />
     <requester />
     <request-details />
   </div>
@@ -27,14 +27,14 @@ export default {
   computed: {
     layoutState() {
       return {
-        totalSteps: 5,
-        activeStep: 5,
+        totalSteps: 6,
+        activeStep: 6,
         btnLabel: "견적신청완료",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: "/home",
-        prevPathRoute: "/request/waste/four/workplace",
+        prevPathRoute: "/request/waste/five/recycle",
       };
     },
   },

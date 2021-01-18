@@ -60,6 +60,14 @@ export default {
           costs: "",
         },
         {
+          status: "견적신청",
+          date: "2020.07.02",
+          name: "전국불도저2",
+          address: "경기도 화성시 괘랑4길 16-38번지 솔가타...",
+          options: ["주거공간", "30평", "전체철거"],
+          costs: "",
+        },
+        {
           status: "견적상담",
           date: "2020.06.29",
           name: "원철거",

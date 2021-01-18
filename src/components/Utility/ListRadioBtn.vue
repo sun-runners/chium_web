@@ -58,7 +58,7 @@ export default {
         {
           icon1: 'Building_1.svg',
           label: '사업장 폐기물',
-          val: 'workplace',
+          val: 'business',
         },
       ]
     }

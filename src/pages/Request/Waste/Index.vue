@@ -11,7 +11,7 @@
             clickable="clickable"
             v-for="(list, key) in list_waste_type"
             :key="key"
-            @click="setSelectedWaste(list.val); $emit('next', true);"
+            @click="setCategory(list.val); $emit('next', true);"
           >
             <q-item-section avatar="avatar">
               <q-icon>
@@ -29,7 +29,7 @@
                 <img
                   :src="
                     require(`assets/request_estimate-icon/${
-                      selectedWaste === list.val
+                      category === list.val
                         ? 'radio-btn-selected.png'
                         : 'radio-btn-unselected.png'
                     }`)"
@@ -45,59 +45,61 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      selectedWaste: "",
+      category: '',
       list_waste_type: [
         {
-          icon1: "domestic-waste.svg",
-          label: "가정집 폐기물",
-          val: "household",
+          icon1: 'domestic-waste.svg',
+          label: '가정집 폐기물',
+          val: 'household'
         },
         {
-          icon1: "industrial-waste.svg",
-          label: "사업장 폐기물",
-          val: "workplace",
+          icon1: 'industrial-waste.svg',
+          label: '사업장 폐기물',
+          val: 'business'
         },
         {
-          icon1: "construction-waste.svg",
-          label: "건설 폐기물",
-          val: "construction",
+          icon1: 'construction-waste.svg',
+          label: '건설 폐기물',
+          val: 'construction'
         },
         {
-          icon1: "box.svg",
-          label: "재활용 정기수거",
-          val: "recycling",
-        },
-      ],
-    };
+          icon1: 'box.svg',
+          label: '재활용 정기수거',
+          val: 'recycle'
+        }
+      ]
+    }
   },
   computed: {
-    layoutState(){
+    layoutState () {
       return {
         totalSteps: 6,
         activeStep: 1,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: '/request/waste/two/household',
-        prevPathRoute: '/home'
+        prevPathRoute: '/home',
+        patchData: { category: this.category }
       }
     }
   },
-  mounted(){
+  mounted () {
     this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
-    setSelectedWaste(val) {
-      this.selectedWaste = val;
-      const layoutState = this.layoutState;
-      layoutState.nextPathRoute = `/request/waste/two/${val}`;
-      this.$emit('setStateLayout', layoutState);
+    setCategory (val) {
+      this.category = val
+      const layoutState = this.layoutState
+      layoutState.nextPathRoute = `/request/waste/two/${val}`
+      this.$emit('setStateLayout', layoutState)
+      this.$emit('setEnquiryData', { category: val })
     }
-  },
-};
+  }
+}
 </script>
 
 <style scoped>
