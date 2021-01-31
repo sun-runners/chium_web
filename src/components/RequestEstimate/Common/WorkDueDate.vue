@@ -23,7 +23,7 @@
       <q-icon>
         <img
           src="~assets/circle_check_blue.svg"
-          v-if="dateSelected == 'undecided'"
+          v-if="dateSelected === 'undecided'"
         />
         <img src="~assets/circle_check_grey.svg" v-else />
       </q-icon>
@@ -45,11 +45,11 @@ export default {
 
   methods: {
     setDateSelected(v) {
-      this.dateSelected = `${v.getFullYear()}/${v.getMonth() +
-        1}/${v.getDate()}`;
+      this.dateSelected = `${v.getFullYear()}-${v.getMonth() +
+        1}-${v.getDate()}`;
     },
     setUndecided() {
-      this.dateSelected != "undecided"
+      this.dateSelected !== "undecided"
         ? (this.dateSelected = "undecided")
         : (this.dateSelected = null);
       this.$refs.calendar.clearSelectedDate();
@@ -57,7 +57,7 @@ export default {
   },
   watch: {
     dateSelected(newVal) {
-      newVal != null ? this.$emit("next", true) : this.$emit("next", false);
+      newVal != null ? this.$emit("next", this.dateSelected) : this.$emit("next", false);
     },
   },
 };

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <visit-site-advance @next="(val) => $emit('next', val)" />
+    <visit-site-advance @next="setPrevisit" />
   </div>
 </template>
 
@@ -13,14 +13,14 @@ export default {
   computed: {
     layoutState() {
       return {
-        totalSteps: 5,
-        activeStep: 4,
+        totalSteps: 6,
+        activeStep: 5,
         btnLabel: "다음",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/final/workplace",
-        prevPathRoute: "/request/waste/three/workplace",
+        nextPathRoute: "/request/waste/final/recycle",
+        prevPathRoute: "/request/waste/four/recycle",
       };
     },
   },
@@ -30,6 +30,11 @@ export default {
       this.$emit("next", true);
     }, 1000);
   },
+  methods:{
+    setPrevisit(val){
+
+    }
+  }
 };
 </script>
 

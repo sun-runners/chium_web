@@ -1,7 +1,7 @@
 <template>
   <div class="q-pl-md">
     <p class="heading-title">
-      폐기물 유형<span class="heading-subtitle">을 알려주세요.</span>
+      건설 폐기 품목<span class="heading-subtitle">을 알려주세요.</span>
     </p>
     <div class="row">
       <!-- check sections starts here -->
@@ -36,23 +36,23 @@ export default {
     return {
       searchText: "",
       scrapItems: [
-        "TV",
-        "냉장고",
-        "김치 냉장고",
-        "세탁기",
-        "건조기",
-        "공기청정기",
-        "가습기",
-        "제습기",
-        "세탁기-",
-        "커피머신",
-        "오븐",
-        "전자렌지",
-        "세탁기1",
-        "커피머신",
-        "오븐",
-        "전자렌지",
-        "세탁기 last",
+        "콘크리트",
+        "아스팔트 콘크리트",
+        "벽돌",
+        "기와",
+        "목재",
+        "합성수지",
+        "섬유",
+        "벽지",
+        "건설오니",
+        "금속류",
+        "유리",
+        "타일 및 도자기",
+        "보드류",
+        "판넬",
+        "건설토석",
+        "혼합 건설 폐기물",
+        "기타 폐기물",
       ],
       selectedItem: [],
     };
@@ -84,19 +84,22 @@ export default {
       } else {
         this.selectedItem = this.selectedItem.filter((i) => i != item);
       }
-    },
-    selectionComplete() {
       if (this.selectedItem.length) {
-        this.$emit("selectionComplete", this.selectedItem);
-        this.$emit("toggleModal", false);
+        this.$emit("setEnquiryData", {items:this.selectedItem.join()});
+        this.$emit("next", true);
       }
-    },
+    }
+    //
+    // patchData: function (){
+    //   const { data } = this.$axios.patch('buildingenquiries/');
+    //   console.log(1234)
+    // }
   },
   watch: {
     selectedItem(newVal) {
       newVal.length > 0 ? this.$emit("next", true) : this.$emit("next", false);
     },
-  },
+  }
 };
 </script>
 

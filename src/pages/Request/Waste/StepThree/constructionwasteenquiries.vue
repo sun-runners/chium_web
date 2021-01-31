@@ -13,10 +13,10 @@ export default {
   computed: {
     layoutState() {
       return {
-        totalSteps: 5,
+        totalSteps: 6,
         activeStep: 3,
         btnLabel: "다음",
-        isBtnReady: false,
+        isBtnReady: true,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: "/request/waste/four/construction",
@@ -27,6 +27,11 @@ export default {
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
   },
+  methods:{
+    setImages(){
+
+    }
+  }
 };
 </script>
 

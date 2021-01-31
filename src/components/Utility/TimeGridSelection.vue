@@ -11,6 +11,7 @@
           selected: schedule.time == selected
         }"
         @click="setSelectedTime(schedule.time)"
+        
       >
         {{ schedule.time }}
       </div>
@@ -22,13 +23,13 @@
 export default {
   data () {
     return {
-      selected: '08:00',
+      selected: '',
       schedules: [
         { available: true, time: '05:00' },
         { available: true, time: '06:00' },
-        { available: false, time: '07:00' },
+        { available: true, time: '07:00' },
         { available: true, time: '08:00' },
-        { available: false, time: '09:00' },
+        { available: true, time: '09:00' },
         { available: true, time: '10:00' },
         { available: true, time: '11:00' },
         { available: true, time: '12:00' },
@@ -41,8 +42,8 @@ export default {
         { available: true, time: '19:00' },
         { available: true, time: '20:00' },
         { available: true, time: '21:00' },
-        { available: false, time: '22:00' },
-        { available: false, time: '23:00' },
+        { available: true, time: '22:00' },
+        { available: true, time: '23:00' },
         { available: true, time: '24:00' }
       ]
     }

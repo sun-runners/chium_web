@@ -28,6 +28,7 @@
           style="background: #F2F2F2"
           :style="widthMax"
           @setStateLayout="setLayoutState"
+          @setEnquiryData="setEnquiryData"
         />
       </q-page-container>
       <!-- Request Footer content here -->
@@ -53,54 +54,83 @@
 </template>
 
 <script>
-import ToolbarHead from "components/RequestEstimate/ToolbarHead";
-import ProcessIndicator from "components/Utility/ProcessIndicator";
+import ToolbarHead from 'components/RequestEstimate/ToolbarHead'
+import ProcessIndicator from 'components/Utility/ProcessIndicator'
 
 export default {
-  name: "RequestEstimate",
+  name: 'RequestEstimate',
   components: {
-    "process-indicator": ProcessIndicator,
-    "toolbar-head": ToolbarHead,
+    'process-indicator': ProcessIndicator,
+    'toolbar-head': ToolbarHead
   },
-  data() {
+  data () {
     return {
       totalSteps: 0,
       activeStep: 0,
-      btnLabel: "다음",
+      btnLabel: '다음',
       isBtnReady: false,
       isBtnHidden: false,
       requestComplete: false,
-      nextPathRoute: "",
-      prevPathRoute: "",
-    };
+      nextPathRoute: '',
+      prevPathRoute: '',
+      category: null,
+      patchData: null
+    }
   },
   computed: {
-    widthMax() {
-      return { width: window.innerWidth + "px", "max-width": "1000px" };
-    },
+    widthMax () {
+      return { width: window.innerWidth + 'px', 'max-width': '1000px' }
+    }
   },
   methods: {
-    setBtnReady(val) {
-      this.isBtnReady = val;
-      if (this.isBtnHidden && val) {
-        this.isBtnHidden = !val;
+    setEnquiryData (data) {
+      console.log(data)
+      // console.log(`${Object.keys(data)[0]} ${data[Object.keys(data)[0]]}`)
+      if (data.category) { // 카테고리
+        this.category = data.category
+      }
+      // if (data.patchData) { // 데이터
+      //   this.patchData = data.patchData
+      // }
+      else {
+        // eslint-disable-next-line no-unused-vars
+        // var temp = new Object()
+        // for (var i = 0; i < Object.keys(data).length; i++) {
+        //   const key = Object.keys(data)[i]
+        //   temp[key] = data[key]
+        // }
+        this.patchData = data
       }
     },
-    __onHandleNextStep() {
-      this.$router.push({ path: this.nextPathRoute });
+    setBtnReady (val) {
+      this.isBtnReady = val
+      if (this.isBtnHidden && val) {
+        this.isBtnHidden = !val
+      }
     },
-    setLayoutState(state) {
-      this.totalSteps = state.totalSteps;
-      this.activeStep = state.activeStep;
-      this.btnLabel = state.btnLabel;
-      this.isBtnReady = state.isBtnReady;
-      this.isBtnHidden = state.isBtnHidden;
-      this.requestComplete = state.requestComplete;
-      this.nextPathRoute = state.nextPathRoute;
-      this.prevPathRoute = state.prevPathRoute;
+    __onHandleNextStep () {
+      const key = Object.keys(this.patchData)[0]
+      if (this.activeStep === 1) {
+        this.$store.commit('setCategory', this.category)
+      } else {
+        console.log(this.patchData)
+        this.$store.commit('patchEnquiry', this.patchData)
+      }
+      this.$router.push({ path: this.nextPathRoute })
     },
-  },
-};
+    setLayoutState (state) {
+      this.totalSteps = state.totalSteps
+      this.activeStep = state.activeStep
+      this.btnLabel = state.btnLabel
+      this.isBtnReady = state.isBtnReady
+      this.isBtnHidden = state.isBtnHidden
+      this.requestComplete = state.requestComplete
+      this.nextPathRoute = state.nextPathRoute
+      this.prevPathRoute = state.prevPathRoute
+      this.patchData = state.patchData
+    }
+  }
+}
 </script>
 
 <style lang="scss">

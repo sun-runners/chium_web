@@ -57,7 +57,19 @@ export default {
   },
   data () {
     return {
-      selectedWaste: ''
+      selectedWaste: '',
+      list_waste_type: [
+        {
+          icon1: 'House.svg',
+          label: '내부 철거',
+          val: 'household',
+        },
+        {
+          icon1: 'Building_1.svg',
+          label: '사업장 폐기물',
+          val: 'business',
+        },
+      ]
     }
   },
   computed: {

@@ -36,7 +36,7 @@ export default {
   },
   watch: {
     selectedOption(v) {
-      v === "아니오" ? this.$emit("visit", true) : this.$emit("visit", false);
+      v === "예" ? this.$emit("visit", true) : this.$emit("visit", false);
     },
   },
 };

@@ -85,7 +85,7 @@ export default {
   },
   watch: {
     discardedItems(newVal) {
-      this.$emit("next", true);
+      this.$emit("next", this.discardedItems);
       if (!newVal.length) {
         this.$emit("next", false);
       }
