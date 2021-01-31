@@ -54,6 +54,7 @@ export default function (/* { store, ssrContext } */) {
         const { data: user } = await Vue.prototype.$axios.post('/users/kakaologin/', qs.stringify(kakaoUser))
         if (!user) { return }
         store.commit('setUser', user)
+        store.commit('se')
       }
 
       if (!(store.getters.user && store.getters.user.address1)) {

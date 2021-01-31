@@ -3,7 +3,7 @@
     <q-card-section class="row justify-between">
       <div class="row">
         <div class="text-dark q-mr-md" style="font-size: 16px;">{{ item.status }}</div>
-        <div class="text-grey row items-center" style="font-size: 12px;">{{ item.date }}</div>
+        <div class="text-grey row items-center" style="font-size: 12px;">{{ item.work_date }}</div>
       </div>
       <div>
         <q-btn
