@@ -1,5 +1,7 @@
+// Import Section
 import Vue from 'vue'
 
+// Main Section
 export const userStore = {
   state: {
     data: {}
@@ -19,6 +21,7 @@ export const userStore = {
         Vue.prototype.$qs.stringify(payload)
       )
       this.commit('setUser', user)
+      Vue.prototype.$axios.defaults.headers.common.Authorization = `token ${user.token}`
     },
     logout: function (state, payload) {
       state.data = {}
@@ -26,3 +29,4 @@ export const userStore = {
   },
   actions: {}
 }
+console.log(Vue.prototype.$axios)
