@@ -292,7 +292,7 @@ export default {
 
     logout () {
       this.$store.commit('logout')
-      alert ('로그아웃 되없습니다.')
+      alert ('로그아웃 되었습니다.')
       this.$router.push({ name: 'home' })
     },
 
