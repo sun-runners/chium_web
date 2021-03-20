@@ -18,7 +18,7 @@
           <q-btn flat class="attachment notosanskr-medium" @click="attachImage">
             등록
           </q-btn>
-        </template>
+        </template>r
       </q-file>
     </div>
   </div>
