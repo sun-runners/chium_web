@@ -1,36 +1,52 @@
 <template>
   <div>
-    <visit-site-advance @next="(val) => $emit('next', val)" />
+    <work-due-date @next="(val) => $emit('next', val)" />
   </div>
 </template>
 
 <script>
-import { VisitSiteAdvance } from "src/components/RequestEstimate/Common";
+import { WorkDueDate } from "src/components/RequestEstimate/Common";
 export default {
   components: {
-    "visit-site-advance": VisitSiteAdvance,
+    WorkDueDate,
   },
   computed: {
     layoutState() {
       return {
-        totalSteps: 6,
+        totalSteps: 7,
         activeStep: 5,
         btnLabel: "다음",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/final/construction",
+        nextPathRoute: "/request/waste/six/construction",
         prevPathRoute: "/request/waste/four/construction",
       };
     },
   },
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
-    setTimeout(() => {
-      this.$emit("next", true);
-    }, 1000);
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.heading-title {
+  font-size: 27px;
+  line-height: 38px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -1.35px;
+  color: #15161a;
+  padding-bottom: 36px;
+}
+.heading-subtitle {
+  color: #959595;
+}
+.schedule-undecided {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+  color: #15161a;
+}
+</style>

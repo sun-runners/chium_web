@@ -27,14 +27,14 @@ export default {
   computed: {
     layoutState() {
       return {
-        totalSteps: 6,
-        activeStep: 6,
+        totalSteps: 7,
+        activeStep: 7,
         btnLabel: "견적신청완료",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: "/home",
-        prevPathRoute: "/request/waste/five/construction",
+        prevPathRoute: "/request/waste/six/construction",
       };
     },
   },

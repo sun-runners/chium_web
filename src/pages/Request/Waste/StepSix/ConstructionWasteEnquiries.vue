@@ -1,26 +1,26 @@
 <template>
-  <div class="bg-white">
-    <check-elevator />
+  <div>
+    <visit-site-advance @next="(val) => $emit('next', val)" />
   </div>
 </template>
 
 <script>
-import { CheckElevator } from "src/components/RequestEstimate/Common";
+import { VisitSiteAdvance } from "src/components/RequestEstimate/Common";
 export default {
   components: {
-    "check-elevator": CheckElevator,
+    "visit-site-advance": VisitSiteAdvance,
   },
   computed: {
     layoutState() {
       return {
         totalSteps: 7,
-        activeStep: 4,
+        activeStep: 6,
         btnLabel: "다음",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/five/construction",
-        prevPathRoute: "/request/waste/three/construction",
+        nextPathRoute: "/request/waste/final/construction",
+        prevPathRoute: "/request/waste/five/construction",
       };
     },
   },
@@ -30,11 +30,6 @@ export default {
       this.$emit("next", true);
     }, 1000);
   },
-  methods:{
-    setPrevisit(val){
-
-    }
-  }
 };
 </script>
 
