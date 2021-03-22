@@ -1,7 +1,7 @@
 <template>
   <q-card flat class="bg-transparent">
     <q-card-section class="bg-white q-pa-none">
-      <div class="section-title notosanskr-medium">의뢰 장소</div>
+      <div class="section-title notosanskr-medium">의뢰 내용</div>
     </q-card-section>
     <q-card-section
       class="q-pa-none notosanskr-regular"
@@ -46,7 +46,7 @@
       <!-- schedule Time 예정 시간 -->
       <div class="bg-white q-pa-md" style="margin-bottom: 2px">
         <div class="heading-text notosanskr-medium">
-          엘레베이터
+          예정 시간
         </div>
         <div class="row q-pt-sm">
           <div class="text col">
@@ -76,16 +76,16 @@
 </template>
 
 <script>
-import ChangeScheduleWork from './BottomDialogs/ChangeScheduleWork'
-import ChangeDiscardedGoods from './BottomDialogs/ChangeDiscardedGoods'
-import ChangeScheduleWorkTime from './BottomDialogs/ChangeScheduleWorkTime'
+import ChangeScheduleWork from "./BottomDialogs/ChangeScheduleWork";
+import ChangeDiscardedGoods from "./BottomDialogs/ChangeDiscardedGoods";
+import ChangeScheduleWorkTime from "./BottomDialogs/ChangeScheduleWorkTime";
 export default {
   components: {
-    'change-discarded-goods': ChangeDiscardedGoods,
-    'change-schedule-work': ChangeScheduleWork,
-    'change-schedule-work-time': ChangeScheduleWorkTime
-  }
-}
+    "change-discarded-goods": ChangeDiscardedGoods,
+    "change-schedule-work": ChangeScheduleWork,
+    "change-schedule-work-time": ChangeScheduleWorkTime,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
