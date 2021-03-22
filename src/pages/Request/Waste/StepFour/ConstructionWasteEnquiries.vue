@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white">
-    <check-elevator />
+    <check-elevator @elevatorAnswer="hasElevator" />
   </div>
 </template>
 
@@ -30,11 +30,12 @@ export default {
       this.$emit("next", true);
     }, 1000);
   },
-  methods:{
-    setPrevisit(val){
-
-    }
-  }
+  methods: {
+    hasElevator(answer) {
+      console.log(answer);
+      this.$emit("next", true);
+    },
+  },
 };
 </script>
 
