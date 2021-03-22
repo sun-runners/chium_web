@@ -52,32 +52,32 @@
 </template>
 
 <script>
-import TimeGridSelection from 'src/components/Utility/TimeGridSelection'
+import TimeGridSelection from "src/components/Utility/TimeGridSelection";
 
 export default {
   components: {
-    'time-grid-selection': TimeGridSelection
+    "time-grid-selection": TimeGridSelection,
   },
-  data () {
+  data() {
     return {
-      dialog: true,
+      dialog: false,
       changeEnable: true,
-      selectedDate: null
-    }
+      selectedDate: null,
+    };
   },
   methods: {
-    setDateSelected (v) {
+    setDateSelected(v) {
       this.selectedDate = `${v.getFullYear()}/${v.getMonth() +
-        1}/${v.getDate()}`
+        1}/${v.getDate()}`;
     },
-    setUndecided () {
-      this.selectedDate != 'undecided'
-        ? (this.selectedDate = 'undecided')
-        : (this.selectedDate = null)
-      this.$refs.calendar.clearSelectedDate()
-    }
-  }
-}
+    setUndecided() {
+      this.selectedDate != "undecided"
+        ? (this.selectedDate = "undecided")
+        : (this.selectedDate = null);
+      this.$refs.calendar.clearSelectedDate();
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
