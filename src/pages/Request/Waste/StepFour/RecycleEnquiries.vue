@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <work-due-date @next="setDate" />
+  <div class="bg-white">
+    <regular-collection-month />
   </div>
 </template>
 
 <script>
-import { WorkDueDate } from "src/components/RequestEstimate/Common";
+import { RegularCollectionMonth } from "src/components/RequestEstimate/Common";
 export default {
   components: {
-    WorkDueDate,
+    RegularCollectionMonth,
   },
   computed: {
     layoutState() {
@@ -25,14 +25,14 @@ export default {
     },
   },
   mounted() {
-    this.$emit("setStateLayout", this.layoutState)
+    this.$emit("setStateLayout", this.layoutState);
   },
-  methods:{
-    setDate (val) {
-      this.$emit('setEnquiryData', {regular_date : val})
-      this.$emit('next', true)
-    }
-  }
+  methods: {
+    setDate(val) {
+      this.$emit("setEnquiryData", { regular_date: val });
+      this.$emit("next", true);
+    },
+  },
 };
 </script>
 
