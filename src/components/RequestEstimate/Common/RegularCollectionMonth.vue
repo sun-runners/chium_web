@@ -4,8 +4,41 @@
       매월 정기 수거할 날
       <span class="heading-subtitle">을 알려주세요.</span>
     </p>
-    <div class="column full-height bg-red">
-      halo
+    <div class="row full-height q-px-md">
+      <section class="col-6 q-pr-lg">
+        <div class="item-header notosanskr-regular">
+          매월 몇번째 주
+        </div>
+
+        <q-btn
+          class="item-value full-width notosanskr-regular"
+          align="between"
+          flat
+          padding="2px"
+        >
+          첫번째
+          <q-icon name="keyboard_arrow_down" size="24px" />
+        </q-btn>
+
+        <q-separator class="q-mt-sm" style="background: #5A5A5A;" size="2px" />
+      </section>
+      <section class="col-6">
+        <div class="item-header notosanskr-regular">
+          수거요일
+        </div>
+
+        <q-btn
+          class="item-value full-width notosanskr-regular"
+          align="between"
+          flat
+          padding="2px"
+        >
+          월요일
+          <q-icon name="keyboard_arrow_down" size="24px" />
+        </q-btn>
+
+        <q-separator class="q-mt-sm" style="background: #5A5A5A;" size="2px" />
+      </section>
     </div>
   </div>
 </template>
@@ -26,5 +59,20 @@ export default {};
 }
 .heading-subtitle {
   color: #959595;
+}
+.item-header {
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.7px;
+  color: #5a5a5a;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #f0f0f0;
+}
+.item-value {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 40px;
+  letter-spacing: -1.1px;
+  color: #15161a;
 }
 </style>
