@@ -5,12 +5,12 @@
       align="between"
       flat
       padding="2px"
-      @click="weekDialog = !weekDialog"
+      @click="dayDialog = !dayDialog"
     >
-      {{ week }}
+      {{ day }}
       <q-icon name="keyboard_arrow_down" size="24px" />
     </q-btn>
-    <q-dialog v-model="weekDialog" position="bottom">
+    <q-dialog v-model="dayDialog" position="bottom">
       <q-card class="row overflow-hidden notosanskr-regular">
         <q-card-section
           class="q-pa-none q-py-sm row items-center justify-between full-width bg-white"
@@ -22,7 +22,7 @@
             color="white"
             flat
             text-color="black"
-            @click="weekDialog = false"
+            @click="dayDialog = false"
           >
             <q-icon name="close" />
           </q-btn>
@@ -74,21 +74,21 @@ export default {
   },
   data() {
     return {
-      wheelSelection: ["네번째", "첫번째", "두번째"],
+      wheelSelection: ["수요일", "화요일", "월요일"],
       wheelSelected: "",
-      weekDialog: false,
-      week: "첫번째",
+      dayDialog: false,
+      day: "화요일",
     };
   },
   mounted() {
-    this.$emit("selectedValue", this.week);
-    this.wheelSelected = this.week;
+    this.$emit("selectedValue", this.day);
+    this.wheelSelected = this.day;
   },
   methods: {
     complete() {
-      this.week = this.wheelSelected;
-      this.$emit("selectedValue", this.week);
-      this.weekDialog = false;
+      this.day = this.wheelSelected;
+      this.$emit("selectedValue", this.day);
+      this.dayDialog = false;
     },
   },
 };

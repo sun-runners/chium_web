@@ -20,15 +20,7 @@
           수거요일
         </div>
 
-        <q-btn
-          class="item-value full-width notosanskr-regular"
-          align="between"
-          flat
-          padding="2px"
-        >
-          월요일
-          <q-icon name="keyboard_arrow_down" size="24px" />
-        </q-btn>
+        <collection-day-selection @selectedValue="(e) => (day = e)" />
         <q-separator class="q-mt-sm" style="background: #5A5A5A;" size="2px" />
       </section>
     </div>
@@ -36,14 +28,17 @@
 </template>
 
 <script>
+import CollectionDaySelection from "./CollectionDaySelection.vue";
 import WeekSelection from "./WeekSelection.vue";
 export default {
   components: {
     WeekSelection,
+    CollectionDaySelection,
   },
   data() {
     return {
       week: "",
+      day: "",
     };
   },
 };
