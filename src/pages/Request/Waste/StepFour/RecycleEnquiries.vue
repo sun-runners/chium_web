@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white">
-    <regular-collection-month />
+    <regular-collection-month @collection="setCollection" />
   </div>
 </template>
 
@@ -28,8 +28,9 @@ export default {
     this.$emit("setStateLayout", this.layoutState);
   },
   methods: {
-    setDate(val) {
-      this.$emit("setEnquiryData", { regular_date: val });
+    setCollection(val) {
+      // this.$emit("setEnquiryData", { regular_date: val });
+      console.log(val); //  val = { day, week}
       this.$emit("next", true);
     },
   },
