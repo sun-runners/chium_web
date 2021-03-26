@@ -28,26 +28,26 @@ export default {
       },
     };
   },
+  prop: ["value"],
+  mounted() {
+    this.$emit("input", this.schedule);
+  },
   methods: {
     setSchedule(v) {
       this.schedule = { ...v };
     },
-    validation() {
-      if (this.schedule.date && this.schedule.time) {
-        this.$emit("next", true);
-      } else {
-        this.$emit("next", false);
-      }
-    },
   },
   watch: {
     visit: function(v) {
-      !v ? this.$emit("next", true) : this.$emit("next", false);
+      this.$emit("input", "no");
+      if (v) {
+        this.$emit("input", this.schedule);
+      }
     },
     schedule: {
       handler(v) {
         if (this.visit) {
-          this.validation();
+          this.$emit("input", this.schedule);
         }
       },
       deep: true,

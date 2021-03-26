@@ -1,6 +1,7 @@
 <template>
   <div>
-    <visit-site-advance @next="setPrevisit" />
+    <!-- {{ visit }} -->
+    <visit-site-advance v-model="visit" @next="setPrevisit" />
   </div>
 </template>
 
@@ -24,17 +25,38 @@ export default {
       };
     },
   },
+  data() {
+    return {
+      // "no" or { date: "", time: ""}
+      visit: null,
+    };
+  },
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
-    setTimeout(() => {
-      this.$emit("next", true);
-    }, 1000);
   },
-  methods:{
-    setPrevisit(val){
+  methods: {
+    setPrevisit(val) {},
+  },
+  watch: {
+    visit() {
+      this.$emit("next", false);
 
-    }
-  }
+      if (this.visit === "no") {
+        // if User decided not to visit
+        this.$emit("next", true);
+        console.log("No visit");
+      }
+      if (typeof this.visit === "object") {
+        if (this.visit.date && this.visit.time) {
+          // if User decided to visit & value is set
+          this.$emit("next", true);
+          console.log(
+            `Visit is set: Date: ${this.visit.date} - Time ${this.visit.time}`
+          );
+        }
+      }
+    },
+  },
 };
 </script>
 
