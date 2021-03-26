@@ -10,7 +10,7 @@
         <div class="item-header notosanskr-regular">
           매월 몇번째 주
         </div>
-        <week-selection @selectedValue="(e) => (week = e)" />
+        <week-selection @selectedValue="(e) => (collection.week = e)" />
         <q-separator class="q-mt-sm" style="background: #5A5A5A;" size="2px" />
       </section>
 
@@ -20,7 +20,9 @@
           수거요일
         </div>
 
-        <collection-day-selection @selectedValue="(e) => (day = e)" />
+        <collection-day-selection
+          @selectedValue="(e) => (collection.day = e)"
+        />
         <q-separator class="q-mt-sm" style="background: #5A5A5A;" size="2px" />
       </section>
     </div>
@@ -37,9 +39,21 @@ export default {
   },
   data() {
     return {
-      week: "",
-      day: "",
+      collection: {
+        week: "",
+        day: "",
+      },
     };
+  },
+  watch: {
+    collection: {
+      deep: true,
+      handler(val) {
+        if (val.week && val.day) {
+          this.$emit("collection", val);
+        }
+      },
+    },
   },
 };
 </script>

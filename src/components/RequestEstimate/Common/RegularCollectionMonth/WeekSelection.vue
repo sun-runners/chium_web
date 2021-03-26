@@ -74,7 +74,7 @@ export default {
   },
   data() {
     return {
-      wheelSelection: ["네번째", "첫번째", "두번째"],
+      wheelSelection: ["첫번째", "두번째", "세번째", "네번째", "다섯번째"],
       wheelSelected: "",
       weekDialog: false,
       week: "첫번째",
