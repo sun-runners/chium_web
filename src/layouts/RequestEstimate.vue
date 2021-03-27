@@ -29,6 +29,8 @@
           :style="widthMax"
           @setStateLayout="setLayoutState"
           @setEnquiryData="setEnquiryData"
+          @nextForced="__onHandleNextStep"
+          @prevForced="$router.push({ path: prevPathRoute })"
         />
       </q-page-container>
       <!-- Request Footer content here -->
