@@ -1,6 +1,10 @@
 <template>
   <div>
-    <change-schedule-work-time @next="setTime"/>
+    <change-schedule-work-time
+      @next="setTime"
+      @close="navigateBack"
+      ready-on-init
+    />
   </div>
 </template>
 
@@ -10,7 +14,7 @@ import ChangeScheduleWorkTime from "components/RequestEstimate/FinalStep/BottomD
 export default {
   components: {
     "visit-site-advance": VisitSiteAdvance,
-    "change-schedule-work-time": ChangeScheduleWorkTime
+    "change-schedule-work-time": ChangeScheduleWorkTime,
   },
   computed: {
     layoutState() {
@@ -32,11 +36,17 @@ export default {
       this.$emit("next", true);
     }, 1000);
   },
-  methods:{
-    setTime(val){
-      this.$emit("setEnquiryData", {work_time :val})
-    }
-  }
+  methods: {
+    setTime(val) {
+      this.$emit("setEnquiryData", { work_time: val });
+      // we force to navigate to next route
+      this.$emit("nextForced");
+    },
+    navigateBack() {
+      // we force to return to previous route
+      this.$emit("prevForced");
+    },
+  },
 };
 </script>
 
