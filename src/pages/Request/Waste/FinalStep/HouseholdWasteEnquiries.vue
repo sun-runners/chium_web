@@ -1,7 +1,13 @@
 <template>
   <div class="">
     <head-section />
-    <request-place hiddenFloor hiddenAcreage />
+    <request-place
+      :placeOfDischarge="placeOfDischarge"
+      :type="type"
+      :elevator="elevator"
+      hiddenFloor
+      hiddenAcreage
+    />
     <requester />
     <request-details />
   </div>
@@ -22,13 +28,18 @@ export default {
     "request-details": RequestDetails,
   },
   data() {
-    return {};
+    return {
+      placeOfDischarge:
+        "경기도 치움시 철거동 123-4 치움 번지 폐기 타운하우스 112호",
+      type: "상업공간",
+      elevator: "있음",
+    };
   },
   computed: {
     layoutState() {
       return {
-        totalSteps: 5,
-        activeStep: 5,
+        totalSteps: 6,
+        activeStep: 6,
         btnLabel: "견적신청완료",
         isBtnReady: false,
         isBtnHidden: false,
