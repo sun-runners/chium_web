@@ -53,6 +53,8 @@ const routes = [
       { path: 'waste/five/recycle', component: () => import('src/pages/Request/Waste/StepFive/RecycleEnquiries.vue') },
       //  Six
       { path: 'waste/six/construction', component: () => import('src/pages/Request/Waste/StepSix/ConstructionWasteEnquiries.vue') },
+      //  Seven
+      { path: 'waste/seven/construction', component: () => import('src/pages/Request/Waste/StepSeven/ConstructionWasteEnquiries.vue') },
       // step Final
       { path: 'waste/final/household', component: () => import('src/pages/Request/Waste/FinalStep/HouseholdWasteEnquiries.vue') },
       { path: 'waste/final/business', component: () => import('src/pages/Request/Waste/FinalStep/BusinessWasteEnquiries.vue') },

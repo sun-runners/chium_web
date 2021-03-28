@@ -1,25 +1,29 @@
 <template>
   <div>
-    <visit-site-advance @next="(val) => $emit('next', val)" />
+    <change-schedule-work-time
+      @next="setTime"
+      @close="navigateBack"
+      ready-on-init
+    />
   </div>
 </template>
 
 <script>
-import { VisitSiteAdvance } from "src/components/RequestEstimate/Common";
+import ChangeScheduleWorkTime from "components/RequestEstimate/FinalStep/BottomDialogs/ChangeScheduleWorkTime";
 export default {
   components: {
-    "visit-site-advance": VisitSiteAdvance,
+    "change-schedule-work-time": ChangeScheduleWorkTime,
   },
   computed: {
     layoutState() {
       return {
-        totalSteps: 7,
+        totalSteps: 8,
         activeStep: 6,
         btnLabel: "다음",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/final/construction",
+        nextPathRoute: "/request/waste/seven/construction",
         prevPathRoute: "/request/waste/five/construction",
       };
     },
@@ -29,6 +33,17 @@ export default {
     setTimeout(() => {
       this.$emit("next", true);
     }, 1000);
+  },
+  methods: {
+    setTime(val) {
+      this.$emit("setEnquiryData", { work_time: val });
+      // we force to navigate to next route
+      this.$emit("nextForced");
+    },
+    navigateBack() {
+      // we force to return to previous route
+      this.$emit("prevForced");
+    },
   },
 };
 </script>
