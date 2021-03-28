@@ -34,7 +34,7 @@ export default {
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: "/home",
-        prevPathRoute: "/request/waste/four/household",
+        prevPathRoute: "/request/waste/five/household",
       };
     },
   },
