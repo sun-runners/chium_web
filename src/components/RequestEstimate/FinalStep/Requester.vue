@@ -8,10 +8,10 @@
       style="margin: 12px 16px"
     >
       <div class="q-pa-md bg-white border-rad">
-        <div class="heading-text notosanskr-medium">배출장소</div>
+        <div class="heading-text notosanskr-medium">연락처</div>
         <div class="q-pt-sm">
-          <div class="text">홍길동</div>
-          <div class="phone">010-1234-5678</div>
+          <div class="text">{{ contact.text }}</div>
+          <div class="phone">{{ contact.phone }}</div>
         </div>
       </div>
     </q-card-section>
@@ -23,7 +23,17 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    contact: {
+      type: Object,
+      default: () => ({
+        text: "",
+        phone: "",
+      }),
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,7 @@
 <template>
   <div class="">
     <head-section />
+    <!-- 의뢰 장소 -->
     <request-place
       :placeOfDischarge="placeOfDischarge"
       :type="type"
@@ -8,8 +9,16 @@
       hiddenFloor
       hiddenAcreage
     />
-    <requester />
-    <request-details />
+    <!-- 의뢰자 -->
+    <requester :contact="contact" />
+    <!-- 의뢰 내용 -->
+    <request-details
+      :work="work"
+      :discardedGoods="discardedGoods"
+      :scheduleDate="scheduleDate"
+      :scheduleTime="scheduleTime"
+      :company="company"
+    />
   </div>
 </template>
 
@@ -33,6 +42,17 @@ export default {
         "경기도 치움시 철거동 123-4 치움 번지 폐기 타운하우스 112호",
       type: "상업공간",
       elevator: "있음",
+      // requester
+      contact: {
+        text: "홍길동",
+        phone: "010-1234-5678",
+      },
+      // Request Details
+      work: "가정집 폐기물 h",
+      discardedGoods: ["핸드블랜더1", "전자렌지2", "건조기1", "세탁기1"],
+      scheduleDate: "07월 24일 (목) -",
+      scheduleTime: "오전 08:00시 s",
+      company: "전국 불도저",
     };
   },
   computed: {
