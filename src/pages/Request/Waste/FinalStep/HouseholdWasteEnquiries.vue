@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <head-section />
+    <head-section :schedule="schedule" />
     <!-- 의뢰 장소 -->
     <request-place
       :placeOfDischarge="placeOfDischarge"
@@ -38,6 +38,9 @@ export default {
   },
   data() {
     return {
+      // head
+      schedule: "07월 24일(금) 오후 02:00시 예정",
+      // request place
       placeOfDischarge:
         "경기도 치움시 철거동 123-4 치움 번지 폐기 타운하우스 112호",
       type: "상업공간",
