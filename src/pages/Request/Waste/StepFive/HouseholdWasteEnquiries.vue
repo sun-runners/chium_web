@@ -10,11 +10,9 @@
 </template>
 
 <script>
-import { VisitSiteAdvance } from "src/components/RequestEstimate/Common";
 import ChangeScheduleWorkTime from "components/RequestEstimate/FinalStep/BottomDialogs/ChangeScheduleWorkTime";
 export default {
   components: {
-    "visit-site-advance": VisitSiteAdvance,
     "change-schedule-work-time": ChangeScheduleWorkTime,
   },
   computed: {
