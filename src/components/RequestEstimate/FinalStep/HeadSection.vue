@@ -6,12 +6,10 @@
         <span class="heading-subtitle">를 검토해보세요.</span>
       </p>
       <p class="schedule q-ma-none q-px-md">
-        07월 24일(금) 오후 02:00시 예정
+        {{ schedule }}
       </p>
     </q-card-section>
-    <q-card-section class="notice">
-      ※예상 견적서를 받은 후 작업 진행을 수락해야지만 업체와 작업이 진행됩니다.
-    </q-card-section>
+    <q-card-section class="notice"> ※{{ notice }} </q-card-section>
     <q-card-section
       class="bg-white q-pa-none"
       style="height: 20px;"
@@ -20,7 +18,19 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    schedule: {
+      type: String,
+      default: "",
+    },
+    notice: {
+      type: String,
+      default:
+        "예상 견적서를 받은 후 작업 진행을 수락해야지만 업체와 작업이 진행됩니다.",
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

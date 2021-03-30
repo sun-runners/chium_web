@@ -39,6 +39,9 @@ export default {
       v === "예" ? this.$emit("visit", true) : this.$emit("visit", false);
     },
   },
+  mounted() {
+    this.$emit("visit", true);
+  },
 };
 </script>
 

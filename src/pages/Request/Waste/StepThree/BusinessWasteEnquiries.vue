@@ -1,19 +1,19 @@
 <template>
-  <div>
-    <work-due-date @next= "setDate" />
+  <div class="bg-white">
+    <check-elevator @elevatorAnswer="hasElevator" />
   </div>
 </template>
 
 <script>
-import { WorkDueDate } from "src/components/RequestEstimate/Common";
+import { CheckElevator } from "src/components/RequestEstimate/Common";
 export default {
   components: {
-    WorkDueDate,
+    "check-elevator": CheckElevator,
   },
   computed: {
     layoutState() {
       return {
-        totalSteps: 5,
+        totalSteps: 6,
         activeStep: 3,
         btnLabel: "다음",
         isBtnReady: false,
@@ -26,20 +26,16 @@ export default {
   },
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
+    setTimeout(() => {
+      this.$emit("next", true);
+    }, 1000);
   },
-  methods:{
-    setDate (val){
-      if(val==='undecided'){
-        console.log('undecided')
-        this.$emit("setEnquiryData", {work_date:null})
-        this.$emit("next",val)
-      }
-      else if(val){
-        this.$emit("setEnquiryData", {work_date:val})
-        this.$emit("next",val)
-      }
-    }
-  }
+  methods: {
+    hasElevator(answer) {
+      console.log(answer); // 있음 || 없음
+      this.$emit("next", true);
+    },
+  },
 };
 </script>
 

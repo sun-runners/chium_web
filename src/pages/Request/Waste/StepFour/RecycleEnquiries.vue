@@ -1,45 +1,39 @@
 <template>
-  <div>
-    <work-due-date @next="setDate" />
+  <div class="bg-white">
+    <regular-collection-month @collection="setCollection" />
   </div>
 </template>
 
 <script>
-import { WorkDueDate } from "src/components/RequestEstimate/Common";
+import { RegularCollectionMonth } from "src/components/RequestEstimate/Common";
 export default {
   components: {
-    WorkDueDate,
+    RegularCollectionMonth,
   },
   computed: {
     layoutState() {
       return {
-        totalSteps: 5,
-        activeStep: 3,
+        totalSteps: 6,
+        activeStep: 4,
         btnLabel: "다음",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/demolition/four/household",
-        prevPathRoute: "/request/demolition/two/household",
+        nextPathRoute: "/request/waste/five/recycle",
+        prevPathRoute: "/request/waste/three/recycle",
       };
     },
   },
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
   },
-  methods:{
-    setDate (val){
-      if(val==='undecided'){
-        console.log('undecided')
-        this.$emit("setEnquiryData", {work_date:null})
-        this.$emit("next",val)
-      }
-      else if(val){
-        this.$emit("setEnquiryData", {work_date:val})
-        this.$emit("next",val)
-      }
-    }
-  }
+  methods: {
+    setCollection(val) {
+      // this.$emit("setEnquiryData", { regular_date: val });
+      console.log(val); //  val = { day, week}
+      this.$emit("next", true);
+    },
+  },
 };
 </script>
 

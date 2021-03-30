@@ -1,6 +1,6 @@
 <template>
   <div>
-    <upload-picture-site @next="(val) => $emit('next', val)" />
+    <upload-picture-site @attachImage="setImages" />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   computed: {
     layoutState() {
       return {
-        totalSteps: 6,
+        totalSteps: 8,
         activeStep: 3,
         btnLabel: "다음",
         isBtnReady: true,
@@ -27,11 +27,13 @@ export default {
   mounted() {
     this.$emit("setStateLayout", this.layoutState);
   },
-  methods:{
-    setImages(){
-
-    }
-  }
+  methods: {
+    setImages(image) {
+      // image content is in image
+      console.log(image);
+      this.$emit("next", true);
+    },
+  },
 };
 </script>
 

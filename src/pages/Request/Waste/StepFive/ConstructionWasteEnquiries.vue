@@ -1,6 +1,6 @@
 <template>
   <div>
-    <work-due-date @next="setDate" />
+    <work-due-date @next="(val) => $emit('next', val)" />
   </div>
 </template>
 
@@ -13,26 +13,20 @@ export default {
   computed: {
     layoutState() {
       return {
-        totalSteps: 6,
-        activeStep: 4,
+        totalSteps: 8,
+        activeStep: 5,
         btnLabel: "다음",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/five/recycle",
-        prevPathRoute: "/request/waste/three/recycle",
+        nextPathRoute: "/request/waste/six/construction",
+        prevPathRoute: "/request/waste/four/construction",
       };
     },
   },
   mounted() {
-    this.$emit("setStateLayout", this.layoutState)
+    this.$emit("setStateLayout", this.layoutState);
   },
-  methods:{
-    setDate (val) {
-      this.$emit('setEnquiryData', {regular_date : val})
-      this.$emit('next', true)
-    }
-  }
 };
 </script>
 

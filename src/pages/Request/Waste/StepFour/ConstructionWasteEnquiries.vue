@@ -1,26 +1,26 @@
 <template>
-  <div>
-    <visit-site-advance @next="(val) => $emit('next', val)" />
+  <div class="bg-white">
+    <check-elevator @elevatorAnswer="hasElevator" />
   </div>
 </template>
 
 <script>
-import { VisitSiteAdvance } from "src/components/RequestEstimate/Common";
+import { CheckElevator } from "src/components/RequestEstimate/Common";
 export default {
   components: {
-    "visit-site-advance": VisitSiteAdvance,
+    "check-elevator": CheckElevator,
   },
   computed: {
     layoutState() {
       return {
-        totalSteps: 5,
+        totalSteps: 8,
         activeStep: 4,
         btnLabel: "다음",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/demolition/final/household",
-        prevPathRoute: "/request/demolition/three/household",
+        nextPathRoute: "/request/waste/five/construction",
+        prevPathRoute: "/request/waste/three/construction",
       };
     },
   },
@@ -29,6 +29,12 @@ export default {
     setTimeout(() => {
       this.$emit("next", true);
     }, 1000);
+  },
+  methods: {
+    hasElevator(answer) {
+      console.log(answer);
+      this.$emit("next", true);
+    },
   },
 };
 </script>

@@ -14,13 +14,6 @@ export const enquiryStore = {
   state: {
     category: null, // enquiries...
     enquiry: {}
-
-    // {
-    //   a: 1,
-    //   b: 1,
-    //   a: 1,
-    //   a: 1,
-    // }
   },
   getters: {
     enquiry: (state, getters) => {
@@ -32,13 +25,14 @@ export const enquiryStore = {
       state.enquiry = payload
     },
     setCategory: async function (state, payload) {
-      state.category = payload
+      state.category = payload.category
 
       // Variable Section
       const api = getApiUrl(state)
-
       // Main Section
-      const { data: enquiry } = await Vue.prototype.$axios.post(`/${api}/`) // 견적서 생성
+      const { data: enquiry } = await Vue.prototype.$axios.post(`/${api}/`,{
+        user: payload.userId
+      }) // 견적서 생성
       this.commit('setEnquiry', enquiry)
     },
     patchEnquiry: async function (state, payload) {
