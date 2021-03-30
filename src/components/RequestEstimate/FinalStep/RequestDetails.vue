@@ -8,7 +8,11 @@
       style="margin: 12px 16px"
     >
       <!-- work 작업 -->
-      <div class="q-pa-md bg-white  border-top-rad" style="margin-bottom: 2px">
+      <div
+        class="q-pa-md bg-white  border-top-rad"
+        style="margin-bottom: 2px"
+        v-if="work"
+      >
         <div class="heading-text notosanskr-medium">작업</div>
         <div class="q-pt-sm">
           <div class="text">{{ work }}</div>
