@@ -5,7 +5,6 @@
       <span class="inner-heading">을 보여주세요.</span>
     </div>
     <div class="q-py-xs small-heading">최대 3장까지 첨부가능(선택사항)</div>
-
     <div class="col-12 q-pa-none" style="padding-bottom: 24px">
       <q-file
         outlined
@@ -13,14 +12,11 @@
         ref="myImageField"
         :label="'폐기물 및 현장 사진을 첨부해주세요.'"
         label-color="grey-13"
-        accept=".jpg, .png, image/*"
-        @rejected="onRejected"
         v-model="myImage"
-        @input="attachImage"
       >
         <template v-slot:append>
-          <q-btn flat class="attachment notosanskr-medium">
-            <span v-if="!myImage">등록</span>
+          <q-btn flat class="attachment notosanskr-medium" @click="attachImage">
+            등록
           </q-btn>
         </template>
       </q-file>
@@ -44,13 +40,9 @@ export default {
         message: `${rejectedEntries.length} file(s) did not pass validation constraints`,
       });
     },
-    attachImage(e) {
-      this.$emit("attachImage", this.myImage);
+    attachImage() {
+      this.$emit("next", true);
       this.$refs.myImageField.blur();
-      this.$q.notify({
-        type: "possitive",
-        message: `Image Selected`,
-      });
     },
   },
 };

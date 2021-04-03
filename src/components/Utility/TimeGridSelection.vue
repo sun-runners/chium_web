@@ -8,9 +8,10 @@
         class="time col-3 text-center"
         :class="{
           invalid: !schedule.available,
-          selected: schedule.time == selected,
+          selected: schedule.time == selected
         }"
         @click="setSelectedTime(schedule.time)"
+        
       >
         {{ schedule.time }}
       </div>
@@ -20,49 +21,47 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      selected: "",
+      selected: '',
       schedules: [
-        { available: true, time: "05:00" },
-        { available: true, time: "06:00" },
-        { available: true, time: "07:00" },
-        { available: true, time: "08:00" },
-        { available: true, time: "09:00" },
-        { available: true, time: "10:00" },
-        { available: true, time: "11:00" },
-        { available: true, time: "12:00" },
-        { available: true, time: "13:00" },
-        { available: true, time: "14:00" },
-        { available: true, time: "15:00" },
-        { available: true, time: "16:00" },
-        { available: true, time: "17:00" },
-        { available: true, time: "18:00" },
-        { available: true, time: "19:00" },
-        { available: true, time: "20:00" },
-        { available: true, time: "21:00" },
-        { available: true, time: "22:00" },
-        { available: true, time: "23:00" },
-        { available: true, time: "24:00" },
-      ],
-    };
-  },
-  props: {
-    value: {
-      type: String | null,
-      default: null,
-    },
+        { available: true, time: '05:00' },
+        { available: true, time: '06:00' },
+        { available: true, time: '07:00' },
+        { available: true, time: '08:00' },
+        { available: true, time: '09:00' },
+        { available: true, time: '10:00' },
+        { available: true, time: '11:00' },
+        { available: true, time: '12:00' },
+        { available: true, time: '13:00' },
+        { available: true, time: '14:00' },
+        { available: true, time: '15:00' },
+        { available: true, time: '16:00' },
+        { available: true, time: '17:00' },
+        { available: true, time: '18:00' },
+        { available: true, time: '19:00' },
+        { available: true, time: '20:00' },
+        { available: true, time: '21:00' },
+        { available: true, time: '22:00' },
+        { available: true, time: '23:00' },
+        { available: true, time: '24:00' }
+      ]
+    }
   },
   methods: {
-    setSelectedTime(time) {
-      const foundSchedule = this.schedules.find((item) => item.time == time);
+    setSelectedTime (time) {
+      const foundSchedule = this.schedules.find(item => item.time == time)
       if (foundSchedule.available) {
-        this.selected = time;
-        this.$emit("input", this.selected);
+        this.selected = time
+        this.$emit('setTime', this.selected)
       }
     },
-  },
-};
+    clearSelectedTime () {
+      this.selected = null
+      this.$emit('setTime', null)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -8,17 +8,13 @@
       style="margin: 12px 16px"
     >
       <!-- place-discharge 배출장소 -->
-      <div
-        class="bg-white q-pa-md border-top-rad"
-        style="margin-bottom: 2px"
-        v-if="placeOfDischarge"
-      >
+      <div class="bg-white q-pa-md border-top-rad" style="margin-bottom: 2px">
         <div class="heading-text notosanskr-medium">
           배출장소
         </div>
         <div class="row q-pt-sm">
           <div class="text col">
-            {{ placeOfDischarge }}
+            경기도 치움시 철거동 123-4 치움 번지 폐기 타운하우스 112호
           </div>
           <div style="padding-left: 40px">
             <change-location-quest></change-location-quest>
@@ -27,13 +23,17 @@
       </div>
 
       <!-- type 유형 -->
-      <div class="bg-white q-pa-md" style="margin-bottom: 2px" v-if="type">
+      <div
+        class="bg-white q-pa-md"
+        style="margin-bottom: 2px"
+        v-if="!hiddenType"
+      >
         <div class="heading-text notosanskr-medium">
           유형
         </div>
         <div class="row q-pt-sm">
           <div class="text col">
-            {{ type }}
+            상업공간
           </div>
           <div style="padding-left: 40px">
             <change-type></change-type>
@@ -80,13 +80,17 @@
       </div>
 
       <!-- elevator 엘레베이터 -->
-      <div class="bg-white q-pa-md" style="margin-bottom: 2px" v-if="elevator">
+      <div
+        class="bg-white q-pa-md"
+        style="margin-bottom: 2px"
+        v-if="!hiddenElevator"
+      >
         <div class="heading-text notosanskr-medium">
           엘레베이터
         </div>
         <div class="row q-pt-sm">
           <div class="text col">
-            {{ elevator }}
+            있음
           </div>
           <div class="notosanskr-medium" style="padding-left: 40px">
             <change-elevator></change-elevator>
@@ -125,7 +129,11 @@ export default {
     "change-elevator": ChangeElevator,
   },
   props: {
-    type: {
+    hiddenType: {
+      type: Boolean,
+      default: false,
+    },
+    hiddenElevator: {
       type: Boolean,
       default: false,
     },
@@ -140,18 +148,6 @@ export default {
     hiddenCaution: {
       type: Boolean,
       default: false,
-    },
-    placeOfDischarge: {
-      type: String,
-      default: "",
-    },
-    type: {
-      type: String,
-      default: "",
-    },
-    elevator: {
-      type: String,
-      default: "",
     },
   },
 };

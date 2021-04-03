@@ -61,100 +61,100 @@
 </template>
 
 <script>
-import NavHeaderInfo from 'components/Utility/NavHeaderInfo'
-import ProcessIndicator from 'components/Utility/ProcessIndicator'
+import NavHeaderInfo from "components/Utility/NavHeaderInfo";
+import ProcessIndicator from "components/Utility/ProcessIndicator";
 export default {
-  name: 'RequestEstimate',
+  name: "RequestEstimate",
   components: {
-    'process-indicator': ProcessIndicator,
-    'nav-header-info': NavHeaderInfo
+    "process-indicator": ProcessIndicator,
+    "nav-header-info": NavHeaderInfo,
   },
-  data () {
+  data() {
     return {
       totalSteps: 6,
       activeStep: 0,
-      activeColor: '',
+      activeColor: "",
       processVisible: true,
 
-      returnTo: '',
-      cancel: ''
-    }
+      returnTo: "",
+      cancel: "",
+    };
   },
   computed: {
-    widthMax () {
-      return { width: window.innerWidth + 'px', 'max-width': '1000px' }
+    widthMax() {
+      return { width: window.innerWidth + "px", "max-width": "1000px" };
     },
-    stepsList () {
+    stepsList() {
       return [
         {
-          routeName: 'terms_condition',
-          indicatorColor: '#55E2EB',
+          routeName: "terms_condition",
+          indicatorColor: "#55E2EB",
           stepNum: 1,
-          returnTo: 'my_page',
-          cancelVisible: false
+          returnTo: "my_page",
+          cancelVisible: false,
         },
         {
-          routeName: 'company_information',
-          indicatorColor: '#2CB3FF',
+          routeName: "company_information",
+          indicatorColor: "#2CB3FF",
           stepNum: 2,
-          returnTo: 'terms_condition',
-          cancelVisible: true
+          returnTo: "terms_condition",
+          cancelVisible: true,
         },
         {
-          routeName: 'company_address',
-          indicatorColor: '#1E84E3',
+          routeName: "company_address",
+          indicatorColor: "#1E84E3",
           stepNum: 3,
-          returnTo: 'company_information',
-          cancelVisible: true
+          returnTo: "company_information",
+          cancelVisible: true,
         },
         {
-          routeName: 'service_area',
-          indicatorColor: '#1257C7',
+          routeName: "service_area",
+          indicatorColor: "#1257C7",
           stepNum: 4,
-          returnTo: 'company_address',
-          cancelVisible: true
+          returnTo: "company_address",
+          cancelVisible: true,
         },
         {
-          routeName: 'representative_service',
-          indicatorColor: '#0D32AE',
+          routeName: "representative_service",
+          indicatorColor: "#0D32AE",
           stepNum: 5,
-          returnTo: 'service_area',
-          cancelVisible: true
+          returnTo: "service_area",
+          cancelVisible: true,
         },
         {
-          routeName: 'proof_company',
-          indicatorColor: '#1B1492',
+          routeName: "proof_company",
+          indicatorColor: "#1B1492",
           stepNum: 6,
-          returnTo: 'representative_service',
-          cancelVisible: true
-        }
-      ]
-    }
+          returnTo: "representative_service",
+          cancelVisible: true,
+        },
+      ];
+    },
   },
   methods: {
-    setProcessIndicator () {
+    setProcessIndicator() {
       const found_route = this.stepsList.find(
-        (step) => step.routeName === this.$route.name
-      )
+        (step) => step.routeName == this.$route.name
+      );
       if (found_route) {
-        this.activeStep = found_route.stepNum
-        this.activeColor = found_route.indicatorColor
-        this.returnTo = found_route.returnTo
+        this.activeStep = found_route.stepNum;
+        this.activeColor = found_route.indicatorColor;
+        this.returnTo = found_route.returnTo;
         found_route.cancelVisible
-          ? (this.cancel = 'my_page')
-          : (this.cancel = '')
+          ? (this.cancel = "my_page")
+          : (this.cancel = "");
       }
-    }
+    },
   },
   watch: {
-    $route (to, from) {
-      this.setProcessIndicator()
-    }
+    $route(to, from) {
+      this.setProcessIndicator();
+    },
   },
-  created () {
-    this.setProcessIndicator()
-  }
-}
+  created() {
+    this.setProcessIndicator();
+  },
+};
 </script>
 
 <style lang="scss">

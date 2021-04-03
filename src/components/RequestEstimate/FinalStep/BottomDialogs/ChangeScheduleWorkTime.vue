@@ -8,7 +8,7 @@
     >
       변경
     </q-btn>
-    <q-dialog v-model="dialog" position="bottom" @hide="$emit('close')">
+    <q-dialog v-model="dialog" position="bottom">
       <q-card class="row overflow-hidden notosanskr-regular">
         <q-card-section
           class="q-pa-none q-py-sm row items-center justify-between full-width bg-white"
@@ -25,15 +25,12 @@
           <div class="bg-white q-px-md">
             <div class="selected-time q-py-md">
               <p class="q-ma-none">선택한 시간</p>
-              <div class="time-value notosanskr-medium">
-                {{ selectedTime ? selectedTime : "미선택" }}
-              </div>
+              <div class="time-value notosanskr-medium">오전 08:00시</div>
             </div>
           </div>
           <!-- time selection section | 시간 선택 섹션 -->
           <time-grid-selection
-            class="bg-white full-height"
-            v-model="selectedTime"
+            class="bg-white full-height "
           ></time-grid-selection>
         </q-card-section>
 
@@ -41,13 +38,12 @@
         <q-card-section class="q-pa-xs q-px-md absolute-bottom">
           <q-btn
             style="height: 60px;"
-            :color="selectedTime != null ? 'secondary' : 'grey'"
-            :disable="selectedTime == null"
+            :color="selectedDate != null ? 'secondary' : 'grey'"
+            :disable="selectedDate == null"
             class="change-btn full-width notosanskr-medium "
             unelevated
             text-color="white"
             label="변경하기"
-            @click="selectionComplete"
           />
         </q-card-section>
       </q-card>
@@ -56,33 +52,32 @@
 </template>
 
 <script>
-import TimeGridSelection from "src/components/Utility/TimeGridSelection";
+import TimeGridSelection from 'src/components/Utility/TimeGridSelection'
 
 export default {
   components: {
-    "time-grid-selection": TimeGridSelection,
+    'time-grid-selection': TimeGridSelection
   },
-  data() {
+  data () {
     return {
-      dialog: false,
-      selectedTime: null,
-    };
-  },
-  props: {
-    readyOnInit: {
-      type: Boolean,
-      default: false,
-    },
+      dialog: true,
+      changeEnable: true,
+      selectedDate: null
+    }
   },
   methods: {
-    selectionComplete() {
-      this.$emit("next", this.selectedTime);
+    setDateSelected (v) {
+      this.selectedDate = `${v.getFullYear()}/${v.getMonth() +
+        1}/${v.getDate()}`
     },
-  },
-  created() {
-    this.dialog = this.readyOnInit;
-  },
-};
+    setUndecided () {
+      this.selectedDate != 'undecided'
+        ? (this.selectedDate = 'undecided')
+        : (this.selectedDate = null)
+      this.$refs.calendar.clearSelectedDate()
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
