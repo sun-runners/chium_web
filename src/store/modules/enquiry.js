@@ -46,9 +46,8 @@ export const enquiryStore = {
       // eslint-disable-next-line no-unused-vars
       const key = Object.keys(payload)
       console.log(payload)
-      const { data: enquiry } = await Vue.prototype.$axios.patch(`/${api}/5/`,payload)
+      const { data: enquiry } = await Vue.prototype.$axios.patch(`/${api}/5/`, payload)
       this.commit('setEnquiry', enquiry)
     }
   }
 }
-

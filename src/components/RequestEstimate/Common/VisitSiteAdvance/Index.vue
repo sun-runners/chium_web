@@ -12,48 +12,48 @@
 </template>
 
 <script>
-import VisitOptions from "./VisitOptions";
-import VisitDateTime from "./VisitDateTime";
+import VisitOptions from './VisitOptions'
+import VisitDateTime from './VisitDateTime'
 export default {
   components: {
-    "visit-options": VisitOptions,
-    "visit-date-time": VisitDateTime,
+    'visit-options': VisitOptions,
+    'visit-date-time': VisitDateTime
   },
-  data() {
+  data () {
     return {
       visit: false,
       schedule: {
-        date: "",
-        time: "",
-      },
-    };
+        date: '',
+        time: ''
+      }
+    }
+  },
+  prop: ['value'],
+  mounted () {
+    this.$emit('input', this.schedule)
   },
   methods: {
-    setSchedule(v) {
-      this.schedule = { ...v };
-    },
-    validation() {
-      if (this.schedule.date && this.schedule.time) {
-        this.$emit("next", true);
-      } else {
-        this.$emit("next", false);
-      }
-    },
+    setSchedule (v) {
+      this.schedule = { ...v }
+    }
   },
   watch: {
-    visit: function(v) {
-      !v ? this.$emit("next", true) : this.$emit("next", false);
+    visit: function (v) {
+      this.$emit('input', 'no')
+      if (v) {
+        this.$emit('input', this.schedule)
+      }
     },
     schedule: {
-      handler(v) {
+      handler (v) {
         if (this.visit) {
-          this.validation();
+          this.$emit('input', this.schedule)
         }
       },
-      deep: true,
-    },
-  },
-};
+      deep: true
+    }
+  }
+}
 </script>
 
 <style scoped>

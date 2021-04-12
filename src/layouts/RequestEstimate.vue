@@ -29,6 +29,8 @@
           :style="widthMax"
           @setStateLayout="setLayoutState"
           @setEnquiryData="setEnquiryData"
+          @nextForced="__onHandleNextStep"
+          @prevForced="$router.push({ path: prevPathRoute })"
         />
       </q-page-container>
       <!-- Request Footer content here -->
@@ -118,7 +120,12 @@ export default {
         console.log(this.patchData)
         this.$store.commit('patchEnquiry', this.patchData)
       }
-      this.$router.push({ path: this.nextPathRoute })
+
+      // after moving to next step we change state back to false
+      this.isBtnReady = false;
+      this.$nextTick(()=> {
+        this.$router.push({ path: this.nextPathRoute });
+      });
     },
     setLayoutState (state) {
       this.totalSteps = state.totalSteps

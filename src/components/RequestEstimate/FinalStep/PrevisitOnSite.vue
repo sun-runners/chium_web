@@ -1,18 +1,27 @@
 <template>
   <q-card flat class="bg-transparent">
     <q-card-section class="bg-white q-pa-none">
-      <div class="section-title notosanskr-medium">의뢰자</div>
+      <div class="section-title notosanskr-medium">의뢰 내용</div>
     </q-card-section>
     <q-card-section
       class="q-pa-none notosanskr-regular"
       style="margin: 12px 16px"
     >
-      <div class="q-pa-md bg-white border-rad">
-        <div class="heading-text notosanskr-medium">연락처</div>
-        <div class="q-pt-sm">
-          <div class="text">{{ contact.text }}</div>
-          <div class="phone">{{ contact.phone }}</div>
-        </div>
+      <!-- work 작업 -->
+      <div
+        class="row justify-between q-pa-md bg-white border-top-rad"
+        style="margin-bottom: 2px"
+      >
+        <div class="text">{{ preVisitOnSite }}</div>
+
+        <q-btn
+          flat
+          class="change-btn notosanskr-medium"
+          :to="{ path: '/request/waste/five/recycle' }"
+          padding="0px"
+        >
+          변경
+        </q-btn>
       </div>
     </q-card-section>
     <q-card-section
@@ -24,13 +33,11 @@
 
 <script>
 export default {
+  components: {},
   props: {
-    contact: {
-      type: Object,
-      default: () => ({
-        text: "",
-        phone: "",
-      }),
+    preVisitOnSite: {
+      type: String,
+      default: "",
     },
   },
 };
@@ -58,11 +65,6 @@ export default {
   letter-spacing: -0.75px;
   color: #15161a;
 }
-.phone {
-  font-size: 15px;
-  line-height: 22px;
-  color: #15161a;
-}
 .change-btn {
   font-weight: 500;
   font-size: 16px;
@@ -73,10 +75,11 @@ export default {
   padding: 0 16px;
   color: #195de4;
 }
-.border-rad {
+.border-top-rad {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-
+}
+.border-bottom-rad {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
