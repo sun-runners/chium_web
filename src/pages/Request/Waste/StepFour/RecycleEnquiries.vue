@@ -29,8 +29,8 @@ export default {
   },
   methods: {
     setCollection (val) {
-      this.$emit('setEnquiryData', { regular_date: val })
-      console.log(val) //  val = { day, week}
+      this.$emit('setEnquiryData', { regular_date: val.week + ' ' + val.day })
+      console.log({ regular_date: val }) //  val = { day, week}
       this.$emit('next', true)
     }
   }

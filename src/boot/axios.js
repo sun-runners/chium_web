@@ -10,5 +10,6 @@ instance.defaults.baseURL = process.env.API
 instance.defaults.timeout = 2500
 instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
+
 Vue.prototype.$axios = instance
 Vue.prototype.$qs = qs

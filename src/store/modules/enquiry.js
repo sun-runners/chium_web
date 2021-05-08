@@ -22,32 +22,20 @@ export const enquiryStore = {
   },
   mutations: {
     setEnquiry: function (state, payload) {
-      state.enquiry = payload
+      state.enquiry = {
+        ...state.category,
+        ...state.enquiry,
+        ...payload
+      }
     },
-    setCategory: async function (state, payload) {
-      state.category = payload.category
-
+    postEnquiry: async function (state, payload) {
       // Variable Section
       const api = getApiUrl(state)
       // Main Section
-      const { data: enquiry } = await Vue.prototype.$axios.post(`/${api}/`,{
-        user: payload.userId
-      }) // 견적서 생성
-      this.commit('setEnquiry', enquiry)
+      await Vue.prototype.$axios.post(`/${api}/`, { ...state.enquiry.enquiry, user: payload }) // 견적서 생성
     },
     patchEnquiry: async function (state, payload) {
-      // Variable Section
-      const api = getApiUrl(state)
-      // Main Section
-      // const { data: enquiry } = await Vue.prototype.$axios.patch(
-      //   `/${api}/${this.getters.enquiry.id}/`, // 견적서 id를 patch 함
-      //   Vue.prototype.$qs.stringify(payload)
-      // )
-      // eslint-disable-next-line no-unused-vars
-      const key = Object.keys(payload)
-      console.log(payload)
-      const { data: enquiry } = await Vue.prototype.$axios.patch(`/${api}/5/`, payload)
-      this.commit('setEnquiry', enquiry)
+      this.commit('setEnquiry', payload.data)
     }
   }
 }

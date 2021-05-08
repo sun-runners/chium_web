@@ -20,7 +20,7 @@
         <div class="row justify-between">
           <!-- address text | 주소 텍스트 -->
           <div class="place-text">
-            {{ address }}
+            {{ `${address.address}${address.description ? ` ${address.description}` : ''}` }}
           </div>
           <!-- check icon | 확인 아이콘 -->
           <q-btn flat color="white" text-color="black">
@@ -42,29 +42,23 @@
 export default {
   data() {
     return {
-      currentAddress:
-        "경기도 치움시 철거동 123-4 치움 번지 폐기 타운하우스 112호 (15812)",
+      currentAddress: {
+        address: this.$store.state.category.enquiry.address,
+        description: this.$store.state.category.enquiry.description,
+      },
       newAddress: null,
       recentAddress: [
-        "경기도 치움시 철거동 123-4 치움 번지 폐기 타운하우스 112호 (15812)",
-        "서울특별시 성북구 길음로 334 (길음동,길음뉴타운) 길음 뉴타운 8단지 812동 1902호(20202)",
-        "경기도 치움시 철거동 13-3 치움 번지 폐기 타운하우스 112호 (15812)",
-        "경기도 치움시 철거동 23-6 치움 번지 폐기 타운하우스 112호 (15812)",
-        "경기도 치움시 철거동 13-7 치움 번지 폐기 타운하우스 112호 (15812)",
-        "경기도 치움시 철거동 23-8 치움 번지 폐기 타운하우스 112호 (15812)",
-        "경기도 치움시 철거동 13-9 치움 번지 폐기 타운하우스 112호 (15812)",
-        "경기도 치움시 철거동 23-40 4 치움 번지 폐기 타운하우스 112호 (15812)",
-        "경기도 치움시 철거동 22 치움 번지 폐기 타운하우스 112호 (15812)",
-        "경기도 치움시 철거동 1 4 치움 번지 폐기 타운하우스 112호 (15812)",
-        "1 경기도 치움시 철거동 2d4 치움 번지 폐기 타운하우스 112호 (15812)",
-        "2 경기도 치움시 철거동 -4 치움 번지 폐기 타운하우스 112호 (15812)",
-        "3 경기도 치움시 철거동 2s 치움 번지 폐기 타운하우스 112호 (15812)",
+        { address: this.$store.state.category.enquiry.address, description: this.$store.state.category.enquiry.description },
+        { address: this.$store.state.user.data.address1, description: this.$store.state.user.data.address2 },
       ],
     };
   },
   methods: {
     setNewAddress(address) {
       this.newAddress = address;
+      this.$emit('selectAddress', address);
+    },
+    selectAddress (address) {
     },
   },
 };

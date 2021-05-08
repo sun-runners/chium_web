@@ -11,14 +11,16 @@
       <div
         class="bg-white q-pa-md border-top-rad"
         style="margin-bottom: 2px"
-        v-if="placeOfDischarge"
+        v-if="$store.state.category.enquiry.address"
       >
+        <!--        v-if="placeOfDischarge"-->
         <div class="heading-text notosanskr-medium">
           배출장소
         </div>
         <div class="row q-pt-sm">
           <div class="text col">
-            {{ placeOfDischarge }}
+<!--            {{ placeOfDischarge }}-->
+            {{ `${$store.state.category.enquiry.address}${$store.state.category.enquiry.description ? ` ${$store.state.category.enquiry.description}` : ''}` }}
           </div>
           <div style="padding-left: 40px">
             <change-location-quest></change-location-quest>

@@ -17,7 +17,7 @@
           <div class="heading-title q-pl-md notosanskr-medium">
             의뢰장소 변경
           </div>
-          <q-btn color="white" flat text-color="black" @click="dialog = false">
+          <q-btn color="white" flat text-color="black" @click="dialog = false; address = '';">
             <q-icon name="close" />
           </q-btn>
         </q-card-section>
@@ -53,7 +53,7 @@
           <q-tab-panels v-model="tab" class="full-height" animated>
             <q-tab-panel name="recent_place" class="q-pa-none overflow-scroll">
               <!-- contents for recent places Items | 최근 장소의 항목에 대한 내용 -->
-              <recent-places></recent-places>
+              <recent-places @selectAddress="selectAddress"></recent-places>
             </q-tab-panel>
 
             <q-tab-panel name="new_place">
@@ -67,9 +67,10 @@
         <q-card-section class="q-pa-xs q-px-md absolute-bottom">
           <q-btn
             style="height: 60px;"
-            :color="changeEnable ? 'secondary' : 'grey'"
+            :color="address ? 'secondary' : 'grey'"
             class="change-btn full-width notosanskr-medium "
             unelevated
+            @click="changeAddress"
             text-color="white"
             label="변경하기"
           />
@@ -92,8 +93,21 @@ export default {
       dialog: false,
       tab: "recent_place",
       changeEnable: false,
+      address: '',
     };
   },
+  methods: {
+    changeAddress () {
+      this.dialog = false;
+      this.$store.commit('setEnquiry', {
+        address: this.address.address,
+        description: this.address.description,
+      })
+    },
+    selectAddress (address) {
+      this.address = address;
+    }
+  }
 };
 </script>
 

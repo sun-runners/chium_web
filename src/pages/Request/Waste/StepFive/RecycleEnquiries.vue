@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- {{ visit }} -->
-    <visit-site-advance @Previsitdate="setPrevisitdate" />
+    <visit-site-advance @input="setPrevisitdate" />
   </div>
 </template>
 
@@ -54,9 +54,15 @@ export default {
   },
   methods:{
     setPrevisitdate (val) {
-      this.$emit('setEnquiryData', { : val })
+      this.$emit('setEnquiryData', { previsit_at: val.date, previsit_time: val.time })
       console.log(val) //  val = { day, week}
+      this.setReady(val)
       this.$emit('next', true)
+    },
+    setReady (val){
+      if (val.date && val.time){
+        this.isBtnReady = true
+      }
     }
   }
 }
