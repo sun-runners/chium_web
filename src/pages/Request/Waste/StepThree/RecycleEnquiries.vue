@@ -16,7 +16,7 @@
             />
           </div>
           <div class="col-4">
-            <q-btn flat class="find-postal-btn full-width" @click="toggleBtn()">
+            <q-btn flat class="find-postal-btn full-width" @click="goAddress">
               우편번호 찾기
             </q-btn>
           </div>
@@ -84,6 +84,10 @@ export default {
       this.$emit('setEnquiryData',
         { address: this.field2 + ' ' + this.field3, description: this.description })
       this.$emit('next', true)
+    },
+    goAddress (){
+      this.$store.commit('setEnquiry', { prepath: this.$route.path })
+      this.$router.push({ name: 'request_address' })
     }
   }
 }

@@ -22,6 +22,7 @@ const routes = [
       { path: 'reservation/detail', component: () => import('pages/Reservation/Detail/Index'), name: 'reservation_detail', heading_name: '예약상세보기' },
       { path: 'search', component: () => import('pages/Search/Index'), name: 'search' },
       { path: 'my_page', component: () => import('pages/MyPage/Index'), name: 'my_page' },
+      { path: 'request_address', component: () => import('components/RequestEstimate/Common/Address/RequestAddress'), name: 'request_address'},
       // Test
       { path: 'address', component: () => import('components/Address/Address'), name: 'address' }
     ]

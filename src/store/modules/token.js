@@ -10,7 +10,7 @@ export const tokenStore = {
     token: (state, getters) => {
       return state.data
     }
-  }
+  },
   mutations: {
     setToken: function (state, payload) {
       state.data = payload

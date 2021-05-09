@@ -22,6 +22,7 @@ export const enquiryStore = {
   },
   mutations: {
     setEnquiry: function (state, payload) {
+      console.log(payload)
       state.enquiry = {
         ...state.category,
         ...state.enquiry,
@@ -35,7 +36,9 @@ export const enquiryStore = {
       await Vue.prototype.$axios.post(`/${api}/`, { ...state.enquiry.enquiry, user: payload }) // 견적서 생성
     },
     patchEnquiry: async function (state, payload) {
+      console.log(payload)
       this.commit('setEnquiry', payload.data)
+      console.log(state.enquiry.address)
     }
   }
 }
