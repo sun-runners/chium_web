@@ -33,7 +33,8 @@ export const enquiryStore = {
       // Variable Section
       const api = getApiUrl(state)
       // Main Section
-      await Vue.prototype.$axios.post(`/${api}/`, { ...state.enquiry.enquiry, user: payload }) // 견적서 생성
+      console.log(state.enquiry)
+      await Vue.prototype.$axios.post(`/${api}/`, { ...state.enquiry, user: payload, status: '견적 신청' }) // 견적서 생성
     },
     patchEnquiry: async function (state, payload) {
       console.log(payload)
