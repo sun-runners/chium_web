@@ -37,8 +37,8 @@ export default {
       // Set Address
       console.log(this.$store)
       await this.$store.commit('patchEnquiry', { data: { address: data.address } })
-      // Go back this.$store.state.category.enquiry.prepath.substring(1)
-      await this.$router.push({ name: 'request' })
+      // Go back
+      await this.$router.push({ path: this.$route.query.back })
     }
   }
 }

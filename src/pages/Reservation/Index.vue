@@ -56,46 +56,6 @@ export default {
       done: 0,
       enquiries: ['household', 'business', 'recycle', 'construction'],
       items: [
-        {
-          status: '견적신청',
-          date: '2020.07.01',
-          name: '전국불도저',
-          address: '경기도 화성시 괘랑4길 16-38번지 솔가타...',
-          options: ['주거공간', '30평', '전체철거'],
-          costs: ''
-        },
-        {
-          status: '견적신청',
-          date: '2020.07.02',
-          name: '전국불도저2',
-          address: '경기도 화성시 괘랑4길 16-38번지 솔가타...',
-          options: ['주거공간', '30평', '전체철거'],
-          costs: ''
-        },
-        {
-          status: '견적상담',
-          date: '2020.06.29',
-          name: '원철거',
-          address: '경기도 군포시 금정동 903-6 선일빌라 101호',
-          options: ['주거공간', '40평', '부분철거'],
-          costs: '1,008,000'
-        },
-        {
-          status: '작업완료',
-          date: '2020.06.29',
-          name: '원철거',
-          address: '경기도 화성시 괘랑4길 16-38번지 솔가...',
-          options: ['주거공간', '30평', '전체철거'],
-          costs: '3,324,000'
-        },
-        {
-          status: '작업예정',
-          date: '2020.06.29',
-          name: '원철거',
-          address: '경기도 군포시 금정동 903-6 선일빌라 101호',
-          options: ['주거공간', '40평', '부분철거'],
-          costs: '1,008,000'
-        }
       ]
     }
   },
@@ -105,9 +65,9 @@ export default {
     }
     for (let i = 0; i < this.enquiries.length; i++) {
       const temp = await Vue.prototype.$axios.get('/' + this.enquiries[i] + '/')
-
       this.items = this.items.concat(temp.data.results);
     }
+    console.log(this.items)
   },
 }
 </script>

@@ -58,12 +58,8 @@ export default {
       field1: null,
       field2: null,
       field3: null,
-      description: null
-    }
-  },
-  computed: {
-    layoutState () {
-      return {
+      description: null,
+      layoutState:{
         totalSteps: 6,
         activeStep: 3,
         btnLabel: '다음',
@@ -75,7 +71,33 @@ export default {
       }
     }
   },
+  computed: {
+    // layoutState () {
+    //   return {
+    //     totalSteps: 6,
+    //     activeStep: 3,
+    //     btnLabel: '다음',
+    //     isBtnReady: false,
+    //     isBtnHidden: false,
+    //     requestComplete: false,
+    //     nextPathRoute: '/request/waste/four/recycle',
+    //     prevPathRoute: '/request/waste/two/recycle'
+    //   }
+    // }
+  },
   mounted () {
+    const data = this.$store.state.category.enquiry.address
+    const addressArr = data.split(' ')
+    if (addressArr.length < 2) {
+      this.field1 = addressArr[0]
+      this.field2 = addressArr[1]
+    } else {
+      this.field1 = addressArr.slice(0, 2).join(' ')
+      this.field2 = addressArr.slice(2).join(' ')
+    }
+    if (this.field1 && this.field2) {
+      this.layoutState.isBtnReady = true
+    }
     this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
@@ -85,9 +107,8 @@ export default {
         { address: this.field2 + ' ' + this.field3, description: this.description })
       this.$emit('next', true)
     },
-    goAddress (){
-      this.$store.commit('setEnquiry', { prepath: this.$route.path })
-      this.$router.push({ name: 'request_address' })
+    goAddress () {
+      this.$router.push({ name: 'request_address', query: { back: '/request/waste/three/recycle' } })
     }
   }
 }
