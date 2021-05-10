@@ -4,6 +4,7 @@
       @next="setTime"
       @close="navigateBack"
       ready-on-init
+      v-show="false"
     />
   </div>
 </template>
@@ -17,14 +18,14 @@ export default {
   computed: {
     layoutState () {
       return {
-        totalSteps: 9,
-        activeStep: 7,
+        totalSteps: 7,
+        activeStep: 6,
         btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: '/request/waste/eight/construction',
-        prevPathRoute: '/request/waste/six/construction'
+        nextPathRoute: '/request/waste/final/household',
+        prevPathRoute: '/request/waste/four/household'
       }
     }
   },
@@ -36,6 +37,7 @@ export default {
   },
   methods: {
     setTime (val) {
+      console.log(val) // 10:00 etc ....
       this.$emit('setEnquiryData', { work_time: val })
       // we force to navigate to next route
       this.$emit('nextForced')

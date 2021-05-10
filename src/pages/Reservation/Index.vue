@@ -61,14 +61,44 @@ export default {
   },
   async mounted () {
     for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].status === '견적신청' || this.items[i].status === '견적상담') { this.apply += 1 } else if (this.items[i].status === '작업예정') { this.counsel++ } else { this.done += 1 }
+      if (this.items[i].status === '견적 신청' || this.items[i].status === '견적 상담') { this.apply += 1 } else if (this.items[i].status === '작업 예정') { this.counsel++ } else { this.done += 1 }
     }
     for (let i = 0; i < this.enquiries.length; i++) {
       const temp = await Vue.prototype.$axios.get('/' + this.enquiries[i] + '/')
-      this.items = this.items.concat(temp.data.results);
+      for (let j = 0; j < temp.data.results.length; j++) {
+        if (this.enquiries[i] === 'household') {
+          temp.data.results[j].options = []
+          temp.data.results[j].options.push('가정집 폐기물')
+          temp.data.results[j].is_elevator ? temp.data.results[j].options.push('엘레베이터 있음') : temp.data.results[j].options.push('엘레베이터 없음')
+          if (temp.data.results[j].items) {
+            temp.data.results[j].options.push(temp.data.results.items)
+          }
+        } else if (this.enquiries[i] === 'business') {
+          temp.data.results[j].options = []
+          temp.data.results[j].options.push('사업장 폐기물')
+          temp.data.results[j].is_elevator ? temp.data.results[j].options.push('엘레베이터 있음') : temp.data.results[j].options.push('엘레베이터 없음')
+          if (temp.data.results[j].items) {
+            temp.data.results[j].options.push(temp.data.results.items)
+          }
+        } else if (this.enquiries[i] === 'recycle') {
+          temp.data.results[j].options = []
+          temp.data.results[j].options.push('재활용 정기수거')
+          temp.data.results[j].is_elevator ? temp.data.results[j].options.push('엘레베이터 있음') : temp.data.results[j].options.push('엘레베이터 없음')
+          if (temp.data.results[j].items) {
+            temp.data.results[j].options.push(temp.data.results.items)
+          }
+        } else if (this.enquiries[i] === 'construction') {
+          temp.data.results[j].options = []
+          temp.data.results[j].options.push('건설 폐기물')
+          temp.data.results[j].is_elevator ? temp.data.results[j].options.push('엘레베이터 있음') : temp.data.results[j].options.push('엘레베이터 없음')
+          if (temp.data.results[j].items) {
+            temp.data.results[j].options.push(temp.data.results.items)
+          }
+        }
+        this.items = this.items.concat(temp.data.results)
+      }
     }
-    console.log(this.items)
-  },
+  }
 }
 </script>
 

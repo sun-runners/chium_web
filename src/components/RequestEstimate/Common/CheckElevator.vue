@@ -36,21 +36,21 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      elevator: ["있음", "없음"],
-      selected: "있음",
-    };
+      elevator: ['있음', '없음'],
+      selected: '있음'
+    }
   },
-  mounted() {
-    this.$emit("elevatorAnswer", this.selected);
+  mounted () {
+    this.$emit('elevatorAnswer', this.selected)
   },
   watch: {
-    selected(val) {
-      this.$emit("elevatorAnswer", val);
-    },
-  },
-};
+    selected (val) {
+      this.$emit('elevatorAnswer', val)
+    }
+  }
+}
 </script>
 
 <style scoped>

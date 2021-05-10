@@ -1,51 +1,45 @@
 <template>
   <div>
-    <change-schedule-work-time
-      @next="setTime"
-      @close="navigateBack"
-      ready-on-init
-    />
+    <work-due-date @next="setDate" />
   </div>
 </template>
 
 <script>
-import ChangeScheduleWorkTime from "components/RequestEstimate/FinalStep/BottomDialogs/ChangeScheduleWorkTime";
+import { WorkDueDate } from 'components/RequestEstimate/Common'
 export default {
   components: {
-    "change-schedule-work-time": ChangeScheduleWorkTime,
+    WorkDueDate
   },
   computed: {
-    layoutState() {
+    layoutState () {
       return {
-        totalSteps: 6,
+        totalSteps: 7,
         activeStep: 5,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/final/business",
-        prevPathRoute: "/request/waste/four/business",
-      };
-    },
+        nextPathRoute: '/request/waste/six/business',
+        prevPathRoute: '/request/waste/four/business'
+      }
+    }
   },
-  mounted() {
-    this.$emit("setStateLayout", this.layoutState);
-    setTimeout(() => {
-      this.$emit("next", true);
-    }, 1000);
+  mounted () {
+    this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
-    setTime(val) {
-      this.$emit("setEnquiryData", { work_time: val });
-      // we force to navigate to next route
-      this.$emit("nextForced");
-    },
-    navigateBack() {
-      // we force to return to previous route
-      this.$emit("prevForced");
-    },
-  },
-};
+    setDate (val) {
+      if (val === 'undecided') {
+        console.log('undecided')
+        this.$emit('setEnquiryData', { work_date: null })
+        this.$emit('next', val)
+      } else if (val) {
+        this.$emit('setEnquiryData', { work_date: val })
+        this.$emit('next', val)
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>

@@ -30,30 +30,30 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      myImage: null,
-    };
+      myImage: null
+    }
   },
   methods: {
-    onRejected(rejectedEntries) {
+    onRejected (rejectedEntries) {
       // Notify plugin needs to be installed
       // https://quasar.dev/quasar-plugins/notify#Installation
       this.$q.notify({
-        type: "negative",
-        message: `${rejectedEntries.length} file(s) did not pass validation constraints`,
-      });
+        type: 'negative',
+        message: `${rejectedEntries.length} file(s) did not pass validation constraints`
+      })
     },
-    attachImage(e) {
-      this.$emit("attachImage", this.myImage);
-      this.$refs.myImageField.blur();
+    attachImage (e) {
+      this.$emit('attachImage', this.myImage)
+      this.$refs.myImageField.blur()
       this.$q.notify({
-        type: "possitive",
-        message: `Image Selected`,
-      });
-    },
-  },
-};
+        type: 'possitive',
+        message: 'Image Selected'
+      })
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

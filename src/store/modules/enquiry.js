@@ -28,6 +28,7 @@ export const enquiryStore = {
         ...state.enquiry,
         ...payload
       }
+      console.log(state.enquiry)
     },
     postEnquiry: async function (state, payload) {
       // Variable Section

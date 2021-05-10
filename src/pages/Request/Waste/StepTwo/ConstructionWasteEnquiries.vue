@@ -32,61 +32,63 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      searchText: "",
+      searchText: '',
       scrapItems: [
-        "콘크리트",
-        "아스팔트 콘크리트",
-        "벽돌",
-        "기와",
-        "목재",
-        "합성수지",
-        "섬유",
-        "벽지",
-        "건설오니",
-        "금속류",
-        "유리",
-        "타일 및 도자기",
-        "보드류",
-        "판넬",
-        "건설토석",
-        "혼합 건설 폐기물",
-        "기타 폐기물",
+        '콘크리트',
+        '아스팔트 콘크리트',
+        '벽돌',
+        '기와',
+        '목재',
+        '합성수지',
+        '섬유',
+        '벽지',
+        '건설오니',
+        '금속류',
+        '유리',
+        '타일 및 도자기',
+        '보드류',
+        '판넬',
+        '건설토석',
+        '혼합 건설 폐기물',
+        '기타 폐기물'
       ],
-      selectedItem: [],
-    };
+      selectedItem: []
+    }
   },
   props: {
-    dialog: Boolean,
+    dialog: Boolean
   },
   computed: {
-    layoutState() {
+    layoutState () {
       return {
-        totalSteps: 8,
+        totalSteps: 9,
         activeStep: 2,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/three/construction",
-        prevPathRoute: "/request/waste",
-      };
-    },
+        nextPathRoute: '/request/waste/three/construction',
+        prevPathRoute: '/request/waste'
+      }
+    }
   },
-  mounted() {
-    this.$emit("setStateLayout", this.layoutState);
+  mounted () {
+    this.$emit('setStateLayout', this.layoutState)
+    this.$store.state.category.category = 'construction'
+    console.log(this.$store.state.category)
   },
   methods: {
-    checkItem(item) {
+    checkItem (item) {
       if (!this.selectedItem.includes(item)) {
-        this.selectedItem.push(item);
+        this.selectedItem.push(item)
       } else {
-        this.selectedItem = this.selectedItem.filter((i) => i != item);
+        this.selectedItem = this.selectedItem.filter((i) => i !== item)
       }
       if (this.selectedItem.length) {
-        this.$emit("setEnquiryData", {items:this.selectedItem.join()});
-        this.$emit("next", true);
+        this.$emit('setEnquiryData', { items: this.selectedItem.join() })
+        this.$emit('next', true)
       }
     }
     //
@@ -96,11 +98,11 @@ export default {
     // }
   },
   watch: {
-    selectedItem(newVal) {
-      newVal.length > 0 ? this.$emit("next", true) : this.$emit("next", false);
-    },
+    selectedItem (newVal) {
+      newVal.length > 0 ? this.$emit('next', true) : this.$emit('next', false)
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

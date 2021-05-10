@@ -72,18 +72,6 @@ export default {
     }
   },
   computed: {
-    // layoutState () {
-    //   return {
-    //     totalSteps: 6,
-    //     activeStep: 3,
-    //     btnLabel: '다음',
-    //     isBtnReady: false,
-    //     isBtnHidden: false,
-    //     requestComplete: false,
-    //     nextPathRoute: '/request/waste/four/recycle',
-    //     prevPathRoute: '/request/waste/two/recycle'
-    //   }
-    // }
   },
   mounted () {
     const data = this.$store.state.category.enquiry.address
@@ -108,7 +96,7 @@ export default {
       this.$emit('next', true)
     },
     goAddress () {
-      this.$router.push({ name: 'request_address', query: { back: '/request/waste/three/recycle' } })
+      this.$router.push({ path: '/request/request_address', query: { back: '/request/waste/three/recycle' } })
     }
   }
 }

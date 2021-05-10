@@ -27,60 +27,58 @@ import {
   HeadSection,
   RequestPlace,
   Requester,
-  RequestDetails,
-} from "components/RequestEstimate/FinalStep";
+  RequestDetails
+} from 'components/RequestEstimate/FinalStep'
 export default {
   components: {
-    "head-section": HeadSection,
-    "request-place": RequestPlace,
+    'head-section': HeadSection,
+    'request-place': RequestPlace,
     requester: Requester,
-    "request-details": RequestDetails,
+    'request-details': RequestDetails
   },
-  data() {
+  data () {
     return {
       // head
-      schedule: "07월 24일(금) 오후 02:00시 예정",
+      schedule: `${this.$store.state.category.enquiry.work_date} ${this.$store.state.category.enquiry.work_time} 작업 예정`,
       // request place
       placeOfDischarge:
-        "경기도 치움시 철거동 123-4 치움 번지 폐기 타운하우스 112호",
-      type: "상업공간 32",
-      elevator: "있음",
+          this.$store.state.category.enquiry.address + (this.$store.state.category.enquiry.description ? ` ${this.$store.state.category.enquiry.description}` : ''),
+      elevator: this.$store.state.category.enquiry.is_elevator,
       // requester
       contact: {
-        text: "홍길동",
-        phone: "010-1234-5678",
+        text: this.$store.state.user.data.name,
+        phone: this.$store.state.user.data.phone
       },
       // Request Details
-      work: "가정집 폐기물 h",
-      discardedGoods: ["핸드블랜더1", "전자렌지2", "건조기1", "세탁기1"],
-      scheduleDate: "07월 24일 (목) -",
-      scheduleTime: "오전 08:00시 s",
-      company: "전국 불도저",
-    };
+      work: '사업장 폐기물',
+      discardedGoods: this.$store.state.category.enquiry.items.split(','),
+      scheduleDate: this.$store.state.category.enquiry.work_date,
+      scheduleTime: this.$store.state.category.enquiry.work_time,
+    }
   },
   computed: {
-    layoutState() {
+    layoutState () {
       return {
-        totalSteps: 6,
-        activeStep: 6,
-        btnLabel: "견적신청완료",
+        totalSteps: 7,
+        activeStep: 7,
+        btnLabel: '견적신청완료',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/home",
-        prevPathRoute: "/request/waste/five/business",
-      };
-    },
+        nextPathRoute: '/home',
+        prevPathRoute: '/request/waste/six/business'
+      }
+    }
   },
-  mounted() {
-    this.$emit("setStateLayout", this.layoutState);
+  mounted () {
+    this.$emit('setStateLayout', this.layoutState)
     setTimeout(() => {
-      this.$emit("next", true);
-    }, 1000);
+      this.$emit('next', true)
+    }, 1000)
   },
   methods: {},
-  watch: {},
-};
+  watch: {}
+}
 </script>
 
 <style lang="scss" scoped></style>

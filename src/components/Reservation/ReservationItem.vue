@@ -3,19 +3,19 @@
     <q-card-section class="row justify-between">
       <div class="row">
         <div class="text-dark q-mr-md" style="font-size: 16px;">{{ item.status }}</div>
-        <div class="text-grey row items-center" style="font-size: 12px;">{{ item.work_date }}</div>
+        <div class="text-grey row items-center" style="font-size: 12px;">{{ item.work_date||`매주 ${item.regular_date}` }}</div>
       </div>
       <div>
-        <q-btn
-          color="secondary"
-          padding="0px"
-          class="q-ma-none q-pa-none"
-          flat
-          size="12px"
-          label="상세보기"
-          :to="{name:'reservation_detail'}"
-        />
-        <q-icon name="keyboard_arrow_right" class="text-secondary" style="font-size: 18px;" />
+<!--        <q-btn-->
+<!--          color="secondary"-->
+<!--          padding="0px"-->
+<!--          class="q-ma-none q-pa-none"-->
+<!--          flat-->
+<!--          size="12px"-->
+<!--          label="상세보기"-->
+<!--          :to="{name:'reservation_detail'}"-->
+<!--        />-->
+<!--        <q-icon name="keyboard_arrow_right" class="text-secondary" style="font-size: 18px;" />-->
       </div>
     </q-card-section>
     <q-separator inset />
@@ -124,14 +124,14 @@ export default {
     item: Object,
   },
   methods: {
-    goToDetails() {
+    goToDetails () {
       this.$router.push({
-        name: "reservation_detail",
-        params: { item: this.item },
-      });
-    },
-  },
-};
+        name: 'reservation_detail',
+        params: { item: this.item }
+      })
+    }
+  }
+}
 </script>
 
 <style>

@@ -96,7 +96,7 @@ export default {
       const layoutState = this.layoutState
       layoutState.nextPathRoute = `/request/waste/two/${val}`
       this.$emit('setStateLayout', layoutState)
-      this.$emit('setEnquiryData', { category: val })
+      this.$emit('setEnquiry', { category: val })
     }
   }
 }

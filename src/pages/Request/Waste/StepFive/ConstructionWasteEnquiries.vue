@@ -1,52 +1,42 @@
 <template>
-  <div>
-    <work-due-date @next="(val) => $emit('next', val)" />
+  <div class="bg-white">
+    <check-elevator @elevatorAnswer="hasElevator" />
   </div>
 </template>
 
 <script>
-import { WorkDueDate } from "src/components/RequestEstimate/Common";
+import { CheckElevator } from 'components/RequestEstimate/Common'
 export default {
   components: {
-    WorkDueDate,
+    'check-elevator': CheckElevator
   },
   computed: {
-    layoutState() {
+    layoutState () {
       return {
-        totalSteps: 8,
+        totalSteps: 9,
         activeStep: 5,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/six/construction",
-        prevPathRoute: "/request/waste/four/construction",
-      };
-    },
+        nextPathRoute: '/request/waste/six/construction',
+        prevPathRoute: '/request/waste/four/construction'
+      }
+    }
   },
-  mounted() {
-    this.$emit("setStateLayout", this.layoutState);
+  mounted () {
+    this.$emit('setStateLayout', this.layoutState)
+    setTimeout(() => {
+      this.$emit('next', true)
+    }, 1000)
   },
-};
+  methods: {
+    hasElevator (answer) {
+      this.$emit('setEnquiryData', { is_elevator: answer })
+      this.$emit('next', true)
+    }
+  }
+}
 </script>
 
-<style lang="scss" scoped>
-.heading-title {
-  font-size: 27px;
-  line-height: 38px;
-  display: flex;
-  align-items: center;
-  letter-spacing: -1.35px;
-  color: #15161a;
-  padding-bottom: 36px;
-}
-.heading-subtitle {
-  color: #959595;
-}
-.schedule-undecided {
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: -0.8px;
-  color: #15161a;
-}
-</style>
+<style lang="scss" scoped></style>

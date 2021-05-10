@@ -56,7 +56,7 @@ export default {
         },
         {
           icon1: 'Building_1.svg',
-          label: '사업장 폐기물',
+          label: '건물 철거',
           val: 'business',
         },
         {
@@ -66,7 +66,7 @@ export default {
         },
         {
           icon1: 'Asbestos.svg',
-          label: '석면철거',
+          label: '석면 철거',
           val: 'recycle',
         },
       ],
@@ -90,7 +90,7 @@ export default {
     this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
-    setSelectedWaste(val) {
+    setSelectedWaste (val) {
       this.selectedWaste = val;
       const layoutState = this.layoutState;
       layoutState.nextPathRoute = `/request/demolition/two/${val}`;

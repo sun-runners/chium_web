@@ -89,6 +89,8 @@ export default {
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
+    this.$store.state.category.category = 'recycle'
+    console.log(this.$store.state.category)
   },
   methods: {
     setRecyclePlace (val) {

@@ -13,7 +13,7 @@ export default {
   computed: {
     layoutState () {
       return {
-        totalSteps: 6,
+        totalSteps: 7,
         activeStep: 2,
         btnLabel: '다음',
         isBtnReady: false,
@@ -26,12 +26,15 @@ export default {
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
+    this.$store.state.category.category = 'household'
+    console.log(this.$store.state.category)
   },
   methods: {
     setItems (val) {
       console.log(val.length)
       if (val) {
         console.log({ items: val.join() })
+        console.log(this.$store.state)
         this.$emit('setEnquiryData', { items: val.join() })
         this.$emit('next', true)
       }

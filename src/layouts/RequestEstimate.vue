@@ -112,7 +112,7 @@ export default {
     },
     __onHandleNextStep () {
       if (this.activeStep === 1) {
-        this.$store.commit('patchEnquiry', { category: this.category })
+        this.$store.commit('setEnquiry', { category: this.category })
       } else if (this.totalSteps - this.activeStep === 0) {
         this.$store.commit('postEnquiry', this.$store.state.user.data.id)
       } else {

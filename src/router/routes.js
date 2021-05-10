@@ -22,7 +22,6 @@ const routes = [
       { path: 'reservation/detail', component: () => import('pages/Reservation/Detail/Index'), name: 'reservation_detail', heading_name: '예약상세보기' },
       { path: 'search', component: () => import('pages/Search/Index'), name: 'search' },
       { path: 'my_page', component: () => import('pages/MyPage/Index'), name: 'my_page' },
-      { path: 'request_address', component: () => import('components/RequestEstimate/Common/Address/RequestAddress'), name: 'request_address'},
       // Test
       { path: 'address', component: () => import('components/Address/Address'), name: 'address' }
     ]
@@ -31,6 +30,7 @@ const routes = [
     redirect: '/request/waste',
     component: () => import('layouts/RequestEstimate.vue'),
     children: [
+      { path: 'request_address', component: () => import('components/RequestEstimate/Common/Address/RequestAddress'), name: 'request_address'},
       { path: 'waste', component: () => import('pages/Request/Waste/Index.vue'), name: 'waste' },
       // step Two
       { path: 'waste/two/household', component: () => import('src/pages/Request/Waste/StepTwo/HouseholdWasteEnquiries.vue') },
@@ -38,24 +38,30 @@ const routes = [
       { path: 'waste/two/construction', component: () => import('src/pages/Request/Waste/StepTwo/ConstructionWasteEnquiries.vue') },
       { path: 'waste/two/recycle', component: () => import('src/pages/Request/Waste/StepTwo/RecycleEnquiries.vue') },
       // step Three
-      { path: 'waste/three/household', component: () => import('src/pages/Request/Waste/StepThree/HouseholdWasteEnquiries.vue') },
-      { path: 'waste/three/business', component: () => import('src/pages/Request/Waste/StepThree/BusinessWasteEnquiries.vue') },
+      { path: 'waste/three/household', component: () => import('pages/Request/Waste/StepThree/HouseholdWasteEnquiries.vue') },
+      { path: 'waste/three/business', component: () => import('pages/Request/Waste/StepThree/BusinessWasteEnquiries.vue') },
       { path: 'waste/three/construction', component: () => import('src/pages/Request/Waste/StepThree/ConstructionWasteEnquiries.vue') },
       { path: 'waste/three/recycle', component: () => import('src/pages/Request/Waste/StepThree/RecycleEnquiries.vue') },
       // step Four
-      { path: 'waste/four/household', component: () => import('src/pages/Request/Waste/StepFour/HouseholdWasteEnquiries.vue') },
-      { path: 'waste/four/business', component: () => import('src/pages/Request/Waste/StepFour/BusinessWasteEnquiries.vue') },
-      { path: 'waste/four/construction', component: () => import('src/pages/Request/Waste/StepFour/ConstructionWasteEnquiries.vue') },
+      { path: 'waste/four/household', component: () => import('pages/Request/Waste/StepFour/HouseholdWasteEnquiries.vue') },
+      { path: 'waste/four/business', component: () => import('pages/Request/Waste/StepFour/BusinessWasteEnquiries.vue') },
+      { path: 'waste/four/construction', component: () => import('pages/Request/Waste/StepFour/ConstructionWasteEnquiries.vue') },
       { path: 'waste/four/recycle', component: () => import('src/pages/Request/Waste/StepFour/RecycleEnquiries.vue') },
       // step Five
-      { path: 'waste/five/household', component: () => import('src/pages/Request/Waste/StepFive/HouseholdWasteEnquiries.vue') },
-      { path: 'waste/five/business', component: () => import('src/pages/Request/Waste/StepFive/BusinessWasteEnquiries.vue') },
-      { path: 'waste/five/construction', component: () => import('src/pages/Request/Waste/StepFive/ConstructionWasteEnquiries.vue') },
+      { path: 'waste/five/household', component: () => import('pages/Request/Waste/StepFive/HouseholdWasteEnquiries.vue') },
+      { path: 'waste/five/business', component: () => import('pages/Request/Waste/StepFive/BusinessWasteEnquiries.vue') },
+      { path: 'waste/five/construction', component: () => import('pages/Request/Waste/StepFive/ConstructionWasteEnquiries.vue') },
       { path: 'waste/five/recycle', component: () => import('src/pages/Request/Waste/StepFive/RecycleEnquiries.vue') },
       //  Six
-      { path: 'waste/six/construction', component: () => import('src/pages/Request/Waste/StepSix/ConstructionWasteEnquiries.vue') },
+      { path: 'waste/six/construction', component: () => import('pages/Request/Waste/StepSix/ConstructionWasteEnquiries.vue') },
+      { path: 'waste/six/household', component: () => import('pages/Request/Waste/StepSix/HouseholdWasteEnquiries.vue') },
+      { path: 'waste/six/business', component: () => import('pages/Request/Waste/StepSix/BusinessWasteEnquiries.vue') },
+
       //  Seven
-      { path: 'waste/seven/construction', component: () => import('src/pages/Request/Waste/StepSeven/ConstructionWasteEnquiries.vue') },
+      { path: 'waste/seven/construction', component: () => import('pages/Request/Waste/StepSeven/ConstructionWasteEnquiries.vue') },
+
+      //   Eight
+      { path: 'waste/eight/construction', component: () => import('pages/Request/Waste/StepEight/ConstructionWasteEnquiries.vue') },
       // step Final
       { path: 'waste/final/household', component: () => import('src/pages/Request/Waste/FinalStep/HouseholdWasteEnquiries.vue') },
       { path: 'waste/final/business', component: () => import('src/pages/Request/Waste/FinalStep/BusinessWasteEnquiries.vue') },

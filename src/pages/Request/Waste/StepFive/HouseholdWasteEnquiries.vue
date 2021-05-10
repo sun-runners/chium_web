@@ -1,53 +1,64 @@
 <template>
   <div>
-    <change-schedule-work-time
-      @next="setTime"
-      @close="navigateBack"
-      ready-on-init
-      v-show="false"
-    />
+    <work-due-date @next="setDate" />
   </div>
 </template>
 
 <script>
-import ChangeScheduleWorkTime from "components/RequestEstimate/FinalStep/BottomDialogs/ChangeScheduleWorkTime";
+import { WorkDueDate } from 'components/RequestEstimate/Common'
 export default {
   components: {
-    "change-schedule-work-time": ChangeScheduleWorkTime,
+    WorkDueDate
   },
   computed: {
-    layoutState() {
+    layoutState () {
       return {
-        totalSteps: 6,
+        totalSteps: 7,
         activeStep: 5,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/waste/final/household",
-        prevPathRoute: "/request/waste/four/household",
-      };
-    },
+        nextPathRoute: '/request/waste/six/household',
+        prevPathRoute: '/request/waste/four/household'
+      }
+    }
   },
-  mounted() {
-    this.$emit("setStateLayout", this.layoutState);
-    setTimeout(() => {
-      this.$emit("next", true);
-    }, 1000);
+  mounted () {
+    this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
-    setTime(val) {
-      console.log(val); // 10:00 etc ....
-      this.$emit("setEnquiryData", { work_time: val });
-      // we force to navigate to next route
-      this.$emit("nextForced");
-    },
-    navigateBack() {
-      // we force to return to previous route
-      this.$emit("prevForced");
-    },
-  },
-};
+    setDate (val) {
+      if (val === 'undecided') {
+        console.log('undecided')
+        this.$emit('setEnquiryData', { work_date: null })
+        this.$emit('next', val)
+      } else if (val) {
+        this.$emit('setEnquiryData', { work_date: val })
+        this.$emit('next', val)
+      }
+    }
+  }
+}
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.heading-title {
+  font-size: 27px;
+  line-height: 38px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -1.35px;
+  color: #15161a;
+  padding-bottom: 36px;
+}
+.heading-subtitle {
+  color: #959595;
+}
+.schedule-undecided {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.8px;
+  color: #15161a;
+}
+</style>
