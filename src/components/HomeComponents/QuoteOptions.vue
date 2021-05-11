@@ -21,7 +21,7 @@
           class="full-width full-height home-btn bg-white"
           type="a"
           align="center"
-          @click="goDemolition">
+          @click="alertNotReady">
           <q-icon
             size="110px"
             :name="`img:${require('src/assets/icon_swipe.svg')}`"
@@ -105,6 +105,9 @@ export default {
     },
     async goDemolition () {
       await this.$router.push({ name: 'demolition' })
+    },
+    alertNotReady () {
+      this.$emit('alertNotReady')
     }
   }
 }
