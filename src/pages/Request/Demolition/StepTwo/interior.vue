@@ -36,14 +36,14 @@ export default {
   computed: {
     layoutState () {
       return {
-        totalSteps: 4,
+        totalSteps: 8,
         activeStep: 2,
         btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: '/request/demolition/three/household',
-        prevPathRoute: '/request/demolition'
+        nextPathRoute: '/request/demolition/three/interior',
+        prevPathRoute: '/request/demolition/one'
       }
     },
     wasteTypeOption () {

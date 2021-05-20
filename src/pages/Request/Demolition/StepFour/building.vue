@@ -13,8 +13,8 @@ export default {
         isBtnReady: true,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/demolition/five/interior",
-        prevPathRoute: "/request/demolition/three/interior",
+        nextPathRoute: "/request/demolition/five/building",
+        prevPathRoute: "/request/demolition/three/building",
       };
     },
   },

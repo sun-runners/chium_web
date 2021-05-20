@@ -72,18 +72,25 @@ const routes = [
       { path: 'demolition/one', component: () => import('pages/Request/Demolition/Index.vue'), name: 'demolition' },
       // step Two
       { path: 'demolition/two/interior', component: () => import('src/pages/Request/Demolition/StepTwo/interior.vue') },
+      { path: 'demolition/two/building', component: () => import('src/pages/Request/Demolition/StepTwo/building.vue') },
       // step Three
       { path: 'demolition/three/interior', component: () => import('pages/Request/Demolition/StepThree/interior.vue') },
+      { path: 'demolition/three/building', component: () => import('pages/Request/Demolition/StepThree/building.vue') },
       // step Four
       { path: 'demolition/four/interior', component: () => import('pages/Request/Demolition/StepFour/interior.vue') },
+      { path: 'demolition/four/building', component: () => import('pages/Request/Demolition/StepFour/building.vue') },
        // step Five
       { path: 'demolition/five/interior', component: () => import('pages/Request/Demolition/StepFive/interior.vue') },
+      { path: 'demolition/five/building', component: () => import('pages/Request/Demolition/StepFive/building.vue') },
       // step Six
       { path: 'demolition/six/interior', component: () => import('pages/Request/Demolition/StepSix/interior.vue') },
+      { path: 'demolition/six/building', component: () => import('pages/Request/Demolition/StepSix/building.vue') },
       // step Seven
       { path: 'demolition/seven/interior', component: () => import('pages/Request/Demolition/StepSeven/interior.vue') },
+      { path: 'demolition/seven/building', component: () => import('pages/Request/Demolition/StepSeven/building.vue') },
       // step Final
-      { path: 'demolition/final/interior', component: () => import('pages/Request/Demolition/FinalStep/interior.vue') }
+      { path: 'demolition/final/interior', component: () => import('pages/Request/Demolition/FinalStep/interior.vue') },
+      { path: 'demolition/final/building', component: () => import('pages/Request/Demolition/FinalStep/building.vue') }
     ]
   }, {
     path: '/store',
