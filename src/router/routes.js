@@ -30,7 +30,7 @@ const routes = [
     redirect: '/request/waste',
     component: () => import('layouts/RequestEstimate.vue'),
     children: [
-      { path: 'request_address', component: () => import('components/RequestEstimate/Common/Address/RequestAddress'), name: 'request_address'},
+      { path: 'request_address', component: () => import('components/RequestEstimate/Common/Address/RequestAddress'), name: 'request_address' },
       { path: 'waste', component: () => import('pages/Request/Waste/Index.vue'), name: 'waste' },
       // step Two
       { path: 'waste/two/household', component: () => import('src/pages/Request/Waste/StepTwo/HouseholdWasteEnquiries.vue') },
@@ -73,24 +73,31 @@ const routes = [
       // step Two
       { path: 'demolition/two/interior', component: () => import('src/pages/Request/Demolition/StepTwo/interior.vue') },
       { path: 'demolition/two/building', component: () => import('src/pages/Request/Demolition/StepTwo/building.vue') },
+      { path: 'demolition/two/structure', component: () => import('src/pages/Request/Demolition/StepTwo/structure.vue') },
       // step Three
       { path: 'demolition/three/interior', component: () => import('pages/Request/Demolition/StepThree/interior.vue') },
       { path: 'demolition/three/building', component: () => import('pages/Request/Demolition/StepThree/building.vue') },
+      { path: 'demolition/three/structure', component: () => import('pages/Request/Demolition/StepThree/structure.vue') },
       // step Four
       { path: 'demolition/four/interior', component: () => import('pages/Request/Demolition/StepFour/interior.vue') },
       { path: 'demolition/four/building', component: () => import('pages/Request/Demolition/StepFour/building.vue') },
-       // step Five
+      { path: 'demolition/four/structure', component: () => import('pages/Request/Demolition/StepFour/structure.vue') },
+      // step Five
       { path: 'demolition/five/interior', component: () => import('pages/Request/Demolition/StepFive/interior.vue') },
       { path: 'demolition/five/building', component: () => import('pages/Request/Demolition/StepFive/building.vue') },
+      { path: 'demolition/five/structure', component: () => import('pages/Request/Demolition/StepFive/structure.vue') },
       // step Six
       { path: 'demolition/six/interior', component: () => import('pages/Request/Demolition/StepSix/interior.vue') },
       { path: 'demolition/six/building', component: () => import('pages/Request/Demolition/StepSix/building.vue') },
+      { path: 'demolition/six/structure', component: () => import('pages/Request/Demolition/StepSix/structure.vue') },
       // step Seven
       { path: 'demolition/seven/interior', component: () => import('pages/Request/Demolition/StepSeven/interior.vue') },
       { path: 'demolition/seven/building', component: () => import('pages/Request/Demolition/StepSeven/building.vue') },
+      { path: 'demolition/seven/structure', component: () => import('pages/Request/Demolition/StepSeven/structure.vue') },
       // step Final
       { path: 'demolition/final/interior', component: () => import('pages/Request/Demolition/FinalStep/interior.vue') },
-      { path: 'demolition/final/building', component: () => import('pages/Request/Demolition/FinalStep/building.vue') }
+      { path: 'demolition/final/building', component: () => import('pages/Request/Demolition/FinalStep/building.vue') },
+      { path: 'demolition/final/structure', component: () => import('pages/Request/Demolition/FinalStep/structure.vue') }
     ]
   }, {
     path: '/store',

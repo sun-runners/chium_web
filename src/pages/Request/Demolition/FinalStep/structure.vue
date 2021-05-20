@@ -1,5 +1,5 @@
 <template>
-  <h3>Step Final</h3>
+  <h3>Step final</h3>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: "/home",
-        prevPathRoute: "/request/demolition/seven/building",
+        prevPathRoute: "/request/demolition/seven/structure",
       };
     },
   },
