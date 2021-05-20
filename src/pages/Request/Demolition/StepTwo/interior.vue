@@ -43,7 +43,7 @@ export default {
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: '/request/demolition/three/interior',
-        prevPathRoute: '/request/demolition/one'
+        prevPathRoute: '/request/demolition'
       }
     },
     wasteTypeOption () {

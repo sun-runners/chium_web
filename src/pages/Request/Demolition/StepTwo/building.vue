@@ -14,7 +14,7 @@ export default {
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: "/request/demolition/three/building",
-        prevPathRoute: "/request/demolition/one",
+        prevPathRoute: "/request/demolition",
       };
     },
   },

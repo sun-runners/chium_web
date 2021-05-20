@@ -1,5 +1,5 @@
 <template>
-  <h3>Step 2</h3>
+  <h3>Step 5</h3>
 </template>
 
 <script>
@@ -8,13 +8,13 @@ export default {
     layoutState() {
       return {
         totalSteps: 8,
-        activeStep: 2,
+        activeStep: 5,
         btnLabel: "다음",
         isBtnReady: true,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/demolition/three/structure",
-        prevPathRoute: "/request/demolition",
+        nextPathRoute: "/request/demolition/six/asbestos",
+        prevPathRoute: "/request/demolition/four/asbestos",
       };
     },
   },

@@ -31,6 +31,7 @@ const routes = [
     component: () => import('layouts/RequestEstimate.vue'),
     children: [
       { path: 'request_address', component: () => import('components/RequestEstimate/Common/Address/RequestAddress'), name: 'request_address' },
+      // ************ WASTE *******************
       { path: 'waste', component: () => import('pages/Request/Waste/Index.vue'), name: 'waste' },
       // step Two
       { path: 'waste/two/household', component: () => import('src/pages/Request/Waste/StepTwo/HouseholdWasteEnquiries.vue') },
@@ -56,10 +57,8 @@ const routes = [
       { path: 'waste/six/construction', component: () => import('pages/Request/Waste/StepSix/ConstructionWasteEnquiries.vue') },
       { path: 'waste/six/household', component: () => import('pages/Request/Waste/StepSix/HouseholdWasteEnquiries.vue') },
       { path: 'waste/six/business', component: () => import('pages/Request/Waste/StepSix/BusinessWasteEnquiries.vue') },
-
       //  Seven
       { path: 'waste/seven/construction', component: () => import('pages/Request/Waste/StepSeven/ConstructionWasteEnquiries.vue') },
-
       //   Eight
       { path: 'waste/eight/construction', component: () => import('pages/Request/Waste/StepEight/ConstructionWasteEnquiries.vue') },
       // step Final
@@ -67,37 +66,44 @@ const routes = [
       { path: 'waste/final/business', component: () => import('src/pages/Request/Waste/FinalStep/BusinessWasteEnquiries.vue') },
       { path: 'waste/final/construction', component: () => import('src/pages/Request/Waste/FinalStep/ConstructionWasteEnquiries.vue') },
       { path: 'waste/final/recycle', component: () => import('src/pages/Request/Waste/FinalStep/RecycleEnquiries.vue') },
-
-      // demolition
-      { path: 'demolition/one', component: () => import('pages/Request/Demolition/Index.vue'), name: 'demolition' },
+      // ************ DEMOLITION *******************
+      { path: 'demolition/', component: () => import('pages/Request/Demolition/Index.vue'), name: 'demolition' },
       // step Two
       { path: 'demolition/two/interior', component: () => import('src/pages/Request/Demolition/StepTwo/interior.vue') },
       { path: 'demolition/two/building', component: () => import('src/pages/Request/Demolition/StepTwo/building.vue') },
       { path: 'demolition/two/structure', component: () => import('src/pages/Request/Demolition/StepTwo/structure.vue') },
+      { path: 'demolition/two/building', component: () => import('src/pages/Request/Demolition/StepTwo/building.vue') },
+      { path: 'demolition/two/asbestos', component: () => import('src/pages/Request/Demolition/StepTwo/asbestos.vue') },
       // step Three
       { path: 'demolition/three/interior', component: () => import('pages/Request/Demolition/StepThree/interior.vue') },
       { path: 'demolition/three/building', component: () => import('pages/Request/Demolition/StepThree/building.vue') },
       { path: 'demolition/three/structure', component: () => import('pages/Request/Demolition/StepThree/structure.vue') },
+      { path: 'demolition/three/asbestos', component: () => import('pages/Request/Demolition/StepThree/asbestos.vue') },
       // step Four
       { path: 'demolition/four/interior', component: () => import('pages/Request/Demolition/StepFour/interior.vue') },
       { path: 'demolition/four/building', component: () => import('pages/Request/Demolition/StepFour/building.vue') },
       { path: 'demolition/four/structure', component: () => import('pages/Request/Demolition/StepFour/structure.vue') },
+      { path: 'demolition/four/asbestos', component: () => import('pages/Request/Demolition/StepFour/asbestos.vue') },
       // step Five
       { path: 'demolition/five/interior', component: () => import('pages/Request/Demolition/StepFive/interior.vue') },
       { path: 'demolition/five/building', component: () => import('pages/Request/Demolition/StepFive/building.vue') },
       { path: 'demolition/five/structure', component: () => import('pages/Request/Demolition/StepFive/structure.vue') },
+      { path: 'demolition/five/asbestos', component: () => import('pages/Request/Demolition/StepFive/asbestos.vue') },
       // step Six
       { path: 'demolition/six/interior', component: () => import('pages/Request/Demolition/StepSix/interior.vue') },
       { path: 'demolition/six/building', component: () => import('pages/Request/Demolition/StepSix/building.vue') },
       { path: 'demolition/six/structure', component: () => import('pages/Request/Demolition/StepSix/structure.vue') },
+      { path: 'demolition/six/asbestos', component: () => import('pages/Request/Demolition/StepSix/asbestos.vue') },
       // step Seven
       { path: 'demolition/seven/interior', component: () => import('pages/Request/Demolition/StepSeven/interior.vue') },
       { path: 'demolition/seven/building', component: () => import('pages/Request/Demolition/StepSeven/building.vue') },
       { path: 'demolition/seven/structure', component: () => import('pages/Request/Demolition/StepSeven/structure.vue') },
+      { path: 'demolition/seven/asbestos', component: () => import('pages/Request/Demolition/StepSeven/asbestos.vue') },
       // step Final
       { path: 'demolition/final/interior', component: () => import('pages/Request/Demolition/FinalStep/interior.vue') },
       { path: 'demolition/final/building', component: () => import('pages/Request/Demolition/FinalStep/building.vue') },
-      { path: 'demolition/final/structure', component: () => import('pages/Request/Demolition/FinalStep/structure.vue') }
+      { path: 'demolition/final/structure', component: () => import('pages/Request/Demolition/FinalStep/structure.vue') },
+      { path: 'demolition/final/asbestos', component: () => import('pages/Request/Demolition/FinalStep/asbestos.vue') }
     ]
   }, {
     path: '/store',
