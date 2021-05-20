@@ -76,6 +76,12 @@ const routes = [
       { path: 'demolition/three/interior', component: () => import('pages/Request/Demolition/StepThree/interior.vue') },
       // step Four
       { path: 'demolition/four/interior', component: () => import('pages/Request/Demolition/StepFour/interior.vue') },
+       // step Five
+      { path: 'demolition/five/interior', component: () => import('pages/Request/Demolition/StepFive/interior.vue') },
+      // step Six
+      { path: 'demolition/six/interior', component: () => import('pages/Request/Demolition/StepSix/interior.vue') },
+      // step Seven
+      { path: 'demolition/seven/interior', component: () => import('pages/Request/Demolition/StepSeven/interior.vue') },
       // step Final
       { path: 'demolition/final/interior', component: () => import('pages/Request/Demolition/FinalStep/interior.vue') }
     ]
