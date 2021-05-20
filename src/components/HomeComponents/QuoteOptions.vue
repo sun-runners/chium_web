@@ -21,7 +21,7 @@
           class="full-width full-height home-btn bg-white"
           type="a"
           align="center"
-          @click="alertNotReady">
+          @click="goDemolition">
           <q-icon
             size="110px"
             :name="`img:${require('src/assets/icon_swipe.svg')}`"

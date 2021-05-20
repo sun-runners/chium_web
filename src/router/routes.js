@@ -70,11 +70,14 @@ const routes = [
 
       // demolition
       { path: 'demolition/one', component: () => import('pages/Request/Demolition/Index.vue'), name: 'demolition' },
-      { path: 'demolition/two/household', component: () => import('pages/Request/Demolition/StepTwo/household.vue') },
-      { path: 'demolition/three/household', component: () => import('pages/Request/Demolition/StepThree/household.vue') },
-      { path: 'demolition/four/household', component: () => import('pages/Request/Demolition/StepFour/household.vue') },
-      // { path: 'demolition/five/household', component: () => import('pages/Request/Demolition/StepFive/householdwasteenquiries.vue') },
-      { path: 'demolition/final/household', component: () => import('pages/Request/Demolition/FinalStep/household.vue') }
+      // step Two
+      { path: 'demolition/two/interior', component: () => import('src/pages/Request/Demolition/StepTwo/interior.vue') },
+      // step Three
+      { path: 'demolition/three/interior', component: () => import('pages/Request/Demolition/StepThree/interior.vue') },
+      // step Four
+      { path: 'demolition/four/interior', component: () => import('pages/Request/Demolition/StepFour/interior.vue') },
+      // step Final
+      { path: 'demolition/final/interior', component: () => import('pages/Request/Demolition/FinalStep/interior.vue') }
     ]
   }, {
     path: '/store',

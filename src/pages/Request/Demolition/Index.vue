@@ -11,13 +11,14 @@
             clickable="clickable"
             v-for="(list, key) in list_waste_type"
             :key="key"
-            @click="setSelectedWaste(list.val); $emit('next', true);"
+            @click="
+              setSelectedWaste(list.val);
+              $emit('next', true);
+            "
           >
             <q-item-section avatar="avatar">
               <q-icon>
-                <img
-                  :src="require(`assets/demolition_icon/${list.icon1}`)"
-                />
+                <img :src="require(`assets/demolition_icon/${list.icon1}`)" />
               </q-icon>
             </q-item-section>
             <q-item-section
@@ -32,7 +33,8 @@
                       selectedWaste === list.val
                         ? 'radio-btn-selected.png'
                         : 'radio-btn-unselected.png'
-                    }`)"
+                    }`)
+                  "
                 />
               </q-icon>
             </q-item-section>
@@ -47,55 +49,56 @@
 export default {
   data() {
     return {
-      selectedWaste: '',
+      selectedWaste: "",
       list_waste_type: [
         {
-          icon1: 'House.svg',
-          label: '내부 철거',
-          val: 'household',
+          icon1: "House.svg",
+          label: "내부 철거",
+          val: "interior",
         },
         {
-          icon1: 'Building_1.svg',
-          label: '건물 철거',
-          val: 'business',
+          icon1: "Building_1.svg",
+          label: "건물 철거",
+          val: "building",
         },
         {
-          icon1: 'Structure.svg',
-          label: '구조물 철거',
-          val: 'construction',
+          icon1: "Structure.svg",
+          label: "구조물 철거",
+          val: "structure",
         },
         {
-          icon1: 'Asbestos.svg',
-          label: '석면 철거',
-          val: 'recycle',
+          icon1: "Asbestos.svg",
+          label: "석면 철거",
+          val: "asbestos",
         },
       ],
     };
   },
   computed: {
-    layoutState (){
+    layoutState() {
       return {
         totalSteps: 6,
         activeStep: 1,
-        btnLabel: '다음',
+        btnLabel: "다음",
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: '/request/demolition/two/household',
-        prevPathRoute: '/home'
-      }
-    }
+        nextPathRoute: "/request/demolition/two/household",
+        prevPathRoute: "/home",
+      };
+    },
   },
-  mounted(){
-    this.$emit('setStateLayout', this.layoutState)
+  mounted() {
+    this.$emit("setStateLayout", this.layoutState);
   },
   methods: {
-    setSelectedWaste (val) {
+    setSelectedWaste(val) {
       this.selectedWaste = val;
       const layoutState = this.layoutState;
       layoutState.nextPathRoute = `/request/demolition/two/${val}`;
-      this.$emit('setStateLayout', layoutState);
-    }
+      this.$emit("setStateLayout", layoutState);
+      console.log(val);
+    },
   },
 };
 </script>
