@@ -5,35 +5,35 @@
 </template>
 
 <script>
-import { TypeOfSpace } from "src/components/RequestEstimate/Common";
+import { TypeOfSpace } from 'src/components/RequestEstimate/Common'
 export default {
   components: {
-    TypeOfSpace,
+    TypeOfSpace
   },
   computed: {
-    layoutState() {
+    layoutState () {
       return {
         totalSteps: 8,
         activeStep: 2,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/demolition/three/interior",
-        prevPathRoute: "/request/demolition",
-      };
-    },
+        nextPathRoute: '/request/demolition/three/interior',
+        prevPathRoute: '/request/demolition'
+      }
+    }
   },
   methods: {
-    selectedSpaceType(e) {
-      console.log(e); // [ "residential", "빌라" ]
-      this.$emit("next", true);
-    },
+    selectedSpaceType (e) {
+      console.log(e) // [ "residential", "빌라" ]
+      this.$emit('next', true)
+    }
   },
-  mounted() {
-    this.$emit("setStateLayout", this.layoutState);
-  },
-};
+  mounted () {
+    this.$emit('setStateLayout', this.layoutState)
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>
