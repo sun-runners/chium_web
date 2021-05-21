@@ -1,9 +1,15 @@
 <template>
-  <h3>Step 4</h3>
+  <div class="bg-white">
+    <check-elevator @elevatorAnswer="hasElevator($event)" />
+  </div>
 </template>
 
 <script>
+import CheckElevator from "src/components/RequestEstimate/Common/CheckElevator.vue";
 export default {
+  components: {
+    CheckElevator,
+  },
   computed: {
     layoutState() {
       return {
@@ -16,6 +22,12 @@ export default {
         nextPathRoute: "/request/demolition/five/interior",
         prevPathRoute: "/request/demolition/three/interior",
       };
+    },
+  },
+  methods: {
+    hasElevator(answer) {
+      console.log(answer);
+      this.$emit("next", true);
     },
   },
   mounted() {
