@@ -24,7 +24,8 @@
               unelevated
               color="white"
               class="sub-items full-width notosanskr-regular"
-              text-color="black"
+              :class="{ selected: item === selectedItem }"
+              :text-color="item === selectedItem ? 'blue-8' : 'black'"
               :label="item"
               @click="selectedSpaceType(item)"
             />
@@ -45,6 +46,7 @@ export default {
   data() {
     return {
       selectedSpace: "residential",
+      selectedItem: "",
       items: [],
     };
   },
@@ -89,6 +91,7 @@ export default {
   },
   methods: {
     selectedSpaceType(item) {
+      this.selectedItem = item;
       this.$emit("setSpaceType", [this.selectedSpace, item]);
       // [ "residential", "빌라" ]
     },
@@ -121,5 +124,8 @@ export default {
   line-height: 48px;
   text-align: center;
   letter-spacing: -0.75px;
+  &.selected {
+    border: 1px solid #195de4;
+  }
 }
 </style>

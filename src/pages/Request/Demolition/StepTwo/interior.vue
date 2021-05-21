@@ -26,7 +26,8 @@ export default {
   },
   methods: {
     selectedSpaceType(e) {
-      console.log(e);
+      console.log(e); // [ "residential", "빌라" ]
+      this.$emit("next", true);
     },
   },
   mounted() {
