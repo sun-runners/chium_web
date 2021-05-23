@@ -1,9 +1,15 @@
 <template>
-  <h3>Step 3</h3>
+  <div>
+    <space-area-number-floors />
+  </div>
 </template>
 
 <script>
+import SpaceAreaNumberFloors from 'src/components/RequestEstimate/Common/SpaceAreaNumberFloors.vue'
 export default {
+  components: {
+    SpaceAreaNumberFloors
+  },
   computed: {
     layoutState () {
       return {
