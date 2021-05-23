@@ -5,7 +5,7 @@ import UploadPictureSite from './UploadPictureSite'
 import CheckElevator from './CheckElevator'
 import RegularCollectionMonth from './RegularCollectionMonth/Index.vue'
 import TypeOfSpace from './TypeOfSpace'
-import SpaceAreaNumberFloors from './SpaceAreaNumberFloors'
+import AreaSpaceDemolished from './AreaSpaceDemolished/Index.vue'
 
 export {
   ItemsToDispose,
@@ -15,5 +15,5 @@ export {
   CheckElevator,
   RegularCollectionMonth,
   TypeOfSpace,
-  SpaceAreaNumberFloors
+  AreaSpaceDemolished
 }

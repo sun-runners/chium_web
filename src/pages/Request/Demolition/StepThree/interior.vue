@@ -1,14 +1,14 @@
 <template>
   <div>
-    <space-area-number-floors />
+    <area-space-demolished />
   </div>
 </template>
 
 <script>
-import SpaceAreaNumberFloors from 'src/components/RequestEstimate/Common/SpaceAreaNumberFloors.vue'
+import { AreaSpaceDemolished } from 'components/RequestEstimate/Common'
 export default {
   components: {
-    SpaceAreaNumberFloors
+    AreaSpaceDemolished
   },
   computed: {
     layoutState () {
