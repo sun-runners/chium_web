@@ -11,13 +11,14 @@
             clickable="clickable"
             v-for="(list, key) in list_waste_type"
             :key="key"
-            @click="setSelectedWaste(list.val); $emit('next', true);"
+            @click="
+              setSelectedWaste(list.val)
+              $emit('next', true)
+            "
           >
             <q-item-section avatar="avatar">
               <q-icon>
-                <img
-                  :src="require(`assets/demolition_icon/${list.icon1}`)"
-                />
+                <img :src="require(`assets/demolition_icon/${list.icon1}`)" />
               </q-icon>
             </q-item-section>
             <q-item-section
@@ -32,7 +33,8 @@
                       selectedWaste === list.val
                         ? 'radio-btn-selected.png'
                         : 'radio-btn-unselected.png'
-                    }`)"
+                    }`)
+                  "
                 />
               </q-icon>
             </q-item-section>
@@ -45,37 +47,37 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       selectedWaste: '',
       list_waste_type: [
         {
           icon1: 'House.svg',
           label: '내부 철거',
-          val: 'household',
+          val: 'interior'
         },
         {
           icon1: 'Building_1.svg',
           label: '건물 철거',
-          val: 'business',
+          val: 'building'
         },
         {
           icon1: 'Structure.svg',
           label: '구조물 철거',
-          val: 'construction',
+          val: 'structure'
         },
         {
           icon1: 'Asbestos.svg',
           label: '석면 철거',
-          val: 'recycle',
-        },
-      ],
-    };
+          val: 'asbestos'
+        }
+      ]
+    }
   },
   computed: {
-    layoutState (){
+    layoutState () {
       return {
-        totalSteps: 6,
+        totalSteps: 8,
         activeStep: 1,
         btnLabel: '다음',
         isBtnReady: false,
@@ -86,24 +88,25 @@ export default {
       }
     }
   },
-  mounted(){
+  mounted () {
     this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
     setSelectedWaste (val) {
-      this.selectedWaste = val;
-      const layoutState = this.layoutState;
-      layoutState.nextPathRoute = `/request/demolition/two/${val}`;
-      this.$emit('setStateLayout', layoutState);
+      this.selectedWaste = val
+      const layoutState = this.layoutState
+      layoutState.nextPathRoute = `/request/demolition/two/${val}`
+      this.$emit('setStateLayout', layoutState)
+      console.log(val)
     }
-  },
-};
+  }
+}
 </script>
 
 <style scoped>
 .heading-title {
   font-size: 27px;
-  font-family: "notosanskr-regular";
+  font-family: 'notosanskr-regular';
 }
 .heading-subtitle {
   color: #959595;

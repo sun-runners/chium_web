@@ -1,17 +1,19 @@
-import ItemsToDispose from "./ItemsToDispose";
-import WorkDueDate from "./WorkDueDate";
-import VisitSiteAdvance from "./VisitSiteAdvance/Index.vue";
-import UploadPictureSite from "./UploadPictureSite";
-import SelectedItemToDisPosed from "./SelectedItemToDisPosed";
-import CheckElevator from "./CheckElevator";
-import RegularCollectionMonth from "./RegularCollectionMonth/Index.vue";
+import ItemsToDispose from './ItemsToDispose'
+import WorkDueDate from './WorkDueDate'
+import VisitSiteAdvance from './VisitSiteAdvance/Index.vue'
+import UploadPictureSite from './UploadPictureSite'
+import CheckElevator from './CheckElevator'
+import RegularCollectionMonth from './RegularCollectionMonth/Index.vue'
+import TypeOfSpace from './TypeOfSpace'
+import SpaceAreaNumberFloors from './SpaceAreaNumberFloors'
 
 export {
   ItemsToDispose,
   WorkDueDate,
   VisitSiteAdvance,
   UploadPictureSite,
-  SelectedItemToDisPosed,
   CheckElevator,
   RegularCollectionMonth,
-};
+  TypeOfSpace,
+  SpaceAreaNumberFloors
+}
