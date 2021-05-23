@@ -5,11 +5,19 @@
       <div><span>알려주세요.</span></div>
       <small>(평수 : 철거하실 공간면적)</small>
     </section>
+
+    <section>
+      <area-selection />
+    </section>
   </div>
 </template>
 
 <script>
+import AreaSelection from './AreaSelection'
 export default {
+  components: {
+    AreaSelection
+  },
   data () {
     return {
       fiedArea: null,
