@@ -5,23 +5,23 @@
 <script>
 export default {
   computed: {
-    layoutState() {
+    layoutState () {
       return {
         totalSteps: 8,
         activeStep: 3,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: true,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/demolition/four/structure",
-        prevPathRoute: "/request/demolition/two/structure",
-      };
-    },
+        nextPathRoute: '/request/demolition/four/structure',
+        prevPathRoute: '/request/demolition/two/structure'
+      }
+    }
   },
-  mounted() {
-    this.$emit("setStateLayout", this.layoutState);
-  },
-};
+  mounted () {
+    this.$emit('setStateLayout', this.layoutState)
+  }
+}
 </script>
 
 <style lang="scss" scoped></style>

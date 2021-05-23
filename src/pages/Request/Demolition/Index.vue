@@ -12,8 +12,8 @@
             v-for="(list, key) in list_waste_type"
             :key="key"
             @click="
-              setSelectedWaste(list.val);
-              $emit('next', true);
+              setSelectedWaste(list.val)
+              $emit('next', true)
             "
           >
             <q-item-section avatar="avatar">
@@ -47,66 +47,66 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      selectedWaste: "",
+      selectedWaste: '',
       list_waste_type: [
         {
-          icon1: "House.svg",
-          label: "내부 철거",
-          val: "interior",
+          icon1: 'House.svg',
+          label: '내부 철거',
+          val: 'interior'
         },
         {
-          icon1: "Building_1.svg",
-          label: "건물 철거",
-          val: "building",
+          icon1: 'Building_1.svg',
+          label: '건물 철거',
+          val: 'building'
         },
         {
-          icon1: "Structure.svg",
-          label: "구조물 철거",
-          val: "structure",
+          icon1: 'Structure.svg',
+          label: '구조물 철거',
+          val: 'structure'
         },
         {
-          icon1: "Asbestos.svg",
-          label: "석면 철거",
-          val: "asbestos",
-        },
-      ],
-    };
+          icon1: 'Asbestos.svg',
+          label: '석면 철거',
+          val: 'asbestos'
+        }
+      ]
+    }
   },
   computed: {
-    layoutState() {
+    layoutState () {
       return {
         totalSteps: 8,
         activeStep: 1,
-        btnLabel: "다음",
+        btnLabel: '다음',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/request/demolition/two/household",
-        prevPathRoute: "/home",
-      };
-    },
+        nextPathRoute: '/request/demolition/two/household',
+        prevPathRoute: '/home'
+      }
+    }
   },
-  mounted() {
-    this.$emit("setStateLayout", this.layoutState);
+  mounted () {
+    this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
-    setSelectedWaste(val) {
-      this.selectedWaste = val;
-      const layoutState = this.layoutState;
-      layoutState.nextPathRoute = `/request/demolition/two/${val}`;
-      this.$emit("setStateLayout", layoutState);
-      console.log(val);
-    },
-  },
-};
+    setSelectedWaste (val) {
+      this.selectedWaste = val
+      const layoutState = this.layoutState
+      layoutState.nextPathRoute = `/request/demolition/two/${val}`
+      this.$emit('setStateLayout', layoutState)
+      console.log(val)
+    }
+  }
+}
 </script>
 
 <style scoped>
 .heading-title {
   font-size: 27px;
-  font-family: "notosanskr-regular";
+  font-family: 'notosanskr-regular';
 }
 .heading-subtitle {
   color: #959595;

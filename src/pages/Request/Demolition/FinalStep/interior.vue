@@ -12,41 +12,41 @@ import {
   HeadSection,
   RequestPlace,
   Requester,
-  RequestDetails,
-} from "components/RequestEstimate/FinalStep";
+  RequestDetails
+} from 'components/RequestEstimate/FinalStep'
 export default {
   components: {
-    "head-section": HeadSection,
-    "request-place": RequestPlace,
+    'head-section': HeadSection,
+    'request-place': RequestPlace,
     requester: Requester,
-    "request-details": RequestDetails,
+    'request-details': RequestDetails
   },
-  data() {
-    return {};
+  data () {
+    return {}
   },
   computed: {
-    layoutState() {
+    layoutState () {
       return {
         totalSteps: 8,
         activeStep: 8,
-        btnLabel: "견적신청완료",
+        btnLabel: '견적신청완료',
         isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: "/home",
-        prevPathRoute: "/request/demolition/seven/interior",
-      };
-    },
+        nextPathRoute: '/home',
+        prevPathRoute: '/request/demolition/seven/interior'
+      }
+    }
   },
-  mounted() {
-    this.$emit("setStateLayout", this.layoutState);
+  mounted () {
+    this.$emit('setStateLayout', this.layoutState)
     setTimeout(() => {
-      this.$emit("next", true);
-    }, 1000);
+      this.$emit('next', true)
+    }, 1000)
   },
   methods: {},
-  watch: {},
-};
+  watch: {}
+}
 </script>
 
 <style lang="scss" scoped></style>
