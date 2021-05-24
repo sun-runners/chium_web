@@ -3,8 +3,9 @@
     <q-input
       outlined
       class="field"
-      placeholder="폐기물 및 현장 사진을 첨부해주세요."
+      placeholder="Select Area"
       label-color="grey-13"
+      v-model="selectedArea"
     >
       <template v-slot:append>
         <q-btn
@@ -87,15 +88,29 @@ export default {
       firstNumber: '1',
       secondNumber: '4',
       thirdNumber: '5',
-      dialog: false
+      dialog: false,
+      selectedArea: ''
+    }
+  },
+  props: {
+    value: {
+      type: String,
+      default: '1-4-5'
     }
   },
   mounted () {
-    this.$emit('selectedValue', '0')
+    if (!this.value) {
+      return
+    }
+    this.selectedArea = this.value
   },
   methods: {
+    formatSelectedArea () {
+      this.selectedArea = `${this.firstNumber}-${this.secondNumber}-${this.thirdNumber}`
+    },
     complete () {
-      this.$emit('selectedValue', '0')
+      this.formatSelectedArea()
+      this.$emit('input', this.selectedArea)
       this.dialog = false
     }
   }

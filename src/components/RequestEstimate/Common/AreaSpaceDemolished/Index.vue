@@ -7,7 +7,7 @@
     </section>
 
     <section>
-      <area-selection />
+      <area-selection v-model="fiedArea" />
     </section>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   },
   data () {
     return {
-      fiedArea: null,
+      fiedArea: '10평 미만',
       numberOfFloors: null
     }
   }
