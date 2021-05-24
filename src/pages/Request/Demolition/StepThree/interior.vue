@@ -1,6 +1,6 @@
 <template>
   <div>
-    <area-space-demolished />
+    <area-space-demolished @setAreaSpace="setAreaSpace($event)" />
   </div>
 </template>
 
@@ -26,6 +26,14 @@ export default {
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
+  },
+  methods: {
+    /**
+     * @param {Object} e - accepts { fieldArea, numberOfFloors }
+     */
+    setAreaSpace (e) {
+      console.log(e) // { fieldArea: "10평 미만", numberOfFloors: "02" }
+    }
   }
 }
 </script>

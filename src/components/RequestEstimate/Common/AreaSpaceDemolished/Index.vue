@@ -7,7 +7,7 @@
     </section>
 
     <section>
-      <area-selection v-model="fiedArea" class="q-mb-md" />
+      <area-selection v-model="fieldArea" class="q-mb-md" />
       <floor-selection v-model="numberOfFloors" />
     </section>
   </div>
@@ -23,8 +23,22 @@ export default {
   },
   data () {
     return {
-      fiedArea: '10평 미만',
+      fieldArea: '10평 미만',
       numberOfFloors: '1층'
+    }
+  },
+  watch: {
+    fieldArea (newValue) {
+      this.$emit('setAreaSpace', {
+        fieldArea: newValue,
+        numberOfFloors: this.numberOfFloors
+      })
+    },
+    numberOfFloors (newValue) {
+      this.$emit('setAreaSpace', {
+        fieldArea: this.fieldArea,
+        numberOfFloors: newValue
+      })
     }
   }
 }
