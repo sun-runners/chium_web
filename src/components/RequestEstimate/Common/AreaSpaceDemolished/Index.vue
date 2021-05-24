@@ -7,21 +7,24 @@
     </section>
 
     <section>
-      <area-selection v-model="fiedArea" />
+      <area-selection v-model="fiedArea" class="q-mb-md" />
+      <floor-selection v-model="numberOfFloors" />
     </section>
   </div>
 </template>
 
 <script>
 import AreaSelection from './AreaSelection'
+import FloorSelection from './FloorSelection.vue'
 export default {
   components: {
-    AreaSelection
+    AreaSelection,
+    FloorSelection
   },
   data () {
     return {
       fiedArea: '10평 미만',
-      numberOfFloors: null
+      numberOfFloors: '1층'
     }
   }
 }
