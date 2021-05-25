@@ -1,14 +1,14 @@
 <template>
   <div>
-    <space-area-number-floors />
+    <area-space-demolished @setAreaSpace="setAreaSpace($event)" />
   </div>
 </template>
 
 <script>
-import SpaceAreaNumberFloors from 'src/components/RequestEstimate/Common/SpaceAreaNumberFloors.vue'
+import { AreaSpaceDemolished } from 'components/RequestEstimate/Common'
 export default {
   components: {
-    SpaceAreaNumberFloors
+    AreaSpaceDemolished
   },
   computed: {
     layoutState () {
@@ -26,6 +26,14 @@ export default {
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
+  },
+  methods: {
+    /**
+     * @param {Object} e - accepts { fieldArea, numberOfFloors }
+     */
+    setAreaSpace (e) {
+      console.log(e) // { fieldArea: "10평 미만", numberOfFloors: "02" }
+    }
   }
 }
 </script>
