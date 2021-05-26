@@ -1,16 +1,22 @@
 <template>
-  <h3>Step 2</h3>
+  <div class="bg-white">
+    <type-of-building @setBuildingType="selectedBuildingType($event)" />
+  </div>
 </template>
 
 <script>
+import { TypeOfBuilding } from 'components/RequestEstimate/Common'
 export default {
+  components: {
+    TypeOfBuilding
+  },
   computed: {
     layoutState () {
       return {
         totalSteps: 8,
         activeStep: 2,
         btnLabel: '다음',
-        isBtnReady: true,
+        isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: '/request/demolition/three/building',
@@ -20,6 +26,12 @@ export default {
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
+  },
+  methods: {
+    selectedBuildingType (e) {
+      console.log(e)
+      this.$emit('next', true)
+    }
   }
 }
 </script>
