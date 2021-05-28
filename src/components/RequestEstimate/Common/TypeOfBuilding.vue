@@ -10,10 +10,10 @@
           <q-item
             class="q-pt-lg q-pb-lg q-pl-none"
             clickable="clickable"
-            v-for="(list, key) in list_waste_type"
+            v-for="(list, key) in list_building_type"
             :key="key"
             @click="
-              setSelectedWaste(list.val)
+              setSelectedBuilding(list.val)
               $emit('next', true)
             "
           >
@@ -55,7 +55,7 @@ export default {
   data () {
     return {
       selectedWaste: '',
-      list_waste_type: [
+      list_building_type: [
         {
           icon: 'house.svg',
           label: '단독주택',
@@ -84,7 +84,7 @@ export default {
     this.$emit('setStateLayout', this.layoutState)
   },
   methods: {
-    setSelectedWaste (val) {
+    setSelectedBuilding (val) {
       this.selectedWaste = val
       this.$emit('setBuildingType', val)
     }

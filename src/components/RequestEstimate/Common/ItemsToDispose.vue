@@ -61,37 +61,37 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
-      myItem: "",
-      label: "옷장2개 (품목과 수량을 적어주세요.)",
-      discardedItems: [],
-    };
+      myItem: '',
+      label: '옷장2개 (품목과 수량을 적어주세요.)',
+      discardedItems: []
+    }
   },
 
   methods: {
-    addToDiscarded() {
+    addToDiscarded () {
       if (this.myItem && !this.discardedItems.includes(this.myItem)) {
-        this.discardedItems.push(this.myItem);
+        this.discardedItems.push(this.myItem)
       }
-      this.myItem = "";
-      this.$refs.myItemField.blur();
+      this.myItem = ''
+      this.$refs.myItemField.blur()
     },
-    removeFromDiscarded(item) {
+    removeFromDiscarded (item) {
       if (this.discardedItems.includes(item)) {
-        this.discardedItems = this.discardedItems.filter((i) => i != item);
+        this.discardedItems = this.discardedItems.filter(i => i !== item)
       }
-    },
+    }
   },
   watch: {
-    discardedItems(newVal) {
-      this.$emit("next", this.discardedItems);
+    discardedItems (newVal) {
+      this.$emit('next', this.discardedItems)
       if (!newVal.length) {
-        this.$emit("next", false);
+        this.$emit('next', false)
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
