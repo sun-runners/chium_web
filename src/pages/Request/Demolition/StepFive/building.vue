@@ -1,9 +1,15 @@
 <template>
-  <h3>Step 5</h3>
+  <div>
+    <upload-picture-site @attachImage="setImages" />
+  </div>
 </template>
 
 <script>
+import { UploadPictureSite } from 'src/components/RequestEstimate/Common'
 export default {
+  components: {
+    'upload-picture-site': UploadPictureSite
+  },
   computed: {
     layoutState () {
       return {
@@ -20,6 +26,14 @@ export default {
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
+  },
+  methods: {
+    setImages (image) {
+      // image content is in image
+      console.log(image)
+      this.$emit('setEnquiryData', { image: image })
+      this.$emit('next', true)
+    }
   }
 }
 </script>
