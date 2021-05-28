@@ -1,9 +1,15 @@
 <template>
-  <h3>Step 3</h3>
+  <div>
+    <area-space-demolished @setAreaSpace="setAreaSpace($event)" />
+  </div>
 </template>
 
 <script>
+import { AreaSpaceDemolished } from 'components/RequestEstimate/Common'
 export default {
+  components: {
+    AreaSpaceDemolished
+  },
   computed: {
     layoutState () {
       return {
@@ -20,6 +26,14 @@ export default {
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
+  },
+  methods: {
+    /**
+     * @param {Object} e - accepts { fieldArea, numberOfFloors }
+     */
+    setAreaSpace (e) {
+      console.log(e) // { fieldArea: "10평 미만", numberOfFloors: "02" }
+    }
   }
 }
 </script>
