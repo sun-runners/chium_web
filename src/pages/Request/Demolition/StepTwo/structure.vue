@@ -1,16 +1,22 @@
 <template>
-  <h3>Step 2</h3>
+  <div class="bg-white">
+    <type-of-structure @setStructureType="selectedStructureType($event)" />
+  </div>
 </template>
 
 <script>
+import { TypeOfStructure } from 'components/RequestEstimate/Common'
 export default {
+  components: {
+    TypeOfStructure
+  },
   computed: {
     layoutState () {
       return {
         totalSteps: 8,
         activeStep: 2,
         btnLabel: '다음',
-        isBtnReady: true,
+        isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: '/request/demolition/three/structure',
@@ -20,6 +26,12 @@ export default {
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
+  },
+  methods: {
+    selectedStructureType (e) {
+      console.log(e)
+      this.$emit('next', true)
+    }
   }
 }
 </script>
