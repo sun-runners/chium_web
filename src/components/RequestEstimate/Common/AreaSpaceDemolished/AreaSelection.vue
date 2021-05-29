@@ -106,7 +106,7 @@ export default {
   },
   methods: {
     formatSelectedArea () {
-      this.selectedArea = `${this.firstNumber}-${this.secondNumber}-${this.thirdNumber}`
+      this.selectedArea = `${this.firstNumber}${this.secondNumber}${this.thirdNumber} 평`
     },
     complete () {
       this.formatSelectedArea()

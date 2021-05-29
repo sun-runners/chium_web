@@ -98,7 +98,7 @@ export default {
   },
   methods: {
     formatSelectedLayers () {
-      this.selectedLayers = `${this.firstNumber}${this.secondNumber}`
+      this.selectedLayers = `${this.firstNumber}${this.secondNumber} 층`
     },
     complete () {
       this.formatSelectedLayers()
