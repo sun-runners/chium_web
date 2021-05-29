@@ -23,7 +23,7 @@ export default {
         isBtnReady: true,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: '/request/demolition/final/interior',
+        nextPathRoute: '/request/demolition/eight/interior',
         prevPathRoute: '/request/demolition/six/interior'
       }
     }

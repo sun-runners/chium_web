@@ -1,42 +1,55 @@
 <template>
   <div>
-    <change-schedule-work-time
-      @next="setTime"
-      @close="navigateBack"
-      ready-on-init
-    />
+    <!-- {{ visit }} -->
+    <visit-site-advance v-model="visit" />
   </div>
 </template>
 
 <script>
-import ChangeScheduleWorkTime from 'components/RequestEstimate/FinalStep/BottomDialogs/ChangeScheduleWorkTime'
+import { VisitSiteAdvance } from 'components/RequestEstimate/Common'
 export default {
   components: {
-    'change-schedule-work-time': ChangeScheduleWorkTime
+    'visit-site-advance': VisitSiteAdvance
   },
   computed: {
     layoutState () {
       return {
-        totalSteps: 8,
-        activeStep: 7,
+        totalSteps: 9,
+        activeStep: 8,
         btnLabel: '다음',
         isBtnReady: true,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: '/request/demolition/final/building',
-        prevPathRoute: '/request/demolition/six/building'
+        prevPathRoute: '/request/demolition/seven/building'
       }
+    }
+  },
+  data () {
+    return {
+      // "no" or { date: "", time: ""}
+      visit: null
     }
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
   },
-  methods: {
-    setTime (val) {
-      this.$emit('nextForced')
-    },
-    navigateBack () {
-      this.$emit('prevForced')
+  watch: {
+    visit () {
+      this.$emit('next', false)
+
+      if (this.visit === 'no') {
+        // if User decided not to visit
+        this.$emit('next', true)
+        console.log(this.visit) // no
+      }
+      if (typeof this.visit === 'object') {
+        if (this.visit.date && this.visit.time) {
+          // if User decided to visit & value is set
+          this.$emit('next', true)
+          console.log(this.visit.date, this.visit.time) // 2021/03/24 06:25
+        }
+      }
     }
   }
 }
