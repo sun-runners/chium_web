@@ -97,7 +97,6 @@ const routes = [
       // step Seven
       { path: 'demolition/seven/interior', component: () => import('pages/Request/Demolition/StepSeven/interior.vue') },
       { path: 'demolition/seven/building', component: () => import('pages/Request/Demolition/StepSeven/building.vue') },
-      { path: 'demolition/seven/structure', component: () => import('pages/Request/Demolition/StepSeven/structure.vue') },
       { path: 'demolition/seven/asbestos', component: () => import('pages/Request/Demolition/StepSeven/asbestos.vue') },
       // step Final
       { path: 'demolition/final/interior', component: () => import('pages/Request/Demolition/FinalStep/interior.vue') },
