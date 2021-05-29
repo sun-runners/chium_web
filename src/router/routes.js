@@ -103,6 +103,7 @@ const routes = [
       // step Eight
       { path: 'demolition/eight/interior', component: () => import('pages/Request/Demolition/StepEight/interior.vue') },
       { path: 'demolition/eight/building', component: () => import('pages/Request/Demolition/StepEight/building.vue') },
+      { path: 'demolition/eight/asbestos', component: () => import('pages/Request/Demolition/StepEight/asbestos.vue') },
       // step Final
       { path: 'demolition/final/interior', component: () => import('pages/Request/Demolition/FinalStep/interior.vue') },
       { path: 'demolition/final/building', component: () => import('pages/Request/Demolition/FinalStep/building.vue') },
