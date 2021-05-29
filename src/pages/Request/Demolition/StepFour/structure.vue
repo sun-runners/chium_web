@@ -1,16 +1,20 @@
 <template>
-  <h3>Step 4</h3>
+  <div>
+    <work-due-date @next="setDate" />
+  </div>
 </template>
 
 <script>
+import { WorkDueDate } from 'components/RequestEstimate/Common'
 export default {
+  components: { WorkDueDate },
   computed: {
     layoutState () {
       return {
-        totalSteps: 8,
+        totalSteps: 7,
         activeStep: 4,
         btnLabel: '다음',
-        isBtnReady: true,
+        isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: '/request/demolition/five/structure',
@@ -20,6 +24,17 @@ export default {
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
+  },
+  methods: {
+    setDate (val) {
+      if (val === 'undecided') {
+        console.log('undecided')
+        this.$emit('next', val)
+      } else if (val) {
+        console.log(val)
+        this.$emit('next', val)
+      }
+    }
   }
 }
 </script>

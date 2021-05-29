@@ -6,6 +6,8 @@ import CheckElevator from './CheckElevator'
 import RegularCollectionMonth from './RegularCollectionMonth/Index.vue'
 import TypeOfSpace from './TypeOfSpace'
 import AreaSpaceDemolished from './AreaSpaceDemolished/Index.vue'
+import TypeOfBuilding from './TypeOfBuilding'
+import TypeOfStructure from './TypeOfStructure'
 
 export {
   ItemsToDispose,
@@ -15,5 +17,7 @@ export {
   CheckElevator,
   RegularCollectionMonth,
   TypeOfSpace,
-  AreaSpaceDemolished
+  AreaSpaceDemolished,
+  TypeOfBuilding,
+  TypeOfStructure
 }

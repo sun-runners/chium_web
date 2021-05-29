@@ -1,16 +1,26 @@
 <template>
-  <h3>Step 5</h3>
+  <div>
+    <change-schedule-work-time
+      @next="setTime"
+      @close="navigateBack"
+      ready-on-init
+    />
+  </div>
 </template>
 
 <script>
+import ChangeScheduleWorkTime from 'components/RequestEstimate/FinalStep/BottomDialogs/ChangeScheduleWorkTime'
 export default {
+  components: {
+    'change-schedule-work-time': ChangeScheduleWorkTime
+  },
   computed: {
     layoutState () {
       return {
-        totalSteps: 8,
+        totalSteps: 7,
         activeStep: 5,
         btnLabel: '다음',
-        isBtnReady: true,
+        isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: '/request/demolition/six/structure',
@@ -20,6 +30,14 @@ export default {
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
+  },
+  methods: {
+    setTime (val) {
+      this.$emit('nextForced')
+    },
+    navigateBack () {
+      this.$emit('prevForced')
+    }
   }
 }
 </script>

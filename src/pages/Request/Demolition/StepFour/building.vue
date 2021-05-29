@@ -1,13 +1,18 @@
 <template>
-  <h3>Step 4</h3>
+  <div class="bg-white">
+    <check-elevator @elevatorAnswer="hasElevator($event)" />
+  </div>
 </template>
 
 <script>
+import CheckElevator from 'src/components/RequestEstimate/Common/CheckElevator.vue'
 export default {
+  components: { CheckElevator },
+
   computed: {
     layoutState () {
       return {
-        totalSteps: 8,
+        totalSteps: 9,
         activeStep: 4,
         btnLabel: '다음',
         isBtnReady: true,
@@ -20,6 +25,12 @@ export default {
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
+  },
+  methods: {
+    hasElevator (answer) {
+      console.log(answer) // 있음 or 없음
+      this.$emit('next', true)
+    }
   }
 }
 </script>

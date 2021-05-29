@@ -31,6 +31,7 @@ const routes = [
     component: () => import('layouts/RequestEstimate.vue'),
     children: [
       { path: 'request_address', component: () => import('components/RequestEstimate/Common/Address/RequestAddress'), name: 'request_address' },
+
       // ************ WASTE *******************
       { path: 'waste', component: () => import('pages/Request/Waste/Index.vue'), name: 'waste' },
       // step Two
@@ -66,6 +67,7 @@ const routes = [
       { path: 'waste/final/business', component: () => import('src/pages/Request/Waste/FinalStep/BusinessWasteEnquiries.vue') },
       { path: 'waste/final/construction', component: () => import('src/pages/Request/Waste/FinalStep/ConstructionWasteEnquiries.vue') },
       { path: 'waste/final/recycle', component: () => import('src/pages/Request/Waste/FinalStep/RecycleEnquiries.vue') },
+
       // ************ DEMOLITION *******************
       { path: 'demolition/', component: () => import('pages/Request/Demolition/Index.vue'), name: 'demolition' },
       // step Two
@@ -97,8 +99,11 @@ const routes = [
       // step Seven
       { path: 'demolition/seven/interior', component: () => import('pages/Request/Demolition/StepSeven/interior.vue') },
       { path: 'demolition/seven/building', component: () => import('pages/Request/Demolition/StepSeven/building.vue') },
-      { path: 'demolition/seven/structure', component: () => import('pages/Request/Demolition/StepSeven/structure.vue') },
       { path: 'demolition/seven/asbestos', component: () => import('pages/Request/Demolition/StepSeven/asbestos.vue') },
+      // step Eight
+      { path: 'demolition/eight/interior', component: () => import('pages/Request/Demolition/StepEight/interior.vue') },
+      { path: 'demolition/eight/building', component: () => import('pages/Request/Demolition/StepEight/building.vue') },
+      { path: 'demolition/eight/asbestos', component: () => import('pages/Request/Demolition/StepEight/asbestos.vue') },
       // step Final
       { path: 'demolition/final/interior', component: () => import('pages/Request/Demolition/FinalStep/interior.vue') },
       { path: 'demolition/final/building', component: () => import('pages/Request/Demolition/FinalStep/building.vue') },
