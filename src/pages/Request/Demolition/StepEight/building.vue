@@ -17,7 +17,7 @@ export default {
   computed: {
     layoutState () {
       return {
-        totalSteps: 9,
+        totalSteps: 8,
         activeStep: 7,
         btnLabel: '다음',
         isBtnReady: true,

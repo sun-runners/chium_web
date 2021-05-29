@@ -17,14 +17,14 @@ export default {
   computed: {
     layoutState () {
       return {
-        totalSteps: 9,
+        totalSteps: 8,
         activeStep: 7,
         btnLabel: '다음',
         isBtnReady: true,
         isBtnHidden: false,
         requestComplete: false,
-        nextPathRoute: '/request/demolition/final/building',
-        prevPathRoute: '/request/demolition/six/building'
+        nextPathRoute: '/request/demolition/final/interior',
+        prevPathRoute: '/request/demolition/six/interior'
       }
     }
   },
