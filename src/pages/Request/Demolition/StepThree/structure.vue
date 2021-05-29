@@ -1,13 +1,19 @@
 <template>
-  <h3>Step 3</h3>
+  <div>
+    <upload-picture-site @attachImage="setImages" />
+  </div>
 </template>
 
 <script>
+import { UploadPictureSite } from 'src/components/RequestEstimate/Common'
 export default {
+  components: {
+    'upload-picture-site': UploadPictureSite
+  },
   computed: {
     layoutState () {
       return {
-        totalSteps: 8,
+        totalSteps: 6,
         activeStep: 3,
         btnLabel: '다음',
         isBtnReady: true,
@@ -20,6 +26,14 @@ export default {
   },
   mounted () {
     this.$emit('setStateLayout', this.layoutState)
+  },
+  methods: {
+    setImages (image) {
+      // image content is in image
+      console.log(image)
+      this.$emit('setEnquiryData', { image: image })
+      this.$emit('next', true)
+    }
   }
 }
 </script>
