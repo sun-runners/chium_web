@@ -14,7 +14,7 @@ export default {
         totalSteps: 7,
         activeStep: 4,
         btnLabel: '다음',
-        isBtnReady: true,
+        isBtnReady: false,
         isBtnHidden: false,
         requestComplete: false,
         nextPathRoute: '/request/demolition/five/structure',
